@@ -1,0 +1,1609 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NEXOME // OSINT Terminal</title>
+<style>
+  :root {
+    --green: #00ff41;
+    --cyan: #00ffff;
+    --pink: #ff0080;
+    --yellow: #ffff00;
+    --red: #ff3333;
+    --dim: #00aa2a;
+    --bg: #050508;
+    --bg2: #0a0a12;
+    --bg3: #0d0d1a;
+    --card: #080814;
+    --border: rgba(0,255,65,0.25);
+    --border-bright: rgba(0,255,65,0.7);
+    --glow-green: 0 0 10px rgba(0,255,65,0.5), 0 0 30px rgba(0,255,65,0.2);
+    --glow-cyan: 0 0 10px rgba(0,255,255,0.5), 0 0 30px rgba(0,255,255,0.2);
+    --glow-pink: 0 0 10px rgba(255,0,128,0.5), 0 0 30px rgba(255,0,128,0.2);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--green);
+    font-family: 'Courier New', 'Lucida Console', monospace;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  /* Scanlines overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.08) 2px,
+      rgba(0, 0, 0, 0.08) 4px
+    );
+    pointer-events: none;
+    z-index: 9999;
+  }
+
+  /* Moving scan line */
+  body::after {
+    content: '';
+    position: fixed;
+    top: -4px; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(transparent, rgba(0,255,65,0.15), transparent);
+    animation: scan 6s linear infinite;
+    pointer-events: none;
+    z-index: 9998;
+  }
+
+  @keyframes scan {
+    0%   { top: -4px; }
+    100% { top: 100vh; }
+  }
+
+  @keyframes glitch {
+    0%, 94%, 100% { transform: translate(0); clip-path: none; }
+    95% { transform: translate(-2px, 1px); clip-path: polygon(0 30%, 100% 30%, 100% 50%, 0 50%); }
+    96% { transform: translate(2px, -1px); clip-path: polygon(0 60%, 100% 60%, 100% 75%, 0 75%); }
+    97% { transform: translate(-1px, 2px); }
+    98% { transform: translate(0); clip-path: none; }
+  }
+
+  @keyframes glitch2 {
+    0%, 92%, 100% { opacity: 0; }
+    93%, 96% { opacity: 1; transform: translate(3px, 0); color: var(--pink); }
+    94%, 97% { opacity: 1; transform: translate(-3px, 0); color: var(--cyan); }
+  }
+
+  @keyframes pulse-dot {
+    0%, 100% { box-shadow: 0 0 4px var(--green), 0 0 8px var(--green); }
+    50%       { box-shadow: 0 0 10px var(--green), 0 0 20px var(--green), 0 0 40px rgba(0,255,65,0.3); }
+  }
+
+  @keyframes pulse-red {
+    0%, 100% { box-shadow: 0 0 4px var(--red); }
+    50%       { box-shadow: 0 0 12px var(--red), 0 0 25px rgba(255,51,51,0.4); }
+  }
+
+  @keyframes blink {
+    0%, 49% { opacity: 1; }
+    50%, 100% { opacity: 0; }
+  }
+
+  @keyframes border-flow {
+    0%   { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateX(-10px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+
+  @keyframes progress-bar {
+    from { width: 0%; }
+    to   { width: 100%; }
+  }
+
+  /* ── HEADER ── */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(5,5,8,0.96);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    padding: 10px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 20px rgba(0,255,65,0.08);
+  }
+
+  .header-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .brand-icon {
+    width: 32px; height: 32px;
+    border: 2px solid var(--green);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+    box-shadow: var(--glow-green);
+    animation: pulse-dot 3s ease-in-out infinite;
+  }
+
+  .brand-name {
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 4px;
+    color: var(--green);
+    animation: glitch 8s infinite;
+    position: relative;
+  }
+  .brand-name::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 0; top: 0;
+    animation: glitch2 8s infinite;
+  }
+
+  .brand-sub {
+    font-size: 10px;
+    color: var(--dim);
+    letter-spacing: 2px;
+  }
+
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .tor-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    padding: 6px 12px;
+    border: 1px solid var(--border);
+    background: var(--bg3);
+    transition: all 0.2s;
+  }
+  .tor-status:hover { border-color: var(--green); }
+
+  .tor-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--dim);
+  }
+  .tor-dot.active {
+    background: var(--green);
+    animation: pulse-dot 2s ease-in-out infinite;
+  }
+  .tor-dot.inactive {
+    background: var(--red);
+    animation: pulse-red 2s ease-in-out infinite;
+  }
+
+  #tor-label { color: var(--dim); }
+  #tor-ip { color: var(--cyan); font-size: 11px; }
+
+  .version-badge {
+    font-size: 10px;
+    color: var(--dim);
+    letter-spacing: 2px;
+    border: 1px solid rgba(0,255,65,0.1);
+    padding: 4px 8px;
+  }
+
+  /* ── HERO / SEARCH ── */
+  .hero {
+    padding: 48px 24px 32px;
+    text-align: center;
+    position: relative;
+  }
+
+  .ascii-logo {
+    font-size: clamp(7px, 1.4vw, 13px);
+    line-height: 1.2;
+    color: var(--green);
+    margin-bottom: 24px;
+    opacity: 0.85;
+    white-space: pre;
+    display: inline-block;
+    text-shadow: var(--glow-green);
+    letter-spacing: 0;
+  }
+
+  .tagline {
+    color: var(--dim);
+    font-size: 11px;
+    letter-spacing: 3px;
+    margin-bottom: 36px;
+    text-transform: uppercase;
+  }
+
+  /* Search bar */
+  .search-wrap {
+    position: relative;
+    max-width: 760px;
+    margin: 0 auto 16px;
+  }
+
+  .search-border {
+    position: absolute;
+    inset: -2px;
+    border-radius: 2px;
+    background: linear-gradient(90deg,
+      var(--green) 0%, var(--cyan) 25%, var(--pink) 50%, var(--cyan) 75%, var(--green) 100%
+    );
+    background-size: 200% 100%;
+    animation: border-flow 3s linear infinite;
+    opacity: 0;
+    transition: opacity 0.3s;
+    z-index: 0;
+  }
+  .search-wrap:focus-within .search-border { opacity: 1; }
+
+  .search-inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    padding: 0 16px;
+    gap: 12px;
+  }
+
+  .search-prompt {
+    color: var(--green);
+    font-size: 16px;
+    flex-shrink: 0;
+    user-select: none;
+  }
+
+  #search-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--cyan);
+    font-family: inherit;
+    font-size: 15px;
+    padding: 16px 0;
+    caret-color: var(--green);
+    letter-spacing: 0.5px;
+  }
+
+  #search-input::placeholder { color: rgba(0,255,65,0.3); }
+
+  .type-badge {
+    font-size: 10px;
+    letter-spacing: 2px;
+    padding: 3px 8px;
+    border: 1px solid;
+    flex-shrink: 0;
+    transition: all 0.2s;
+  }
+  .type-badge.ip       { color: var(--cyan);   border-color: var(--cyan);   }
+  .type-badge.url      { color: var(--yellow);  border-color: var(--yellow); }
+  .type-badge.mercadolibre { color: var(--pink); border-color: var(--pink); }
+  .type-badge.search   { color: var(--green);   border-color: var(--green);  }
+
+  .search-btn {
+    background: transparent;
+    border: none;
+    border-left: 1px solid var(--border);
+    color: var(--green);
+    font-family: inherit;
+    font-size: 13px;
+    letter-spacing: 2px;
+    padding: 16px 20px;
+    cursor: pointer;
+    transition: all 0.2s;
+    flex-shrink: 0;
+  }
+  .search-btn:hover {
+    background: rgba(0,255,65,0.08);
+    color: var(--cyan);
+    text-shadow: var(--glow-cyan);
+  }
+
+  /* Quick dork buttons */
+  .dork-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    max-width: 760px;
+    margin: 0 auto;
+  }
+  .dork-btn {
+    font-family: inherit;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    color: var(--dim);
+    background: transparent;
+    border: 1px solid rgba(0,255,65,0.15);
+    padding: 5px 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .dork-btn:hover {
+    color: var(--green);
+    border-color: var(--border-bright);
+    background: rgba(0,255,65,0.05);
+  }
+
+  /* ── MAIN LAYOUT ── */
+  .main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  /* ── TERMINAL PANEL ── */
+  .terminal-panel {
+    background: var(--card);
+    border: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .terminal-header {
+    background: var(--bg3);
+    border-bottom: 1px solid var(--border);
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .term-dots {
+    display: flex; gap: 6px;
+  }
+  .term-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+  }
+  .term-dot.red   { background: #ff5f57; }
+  .term-dot.yellow{ background: #febc2e; }
+  .term-dot.green { background: #28c840; }
+
+  .term-title {
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: var(--dim);
+    flex: 1;
+    text-align: center;
+  }
+
+  .term-actions {
+    display: flex; gap: 8px;
+  }
+  .term-btn {
+    font-family: inherit;
+    font-size: 10px;
+    letter-spacing: 1px;
+    color: var(--dim);
+    background: transparent;
+    border: 1px solid rgba(0,255,65,0.1);
+    padding: 3px 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .term-btn:hover { color: var(--green); border-color: var(--border); }
+
+  #terminal {
+    min-height: 300px;
+    max-height: 520px;
+    overflow-y: auto;
+    padding: 16px;
+    font-size: 13px;
+    line-height: 1.7;
+    scroll-behavior: smooth;
+  }
+
+  /* Custom scrollbar */
+  #terminal::-webkit-scrollbar { width: 4px; }
+  #terminal::-webkit-scrollbar-track { background: var(--bg); }
+  #terminal::-webkit-scrollbar-thumb { background: var(--border); }
+
+  .term-line {
+    display: block;
+    animation: slideIn 0.15s ease-out;
+  }
+
+  .term-ts { color: rgba(0,255,65,0.4); margin-right: 8px; }
+  .term-log { color: var(--green); }
+  .term-warn { color: var(--yellow); }
+  .term-err  { color: var(--red); }
+  .term-info { color: var(--cyan); }
+  .term-done { color: var(--pink); font-weight: bold; }
+  .term-cursor {
+    display: inline-block;
+    width: 8px; height: 14px;
+    background: var(--green);
+    animation: blink 1s step-end infinite;
+    vertical-align: text-bottom;
+    margin-left: 2px;
+  }
+
+  /* Progress bar */
+  .progress-bar-wrap {
+    height: 2px;
+    background: rgba(0,255,65,0.1);
+    display: none;
+  }
+  .progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--green), var(--cyan));
+    width: 0%;
+    transition: width 0.3s;
+  }
+
+  /* ── RESULTS AREA ── */
+  #results-area {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  /* ── CARDS ── */
+  .result-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 20px;
+    animation: fadeIn 0.3s ease-out;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .result-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+  }
+  .card-ip::before     { background: var(--cyan);  box-shadow: var(--glow-cyan); }
+  .card-ml::before     { background: var(--pink);  box-shadow: var(--glow-pink); }
+  .card-search::before { background: var(--green); box-shadow: var(--glow-green); }
+  .card-url::before    { background: var(--yellow);}
+  .card-story::before  { background: var(--pink);  }
+  .card-tor::before    { background: var(--green); }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .card-title {
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+  .card-ip     .card-title { color: var(--cyan); }
+  .card-ml     .card-title { color: var(--pink); }
+  .card-search .card-title { color: var(--green); }
+  .card-url    .card-title { color: var(--yellow); }
+  .card-story  .card-title { color: var(--pink); }
+  .card-tor    .card-title { color: var(--green); }
+
+  .card-badge {
+    font-size: 10px;
+    letter-spacing: 1px;
+    padding: 2px 8px;
+    border: 1px solid;
+  }
+
+  /* Data grid */
+  .data-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 12px;
+  }
+
+  .data-item {
+    background: var(--bg3);
+    padding: 10px 14px;
+    border: 1px solid rgba(255,255,255,0.04);
+  }
+
+  .data-key {
+    font-size: 10px;
+    color: var(--dim);
+    letter-spacing: 2px;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+  }
+
+  .data-val {
+    font-size: 13px;
+    color: var(--cyan);
+    word-break: break-all;
+  }
+
+  /* Connection type badges */
+  .conn-type {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 12px;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    border: 1px solid;
+    margin: 4px 4px 0 0;
+  }
+  .conn-residential { color: var(--green);  border-color: var(--green); }
+  .conn-mobile      { color: var(--yellow); border-color: var(--yellow); }
+  .conn-proxy       { color: var(--red);    border-color: var(--red); }
+  .conn-hosting     { color: var(--pink);   border-color: var(--pink); }
+
+  /* Search results list */
+  .search-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .search-item {
+    padding: 12px 14px;
+    background: var(--bg3);
+    border: 1px solid rgba(0,255,65,0.08);
+    transition: border-color 0.2s;
+  }
+  .search-item:hover { border-color: var(--border-bright); }
+  .search-item-title {
+    color: var(--cyan);
+    font-size: 13px;
+    margin-bottom: 4px;
+  }
+  .search-item-url {
+    color: var(--dim);
+    font-size: 10px;
+    margin-bottom: 6px;
+    word-break: break-all;
+  }
+  .search-item-snippet {
+    color: rgba(0,255,65,0.7);
+    font-size: 12px;
+    line-height: 1.5;
+  }
+  .search-item a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .search-item:hover .search-item-title {
+    text-decoration: underline;
+  }
+
+  /* Fraud card */
+  .fraud-level {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 12px 0;
+    padding: 12px;
+    border: 1px solid;
+    text-align: center;
+    letter-spacing: 2px;
+  }
+  .fraud-high   { color: var(--red);    border-color: var(--red);    background: rgba(255,51,51,0.05); }
+  .fraud-medium { color: var(--yellow); border-color: var(--yellow); background: rgba(255,255,0,0.05); }
+  .fraud-low    { color: var(--green);  border-color: var(--green);  background: rgba(0,255,65,0.05); }
+
+  .keyword-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 10px;
+  }
+  .keyword-tag {
+    font-size: 10px;
+    padding: 2px 8px;
+    border: 1px solid var(--red);
+    color: var(--red);
+    letter-spacing: 1px;
+  }
+
+  .thread-hook {
+    background: var(--bg3);
+    border-left: 3px solid var(--pink);
+    padding: 12px 16px;
+    margin-top: 14px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.6;
+    font-style: italic;
+  }
+
+  /* URL metas */
+  .meta-table {
+    width: 100%;
+    font-size: 11px;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  .meta-table td {
+    padding: 5px 8px;
+    border-bottom: 1px solid rgba(0,255,65,0.06);
+    vertical-align: top;
+  }
+  .meta-table td:first-child {
+    color: var(--dim);
+    width: 160px;
+    white-space: nowrap;
+  }
+  .meta-table td:last-child {
+    color: var(--cyan);
+    word-break: break-all;
+  }
+
+  /* Map button */
+  .map-btn {
+    display: inline-block;
+    margin-top: 12px;
+    font-family: inherit;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--cyan);
+    border: 1px solid var(--cyan);
+    padding: 6px 14px;
+    text-decoration: none;
+    transition: all 0.2s;
+    background: transparent;
+    cursor: pointer;
+  }
+  .map-btn:hover {
+    background: rgba(0,255,255,0.08);
+    box-shadow: var(--glow-cyan);
+  }
+
+  /* TOR STATUS card */
+  .tor-detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 8px;
+  }
+  .tor-item {
+    background: var(--bg3);
+    padding: 12px;
+    border: 1px solid rgba(255,255,255,0.04);
+  }
+  .tor-item-label { color: var(--dim); font-size: 10px; letter-spacing: 2px; margin-bottom: 6px; }
+  .tor-item-value { font-size: 14px; color: var(--cyan); }
+
+  .active-shield {
+    text-align: center;
+    padding: 16px;
+    border: 1px solid var(--green);
+    color: var(--green);
+    font-size: 13px;
+    letter-spacing: 2px;
+    margin-top: 12px;
+    box-shadow: inset 0 0 20px rgba(0,255,65,0.05);
+  }
+  .inactive-shield {
+    text-align: center;
+    padding: 16px;
+    border: 1px solid var(--red);
+    color: var(--red);
+    font-size: 13px;
+    letter-spacing: 2px;
+    margin-top: 12px;
+  }
+
+  /* Utility */
+  .text-green  { color: var(--green); }
+  .text-cyan   { color: var(--cyan); }
+  .text-pink   { color: var(--pink); }
+  .text-yellow { color: var(--yellow); }
+  .text-red    { color: var(--red); }
+  .text-dim    { color: var(--dim); }
+
+  /* ── SHERLOCK AGENT STYLES ── */
+  .card-sherlock::before { background: var(--pink); box-shadow: var(--glow-pink); }
+  .card-sherlock .card-title { color: var(--pink); }
+
+  .term-sherlock {
+    color: var(--cyan);
+    font-style: italic;
+  }
+
+  .sherlock-answer {
+    color: rgba(200, 240, 255, 0.9);
+    font-size: 13px;
+    line-height: 1.75;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+  .sherlock-answer strong { color: var(--cyan); font-style: normal; }
+  .sherlock-answer em     { color: var(--yellow); }
+  .sherlock-answer code   {
+    background: rgba(0,255,65,0.08);
+    border: 1px solid rgba(0,255,65,0.2);
+    padding: 1px 5px;
+    font-size: 12px;
+    color: var(--green);
+  }
+  .sherlock-h3 {
+    color: var(--pink);
+    font-size: 14px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(255,0,128,0.3);
+    padding-bottom: 4px;
+    margin: 12px 0 8px;
+  }
+  .sherlock-h4 {
+    color: var(--cyan);
+    font-size: 13px;
+    letter-spacing: 1px;
+    margin: 10px 0 6px;
+  }
+  .sherlock-li {
+    padding-left: 16px;
+    position: relative;
+    margin: 3px 0;
+  }
+  .sherlock-li::before {
+    content: '◈';
+    position: absolute;
+    left: 0;
+    color: var(--green);
+    font-size: 10px;
+  }
+
+  .tool-call-line {
+    background: rgba(0,255,255,0.04);
+    border-left: 2px solid var(--cyan);
+    padding: 4px 10px;
+    margin: 2px 0;
+  }
+  .tool-result-line {
+    background: rgba(0,255,65,0.03);
+    border-left: 2px solid rgba(0,255,65,0.3);
+    padding: 3px 10px;
+    margin: 2px 0;
+  }
+
+  .mt8 { margin-top: 8px; }
+  .mt12 { margin-top: 12px; }
+
+  .copy-btn {
+    font-family: inherit;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: var(--dim);
+    background: transparent;
+    border: 1px solid rgba(0,255,65,0.1);
+    padding: 2px 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .copy-btn:hover { color: var(--green); border-color: var(--border); }
+
+  /* Footer */
+  footer {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    background: rgba(5,5,8,0.97);
+    border-top: 1px solid var(--border);
+    padding: 8px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 10px;
+    color: var(--dim);
+    letter-spacing: 1.5px;
+  }
+  footer span { color: rgba(0,255,65,0.4); }
+</style>
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<header>
+  <div class="header-brand">
+    <div class="brand-icon">◈</div>
+    <div>
+      <div class="brand-name" data-text="NEXOME">NEXOME</div>
+      <div class="brand-sub">OSINT // VIGILANTE // v2.0</div>
+    </div>
+  </div>
+  <div class="header-right">
+    <div class="tor-status" id="tor-status-widget" onclick="checkTor()" title="Cliquez pour rafraîchir">
+      <div class="tor-dot" id="tor-dot"></div>
+      <div>
+        <div id="tor-label">TOR: VÉRIFICATION...</div>
+        <div id="tor-ip"></div>
+      </div>
+    </div>
+    <div class="version-badge">BUILD 2025.05</div>
+  </div>
+</header>
+
+<!-- ── HERO ── -->
+<div class="hero">
+  <pre class="ascii-logo">
+ ███╗   ██╗███████╗██╗  ██╗ ██████╗ ███╗   ███╗███████╗
+ ████╗  ██║██╔════╝╚██╗██╔╝██╔═══██╗████╗ ████║██╔════╝
+ ██╔██╗ ██║█████╗   ╚███╔╝ ██║   ██║██╔████╔██║█████╗
+ ██║╚██╗██║██╔══╝   ██╔██╗ ██║   ██║██║╚██╔╝██║██╔══╝
+ ██║ ╚████║███████╗██╔╝ ██╗╚██████╔╝██║ ╚═╝ ██║███████╗
+ ╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚═╝     ╚═╝╚══════╝</pre>
+  <div class="tagline">OSINT Intelligence Terminal // Tor-Routed // Anonymat Maximal</div>
+
+  <div class="search-wrap">
+    <div class="search-border"></div>
+    <div class="search-inner">
+      <span class="search-prompt">❯_</span>
+      <input
+        type="text"
+        id="search-input"
+        placeholder="IP, URL MercadoLibre, requête OSINT..."
+        autocomplete="off"
+        spellcheck="false"
+      >
+      <span class="type-badge search" id="type-badge">SEARCH</span>
+      <button class="search-btn" onclick="runSearch()">[ ANALYSER ]</button>
+    </div>
+  </div>
+
+  <div class="dork-bar">
+    <button class="dork-btn" onclick="setDork('site:airbnb.mx Merida expatriado')">◈ AIRBNB RADAR</button>
+    <button class="dork-btn" onclick="setDork('site:mercadolibre.com.mx tirzepatida inyectable')">◈ ML FRAUDE</button>
+    <button class="dork-btn" onclick="setDork('site:linkedin.com CEO startup Merida Mexico')">◈ LINKEDIN DORK</button>
+    <button class="dork-btn" onclick="checkTor()">◈ TEST TOR</button>
+    <button class="dork-btn" onclick="clearTerminal()">◈ CLEAR</button>
+  </div>
+</div>
+
+<!-- ── MAIN ── -->
+<div class="main">
+
+  <!-- Terminal -->
+  <div class="terminal-panel">
+    <div class="terminal-header">
+      <div class="term-dots">
+        <div class="term-dot red"></div>
+        <div class="term-dot yellow"></div>
+        <div class="term-dot green"></div>
+      </div>
+      <div class="term-title">NEXOME // TERMINAL</div>
+      <div class="term-actions">
+        <button class="term-btn" onclick="exportResults()">[ EXPORT ]</button>
+        <button class="term-btn" onclick="clearTerminal()">[ CLEAR ]</button>
+      </div>
+    </div>
+    <div class="progress-bar-wrap" id="progress-wrap">
+      <div class="progress-bar-fill" id="progress-bar"></div>
+    </div>
+    <div id="terminal">
+      <span class="term-line">
+        <span class="term-ts">[BOOT]</span>
+        <span class="term-log">NEXOME OSINT Terminal v2.0 initialisé.</span>
+      </span>
+      <span class="term-line">
+        <span class="term-ts">[BOOT]</span>
+        <span class="term-info">Modules chargés: IP_GEOLOCATE · ML_SCRAPER · DDG_SEARCH · URL_RECON</span>
+      </span>
+      <span class="term-line">
+        <span class="term-ts">[BOOT]</span>
+        <span class="term-log">Proxy Tor SOCKS5: socks5h://127.0.0.1:9050</span>
+      </span>
+      <span class="term-line">
+        <span class="term-ts">[READY]</span>
+        <span class="term-log">En attente de votre requête.<span class="term-cursor"></span></span>
+      </span>
+    </div>
+  </div>
+
+  <!-- Results area -->
+  <div id="results-area"></div>
+
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <span>NEXOME OSINT TERMINAL // FOR AUTHORIZED USE ONLY</span>
+  <span>PIXEL REVIVAL © 2025 // <span style="color:var(--green)">TOR ENFORCED</span></span>
+</footer>
+
+<script>
+// ── State ──────────────────────────────────────────────────────────────
+let activeSource = null;
+let resultsLog = [];
+let sherlockEl = null; // Current streaming Sherlock thought element
+
+// ── Query type detection ───────────────────────────────────────────────
+function detectType(q) {
+  q = q.trim();
+  if (/^(\d{1,3}\.){3}\d{1,3}$/.test(q)) return 'ip';
+  if (/mercadolibre\.com/i.test(q)) return 'mercadolibre';
+  if (/^https?:\/\//i.test(q)) return 'url';
+  return 'search';
+}
+
+document.getElementById('search-input').addEventListener('input', function() {
+  const t = detectType(this.value);
+  const badge = document.getElementById('type-badge');
+  const labels = {
+    ip: ['IP', 'ip'], url: ['URL', 'url'],
+    mercadolibre: ['ML FRAUD', 'mercadolibre'], search: ['DORK', 'search']
+  };
+  badge.textContent = labels[t][0];
+  badge.className = 'type-badge ' + labels[t][1];
+});
+
+document.getElementById('search-input').addEventListener('keydown', function(e) {
+  if (e.key === 'Enter') runSearch();
+});
+
+// ── Terminal helpers ───────────────────────────────────────────────────
+function addLine(cls, ts, msg) {
+  const term = document.getElementById('terminal');
+  // Remove old cursor
+  const old = term.querySelector('.term-cursor');
+  if (old) old.remove();
+
+  const line = document.createElement('span');
+  line.className = 'term-line';
+  line.innerHTML = `<span class="term-ts">[${ts}]</span> <span class="${cls}">${escHtml(msg)}</span>`;
+  term.appendChild(line);
+  term.scrollTop = term.scrollHeight;
+  return line;
+}
+
+function addCursor() {
+  const term = document.getElementById('terminal');
+  const cursor = document.createElement('span');
+  cursor.className = 'term-cursor';
+  term.appendChild(cursor);
+  term.scrollTop = term.scrollHeight;
+}
+
+function escHtml(s) {
+  return String(s)
+    .replace(/&/g,'&amp;')
+    .replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;');
+}
+
+function clearTerminal() {
+  document.getElementById('terminal').innerHTML = '';
+  document.getElementById('results-area').innerHTML = '';
+  resultsLog = [];
+  sherlockEl = null;
+  addLine('term-log', 'CLR', 'Terminal effacé.');
+  addCursor();
+}
+
+function setProgress(pct) {
+  const wrap = document.getElementById('progress-wrap');
+  const bar = document.getElementById('progress-bar');
+  if (pct === 0) { wrap.style.display = 'none'; bar.style.width = '0%'; return; }
+  wrap.style.display = 'block';
+  bar.style.width = pct + '%';
+  if (pct >= 100) setTimeout(() => setProgress(0), 800);
+}
+
+// ── Main search ────────────────────────────────────────────────────────
+function runSearch() {
+  const q = document.getElementById('search-input').value.trim();
+  if (!q) return;
+  if (activeSource) { activeSource.close(); activeSource = null; }
+
+  document.getElementById('results-area').innerHTML = '';
+  setProgress(10);
+
+  const ts = new Date().toLocaleTimeString('fr', {hour12:false});
+  addLine('term-info', ts, `> ${q}`);
+  setProgress(25);
+
+  activeSource = new EventSource(`/api/stream?q=${encodeURIComponent(q)}`);
+
+  activeSource.onmessage = function(e) {
+    const payload = JSON.parse(e.data);
+    handleEvent(payload);
+  };
+
+  activeSource.onerror = function() {
+    addLine('term-err', now(), 'Erreur de connexion au serveur FastAPI.');
+    setProgress(0);
+    activeSource.close();
+    addCursor();
+  };
+}
+
+function now() {
+  return new Date().toLocaleTimeString('fr', {hour12:false});
+}
+
+// ── Event dispatcher ───────────────────────────────────────────────────
+function handleEvent(payload) {
+  const { type, data, ts } = payload;
+  resultsLog.push(payload);
+
+  switch (type) {
+    case 'init':
+      addLine('term-info', ts, `Type détecté: [${data.query_type.toUpperCase()}]`);
+      setProgress(35);
+      break;
+    case 'log':
+      addLine('term-log', ts, data.message);
+      setProgress(50);
+      break;
+    case 'warning':
+      addLine('term-warn', ts, '⚠ ' + data.message);
+      break;
+    case 'error':
+      addLine('term-err', ts, '✗ ' + data.message);
+      setProgress(0);
+      break;
+    case 'tor_status':
+      renderTorCard(data, ts);
+      setProgress(60);
+      break;
+    case 'ip_result':
+      renderIPCard(data);
+      setProgress(90);
+      break;
+    case 'ml_result':
+      renderMLCard(data);
+      setProgress(80);
+      break;
+    case 'story_result':
+      renderStoryCard(data);
+      setProgress(95);
+      break;
+    case 'search_results':
+      renderSearchCard(data);
+      setProgress(95);
+      break;
+    case 'url_result':
+      renderURLCard(data);
+      setProgress(95);
+      break;
+    // ── Sherlock Agent events ────────────────────────────────────────────
+    case 'thought':
+      appendSherlockDelta(data.delta || '');
+      break;
+
+    case 'tool_call':
+      resetSherlockLine();
+      addSherlockToolLine(ts, data.tool, data.input);
+      setProgress(70);
+      break;
+
+    case 'tool_result':
+      addSherlockResultLine(ts, data.tool, data.result);
+      // Render structured cards for known tool outputs
+      if (data.tool === 'analyze_ip' && !data.result.error)
+        renderIPCard(data.result);
+      else if (data.tool === 'scrape_mercadolibre' && !data.result.error) {
+        renderMLCard(data.result);
+        const fraud_score = (data.result.fraud_keywords || []).length;
+        renderStoryCard({
+          product: data.result.product_name,
+          fraud_keywords: data.result.fraud_keywords || [],
+          fraud_level: fraud_score >= 3 ? '🔴 ALERTA MÁXIMA' : fraud_score >= 1 ? '🟡 SOSPECHOSO' : '🟢 Inconnu',
+          thread_hook: `¿Sabes que '${data.result.product_name}' está siendo vendido sin respaldo científico? Te explico por qué es una estafa. 🧵👇`,
+          cofepris_note: 'Vérifiez: https://www.gob.mx/cofepris'
+        });
+      }
+      else if (data.tool === 'osint_search' && Array.isArray(data.result))
+        renderSearchCard({ query: data.input?.query || 'OSINT', results: data.result, count: data.result.length });
+      else if (data.tool === 'analyze_url' && !data.result.error)
+        renderURLCard(data.result);
+      else if (data.tool === 'airbnb_radar')
+        renderSearchCard({ query: `Airbnb Radar — ${data.result.target_location||''}`, results: data.result.results || [], count: data.result.count || 0 });
+      else if (data.tool === 'multi_search')
+        renderMultiSearchCard(data.result);
+      setProgress(85);
+      break;
+
+    case 'final_answer':
+      resetSherlockLine();
+      renderFinalAnswerCard(data);
+      setProgress(98);
+      break;
+    // ── /Sherlock Agent events ───────────────────────────────────────────
+
+    case 'done':
+      resetSherlockLine();
+      addLine('term-done', ts, data.message);
+      setProgress(100);
+      activeSource.close();
+      addCursor();
+      break;
+  }
+}
+
+// ── Tor status widget update ───────────────────────────────────────────
+function updateTorWidget(data) {
+  const dot = document.getElementById('tor-dot');
+  const label = document.getElementById('tor-label');
+  const ipEl = document.getElementById('tor-ip');
+  if (data.tor_active) {
+    dot.className = 'tor-dot active';
+    label.textContent = 'TOR: ACTIF';
+    label.style.color = 'var(--green)';
+    ipEl.textContent = data.tor_ip;
+  } else {
+    dot.className = 'tor-dot inactive';
+    label.textContent = 'TOR: INACTIF';
+    label.style.color = 'var(--red)';
+    ipEl.textContent = 'Connexion directe';
+  }
+}
+
+async function checkTor() {
+  addLine('term-log', now(), 'Vérification manuelle du tunnel Tor...');
+  try {
+    const r = await fetch('/api/tor-status');
+    const data = await r.json();
+    updateTorWidget(data);
+    renderTorCard(data, now());
+  } catch(e) {
+    addLine('term-err', now(), 'Serveur FastAPI injoignable. Vérifiez que main.py tourne.');
+  }
+}
+
+// ── Card renderers ─────────────────────────────────────────────────────
+function appendCard(html) {
+  const area = document.getElementById('results-area');
+  const div = document.createElement('div');
+  div.innerHTML = html;
+  area.appendChild(div.firstElementChild);
+  area.scrollIntoView({ behavior: 'smooth', block: 'end' });
+}
+
+function renderTorCard(data, ts) {
+  updateTorWidget(data);
+  const shield = data.tor_active
+    ? `<div class="active-shield">◈ TUNNEL TOR ACTIF — ANONYMAT MAXIMAL ◈</div>`
+    : `<div class="inactive-shield">✗ TOR INACTIF — CONNEXION DIRECTE — LANCEZ 'tor' DANS UN TERMINAL</div>`;
+
+  appendCard(`
+    <div class="result-card card-tor">
+      <div class="card-header">
+        <div class="card-title">◈ STATUT TOR</div>
+        <div style="font-size:10px;color:var(--dim)">${ts}</div>
+      </div>
+      <div class="tor-detail-grid">
+        <div class="tor-item">
+          <div class="tor-item-label">IP RÉELLE</div>
+          <div class="tor-item-value text-red">${escHtml(data.real_ip)}</div>
+        </div>
+        <div class="tor-item">
+          <div class="tor-item-label">IP FANTÔME (TOR)</div>
+          <div class="tor-item-value text-green">${escHtml(data.tor_ip)}</div>
+        </div>
+      </div>
+      ${shield}
+    </div>
+  `);
+}
+
+function renderIPCard(data) {
+  if (data.error) {
+    appendCard(`
+      <div class="result-card card-ip">
+        <div class="card-header"><div class="card-title">◈ RAPPORT IP</div></div>
+        <div class="text-red">✗ Erreur: ${escHtml(data.error)}</div>
+      </div>
+    `);
+    return;
+  }
+
+  const connType = [];
+  if (data.mobile)  connType.push(`<span class="conn-type conn-mobile">◈ MOBILE</span>`);
+  if (data.proxy)   connType.push(`<span class="conn-type conn-proxy">✗ VPN/PROXY DÉTECTÉ</span>`);
+  if (data.hosting) connType.push(`<span class="conn-type conn-hosting">◈ DATACENTER</span>`);
+  if (!data.mobile && !data.proxy && !data.hosting)
+    connType.push(`<span class="conn-type conn-residential">✓ RÉSIDENTIEL</span>`);
+
+  const mapsUrl = `https://www.google.com/maps?q=${data.lat},${data.lon}`;
+
+  appendCard(`
+    <div class="result-card card-ip">
+      <div class="card-header">
+        <div class="card-title">◈ RAPPORT IP — ${escHtml(data.query || '')}</div>
+        <span class="card-badge" style="color:var(--cyan);border-color:var(--cyan)">GÉOLOCALISATION</span>
+      </div>
+      <div class="data-grid">
+        <div class="data-item">
+          <div class="data-key">VILLE</div>
+          <div class="data-val">${escHtml(data.city || 'N/A')}</div>
+        </div>
+        <div class="data-item">
+          <div class="data-key">RÉGION</div>
+          <div class="data-val">${escHtml(data.regionName || 'N/A')}</div>
+        </div>
+        <div class="data-item">
+          <div class="data-key">PAYS</div>
+          <div class="data-val">${escHtml(data.country || 'N/A')} (${escHtml(data.countryCode || '')})</div>
+        </div>
+        <div class="data-item">
+          <div class="data-key">COORDONNÉES</div>
+          <div class="data-val">${data.lat || 'N/A'}, ${data.lon || 'N/A'}</div>
+        </div>
+        <div class="data-item">
+          <div class="data-key">ISP / FAI</div>
+          <div class="data-val">${escHtml(data.isp || 'N/A')}</div>
+        </div>
+        <div class="data-item">
+          <div class="data-key">ORGANISATION</div>
+          <div class="data-val">${escHtml(data.org || 'N/A')}</div>
+        </div>
+        <div class="data-item">
+          <div class="data-key">ASN</div>
+          <div class="data-val">${escHtml(data.as || 'N/A')}</div>
+        </div>
+        <div class="data-item">
+          <div class="data-key">TIMEZONE</div>
+          <div class="data-val">${escHtml(data.timezone || 'N/A')}</div>
+        </div>
+      </div>
+      <div class="mt12">${connType.join('')}</div>
+      <div class="mt12">
+        <a class="map-btn" href="${mapsUrl}" target="_blank">[ VOIR SUR LA CARTE ]</a>
+        <a class="map-btn" href="https://iphub.info/?ip=${escHtml(data.query || '')}" target="_blank" style="margin-left:8px">[ IPHUB ]</a>
+        <a class="map-btn" href="https://bgpview.io/ip/${escHtml(data.query || '')}" target="_blank" style="margin-left:8px">[ BGPVIEW ]</a>
+      </div>
+    </div>
+  `);
+}
+
+function renderMLCard(data) {
+  if (data.error) {
+    appendCard(`
+      <div class="result-card card-ml">
+        <div class="card-header"><div class="card-title">◈ MERCADOLIBRE SCAN</div></div>
+        <div class="text-red">✗ Erreur: ${escHtml(data.error)}</div>
+      </div>
+    `);
+    return;
+  }
+
+  const blocked = data.status === '403_blocked'
+    ? `<div class="conn-type conn-proxy mt8">⚠ 403 BLOCKED — Extraction via URL uniquement</div>`
+    : '';
+
+  appendCard(`
+    <div class="result-card card-ml">
+      <div class="card-header">
+        <div class="card-title">◈ MERCADOLIBRE — ANALYSE PRODUIT</div>
+        <span class="card-badge" style="color:var(--pink);border-color:var(--pink)">BIO-FRAUD SCAN</span>
+      </div>
+      <div class="data-grid">
+        <div class="data-item">
+          <div class="data-key">PRODUIT</div>
+          <div class="data-val">${escHtml(data.product_name || 'N/A')}</div>
+        </div>
+        <div class="data-item">
+          <div class="data-key">PRIX</div>
+          <div class="data-val">${escHtml(data.price || 'N/A')}</div>
+        </div>
+        <div class="data-item">
+          <div class="data-key">VENDEUR</div>
+          <div class="data-val">${escHtml(data.seller || 'N/A')}</div>
+        </div>
+        <div class="data-item">
+          <div class="data-key">URL</div>
+          <div class="data-val"><a href="${escHtml(data.url||'')}" target="_blank" style="color:var(--cyan)">${escHtml(data.url||'').substring(0,50)}…</a></div>
+        </div>
+      </div>
+      ${data.description && data.description !== 'N/A' ? `<div class="mt12" style="color:rgba(0,255,65,0.6);font-size:12px;line-height:1.6">${escHtml(data.description)}</div>` : ''}
+      ${blocked}
+    </div>
+  `);
+}
+
+function renderStoryCard(data) {
+  const kw = (data.fraud_keywords || []).map(k =>
+    `<span class="keyword-tag">${escHtml(k)}</span>`
+  ).join('');
+
+  const fraudClass = data.fraud_level.includes('MÁXIMA') ? 'fraud-high'
+    : data.fraud_level.includes('SOSPECHOSO') ? 'fraud-medium' : 'fraud-low';
+
+  appendCard(`
+    <div class="result-card card-story">
+      <div class="card-header">
+        <div class="card-title">◈ RAPPORT VIGILANTE — ${escHtml(data.product || '')}</div>
+        <span class="card-badge" style="color:var(--pink);border-color:var(--pink)">BIOHACKER INTEL</span>
+      </div>
+      <div class="fraud-level ${fraudClass}">${escHtml(data.fraud_level || '?')}</div>
+      ${kw ? `<div class="mt12"><div class="data-key" style="margin-bottom:6px">MOTS-CLÉS FRAUDULEUX DÉTECTÉS</div><div class="keyword-list">${kw}</div></div>` : ''}
+      <div class="thread-hook">${escHtml(data.thread_hook || '')}</div>
+      <div class="mt12">
+        <a class="map-btn" href="${escHtml(data.cofepris_note?.split(': ')[1] || '#')}" target="_blank">[ COFEPRIS REGISTER ]</a>
+        <button class="copy-btn" style="margin-left:8px" onclick="copyText('${escHtml(data.thread_hook||'').replace(/'/g,"\\'")}')">[ COPIER THREAD ]</button>
+      </div>
+    </div>
+  `);
+}
+
+function renderSearchCard(data) {
+  const items = (data.results || []).map(r => {
+    if (r.error) return `<div class="text-red">Erreur: ${escHtml(r.error)}</div>`;
+    return `
+      <div class="search-item">
+        <div class="search-item-title"><a href="${escHtml(r.url)}" target="_blank">${escHtml(r.title || r.url)}</a></div>
+        <div class="search-item-url">${escHtml(r.url)}</div>
+        ${r.snippet ? `<div class="search-item-snippet">${escHtml(r.snippet)}</div>` : ''}
+      </div>
+    `;
+  }).join('');
+
+  appendCard(`
+    <div class="result-card card-search">
+      <div class="card-header">
+        <div class="card-title">◈ RÉSULTATS DUCKDUCKGO</div>
+        <span class="card-badge" style="color:var(--green);border-color:var(--green)">${data.count || 0} RÉSULTATS // TOR</span>
+      </div>
+      <div style="font-size:11px;color:var(--dim);margin-bottom:12px">Requête: <span style="color:var(--cyan)">${escHtml(data.query || '')}</span></div>
+      <div class="search-list">${items || '<div class="text-dim">Aucun résultat trouvé.</div>'}</div>
+    </div>
+  `);
+}
+
+function renderURLCard(data) {
+  if (data.error) {
+    appendCard(`
+      <div class="result-card card-url">
+        <div class="card-header"><div class="card-title">◈ ANALYSE URL</div></div>
+        <div class="text-red">✗ Erreur: ${escHtml(data.error)}</div>
+      </div>
+    `);
+    return;
+  }
+
+  const metaRows = Object.entries(data.metas || {}).slice(0, 15).map(([k, v]) =>
+    `<tr><td>${escHtml(k)}</td><td>${escHtml(v)}</td></tr>`
+  ).join('');
+
+  const scripts = (data.scripts_src || []).map(s =>
+    `<div style="font-size:11px;color:var(--dim);margin-top:4px">◈ ${escHtml(s)}</div>`
+  ).join('');
+
+  appendCard(`
+    <div class="result-card card-url">
+      <div class="card-header">
+        <div class="card-title">◈ ANALYSE URL</div>
+        <span class="card-badge" style="color:var(--yellow);border-color:var(--yellow)">HTTP ${data.status_code || '?'}</span>
+      </div>
+      <div class="data-grid">
+        <div class="data-item">
+          <div class="data-key">TITRE</div>
+          <div class="data-val">${escHtml(data.title || 'N/A')}</div>
+        </div>
+        <div class="data-item">
+          <div class="data-key">TAILLE</div>
+          <div class="data-val">${data.size_kb || '?'} Ko</div>
+        </div>
+        <div class="data-item">
+          <div class="data-key">LIENS</div>
+          <div class="data-val">${data.links || 0}</div>
+        </div>
+        <div class="data-item">
+          <div class="data-key">IMAGES</div>
+          <div class="data-val">${data.images || 0}</div>
+        </div>
+        <div class="data-item">
+          <div class="data-key">FORMULAIRES</div>
+          <div class="data-val">${data.forms || 0}</div>
+        </div>
+      </div>
+      ${metaRows ? `
+        <div class="mt12">
+          <div class="data-key" style="margin-bottom:6px">META TAGS</div>
+          <table class="meta-table"><tbody>${metaRows}</tbody></table>
+        </div>
+      ` : ''}
+      ${scripts ? `
+        <div class="mt12">
+          <div class="data-key" style="margin-bottom:6px">SCRIPTS EXTERNES</div>
+          ${scripts}
+        </div>
+      ` : ''}
+    </div>
+  `);
+}
+
+// ── Sherlock Streaming Helpers ────────────────────────────────────────
+
+/** Append a text delta to the current Sherlock thought line in the terminal. */
+function appendSherlockDelta(delta) {
+  const term = document.getElementById('terminal');
+  if (!sherlockEl) {
+    // Remove blink cursor if present
+    const old = term.querySelector('.term-cursor');
+    if (old) old.remove();
+    // Create new thought line
+    const line = document.createElement('span');
+    line.className = 'term-line';
+    line.innerHTML = '<span class="term-ts">[SHERLOCK]</span> <span class="term-sherlock"></span>';
+    term.appendChild(line);
+    sherlockEl = line.querySelector('.term-sherlock');
+  }
+  sherlockEl.textContent += delta;
+  term.scrollTop = term.scrollHeight;
+}
+
+/** Seal the current Sherlock thought line (start fresh on next thought). */
+function resetSherlockLine() {
+  sherlockEl = null;
+}
+
+/** Add a styled tool-call line to the terminal. */
+function addSherlockToolLine(ts, tool, input) {
+  const term = document.getElementById('terminal');
+  const old = term.querySelector('.term-cursor');
+  if (old) old.remove();
+  const inputStr = JSON.stringify(input || {});
+  const preview = inputStr.length > 90 ? inputStr.substring(0, 90) + '…' : inputStr;
+  const line = document.createElement('span');
+  line.className = 'term-line tool-call-line';
+  line.innerHTML = `<span class="term-ts">[TOOL]</span> <span class="text-cyan">→ ${escHtml(tool)}</span> <span class="text-dim">${escHtml(preview)}</span>`;
+  term.appendChild(line);
+  term.scrollTop = term.scrollHeight;
+}
+
+/** Add a compact tool-result summary line to the terminal. */
+function addSherlockResultLine(ts, tool, result) {
+  const term = document.getElementById('terminal');
+  const old = term.querySelector('.term-cursor');
+  if (old) old.remove();
+  const size = JSON.stringify(result || {}).length;
+  const hasError = result && result.error;
+  const line = document.createElement('span');
+  line.className = 'term-line tool-result-line';
+  line.innerHTML = hasError
+    ? `<span class="term-ts">[${escHtml(tool.toUpperCase())}]</span> <span class="term-err">✗ ${escHtml(result.error)}</span>`
+    : `<span class="term-ts">[${escHtml(tool.toUpperCase())}]</span> <span class="term-log">✓ Résultat reçu (${size} bytes)</span>`;
+  term.appendChild(line);
+  term.scrollTop = term.scrollHeight;
+}
+
+/** Render Sherlock's final synthesized answer as a styled card. */
+function renderFinalAnswerCard(data) {
+  const raw = data.text || '';
+
+  // Light Markdown → HTML converter (no external deps)
+  function md2html(text) {
+    return text
+      .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+      // Headings
+      .replace(/^### (.+)$/gm, '<div class="sherlock-h4">$1</div>')
+      .replace(/^## (.+)$/gm, '<div class="sherlock-h4">$1</div>')
+      .replace(/^# (.+)$/gm, '<div class="sherlock-h3">$1</div>')
+      // Bold & italic
+      .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\*(.+?)\*/g, '<em>$1</em>')
+      // Inline code
+      .replace(/`(.+?)`/g, '<code>$1</code>')
+      // List items
+      .replace(/^[-*] (.+)$/gm, '<div class="sherlock-li">$1</div>')
+      // Paragraphs
+      .replace(/\n\n+/g, '</p><p>')
+      .replace(/\n/g, '<br>');
+  }
+
+  appendCard(`
+    <div class="result-card card-sherlock">
+      <div class="card-header">
+        <div class="card-title">◈ SYNTHÈSE SHERLOCK</div>
+        <span class="card-badge" style="color:var(--pink);border-color:var(--pink)">IA OSINT AGENT</span>
+      </div>
+      <div class="sherlock-answer"><p>${md2html(raw)}</p></div>
+      <div class="mt12">
+        <button class="copy-btn" onclick="copyText(${JSON.stringify(raw)})">[ COPIER ANALYSE ]</button>
+      </div>
+    </div>
+  `);
+}
+
+/** Render multi-platform OSINT results as a grouped search card. */
+function renderMultiSearchCard(data) {
+  if (!data || typeof data !== 'object') return;
+  let inner = '';
+  for (const [platform, info] of Object.entries(data)) {
+    if (!info) continue;
+    const results = info.results || [];
+    inner += `
+      <div class="mt12">
+        <div class="data-key" style="margin-bottom:6px">
+          ${escHtml(platform.toUpperCase())} //
+          <span class="text-dim">${escHtml(info.query || '')}</span>
+          — <span class="text-green">${results.length} résultats</span>
+        </div>
+        <div class="search-list">
+          ${results.length ? results.map(r =>
+            `<div class="search-item">
+               <div class="search-item-title">
+                 <a href="${escHtml(r.url||'#')}" target="_blank">${escHtml(r.title||r.url||'N/A')}</a>
+               </div>
+               <div class="search-item-url">${escHtml(r.url||'')}</div>
+               ${r.snippet ? `<div class="search-item-snippet">${escHtml(r.snippet)}</div>` : ''}
+             </div>`
+          ).join('') : '<div class="text-dim" style="padding:8px">Aucun résultat.</div>'}
+        </div>
+      </div>`;
+  }
+  appendCard(`
+    <div class="result-card card-search">
+      <div class="card-header">
+        <div class="card-title">◈ INVESTIGATION MULTI-PLATEFORMES</div>
+        <span class="card-badge" style="color:var(--green);border-color:var(--green)">${Object.keys(data).length} SOURCES</span>
+      </div>
+      ${inner}
+    </div>
+  `);
+}
+
+// ── Utilities ─────────────────────────────────────────────────────────
+function setDork(q) {
+  document.getElementById('search-input').value = q;
+  document.getElementById('search-input').dispatchEvent(new Event('input'));
+  document.getElementById('search-input').focus();
+}
+
+function copyText(text) {
+  navigator.clipboard.writeText(text).then(() => {
+    addLine('term-info', now(), 'Texte copié dans le presse-papier.');
+  });
+}
+
+function exportResults() {
+  if (!resultsLog.length) {
+    addLine('term-warn', now(), 'Aucun résultat à exporter.');
+    return;
+  }
+  const blob = new Blob([JSON.stringify(resultsLog, null, 2)], {type:'application/json'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `nexome_export_${Date.now()}.json`;
+  a.click();
+  addLine('term-info', now(), 'Export JSON téléchargé.');
+}
+
+// ── Init ──────────────────────────────────────────────────────────────
+window.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('search-input').focus();
+  // Check Tor status on load
+  setTimeout(checkTor, 800);
+  // Auto-refresh Tor status every 60s
+  setInterval(checkTor, 60000);
+});
+</script>
+
+</body>
+</html>
