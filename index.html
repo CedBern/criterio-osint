@@ -1,0 +1,1294 @@
+
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nexome Criterio — OSINT & Forense Digital de Alto Nivel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f5f4f0;
+      --surface: #ffffff;
+      --surface-raised: #eceae5;
+      --surface-hover: #e4e2db;
+      --fg: #121416;
+      --muted: #5a626a;
+      --border: rgba(0,0,0,0.08);
+      --border-hover: rgba(0,0,0,0.15);
+      --accent: #102a43;
+      --accent-dim: rgba(16,42,67,0.06);
+      --accent-glow: rgba(16,42,67,0.12);
+      --blue: #1b3a5b;
+      --blue-dim: rgba(27,58,91,0.06);
+      --blue-glow: rgba(27,58,91,0.12);
+      --violet: #8b1a1a;
+      --violet-dim: rgba(139,26,26,0.06);
+      --violet-glow: rgba(139,26,26,0.12);
+      --danger: #c53030;
+      --success: #2f855a;
+      --warning: #c05621;
+      --gold: #b7791f;
+      --font-display: 'Lora', Georgia, serif;
+      --font-body: 'Outfit', system-ui, sans-serif;
+      --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+      --nav-h: 64px;
+      --max-w: 1280px;
+      --radius: 12px;
+      --radius-sm: 8px;
+      --radius-lg: 16px;
+      --touch-min: 44px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font: 15px/1.6 var(--font-body);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+    .nav-cta:focus-visible { outline-color: #0b0d0f; outline-offset: 3px; }
+    ::selection { background: var(--accent-dim); color: var(--fg); }
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--surface-raised); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--muted); }
+
+    .bg-grid {
+      position: fixed; inset: 0;
+      pointer-events: none; z-index: 0;
+      background-image:
+        linear-gradient(rgba(0,0,0,0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,0,0,0.015) 1px, transparent 1px);
+      background-size: 56px 56px;
+      mask-image: radial-gradient(ellipse 60% 50% at 50% 25%, black 25%, transparent 65%);
+      -webkit-mask-image: radial-gradient(ellipse 60% 50% at 50% 25%, black 25%, transparent 65%);
+    }
+    .glow-orbs { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+    .glow-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(100px);
+    }
+    .glow-orb.c1 { width: 500px; height: 500px; background: rgba(16,42,67,0.015); top: -15%; right: -8%; }
+    .glow-orb.c2 { width: 400px; height: 400px; background: rgba(31,78,121,0.012); bottom: -10%; left: -5%; }
+    .glow-orb.c3 { width: 350px; height: 350px; background: rgba(139,26,26,0.01); top: 40%; right: 15%; }
+
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      height: var(--nav-h);
+      display: flex; align-items: center;
+      justify-content: space-between;
+      padding: 0 clamp(16px, 3vw, 40px);
+      z-index: 100;
+      background: transparent;
+      border-bottom: 1px solid transparent;
+      transition: background 0.3s, border-color 0.3s, box-shadow 0.3s;
+    }
+    nav.scrolled {
+      background: rgba(245,244,240,0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom-color: var(--border);
+      box-shadow: 0 1px 0 var(--border);
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 17px;
+      letter-spacing: -0.02em;
+      min-height: var(--touch-min);
+    }
+    .nav-logo .logo-icon {
+      width: 30px; height: 30px;
+      border: 1.5px solid var(--accent);
+      border-radius: 6px;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      font-size: 12px;
+      color: var(--accent);
+      position: relative;
+    }
+    .nav-links { display: flex; align-items: center; gap: 28px; }
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--muted);
+      letter-spacing: 0.02em;
+      transition: color 0.2s;
+      position: relative;
+      padding: 8px 0;
+      min-height: var(--touch-min);
+      display: inline-flex;
+      align-items: center;
+    }
+    .nav-links a:hover { color: var(--fg); }
+    .nav-links a::after {
+      content: '';
+      position: absolute; bottom: 2px; left: 0; right: 0;
+      height: 1.5px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transition: transform 0.25s ease;
+    }
+    .nav-links a:hover::after { transform: scaleX(1); }
+    .nav-cta {
+      padding: 8px 20px;
+      border-radius: var(--radius-sm);
+      background: linear-gradient(135deg, var(--accent) 0%, var(--blue) 100%);
+      color: #ffffff !important;
+      font-weight: 600;
+      font-size: 12.5px;
+      letter-spacing: 0.03em;
+      transition: box-shadow 0.25s, transform 0.2s;
+      box-shadow: 0 4px 12px rgba(16,42,67,0.15);
+    }
+    .nav-cta:hover {
+      box-shadow: 0 6px 20px rgba(16,42,67,0.25);
+      transform: translateY(-1px);
+    }
+    .nav-cta:active {
+      transform: translateY(0) scale(0.97);
+      box-shadow: 0 0 24px var(--accent-glow);
+    }
+    .nav-hamburger {
+      display: none;
+      width: var(--touch-min); height: var(--touch-min);
+      background: transparent;
+      border: none;
+      color: var(--fg);
+      cursor: pointer;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      padding: 0;
+      margin-left: auto;
+      margin-right: -4px;
+      z-index: 101;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 20px;
+      height: 1.5px;
+      background: var(--fg);
+      border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+    .nav-mobile-overlay {
+      display: none;
+      position: fixed; inset: 0;
+      background: rgba(245,244,240,0.96);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      z-index: 99;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .nav-mobile-overlay.open { display: flex; opacity: 1; }
+    .nav-mobile-overlay a {
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--fg);
+      letter-spacing: -0.01em;
+      padding: 12px 24px;
+      min-height: var(--touch-min);
+      display: flex;
+      align-items: center;
+      transition: color 0.2s;
+    }
+    .nav-mobile-overlay a:hover { color: var(--accent); }
+    .nav-mobile-overlay .nav-cta { font-size: 16px; padding: 14px 32px; }
+    @media (max-width: 640px) {
+      .nav-links a:not(.nav-cta) { display: none; }
+      .nav-hamburger { display: flex; }
+    }
+
+    .hero {
+      position: relative; z-index: 1;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: calc(var(--nav-h) + 40px) clamp(16px, 3vw, 40px) 60px;
+    }
+    .hero-content {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .hero-text h1 {
+      font-family: var(--font-display);
+      font-size: clamp(34px, 4.2vw, 56px);
+      font-weight: 800;
+      line-height: 1.06;
+      letter-spacing: -0.03em;
+      margin-bottom: 18px;
+    }
+    .hero-text h1 .grad-cyan { color: var(--accent); }
+    .hero-text h1 .grad-blue { color: var(--blue); }
+    .hero-text h1 .grad-violet { color: var(--violet); }
+    .hero-text p {
+      font-size: clamp(15px, 1.1vw, 17px);
+      color: var(--muted);
+      max-width: 54ch;
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+    .hero-badges { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 32px; }
+    .hero-badge {
+      padding: 5px 12px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--muted);
+      transition: border-color 0.2s, color 0.2s, background 0.2s, transform 0.2s;
+    }
+    .hero-badge:hover { transform: translateY(-1px); }
+    .hero-badge.accent { border-color: var(--accent-dim); color: var(--accent); background: var(--accent-dim); }
+    .hero-badge.accent:hover { border-color: var(--accent); background: rgba(0,240,255,0.18); }
+    .hero-badge.blue { border-color: var(--blue-dim); color: var(--blue); background: var(--blue-dim); }
+    .hero-badge.blue:hover { border-color: var(--blue); background: rgba(37,99,235,0.18); }
+    .hero-badge.violet { border-color: var(--violet-dim); color: var(--violet); background: var(--violet-dim); }
+    .hero-badge.violet:hover { border-color: var(--violet); background: rgba(124,58,237,0.18); }
+
+    .terminal {
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: #080a0c;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.5), 0 0 60px rgba(0,240,255,0.03);
+    }
+    .terminal-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      background: rgba(255,255,255,0.02);
+      border-bottom: 1px solid var(--border);
+    }
+    .terminal-dot { width: 9px; height: 9px; border-radius: 50%; }
+    .terminal-dot:nth-child(1) { background: #ef4444; }
+    .terminal-dot:nth-child(2) { background: #f59e0b; }
+    .terminal-dot:nth-child(3) { background: #22c55e; }
+    .terminal-title {
+      margin-left: auto;
+      font-size: 10px;
+      font-family: var(--font-mono);
+      color: var(--muted);
+      letter-spacing: 0.06em;
+    }
+    .terminal-body {
+      padding: 18px 20px;
+      font-family: var(--font-mono);
+      font-size: 12.5px;
+      line-height: 1.7;
+      color: #c0c8d4;
+      min-height: 300px;
+      position: relative;
+    }
+    .terminal-body .line {
+      opacity: 0;
+      animation: termIn 0.25s ease forwards;
+      white-space: pre-wrap;
+      word-break: break-all;
+    }
+    @keyframes termIn { to { opacity: 1; } }
+    .term-ts { color: #4a5060; }
+    .term-ok { color: var(--success); }
+    .term-warn { color: var(--warning); }
+    .term-err { color: var(--danger); }
+    .term-info { color: var(--accent); }
+    .term-blue { color: var(--blue); }
+    .term-violet { color: var(--violet); }
+    .term-dim { color: #4a5060; }
+    .terminal-body .cursor {
+      display: inline-block;
+      width: 7px; height: 15px;
+      background: var(--accent);
+      margin-left: 3px;
+      animation: blink 1s step-end infinite;
+      vertical-align: text-bottom;
+    }
+    @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0; } }
+    .term-input-line {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      opacity: 0;
+      animation: termIn 0.25s ease forwards;
+    }
+    .term-prompt { color: var(--accent); font-weight: 600; }
+    .term-input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: var(--fg);
+      font: 12.5px/1.7 var(--font-mono);
+      caret-color: var(--accent);
+    }
+    .term-input:focus-visible { outline: none; }
+    .term-input-line:focus-within {
+      box-shadow: 0 0 16px rgba(0,240,255,0.08);
+      border-radius: 4px;
+    }
+    @media (max-width: 968px) {
+      .hero-content { grid-template-columns: 1fr; gap: 32px; }
+      .hero-text h1 { font-size: clamp(30px, 7vw, 44px); }
+      .terminal-body { font-size: 11.5px; min-height: 240px; padding: 14px 16px; }
+    }
+    @media (max-width: 480px) {
+      .hero { min-height: auto; padding-top: calc(var(--nav-h) + 24px); padding-bottom: 40px; }
+      .hero-text h1 { font-size: clamp(26px, 8.5vw, 32px); }
+      .hero-text p { font-size: 14px; }
+      .hero-badges { gap: 5px; }
+      .hero-badge { font-size: 10px; padding: 4px 10px; }
+      .terminal-body { font-size: 10.5px; min-height: 200px; padding: 10px 12px; }
+      .terminal-title { font-size: 8px; }
+      .term-input { font-size: 10.5px; }
+    }
+
+    section {
+      position: relative; z-index: 1;
+      padding: 80px clamp(16px, 3vw, 40px);
+    }
+    @media (max-width: 480px) {
+      section { padding: 48px 16px; }
+    }
+    .section-inner { max-width: var(--max-w); margin: 0 auto; }
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+    .section-label::before {
+      content: '';
+      width: 22px;
+      height: 1.5px;
+      background: var(--accent);
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(26px, 2.8vw, 38px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.12;
+      margin-bottom: 12px;
+    }
+    .section-sub {
+      color: var(--muted);
+      font-size: clamp(14px, 1vw, 16px);
+      max-width: 58ch;
+      margin-bottom: 44px;
+    }
+
+    /* Stats bar */
+    .stats-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 80px;
+    }
+    .stat-cell {
+      background: var(--surface);
+      padding: 28px 20px;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .stat-cell:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+    }
+    .stat-num {
+      font-family: var(--font-mono);
+      font-size: clamp(28px, 2.5vw, 36px);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .stat-num.blue { color: var(--blue); }
+    .stat-num.violet { color: var(--violet); }
+    .stat-label {
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: 0.03em;
+    }
+    @media (max-width: 640px) {
+      .stats-bar { grid-template-columns: repeat(2, 1fr); }
+      .stat-cell { padding: 20px 14px; }
+    }
+
+    /* Bento capabilities */
+    .bento-cap {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: auto auto;
+      gap: 16px;
+    }
+    .bento-cap .cell {
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: var(--surface);
+      padding: 32px 28px;
+      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .bento-cap .cell::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .bento-cap .cell:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+    }
+    .bento-cap .cell:hover::before { opacity: 1; }
+    .bento-cap .cell.span-2 {
+      grid-column: span 2;
+    }
+    .bento-cap .cell.accent-border::before { background: linear-gradient(90deg, var(--accent), var(--blue)); }
+    .bento-cap .cell.blue-border::before { background: linear-gradient(90deg, var(--blue), var(--violet)); }
+    .bento-cap .cell.violet-border::before { background: linear-gradient(90deg, var(--violet), var(--accent)); }
+    .cell-icon {
+      width: 38px; height: 38px;
+      border-radius: var(--radius-sm);
+      display: grid;
+      place-items: center;
+      margin-bottom: 16px;
+      font-size: 16px;
+      border: 1px solid var(--border);
+      background: var(--surface-raised);
+    }
+    .cell-icon.accent { color: var(--accent); border-color: var(--accent-dim); background: var(--accent-dim); }
+    .cell-icon.blue { color: var(--blue); border-color: var(--blue-dim); background: var(--blue-dim); }
+    .cell-icon.violet { color: var(--violet); border-color: var(--violet-dim); background: var(--violet-dim); }
+    .cell h3 {
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin-bottom: 8px;
+    }
+    .cell p {
+      font-size: 13.5px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .cell-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-top: 14px;
+    }
+    .cell-tags span {
+      padding: 2px 9px;
+      border-radius: 3px;
+      font-size: 10.5px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      background: var(--surface-raised);
+      color: var(--muted);
+      border: 1px solid var(--border);
+    }
+    .cell-tags span.accent-tag { color: var(--accent); border-color: var(--accent-dim); background: var(--accent-dim); }
+    .cell-tags span.blue-tag { color: var(--blue); border-color: var(--blue-dim); background: var(--blue-dim); }
+    .cell-tags span.violet-tag { color: var(--violet); border-color: var(--violet-dim); background: var(--violet-dim); }
+    .cell-stat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .cell-stat-item {
+      background: var(--bg);
+      padding: 10px 12px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+    }
+    .cell-stat-num {
+      font-family: var(--font-mono);
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 2px;
+    }
+    .cell-stat-label {
+      font-size: 10.5px;
+      color: var(--muted);
+      letter-spacing: 0.02em;
+    }
+    @media (max-width: 968px) {
+      .bento-cap { grid-template-columns: 1fr 1fr; }
+      .bento-cap .cell.span-2 { grid-column: span 1; }
+    }
+    @media (max-width: 560px) {
+      .bento-cap { grid-template-columns: 1fr; }
+    }
+
+    /* Dossiers bento */
+    .bento-dossiers {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      grid-template-rows: auto auto;
+      gap: 16px;
+    }
+    .bento-dossiers .dcell {
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: var(--surface);
+      overflow: hidden;
+      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+    }
+    .bento-dossiers .dcell:hover {
+      border-color: rgba(0,240,255,0.18);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.3), 0 0 24px rgba(0,240,255,0.05);
+    }
+    .bento-dossiers .dcell:focus-within {
+      border-color: var(--accent-dim);
+      box-shadow: 0 0 0 2px var(--accent-dim);
+    }
+    .bento-dossiers .dcell.span-row-2 {
+      grid-row: span 2;
+    }
+    .dcell-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 18px;
+      border-bottom: 1px solid var(--border);
+      background: rgba(255,255,255,0.012);
+    }
+    .dcell-class {
+      font-size: 9.5px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 3px;
+    }
+    .dcell-class.conf { color: var(--warning); background: rgba(245,158,11,0.08); border: 1px solid rgba(245,158,11,0.12); }
+    .dcell-class.res { color: var(--accent); background: var(--accent-dim); border: 1px solid rgba(0,240,255,0.12); }
+    .dcell-class.sec { color: var(--danger); background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.12); }
+    .dcell-class.top { color: var(--violet); background: var(--violet-dim); border: 1px solid rgba(124,58,237,0.12); }
+    .dcell-ref { font-family: var(--font-mono); font-size: 10.5px; color: var(--muted); }
+    .dcell-body { padding: 18px; }
+    .dcell-body h3 {
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin-bottom: 6px;
+    }
+    .dcell-body p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .dcell-meta {
+      display: flex;
+      gap: 14px;
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+    }
+    .dcell-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 10.5px;
+      color: var(--muted);
+      font-family: var(--font-mono);
+    }
+    .dcell-meta-item .d { width: 5px; height: 5px; border-radius: 50%; }
+    .dcell-meta-item .d.green { background: var(--success); }
+    .dcell-meta-item .d.yellow { background: var(--warning); }
+    .dcell-meta-item .d.blue { background: var(--blue); }
+    .dcell-thumb {
+      width: 100%;
+      height: 120px;
+      background: linear-gradient(135deg, var(--surface-raised), var(--bg));
+      display: grid;
+      place-items: center;
+      color: var(--muted);
+      font-size: 11px;
+      font-family: var(--font-mono);
+      letter-spacing: 0.06em;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+    .dcell-thumb::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, transparent 40%, rgba(0,240,255,0.04) 100%);
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+    .dcell:hover .dcell-thumb::after { opacity: 1; }
+    @media (max-width: 968px) {
+      .bento-dossiers { grid-template-columns: 1fr 1fr; }
+      .bento-dossiers .dcell.span-row-2 { grid-row: span 1; }
+    }
+    @media (max-width: 560px) {
+      .bento-dossiers { grid-template-columns: 1fr; }
+    }
+
+    .tech-section {
+      border-top: 1px solid var(--border);
+      padding: 60px clamp(16px, 3vw, 40px) 80px;
+    }
+    .tech-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      margin-top: 32px;
+    }
+    .tech-item {
+      padding: 6px 16px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-family: var(--font-mono);
+      color: var(--muted);
+      border: 1px solid var(--border);
+      background: var(--surface);
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .tech-item:hover { border-color: var(--accent-dim); color: var(--accent); }
+    .tech-item:focus-visible { outline-color: var(--accent); }
+
+    footer {
+      position: relative; z-index: 1;
+      border-top: 1px solid var(--border);
+      padding: 56px clamp(16px, 3vw, 40px) 28px;
+    }
+    .footer-inner { max-width: var(--max-w); margin: 0 auto; }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 36px;
+    }
+    .footer-brand p {
+      font-size: 13.5px;
+      color: var(--muted);
+      max-width: 38ch;
+      margin-top: 10px;
+      line-height: 1.6;
+    }
+    .footer-col h4 {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--fg);
+      margin-bottom: 14px;
+    }
+    .footer-col a {
+      display: flex;
+      align-items: center;
+      font-size: 13px;
+      color: var(--muted);
+      padding: 8px 0;
+      min-height: var(--touch-min);
+      transition: color 0.2s, padding-left 0.2s;
+    }
+    .footer-col a:hover { color: var(--accent); padding-left: 4px; }
+    .footer-col a:focus-visible { outline-offset: -2px; }
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      font-size: 12px;
+      color: var(--muted);
+    }
+    .footer-social { display: flex; gap: 14px; }
+    .footer-social a { color: var(--muted); transition: color 0.2s; display: grid; place-items: center; }
+    .footer-social a:hover { color: var(--accent); transform: translateY(-1px); }
+    .footer-social a:focus-visible { outline-color: var(--accent); }
+    @media (max-width: 768px) {
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+    }
+    @media (max-width: 480px) {
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+<div class="bg-grid"></div>
+<div class="glow-orbs">
+  <div class="glow-orb c1"></div>
+  <div class="glow-orb c2"></div>
+  <div class="glow-orb c3"></div>
+</div>
+
+<nav id="navbar">
+  <a href="#" class="nav-logo">
+    <span class="logo-icon">NX</span>
+    Nexome Criterio
+  </a>
+  <div class="nav-links">
+    <a href="#capacidades">Capacidades</a>
+    <a href="#dossiers">Dossiers</a>
+    <a href="#contacto">Contacto</a>
+    <a href="#" class="nav-cta">Acceso OSINT Lab</a>
+  </div>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Menú de navegación" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</nav>
+<div class="nav-mobile-overlay" id="navMobile">
+  <a href="#capacidades">Capacidades</a>
+  <a href="#dossiers">Dossiers</a>
+  <a href="#contacto">Contacto</a>
+  <a href="#" class="nav-cta">Acceso OSINT Lab</a>
+</div>
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-text">
+      <h1>
+        Investigación Digital<br>
+        <span class="grad-cyan">OSINT</span> & <span class="grad-blue">Forense</span><br>
+        <span class="grad-violet">de Alto Nivel</span>
+      </h1>
+      <p>
+        Cruzamos fuentes abiertas, geolocalización, inteligencia de redes
+        y método científico para entregar inteligencia verificable con
+        cadena de custodia digital.
+      </p>
+      <div class="hero-badges">
+        <span class="hero-badge accent">OSINT</span>
+        <span class="hero-badge blue">Geoforense</span>
+        <span class="hero-badge violet">Fact-Checking</span>
+        <span class="hero-badge">Ciberinteligencia</span>
+        <span class="hero-badge">Análisis de Redes</span>
+      </div>
+    </div>
+    <div class="terminal" id="terminal">
+      <div class="terminal-bar">
+        <span class="terminal-dot"></span>
+        <span class="terminal-dot"></span>
+        <span class="terminal-dot"></span>
+        <span class="terminal-title">nexome-criterio — osint-scan</span>
+      </div>
+      <div class="terminal-body" id="termBody">
+        <div class="term-input-line" style="opacity:1">
+          <span class="term-prompt">❯</span>
+          <input type="text" class="term-input" id="termInput" placeholder="Escanea una IP, dominio o consulta OSINT..." autocomplete="off" spellcheck="false">
+        </div>
+        <span class="cursor" id="termCursor"></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-inner" style="padding:0 clamp(16px, 3vw, 40px)">
+  <div class="stats-bar reveal">
+    <div class="stat-cell">
+      <div class="stat-num">127+</div>
+      <div class="stat-label">Fuentes activas monitoreadas</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-num blue">14.3 TB</div>
+      <div class="stat-label">Datos procesados</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-num violet">230+</div>
+      <div class="stat-label">Casos investigados</div>
+    </div>
+    <div class="stat-cell">
+      <div class="stat-num">99.7%</div>
+      <div class="stat-label">Precisión en verificación</div>
+    </div>
+  </div>
+</div>
+
+<section id="capacidades">
+  <div class="section-inner">
+    <div class="reveal">
+      <span class="section-label">Capacidades</span>
+      <h2 class="section-title">Arquitectura de inteligencia</h2>
+      <p class="section-sub">
+        No trabajamos con conjeturas. Cada investigación sigue un protocolo
+        reproducible con cadena de custodia digital y verificación cruzada
+        en seis dominios especializados.
+      </p>
+    </div>
+    <div class="bento-cap">
+      <div class="cell span-2 accent-border reveal">
+        <div class="cell-icon accent">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M12 1v4m0 14v4m11-11h-4M5 12H1m18.36-7.36l-2.83 2.83M7.47 16.53l-2.83 2.83M22 12c0 5.52-4.48 10-10 10S2 17.52 2 12 6.48 2 12 2s10 4.48 10 10z"/></svg>
+        </div>
+        <h3>OSINT Estratégico</h3>
+        <p>
+          Monitorización continua de fuentes abiertas — registros WHOIS,
+          infraestructura DNS, redes sociales, foros, dark web. Construcción
+          de perfiles de amenaza con trazabilidad forense.
+        </p>
+        <div class="cell-tags">
+          <span class="accent-tag">WHOIS</span>
+          <span class="accent-tag">DNS</span>
+          <span>Shodan</span>
+          <span>OSINT Framework</span>
+        </div>
+      </div>
+      <div class="cell blue-border reveal">
+        <div class="cell-icon blue">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <h3>Geoforense</h3>
+        <p>
+          Reconstrucción de contextos geográficos con datos satelitales,
+          cartografía histórica, metadatos EXIF y registros públicos.
+        </p>
+        <div class="cell-tags">
+          <span class="blue-tag">GeoIP</span>
+          <span class="blue-tag">Satélite</span>
+          <span>EXIF</span>
+        </div>
+      </div>
+      <div class="cell violet-border reveal">
+        <div class="cell-icon violet">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Fact-Checking</h3>
+        <p>
+          Protocolos replicables de validación con cadena de custodia
+          digital, contraste de fuentes y auditoría de evidencias.
+        </p>
+        <div class="cell-tags">
+          <span class="violet-tag">Cadena Custodia</span>
+          <span>Auditoría</span>
+          <span>Replicable</span>
+        </div>
+      </div>
+      <div class="cell accent-border reveal">
+        <div class="cell-icon accent">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+        </div>
+        <h3>Análisis de Redes</h3>
+        <p>
+          Mapeo de relaciones entre entidades, detección de patrones de
+          coordinación y visualización de grafos de influencia.
+        </p>
+        <div class="cell-tags">
+          <span class="accent-tag">Grafos</span>
+          <span>Centralidad</span>
+          <span>Clustering</span>
+        </div>
+      </div>
+      <div class="cell blue-border reveal">
+        <div class="cell-icon blue">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        </div>
+        <h3>Monitoreo Dark Web</h3>
+        <p>
+          Vigilancia automatizada de foros, mercados y canales en la dark
+          web con detección temprana de amenazas y filtraciones.
+        </p>
+        <div class="cell-tags">
+          <span class="blue-tag">Tor</span>
+          <span>I2P</span>
+          <span>Crawlers</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="dossiers">
+  <div class="section-inner">
+    <div class="reveal">
+      <span class="section-label">Dossiers</span>
+      <h2 class="section-title">Expedientes de referencia</h2>
+      <p class="section-sub">
+        Investigaciones reales que demuestran el alcance de nuestra
+        metodología. Cada expediente incluye cadena de custodia,
+        documentación técnica y conclusiones verificables.
+      </p>
+    </div>
+    <div class="bento-dossiers">
+      <div class="dcell span-row-2 reveal">
+        <div class="dcell-thumb">CARPETA — NXC-2024-023</div>
+        <div class="dcell-header">
+          <span class="dcell-class conf">Confidencial</span>
+          <span class="dcell-ref">NXC-2024-023</span>
+        </div>
+        <div class="dcell-body">
+          <h3>El Expediente de las Pirámides</h3>
+          <p>
+            Análisis estructural multiespectral y datación por correlación
+            de fuentes. Revisión de 47 documentos históricos y 12 TB de
+            imágenes satelitales para establecer cronología constructiva
+            con protocolo forense replicable.
+          </p>
+          <div class="dcell-meta">
+            <span class="dcell-meta-item"><span class="d green"></span>Concluido</span>
+            <span class="dcell-meta-item">47 fuentes</span>
+            <span class="dcell-meta-item">12 TB</span>
+            <span class="dcell-meta-item">2024</span>
+          </div>
+        </div>
+      </div>
+      <div class="dcell reveal">
+        <div class="dcell-header">
+          <span class="dcell-class res">Restringido</span>
+          <span class="dcell-ref">NXC-2025-007</span>
+        </div>
+        <div class="dcell-body">
+          <h3>Fraude en e-commerce</h3>
+          <p>
+            Red de 14 tiendas fantasma identificada por patrones de
+            registro, reputación cruzada e infraestructura compartida.
+            230 víctimas potenciales detectadas a tiempo.
+          </p>
+          <div class="dcell-meta">
+            <span class="dcell-meta-item"><span class="d green"></span>Concluido</span>
+            <span class="dcell-meta-item">23 fuentes</span>
+          </div>
+        </div>
+      </div>
+      <div class="dcell reveal">
+        <div class="dcell-header">
+          <span class="dcell-class sec">Secreto</span>
+          <span class="dcell-ref">NXC-2025-031</span>
+        </div>
+        <div class="dcell-body">
+          <h3>Desinformación 5G</h3>
+          <p>
+            Rastreo de campaña coordinada en 6 idiomas. Identificación
+            del origen, cadena de amplificación y 28 cuentas nodo.
+          </p>
+          <div class="dcell-meta">
+            <span class="dcell-meta-item"><span class="d yellow"></span>En revisión</span>
+            <span class="dcell-meta-item">31 fuentes</span>
+          </div>
+        </div>
+      </div>
+      <div class="dcell reveal">
+        <div class="dcell-header">
+          <span class="dcell-class top">TOP Secret</span>
+          <span class="dcell-ref">NXC-2025-044</span>
+        </div>
+        <div class="dcell-body">
+          <h3>Red de Lavado Digital</h3>
+          <p>
+            Trazado de 142 transacciones mediante 8 exchanges y 3
+            mixers. Vínculos con paraísos fiscales identificados.
+          </p>
+          <div class="dcell-meta">
+            <span class="dcell-meta-item"><span class="d blue"></span>Activo</span>
+            <span class="dcell-meta-item">142 trans.</span>
+          </div>
+        </div>
+      </div>
+      <div class="dcell reveal">
+        <div class="dcell-header">
+          <span class="dcell-class res">Restringido</span>
+          <span class="dcell-ref">NXC-2025-052</span>
+        </div>
+        <div class="dcell-body">
+          <h3>Operativo Cazafantasmas</h3>
+          <p>
+            Desarticulación de 6 perfiles falsos en LinkedIn con
+            intentos de spear-phishing a ejecutivos del sector oil & gas.
+          </p>
+          <div class="dcell-meta">
+            <span class="dcell-meta-item"><span class="d green"></span>Concluido</span>
+            <span class="dcell-meta-item">6 perfiles</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="tech-section" id="contacto">
+  <div class="section-inner" style="text-align:center">
+    <div class="reveal">
+      <span class="section-label">Tecnología</span>
+      <h2 class="section-title">Stack de inteligencia</h2>
+      <p class="section-sub" style="margin-left:auto;margin-right:auto">
+        Herramientas de grado forense que garantizan la integridad,
+        trazabilidad y reproducibilidad de cada investigación.
+      </p>
+    </div>
+    <div class="tech-strip reveal">
+      <span class="tech-item">Python</span>
+      <span class="tech-item">Playwright</span>
+      <span class="tech-item">Shodan API</span>
+      <span class="tech-item">Tor</span>
+      <span class="tech-item">Elasticsearch</span>
+      <span class="tech-item">Neo4j</span>
+      <span class="tech-item">OpenCV</span>
+      <span class="tech-item">Tesseract</span>
+      <span class="tech-item">FFmpeg</span>
+      <span class="tech-item">Docker</span>
+      <span class="tech-item">FastAPI</span>
+      <span class="tech-item">PostgreSQL</span>
+    </div>
+    <div style="margin-top:40px">
+      <a href="#" class="nav-cta" style="display:inline-flex;padding:10px 28px;font-size:13px" id="finalCta">Acceder al OSINT Lab</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="nav-logo" style="margin-bottom:0">
+          <span class="logo-icon">NX</span>
+          Nexome Criterio
+        </div>
+        <p>
+          Laboratorio de investigación digital y OSINT. Ingeniería forense
+          aplicada a la verificación de información, geointeligencia y
+          análisis de amenazas en superficie, deep y dark web.
+        </p>
+      </div>
+      <div class="footer-col">
+        <h4>Servicios</h4>
+        <a href="#">OSINT Estratégico</a>
+        <a href="#">Geoforense</a>
+        <a href="#">Fact-Checking</a>
+        <a href="#">Auditoría Digital</a>
+      </div>
+      <div class="footer-col">
+        <h4>Recursos</h4>
+        <a href="#">Dossiers</a>
+        <a href="#">Metodología</a>
+        <a href="#">Blog Técnico</a>
+        <a href="#">API</a>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a href="#">Privacidad</a>
+        <a href="#">Términos</a>
+        <a href="#">Ética OSINT</a>
+        <a href="#">Contacto</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Nexome Criterio. Todos los derechos reservados.</span>
+      <div class="footer-social">
+        <a href="#" aria-label="GitHub">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.455-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0022 12c0-5.523-4.477-10-10-10z"/></svg>
+        </a>
+        <a href="#" aria-label="X">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4l11.733 16h4.267l-11.733 -16zM4 20l6.768 -6.768M17.232 4.768l-2.964 2.964"/></svg>
+        </a>
+        <a href="#" aria-label="LinkedIn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var nav = document.getElementById('navbar');
+  var navHamburger = document.getElementById('navHamburger');
+  var navMobile = document.getElementById('navMobile');
+  var ticking = false;
+  function onScroll() {
+    if (!ticking) {
+      requestAnimationFrame(function () {
+        nav.classList.toggle('scrolled', window.scrollY > 40);
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  // Hamburger toggle
+  function toggleMenu(open) {
+    var isOpen = open !== undefined ? open : navHamburger.classList.toggle('open');
+    if (open !== undefined) {
+      navHamburger.classList.toggle('open', open);
+    }
+    navMobile.classList.toggle('open', navHamburger.classList.contains('open'));
+    navHamburger.setAttribute('aria-expanded', navHamburger.classList.contains('open'));
+    document.body.style.overflow = navHamburger.classList.contains('open') ? 'hidden' : '';
+  }
+  if (navHamburger) {
+    navHamburger.addEventListener('click', function () { toggleMenu(); });
+  }
+  if (navMobile) {
+    navMobile.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () { toggleMenu(false); });
+    });
+  }
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && navHamburger.classList.contains('open')) toggleMenu(false);
+  });
+
+  var termBody = document.getElementById('termBody');
+  var termInput = document.getElementById('termInput');
+  var cursor = document.getElementById('termCursor');
+
+  var logs = [
+    { t: 'NEXOME — Módulo de Reconocimiento v3.2.1', c: 'term-info' },
+    { t: '──────────────', c: '' },
+    { t: '', c: '' },
+    { t: 'Iniciando sesión OSINT...', c: '' },
+    { t: '127 fuentes activas consultadas', c: 'term-ok' },
+    { t: '  → WHOIS: 23 dominios en cartera', c: 'term-info' },
+    { t: '  → DNS: 8 servidores autoritativos', c: 'term-info' },
+    { t: '  → SSL: 2 anomalías de certificado', c: 'term-warn' },
+    { t: '  → GeoIP: 4 países identificados', c: 'term-blue' },
+    { t: '', c: '' },
+    { t: 'Trazando mapa de relaciones...', c: '' },
+    { t: '  → 17 vínculos entre entidades', c: 'term-ok' },
+    { t: '  → 3 coincidencias en registros públicos', c: 'term-info' },
+    { t: '', c: '' },
+    { t: 'Correlación con deep web...', c: '' },
+    { t: '  → 2 menciones en foros restringidos', c: 'term-warn' },
+    { t: '  → 1 identidad pseudónima detectada', c: 'term-violet' },
+    { t: '', c: '' },
+    { t: 'Informe preliminar generado (230 KB)', c: 'term-ok' },
+    { t: 'Listo para revisión forense.', c: 'term-ok' },
+    { t: '', c: '' },
+    { t: 'nexome@criterio ~ $ ', c: 'term-info' }
+  ];
+
+  var idx = 0;
+  function addLogLine() {
+    if (idx >= logs.length) { cursor.style.display = 'inline-block'; return; }
+    var entry = logs[idx++];
+    var div = document.createElement('div');
+    div.className = 'line';
+    var span = document.createElement('span');
+    if (entry.c) span.className = entry.c;
+    span.textContent = entry.t;
+    div.appendChild(span);
+    termBody.insertBefore(div, termInput.parentNode.nextSibling);
+    termBody.scrollTop = termBody.scrollHeight;
+    var delay = entry.t.length > 50 ? 50 : entry.t.length > 0 ? 16 : 150;
+    setTimeout(addLogLine, delay);
+  }
+  setTimeout(addLogLine, 500);
+
+  termInput.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') {
+      var val = termInput.value.trim();
+      if (!val) return;
+      var div = document.createElement('div');
+      div.className = 'line';
+      div.innerHTML = '<span class="term-ts">[INPUT]</span> <span class="term-info">❯ ' + val.replace(/&/g,'&amp;').replace(/</g,'&lt;') + '</span>';
+      termBody.insertBefore(div, termInput.parentNode.nextSibling);
+      termInput.value = '';
+      termBody.scrollTop = termBody.scrollHeight;
+
+      var resp = document.createElement('div');
+      resp.className = 'line';
+      var msgs = [
+        'Iniciando escaneo de fuentes abiertas...',
+        '  → Consultando bases WHOIS y DNS',
+        '  → Analizando infraestructura objetivo'
+      ];
+      var rIdx = 0;
+      function addResp() {
+        if (rIdx >= msgs.length) return;
+        resp = document.createElement('div');
+        resp.className = 'line';
+        resp.innerHTML = '<span class="term-ts">[SCAN]</span> <span class="term-ok">' + msgs[rIdx++] + '</span>';
+        termBody.insertBefore(resp, termInput.parentNode.nextSibling);
+        termBody.scrollTop = termBody.scrollHeight;
+        setTimeout(addResp, 200);
+      }
+      addResp();
+    }
+  });
+
+  var revealEls = document.querySelectorAll('.reveal');
+  if (revealEls.length && 'IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+    revealEls.forEach(function (el) { obs.observe(el); });
+  } else {
+    revealEls.forEach(function (el) { el.classList.add('visible'); });
+  }
+})();
+</script>
+</body>
+</html>
