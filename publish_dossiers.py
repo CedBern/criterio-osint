@@ -268,6 +268,10 @@ def main():
                 try:
                     with open(info["json"], "r", encoding="utf-8") as f:
                         didactic_config = json.load(f)
+                    if "glossary" not in didactic_config:
+                        print(f"Warning: {info['json']} missing 'glossary' - no clickable terms")
+                    if "quiz" not in didactic_config:
+                        print(f"Warning: {info['json']} missing 'quiz' - no FLE questionnaire")
                 except Exception as exc:
                     print(f"Error reading {info['json']}: {exc}")
                     

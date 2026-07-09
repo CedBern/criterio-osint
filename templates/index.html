@@ -239,6 +239,17 @@
     text-transform: uppercase;
   }
 
+  .legal-banner {
+    color: var(--pink);
+    font-size: 10px;
+    text-align: center;
+    margin-bottom: 20px;
+    opacity: 0.7;
+    letter-spacing: 1px;
+  }
+  .legal-banner a { color: var(--cyan); text-decoration: none; }
+  .legal-banner a:hover { text-decoration: underline; }
+
   /* Search bar */
   .search-wrap {
     position: relative;
@@ -858,6 +869,8 @@
  ╚═╝  ╚═══╝╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚═╝     ╚═╝╚══════╝</pre>
   <div class="tagline">OSINT Intelligence Terminal // Tor-Routed // Anonymat Maximal</div>
 
+  <div class="legal-banner">⚠ Usage strictement licite — interdiction de cibler des mineurs avec les outils OSINT. Voir les <a href="/cgu" style="color:var(--cyan)">CGU</a>.</div>
+
   <div class="search-wrap">
     <div class="search-border"></div>
     <div class="search-inner">
@@ -930,7 +943,12 @@
 
 <!-- ── FOOTER ── -->
 <footer>
-  <span>NEXOME OSINT TERMINAL // FOR AUTHORIZED USE ONLY</span>
+  <span>
+    NEXOME OSINT TERMINAL // FOR AUTHORIZED USE ONLY //
+    <a href="/mentions-legales" style="color:var(--dim);text-decoration:none">Mentions légales</a> //
+    <a href="/confidentialite" style="color:var(--dim);text-decoration:none">Confidentialité</a> //
+    <a href="/cgu" style="color:var(--dim);text-decoration:none">CGU</a>
+  </span>
   <span>PIXEL REVIVAL © 2025 // <span style="color:var(--green)">TOR ENFORCED</span></span>
 </footer>
 

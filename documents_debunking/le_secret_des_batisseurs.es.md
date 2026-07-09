@@ -62,7 +62,9 @@ El descubrimiento del brazo Ahramat ilustra el poder de la arqueología moderna.
 
 ![Métodos de ingeniería antiguos vs explicaciones esotéricas](images/7.png)
 
-Sin embargo, no se trata solo de "romper" mitos. Como explican algunos historiadores, estas teorías fantásticas nacen de una necesidad humana de asombro ante los orígenes. Pero la realidad científica —la de estos ingenieros antiguos capaces de modificar la ubicación de sus monumentos según los ciclos hidrológicos de un río— es mucho más fascinante que cualquier fábula. Al integrar los datos ambientales, la disciplina arqueológica no solo estudia objetos, sino que finalmente descifra el comportamiento y la inteligencia de una civilización en armonía con su ecosistema.
+Sin embargo, no se trata solo de "romper" mitos. Como explican algunos historiadores, estas teorías fantásticas nacen de una necesidad humana de asombro ante los orígenes. Pero la realidad científica —la de estos ingenieros antiguos capaces de modificar la ubicación de sus monumentos según los ciclos hidrológicos de un río— es mucho más fascinante que cualquier fábula.
+
+Al integrar los datos ambientales, la disciplina arqueológica no solo estudia objetos, sino que finalmente descifra el comportamiento y la inteligencia de una civilización en armonía con su ecosistema.
 
 ## 7. Conclusión: Un espejo para nuestro futuro
 

@@ -62,7 +62,9 @@ The discovery of the Ahramat branch illustrates the power of modern archaeology.
 
 ![Ancient engineering methods vs esoteric explanations](images/7.png)
 
-However, it is not just about "debunking" myths. As some historians explain, these fantastic theories are born from a human need for wonder about origins. But the scientific reality — that of these ancient engineers capable of modifying the location of their monuments according to the hydrological cycles of a river — is far more fascinating than any fable. By integrating environmental data, the archaeological discipline does not just study objects, it finally deciphers the behavior and intelligence of a civilization in harmony with its ecosystem.
+However, it is not just about "debunking" myths. As some historians explain, these fantastic theories are born from a human need for wonder about origins. But the scientific reality — that of these ancient engineers capable of modifying the location of their monuments according to the hydrological cycles of a river — is far more fascinating than any fable.
+
+By integrating environmental data, the archaeological discipline does not just study objects, it finally deciphers the behavior and intelligence of a civilization in harmony with its ecosystem.
 
 ## 7. Conclusion: A Mirror for Our Future
 

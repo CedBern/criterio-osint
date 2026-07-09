@@ -1,5 +1,7 @@
 import pytest
-from main import OSINT_TOOLS, SHERLOCK_SYSTEM_PROMPT, _smart_route, to_gemini_tools, to_openai_messages, _detect_fraud_keywords
+from config import SHERLOCK_SYSTEM_PROMPT
+from tools import OSINT_TOOLS, _smart_route, _detect_fraud_keywords
+from llm import to_gemini_tools, to_openai_messages
 
 
 def test_academic_search_tool_exists():
@@ -23,8 +25,8 @@ def test_system_prompt_has_debunk_instructions():
 
 
 def test_academic_search_handler_routing():
-    import main
-    assert hasattr(main, "handle_academic_search")
+    import tools
+    assert hasattr(tools, "handle_academic_search")
 
 
 class TestSmartRoute:
