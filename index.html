@@ -610,6 +610,18 @@
       font-weight: 600;
       color: var(--fg);
     }
+    
+    /* Liens dans la modal */
+    .modal-body a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1.5px solid rgba(124, 34, 30, 0.2);
+      transition: border-color 0.2s, background-color 0.2s;
+    }
+    .modal-body a:hover {
+      border-bottom-color: var(--accent);
+      background-color: var(--accent-dim);
+    }
 
     .article-media {
       margin: 32px 0;
@@ -739,6 +751,33 @@
     @keyframes slideDown {
       from { opacity: 0; transform: translateY(-5px); }
       to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* BLOCS DE SOURCES / BIBLIOGRAPHIE */
+    .sources-wrapper {
+      margin-top: 40px;
+      border-top: 1.5px solid var(--border);
+      padding-top: 28px;
+      font-size: 13.5px;
+      color: var(--muted);
+    }
+    .sources-wrapper h4 {
+      font-family: var(--font-display);
+      font-size: 15.5px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: var(--fg);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .sources-wrapper ul {
+      margin-left: 20px;
+      list-style-type: square;
+      color: var(--muted);
+    }
+    .sources-wrapper li {
+      margin-bottom: 10px;
+      line-height: 1.5;
     }
 
     /* QUIZ */
@@ -1183,26 +1222,22 @@
               </div>
             </div>
 
-            <div class="paragraph-block">
-              <div class="paragraph-fr"><h4>📚 Sources & Références Scientifiques</h4>
+            <div class="sources-wrapper">
+              <div class="sources-fr"><h4>📚 Sources & Références Scientifiques</h4>
 <em>   <strong>Ghoneim, E. et al. (2024).</strong> </em>The Egyptian pyramid chain was built along the now abandoned Ahramat Nile Branch.* Nature Communications Earth & Environment. [DOI: 10.1038/s43247-024-01379-7]
 <em>   <strong>Tallet, P. (2017).</strong> </em>Les papyrus de la mer Rouge I : Le journal de Merer (Papyrus Jarf A et B).* Mémoires de l'IFAO.
 <em>   <strong>Le Quellec, J.-L. (2018).</strong> </em>L'Archéologie romantique : sens et vanité du debunking rationnel.* Éditions CNRS.
 <em>   <strong>Karbovnik, D. (2017).</strong> </em>De l’alterscience au conspirationnisme : le cas de la pseudo-archéologie.* Quaderni, 94.</div>
-              <div class="paragraph-es" style="display:none;"><h4>📚 Fuentes & Referencias Científicas</h4>
+              <div class="sources-es" style="display:none;"><h4>📚 Fuentes & Referencias Científicas</h4>
 <em>   <strong>Ghoneim, E. et al. (2024).</strong> </em>The Egyptian pyramid chain was built along the now abandoned Ahramat Nile Branch.* Nature Communications Earth & Environment. [DOI: 10.1038/s43247-024-01379-7]
 <em>   <strong>Tallet, P. (2017).</strong> </em>Les papyrus de la mer Rouge I : Le journal de Merer (Papyrus Jarf A et B).* Mémoires de l'IFAO.
 <em>   <strong>Le Quellec, J.-L. (2018).</strong> </em>L'Archéologie romantique : sens et vanité du debunking rationnel.* Éditions CNRS.
 <em>   <strong>Karbovnik, D. (2017).</strong> </em>De l’alterscience au conspirationnisme : le cas de la pseudo-archéologie.* Quaderni, 94.</div>
-              <div class="paragraph-en" style="display:none;"><h4>📚 Sources & Scientific References</h4>
+              <div class="sources-en" style="display:none;"><h4>📚 Sources & Scientific References</h4>
 <em>   <strong>Ghoneim, E. et al. (2024).</strong> </em>The Egyptian pyramid chain was built along the now abandoned Ahramat Nile Branch.* Nature Communications Earth & Environment. [DOI: 10.1038/s43247-024-01379-7]
 <em>   <strong>Tallet, P. (2017).</strong> </em>Les papyrus de la mer Rouge I : Le journal de Merer (Papyrus Jarf A et B).* Mémoires de l'IFAO.
 <em>   <strong>Le Quellec, J.-L. (2018).</strong> </em>L'Archéologie romantique : sens et vanité du debunking rationnel.* Éditions CNRS.
 <em>   <strong>Karbovnik, D. (2017).</strong> </em>De l’alterscience au conspirationnisme : le cas de la pseudo-archéologie.* Quaderni, 94.</div>
-              <div class="paragraph-actions" style="display:none;">
-                <button class="btn-translate-es" title="Traducción al español">🇲🇽</button>
-                <button class="btn-translate-en" title="English translation">🇬🇧</button>
-              </div>
             </div>
           </div>
         </div>
@@ -1272,7 +1307,7 @@
 <p>Le nombre de100 000 ouvriersest probablement un chiffre proposé par Hérodote pour impressionner le lecteur, la population en Égypte n'excédant pas un million d'habitants à cette époque[7]</p>
 <h4>Contrainte temporelle</h4>
 <ul><li>Hérodoterapporte que lagrande pyramide de Gizehaurait été construite en vingt ans, estimation reprise par l'historien antiqueManéthon. L'année de début et la durée de construction de la pyramide sont des hypothèses généralement validées par leségyptologues, parce qu'elles correspondent aux 23 à25 années, suivant les sources, du règne du PharaonKhéops[8]. Ces estimations ne sont malheureusement attestées par aucun écrit contemporain, mais déduites logiquement par la destination admise de la pyramide comme étant le tombeau de ce pharaon, hypothèse elle-même non attestée par des écrits.</li>
-<li>L'historien grec rapporte également que les ouvriers égyptiens n'y travaillaient que trois mois chaque année[9](sa formulation, ambiguë, laisse croire qu'ils étaient renouvelés tous les trois mois, mais cette période correspond probablement à la saison des crues pendant laquelle des milliers de paysans étaient embrigadés au titre de lacorvée, nombre bien supérieur à celui des ouvriers travaillant de manière permanente[10]). Cela ferait donc soixante mois de travail, soit seulement cinq ans en temps de travail effectif. Ce qui reviendrait à poser environ1 369 blocspar jour. Si ces cinq ans étaient travaillés vingt-quatre heures sur vingt-quatre, il faudrait compter environ cinquante-sept blocs à l'heure, taillés, transportés, montés et ajustés au millimètre près pour certains d'entre eux. Mais cette interprétation confond fréquence et «durée de la chaîne»: le fait que cinquante-sept blocs soient placésen moyennepar heure ne signifie pas que la chaîne de fabrication produise et place cinquante-sept blocs par heure, notamment du fait que les différentes étapes de la production sont simultanées pour des blocs différents.</li>
+<li>L'historien grec rapporte également que les ouvriers égyptiens n'y travaillaient que trois mois chaque année<a href="sa formulation, ambiguë, laisse croire qu'ils étaient renouvelés tous les trois mois, mais cette période correspond probablement à la saison des crues pendant laquelle des milliers de paysans étaient embrigadés au titre de lacorvée, nombre bien supérieur à celui des ouvriers travaillant de manière permanente[10]" target="_blank" rel="noopener noreferrer">9</a>. Cela ferait donc soixante mois de travail, soit seulement cinq ans en temps de travail effectif. Ce qui reviendrait à poser environ1 369 blocspar jour. Si ces cinq ans étaient travaillés vingt-quatre heures sur vingt-quatre, il faudrait compter environ cinquante-sept blocs à l'heure, taillés, transportés, montés et ajustés au millimètre près pour certains d'entre eux. Mais cette interprétation confond fréquence et «durée de la chaîne»: le fait que cinquante-sept blocs soient placésen moyennepar heure ne signifie pas que la chaîne de fabrication produise et place cinquante-sept blocs par heure, notamment du fait que les différentes étapes de la production sont simultanées pour des blocs différents.</li>
 <p></ul>Cependant, si les théories des rampes d'accès externes sont envisagées (voir plus loin dans cet article), il convient d'ajouter à ce calcul les blocs et matériaux nécessaires à la réalisation des rampes elles-mêmes.</p>
 <p>Il convient également de prendre en compte les autres pyramides réalisées pendant les25 ansdu règne du pharaonKhéops(Pyramide G1D,Pyramide G1A,Pyramide G1BetPyramide G1C), qui même de dimensions largement plus modestes, ont nécessité de la même façon des ressources en hommes, matériaux, outils et vivres.</p>
 <h3>Apports de l'égyptologie</h3>
@@ -1437,7 +1472,7 @@
 <li>↑Jean-Philippe Lauer,Le Mystère des pyramides, Presses de la Cité, 1988,(ISBN2-258-02368-8)</li>
 <li>↑(en)«Constructing The Cheops Pyramid Through Mulitispiral Rampssur le site de Deutsche Mediengesellschaft</li>
 <li>↑[PDF]Susanne Thon,Mystère de l'histoire résolu?.Mitteldeutsche Zeitung, 9 janvier 2024</li>
-<li>↑[PDF](en)Rudolf Volz,Constructing The Cheops Pyramid Through Mulitispiral Ramps. Journal of Humanistic Mathematics od the Claremont Colleges</li>
+<li>↑<a href="en" target="_blank" rel="noopener noreferrer">PDF</a>Rudolf Volz,Constructing The Cheops Pyramid Through Mulitispiral Ramps. Journal of Humanistic Mathematics od the Claremont Colleges</li>
 <li>↑No62d'octobre 1999</li>
 <li>↑Théorie de Jean-Pierre Houdin, en 3Dsur le site de Dassault Systèmes</li>
 <li>↑Le secret de la Grande Pyramide, Jean-Pierre Houdin et Bob Brier, Fayard, 2008</li>
@@ -1788,7 +1823,7 @@
       </div>
 
       <div class="modal-body" id="modalBodyContent">
-        <!-- Contenido dinámico del artículo -->
+        <!-- Contenido dinámico del article -->
       </div>
     </div>
   </div>
@@ -1805,7 +1840,7 @@
       var helperLangSelect = document.getElementById('helperLangSelect');
       
       var globalLangSwitch = document.getElementById('globalLangSwitch');
-      var currentLang = 'fr'; // Langue de l'interface par défaut
+      var currentLang = 'fr';
       
       var currentGlossary = {};
       var currentQuiz = [];
@@ -1841,7 +1876,7 @@
           ed_body: "Criterio es un espacio de fact-checking e investigación geoarqueológica independiente. Nuestra meta es contrarrestar falsas afirmaciones históricas y teorías alternativas carentes de fundamentos científicos. Nos basamos estrictamente en el contraste riguroso de fuentes primarias, el análisis de datos de teledetección satelital (Sentinel/radar) y publicaciones indexadas sometidas al referato científico. Todo análisis publicado se realiza bajo un estricto protocolo de trazabilidad.",
           contact: "Contacto",
           ethics: "Ética Editorial",
-          consen: "Consensus Académico",
+          consen: "Consenso Académico",
           copy: "&copy; 2026 Criterio Revista Digital. Todos los derechos reservados.",
           cat_featured: "Investigación Principal",
           cat_doc: "Documento",
@@ -1871,16 +1906,13 @@
         }
       };
 
-      // Traduit toute la page d'accueil vers la langue sélectionnée
       function translatePage(lang) {
         currentLang = lang;
         
-        // Mettre à jour les boutons actifs
         globalLangSwitch.querySelectorAll('.lang-btn').forEach(function(b) {
           b.classList.toggle('active', b.getAttribute('data-lang') === lang);
         });
 
-        // Traduire les éléments statiques
         var tr = UI_TRANSLATIONS[lang];
         document.getElementById('ui-date').textContent = tr.date_label;
         document.getElementById('ui-subtitle').textContent = tr.subtitle;
@@ -1896,7 +1928,6 @@
         document.getElementById('ui-copy').innerHTML = tr.copy;
         document.getElementById('ui-ayuda').textContent = tr.ayuda;
 
-        // Traduire les cartes (Titre et Résumé) en fonction des attributs data-title-xx
         document.querySelectorAll('.featured-story, .magazine-card').forEach(function(card) {
           var title = card.getAttribute('data-title-' + lang) || card.getAttribute('data-title-fr');
           var summary = card.getAttribute('data-summary-' + lang) || card.getAttribute('data-summary-fr');
@@ -1907,14 +1938,12 @@
           if (titleEl) titleEl.textContent = title;
           if (summaryEl) summaryEl.textContent = summary;
 
-          // Traduire le badge de catégorie
           var catEl = card.querySelector('.story-category-label, .card-category-label');
           if (catEl) {
             var catType = catEl.getAttribute('data-category');
             catEl.textContent = catType === 'featured' ? tr.cat_featured : tr.cat_doc;
           }
 
-          // Traduire le bouton lire la suite
           var readMoreEl = card.querySelector('[data-readmore]');
           if (readMoreEl) {
             var readType = readMoreEl.getAttribute('data-readmore');
@@ -1922,15 +1951,18 @@
           }
         });
 
-        // Configurer automatiquement la langue d'aide par défaut de la modal
         if (lang === 'es' || lang === 'en') {
           helperLangSelect.value = lang;
         } else {
-          helperLangSelect.value = 'es'; // Par défaut espagnol si le site est en français
+          helperLangSelect.value = 'es';
+        }
+        
+        // Mettre à jour l'affichage des sources si la modal est ouverte
+        if (modal.classList.contains('open')) {
+          updateSourcesVisibility();
         }
       }
 
-      // Écouteur de clic sur le sélecteur global de langue
       globalLangSwitch.addEventListener('click', function(e) {
         var btn = e.target.closest('.lang-btn');
         if (btn) {
@@ -1983,6 +2015,21 @@
         }, 300);
       }
 
+      function updateSourcesVisibility() {
+        var isStudyMode = didacticToggle.checked;
+        var lang = helperLangSelect.value;
+        
+        var sFr = modalBody.querySelector('.sources-fr');
+        var sEs = modalBody.querySelector('.sources-es');
+        var sEn = modalBody.querySelector('.sources-en');
+        
+        if (sFr && sEs && sEn) {
+          sFr.style.display = (!isStudyMode || lang === 'fr') ? 'block' : 'none';
+          sEs.style.display = (isStudyMode && lang === 'es') ? 'block' : 'none';
+          sEn.style.display = (isStudyMode && lang === 'en') ? 'block' : 'none';
+        }
+      }
+
       didacticToggle.addEventListener('change', function() {
         var isStudyMode = didacticToggle.checked;
         helperLangContainer.style.display = isStudyMode ? 'block' : 'none';
@@ -2002,6 +2049,8 @@
             el.style.pointerEvents = 'none';
           }
         });
+        
+        updateSourcesVisibility();
         
         if (!isStudyMode) {
           modalBody.querySelectorAll('.paragraph-es, .paragraph-en').forEach(function(el) {
@@ -2031,6 +2080,8 @@
           if (pEs) pEs.style.display = showEs ? 'block' : 'none';
           if (pEn) pEn.style.display = showEn ? 'block' : 'none';
         });
+        
+        updateSourcesVisibility();
         
         if (activeTooltip) {
           var term = activeTooltip.getAttribute('data-origin-term');
@@ -2231,8 +2282,6 @@
         }
       }
 
-      // Initialisation par défaut en français
-      // (Puisque c'est un site pour apprendre le français, la page d'accueil commence en FR)
       translatePage('fr');
 
       document.addEventListener('click', function(e) {
