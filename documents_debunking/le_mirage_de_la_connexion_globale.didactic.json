@@ -48,7 +48,7 @@
     },
     "mythologies": {
       "es": "mitologías",
-      "en": "mythologies",
+      "en": "mitologías",
       "def": "Ensemble de récits légendaires qui expliquent le monde ou l'histoire."
     }
   },
@@ -85,6 +85,76 @@
       ],
       "answer": 1,
       "explanation": "Le texte indique que ces théories sont des récits mythologiques modernes qui offrent une vision romantique du monde, rendant le démontage purement rationnel inefficace."
+    }
+  ],
+  "quiz_es": [
+    {
+      "question": "¿Por qué dice el autor que la forma piramidal es una 'necesidad física'?",
+      "options": [
+        "Porque era un símbolo religioso universal.",
+        "Porque es la estructura más estable para construir en altura con piedra.",
+        "Porque los materiales antiguos solo permitían formas triangulares.",
+        "Porque todas las civilizaciones copiaron el mismo plano original."
+      ],
+      "answer": 1,
+      "explanation": "El texto explica que la pirámide permite distribuir el peso de manera óptima para evitar que la estructura se derrumbe bajo su propia masa."
+    },
+    {
+      "question": "¿Qué papel jugó el 'brazo de Ahramat' descubierto por Eman Ghoneim?",
+      "options": [
+        "Era un camino sagrado que conectaba Egipto con México.",
+        "Era una vía fluvial utilizada para transportar bloques de piedra y trabajadores.",
+        "Era una tumba inundada descubierta bajo la Gran Pirámide.",
+        "Era un sistema de riego para los jardines reales de Menfis."
+      ],
+      "answer": 1,
+      "explanation": "Este brazo del Nilo funcionaba como una autopista logística para transportar bloques pesados desde las canteras hasta los templos."
+    },
+    {
+      "question": "Según Jean-Loïc Le Quellec, ¿por qué es difícil convencer a los defensores de la pseudoarqueología con hechos científicos?",
+      "options": [
+        "Porque los científicos no tienen suficientes pruebas.",
+        "Porque estas teorías funcionan como mitologías o visiones del mundo, y no como ciencia.",
+        "Porque los libros de pseudoarqueología son más baratos que los científicos.",
+        "Porque la gente prefiere historias sobre el clima antes que sobre extraterrestres."
+      ],
+      "answer": 1,
+      "explanation": "El texto indica que estas teorías son relatos mitológicos modernos que ofrecen una visión romántica del mundo, haciendo inútil el desmontaje puramente racional."
+    }
+  ],
+  "quiz_en": [
+    {
+      "question": "Why does the author say that the pyramidal shape is a 'physical necessity'?",
+      "options": [
+        "Because it was a universal religious symbol.",
+        "Because it is the most stable structure for building high with stone.",
+        "Because ancient materials only allowed triangular shapes.",
+        "Because all civilizations copied the same original blueprint."
+      ],
+      "answer": 1,
+      "explanation": "The text explains that the pyramid allows weight to be distributed optimally to prevent the structure from collapsing under its own mass."
+    },
+    {
+      "question": "What role did the 'Ahramat branch' discovered by Eman Ghoneim play?",
+      "options": [
+        "It was a sacred path connecting Egypt to Mexico.",
+        "It was a waterway used to transport stone blocks and workers.",
+        "It was a flooded tomb discovered under the Great Python.",
+        "It was an irrigation system for the royal gardens of Memphis."
+      ],
+      "answer": 1,
+      "explanation": "This branch of the Nile functioned as a logistics highway to transport heavy blocks from the quarries to the temples."
+    },
+    {
+      "question": "According to Jean-Loïc Le Quellec, why is it difficult to convince proponents of pseudo-archaeology with scientific facts?",
+      "options": [
+        "Under no circumstances do scientists have enough evidence.",
+        "Because these theories function as mythologies or worldviews, rather than science.",
+        "Because pseudo-archaeology books are cheaper than scientific ones.",
+        "Because people prefer stories about climate rather than aliens."
+      ],
+      "answer": 1,
+      "explanation": "The text indicates that these theories are modern mythological narratives that offer a romantic worldview, rendering purely rational debunking ineffective."
     }
   ]
 }

@@ -165,3 +165,23 @@ def test_publish_dossiers_config_uses_relative_paths():
     assert d.endswith("documents_debunking")
     assert "website" in str(publish_dossiers.html_path)
     assert "website" in str(publish_dossiers.website_dir)
+
+
+def test_highlight_glossary_multilingual():
+    from publish_dossiers import highlight_glossary
+    glossary = {
+        "bâtisseurs": {
+            "es": "constructores",
+            "en": "builders",
+            "def": "Personnes qui conçoivent et construisent."
+        }
+    }
+    html_fr = highlight_glossary("Les bâtisseurs", glossary, "fr")
+    html_es = highlight_glossary("Los constructores", glossary, "es")
+    html_en = highlight_glossary("The builders", glossary, "en")
+    
+    assert 'data-word="bâtisseurs"' in html_fr
+    assert 'data-word="bâtisseurs"' in html_es
+    assert 'data-word="bâtisseurs"' in html_en
+    assert 'constructores</span>' in html_es
+    assert 'builders</span>' in html_en

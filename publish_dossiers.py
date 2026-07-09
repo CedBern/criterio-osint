@@ -87,14 +87,26 @@ def md_to_html(md_text):
             
     return '\n'.join(paragraphs)
 
-def highlight_glossary(html_text, glossary):
+def highlight_glossary(html_text, glossary, lang="fr"):
     parts = re.split(r'(<[^>]+>)', html_text)
     
     for i in range(len(parts)):
         if not parts[i].startswith('<'):
-            for word in glossary:
-                pattern = r'\b(' + re.escape(word) + r')\b'
-                parts[i] = re.sub(pattern, r'<span class="glossary-term" data-word="\1">\1</span>', parts[i], flags=re.IGNORECASE)
+            for word, word_data in glossary.items():
+                search_word = word
+                if isinstance(word_data, dict):
+                    if lang == "es" and "es" in word_data:
+                        search_word = word_data["es"]
+                    elif lang == "en" and "en" in word_data:
+                        search_word = word_data["en"]
+                else:
+                    if lang != "fr":
+                        continue
+                
+                options = [o.strip() for o in search_word.split("/") if o.strip()]
+                for opt in options:
+                    pattern = r'\b(' + re.escape(opt) + r')\b'
+                    parts[i] = re.sub(pattern, rf'<span class="glossary-term" data-word="{word}">\1</span>', parts[i], flags=re.IGNORECASE)
                 
     return "".join(parts)
 
@@ -131,7 +143,9 @@ def generate_multilingual_html(content_fr, content_es, content_en, glossary):
             </div>""")
         else:
             if glossary:
-                html_fr = highlight_glossary(html_fr, glossary)
+                html_fr = highlight_glossary(html_fr, glossary, 'fr')
+                html_es = highlight_glossary(html_es, glossary, 'es') if html_es else ""
+                html_en = highlight_glossary(html_en, glossary, 'en') if html_en else ""
                 
             html_blocks.append(f"""
             <div class="paragraph-block">
@@ -233,11 +247,11 @@ def main():
         if not summary_en:
             summary_en = "Scientific analysis and historical context."
             
-        cover = get_cover_image(base, content_fr)
-        year = datetime.datetime.now().year
-        
         with open(info["fr"], "r", encoding="utf-8", errors="ignore") as f:
             content_fr = f.read()
+            
+        cover = get_cover_image(base, content_fr)
+        year = datetime.datetime.now().year
             
         content_es = ""
         content_en = ""
@@ -260,6 +274,8 @@ def main():
         level = didactic_config.get("level", "Lectura General")
         glossary = didactic_config.get("glossary", {})
         quiz = didactic_config.get("quiz", [])
+        quiz_es = didactic_config.get("quiz_es", [])
+        quiz_en = didactic_config.get("quiz_en", [])
         
         if info["type"] == "multilingual":
             full_html = generate_multilingual_html(content_fr, content_es, content_en, glossary)
@@ -268,6 +284,8 @@ def main():
             
         glossary_attr = json.dumps(glossary, ensure_ascii=False).replace("'", "&apos;")
         quiz_attr = json.dumps(quiz, ensure_ascii=False).replace("'", "&apos;")
+        quiz_es_attr = json.dumps(quiz_es, ensure_ascii=False).replace("'", "&apos;")
+        quiz_en_attr = json.dumps(quiz_en, ensure_ascii=False).replace("'", "&apos;")
         
         title_fr_esc = title_fr.replace('"', '&quot;')
         title_es_esc = title_es.replace('"', '&quot;')
@@ -288,6 +306,8 @@ def main():
             "level": level,
             "glossary_attr": glossary_attr,
             "quiz_attr": quiz_attr,
+            "quiz_es_attr": quiz_es_attr,
+            "quiz_en_attr": quiz_en_attr,
             "full_html": full_html
         })
         
@@ -314,7 +334,9 @@ def main():
           <div class="dcell-content" style="display:none;" 
                data-level="{feat['level']}"
                data-glossary='{feat['glossary_attr']}'
-               data-quiz='{feat['quiz_attr']}'>
+               data-quiz-fr='{feat['quiz_attr']}'
+               data-quiz-es='{feat['quiz_es_attr']}'
+               data-quiz-en='{feat['quiz_en_attr']}'>
             {feat['full_html']}
           </div>
         </div>
@@ -341,7 +363,9 @@ def main():
             <div class="dcell-content" style="display:none;" 
                  data-level="{card['level']}"
                  data-glossary='{card['glossary_attr']}'
-                 data-quiz='{card['quiz_attr']}'>
+                 data-quiz-fr='{card['quiz_attr']}'
+                 data-quiz-es='{card['quiz_es_attr']}'
+                 data-quiz-en='{card['quiz_en_attr']}'>
               {card['full_html']}
             </div>
           </div>
