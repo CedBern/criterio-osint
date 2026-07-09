@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="fr">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Criterio — Revista de Geoarqueología e Didáctica del FLE</title>
+  <title>Criterio — Geoarchéologie & FLE</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -72,7 +72,37 @@
       border-bottom: 1.5px solid var(--border);
       padding-bottom: 12px;
       margin-bottom: 24px;
+      flex-wrap: wrap;
+      gap: 12px;
     }
+    
+    /* Sélecteur de langue Global */
+    .global-lang-switch {
+      display: flex;
+      gap: 6px;
+    }
+    .lang-btn {
+      background: transparent;
+      border: 1px solid var(--border);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--muted);
+      cursor: pointer;
+      transition: all 0.2s;
+      outline: none;
+    }
+    .lang-btn:hover {
+      border-color: var(--muted);
+      color: var(--fg);
+    }
+    .lang-btn.active {
+      background: var(--accent);
+      color: #ffffff;
+      border-color: var(--accent);
+    }
+
     .brand-section {
       margin-bottom: 20px;
     }
@@ -93,7 +123,7 @@
       letter-spacing: 0.05em;
     }
 
-    /* Menu de navigation simple */
+    /* Menu de navigation */
     .magazine-nav {
       display: flex;
       justify-content: center;
@@ -302,7 +332,7 @@
       color: var(--accent);
     }
 
-    /* Section Méthodologie / Note Éditoriale */
+    /* Section Méthodologie */
     .editorial-section {
       border-top: 1px solid var(--fg);
       padding: 40px 0;
@@ -431,7 +461,7 @@
       color: #ffffff;
     }
     
-    /* Barre didactique FLE */
+    /* Barre d'outils didactiques */
     .didactic-toolbar {
       padding: 12px 24px;
       background: #f6f5f1;
@@ -511,7 +541,7 @@
       padding: 40px clamp(20px, 6vw, 54px);
     }
 
-    /* Rendu des articles dans la modal */
+    /* Rendu des articles */
     .article-header {
       margin-bottom: 30px;
       border-bottom: 1.5px solid var(--border);
@@ -581,7 +611,6 @@
       color: var(--fg);
     }
 
-    /* Style des illustrations insérées dans les articles */
     .article-media {
       margin: 32px 0;
       text-align: center;
@@ -606,7 +635,7 @@
       font-style: italic;
     }
 
-    /* GLOSSAIRE INTERACTIF (FLE TOOLTIPS) */
+    /* GLOSSAIRE */
     .glossary-term {
       border-bottom: 1.5px dashed var(--accent);
       cursor: help;
@@ -657,7 +686,7 @@
       font-size: 12.5px;
     }
 
-    /* BLOCS DE PARAGRAPHE MULTILINGUES */
+    /* TRADUCTIONS DE PARAGRAPHES */
     .paragraph-block {
       position: relative;
       margin-bottom: 20px;
@@ -712,7 +741,7 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* SECTION DE QUIZ INTERACTIF */
+    /* QUIZ */
     .quiz-section {
       margin-top: 50px;
       border-top: 2px solid var(--fg);
@@ -830,17 +859,22 @@
   <div class="container">
     <header class="magazine-header">
       <div class="header-top">
-        <span>Edición Semanal — Julio 2026</span>
+        <span id="ui-date">Édition Hebdomadaire — Juillet 2026</span>
+        <div class="global-lang-switch" id="globalLangSwitch">
+          <button class="lang-btn active" data-lang="fr">🇫🇷 FR</button>
+          <button class="lang-btn" data-lang="es">🇲🇽 ES</button>
+          <button class="lang-btn" data-lang="en">🇬🇧 EN</button>
+        </div>
         <span>Vol. 1, No. 1</span>
       </div>
       <div class="brand-section">
         <h1 class="logo">CRITERIO</h1>
-        <p class="logo-sub">Fact-checking, Geoarqueología & Evidencia Histórica</p>
+        <p class="logo-sub" id="ui-subtitle">Fact-checking, Géoarchéologie & Preuves Historiques</p>
       </div>
       <nav class="magazine-nav">
-        <a href="#articulos" class="nav-link">Artículos</a>
-        <a href="#metodologia" class="nav-link">Metodología</a>
-        <a href="#contacto" class="nav-link">Proyecto</a>
+        <a href="#articulos" class="nav-link" id="ui-nav-art">Articles</a>
+        <a href="#metodologia" class="nav-link" id="ui-nav-met">Méthodologie</a>
+        <a href="#contacto" class="nav-link" id="ui-nav-pro">Projet</a>
       </nav>
     </header>
 
@@ -848,19 +882,22 @@
       <!-- Section Featured Article -->
       <section class="featured-section">
         <!-- FEATURED_START -->
-      <article class="featured-story" tabindex="0">
+      <article class="featured-story" tabindex="0" 
+               data-title-fr="Le secret des bâtisseurs : Comment la découverte d'une branche perdue du Nil réécrit l’histoire des Pyramides" data-title-es="El secreto de los constructores: Cómo el descubrimiento de un brazo perdido del Nilo reescribe la historia de las Pirámides" data-title-en="The Builders' Secret: How the Discovery of a Lost Nile Branch Rewrites the History of the Pyramids"
+               data-summary-fr="Durant des millénaires, l'alignement mystérieux des pyramides d'Égypte à travers le désert stérile a alimenté les fantasmes les plus fous, des bâtisseurs extraterrestres aux civili..." data-summary-es="Durante milenios, la misteriosa alineación de las pirámides de Egipto a través del desierto árido alimentó las fantasías más descabelladas, desde constructores extraterrestres hast..." data-summary-en="For millennia, the mysterious alignment of Egypt's pyramids across the barren desert fueled the wildest fantasies, from alien builders to lost pre-flood civilizations. In 2024, sci...">
         <div class="featured-img-container">
           <img src="images/Branche perdue Ahramat.png" alt="Le secret des bâtisseurs : Comment la découverte d'une branche perdue du Nil réécrit l’histoire des Pyramides" class="featured-img">
         </div>
         <div class="featured-body">
           <div class="story-meta">
-            <span class="story-category">Investigación Principal — Nivel B1/B2 (Intermedio)</span>
+            <span class="story-category-label" data-category="featured">Investigación Principal</span>
+            <span class="story-level"> — B1/B2 (Intermedio)</span>
             <span class="story-date">Julio 2026</span>
           </div>
           <h2 class="story-title">Le secret des bâtisseurs : Comment la découverte d'une branche perdue du Nil réécrit l’histoire des Pyramides</h2>
           <p class="story-excerpt">Durant des millénaires, l'alignement mystérieux des pyramides d'Égypte à travers le désert stérile a alimenté les fantasmes les plus fous, des bâtisseurs extraterrestres aux civili...</p>
           <div class="story-footer">
-            <span class="read-more-btn">Leer investigación completa &rarr;</span>
+            <span class="read-more-btn" data-readmore="featured">Leer investigación completa &rarr;</span>
           </div>
           <div class="dcell-content" style="display:none;" 
                data-level="B1/B2 (Intermedio)"
@@ -1175,22 +1212,25 @@
 
       <!-- Section Articles Grid -->
       <section class="articles-grid-section" id="articulos">
-        <h2 class="section-title">Otras Investigaciones</h2>
+        <h2 class="section-title" id="ui-sect-title">Autres Recherches</h2>
         <div class="articles-grid">
           <!-- DOSSIERS_START -->
-        <article class="magazine-card reveal" tabindex="0">
+        <article class="magazine-card reveal" tabindex="0"
+                 data-title-fr="Théories sur la méthode de construction des pyramides égyptiennes — Wikipédia" data-title-es="Théories sur la méthode de construction des pyramides égyptiennes — Wikipédia" data-title-en="Théories sur la méthode de construction des pyramides égyptiennes — Wikipédia"
+                 data-summary-fr="Lesméthodes de construction des pyramides égyptiennesdemeurent incertaines. Les données archéologiques sur ces chantiers gigantesques restent très fragmentaires, tandis que les thé..." data-summary-es="Análisis científico y contexto histórico." data-summary-en="Scientific analysis and historical context.">
           <div class="card-img-container">
             <img src="images/Piramides_de_Guiza.jpg" alt="Théories sur la méthode de construction des pyramides égyptiennes — Wikipédia" class="card-img">
           </div>
           <div class="card-body">
             <div class="card-meta">
-              <span class="card-category">Documento — Lectura General</span>
+              <span class="card-category-label" data-category="doc">Documento</span>
+              <span class="card-level"> — Lectura General</span>
               <span class="card-date">2026</span>
             </div>
             <h3 class="card-title">Théories sur la méthode de construction des pyramides égyptiennes — Wikipédia</h3>
             <p class="card-excerpt">Lesméthodes de construction des pyramides égyptiennesdemeurent incertaines. Les données archéologiques sur ces chantiers gigantesques restent très fragmentaires, tandis que les thé...</p>
             <div class="card-footer">
-              <span class="read-more-link">Leer artículo &rarr;</span>
+              <span class="read-more-link" data-readmore="card">Leer artículo &rarr;</span>
             </div>
             <div class="dcell-content" style="display:none;" 
                  data-level="Lectura General"
@@ -1458,19 +1498,22 @@
           </div>
         </article>
 
-        <article class="magazine-card reveal" tabindex="0">
+        <article class="magazine-card reveal" tabindex="0"
+                 data-title-fr="Fouiller_en_Egypte_intro" data-title-es="Fouiller_en_Egypte_intro" data-title-en="Fouiller_en_Egypte_intro"
+                 data-summary-fr="Ce site utilise Anubis, un outil qui filtre les robots nuisibles.Nous vérifions actuellement que vous n’êtes pas un robot." data-summary-es="Análisis científico y contexto histórico." data-summary-en="Scientific analysis and historical context.">
           <div class="card-img-container">
             <img src="images/2.png" alt="Fouiller_en_Egypte_intro" class="card-img">
           </div>
           <div class="card-body">
             <div class="card-meta">
-              <span class="card-category">Documento — Lectura General</span>
+              <span class="card-category-label" data-category="doc">Documento</span>
+              <span class="card-level"> — Lectura General</span>
               <span class="card-date">2026</span>
             </div>
             <h3 class="card-title">Fouiller_en_Egypte_intro</h3>
             <p class="card-excerpt">Ce site utilise Anubis, un outil qui filtre les robots nuisibles.Nous vérifions actuellement que vous n’êtes pas un robot.</p>
             <div class="card-footer">
-              <span class="read-more-link">Leer artículo &rarr;</span>
+              <span class="read-more-link" data-readmore="card">Leer artículo &rarr;</span>
             </div>
             <div class="dcell-content" style="display:none;" 
                  data-level="Lectura General"
@@ -1487,19 +1530,22 @@
           </div>
         </article>
 
-        <article class="magazine-card reveal" tabindex="0">
+        <article class="magazine-card reveal" tabindex="0"
+                 data-title-fr="ENiM - Une revue d’égyptologie sur internet" data-title-es="ENiM - Une revue d’égyptologie sur internet" data-title-en="ENiM - Une revue d’égyptologie sur internet"
+                 data-summary-fr="ENiMest la première revue française numérique d’égyptologie. Elle est l’expression des activités de l’équipe « Égypte nilotique et méditerranéenne » de l’UMR 5140, « Archéologie de..." data-summary-es="Análisis científico y contexto histórico." data-summary-en="Scientific analysis and historical context.">
           <div class="card-img-container">
             <img src="images/3.png" alt="ENiM - Une revue d’égyptologie sur internet" class="card-img">
           </div>
           <div class="card-body">
             <div class="card-meta">
-              <span class="card-category">Documento — Lectura General</span>
+              <span class="card-category-label" data-category="doc">Documento</span>
+              <span class="card-level"> — Lectura General</span>
               <span class="card-date">2026</span>
             </div>
             <h3 class="card-title">ENiM - Une revue d’égyptologie sur internet</h3>
             <p class="card-excerpt">ENiMest la première revue française numérique d’égyptologie. Elle est l’expression des activités de l’équipe « Égypte nilotique et méditerranéenne » de l’UMR 5140, « Archéologie de...</p>
             <div class="card-footer">
-              <span class="read-more-link">Leer artículo &rarr;</span>
+              <span class="read-more-link" data-readmore="card">Leer artículo &rarr;</span>
             </div>
             <div class="dcell-content" style="display:none;" 
                  data-level="Lectura General"
@@ -1667,19 +1713,22 @@
           </div>
         </article>
 
-        <article class="magazine-card reveal" tabindex="0">
+        <article class="magazine-card reveal" tabindex="0"
+                 data-title-fr="BOE" data-title-es="BOE" data-title-en="BOE"
+                 data-summary-fr="Analyse scientifique et contexte historique." data-summary-es="Análisis científico y contexto histórico." data-summary-en="Scientific analysis and historical context.">
           <div class="card-img-container">
             <img src="images/2.png" alt="BOE" class="card-img">
           </div>
           <div class="card-body">
             <div class="card-meta">
-              <span class="card-category">Documento — Lectura General</span>
+              <span class="card-category-label" data-category="doc">Documento</span>
+              <span class="card-level"> — Lectura General</span>
               <span class="card-date">2026</span>
             </div>
             <h3 class="card-title">BOE</h3>
-            <p class="card-excerpt">Análisis de evidencias científicas y contraste histórico.</p>
+            <p class="card-excerpt">Analyse scientifique et contexte historique.</p>
             <div class="card-footer">
-              <span class="read-more-link">Leer artículo &rarr;</span>
+              <span class="read-more-link" data-readmore="card">Leer artículo &rarr;</span>
             </div>
             <div class="dcell-content" style="display:none;" 
                  data-level="Lectura General"
@@ -1697,9 +1746,9 @@
       <!-- Section Editorial / Metodología -->
       <section class="editorial-section" id="metodologia">
         <div class="editorial-card">
-          <h2>Nota Editorial & Rigor Científico</h2>
-          <p>
-            Criterio es un espacio de fact-checking e investigación geoarqueológica independiente. Nuestra meta es contrarrestar falsas afirmaciones históricas y teorías alternativas carentes de fundamentos científicos. Nos basamos estrictamente en el contraste riguroso de fuentes primarias, el análisis de datos de teledetección satelital (Sentinel/radar) y publicaciones indexadas sometidas al referato científico. Todo análisis publicado se realiza bajo un estricto protocolo de trazabilidad.
+          <h2 id="ui-ed-title">Note Éditoriale & Rigueur Scientifique</h2>
+          <p id="ui-ed-body">
+            Criterio est un espace de fact-checking et d'investigation géoarchéologique indépendant. Notre but est de contrer les affirmations historiques fallacieuses et les théories alternatives dénuées de fondements scientifiques. Nous nous basons strictement sur le croisement rigoureux de sources primaires, l'analyse de données de télédétection satellitaire (Sentinel/radar) et de publications à comité de lecture. Tout travail d'analyse respecte un protocole de traçabilité strict.
           </p>
         </div>
       </section>
@@ -1707,11 +1756,11 @@
 
     <footer>
       <div class="footer-links" id="contacto">
-        <a href="#">Contacto</a>
-        <a href="#">Ética Editorial</a>
-        <a href="#">Consenso Académico</a>
+        <a href="#" id="ui-contact">Contact</a>
+        <a href="#" id="ui-ethics">Éthique Éditoriale</a>
+        <a href="#" id="ui-consen">Consensus Académique</a>
       </div>
-      <span>&copy; 2026 Criterio Revista Digital. Todos los derechos reservados.</span>
+      <span class="copyright" id="ui-copy">&copy; 2026 Criterio Revue Numérique. Tous droits réservés.</span>
     </footer>
   </div>
 
@@ -1730,7 +1779,7 @@
           <span class="toggle-label" id="toggleLabel">Modo Estudio (FLE)</span>
         </div>
         <div class="helper-lang-selector" id="helperLangContainer" style="display:none;">
-          <span>Ayuda en:</span>
+          <span id="ui-ayuda">Ayuda en:</span>
           <select id="helperLangSelect">
             <option value="es">🇲🇽 Español (MX)</option>
             <option value="en">🇬🇧 English</option>
@@ -1755,15 +1804,145 @@
       var helperLangContainer = document.getElementById('helperLangContainer');
       var helperLangSelect = document.getElementById('helperLangSelect');
       
+      var globalLangSwitch = document.getElementById('globalLangSwitch');
+      var currentLang = 'fr'; // Langue de l'interface par défaut
+      
       var currentGlossary = {};
       var currentQuiz = [];
       var activeTooltip = null;
+
+      var UI_TRANSLATIONS = {
+        fr: {
+          subtitle: "Fact-checking, Géoarchéologie & Preuves Historiques",
+          nav_art: "Articles",
+          nav_met: "Méthodologie",
+          nav_pro: "Projet",
+          sect_title: "Autres Recherches",
+          ed_title: "Note Éditoriale & Rigueur Scientifique",
+          ed_body: "Criterio est un espace de fact-checking et d'investigation géoarchéologique indépendant. Notre but est de contrer les affirmations historiques fallacieuses et les théories alternatives dénuées de fondements scientifiques. Nous nous basons strictement sur le croisement rigoureux de sources primaires, l'analyse de données de télédétection satellitaire (Sentinel/radar) et de publications à comité de lecture. Tout travail d'analyse respecte un protocole de traçabilité strict.",
+          contact: "Contact",
+          ethics: "Éthique Éditoriale",
+          consen: "Consensus Académique",
+          copy: "&copy; 2026 Criterio Revue Numérique. Tous droits réservés.",
+          cat_featured: "Recherche Principale",
+          cat_doc: "Document",
+          readmore_featured: "Lire la recherche complète &rarr;",
+          readmore_card: "Lire l'article &rarr;",
+          ayuda: "Langue d'aide :",
+          date_label: "Édition Hebdomadaire — Juillet 2026"
+        },
+        es: {
+          subtitle: "Fact-checking, Geoarqueología & Evidencia Histórica",
+          nav_art: "Artículos",
+          nav_met: "Metodología",
+          nav_pro: "Proyecto",
+          sect_title: "Otras Investigaciones",
+          ed_title: "Nota Editorial & Rigor Científico",
+          ed_body: "Criterio es un espacio de fact-checking e investigación geoarqueológica independiente. Nuestra meta es contrarrestar falsas afirmaciones históricas y teorías alternativas carentes de fundamentos científicos. Nos basamos estrictamente en el contraste riguroso de fuentes primarias, el análisis de datos de teledetección satelital (Sentinel/radar) y publicaciones indexadas sometidas al referato científico. Todo análisis publicado se realiza bajo un estricto protocolo de trazabilidad.",
+          contact: "Contacto",
+          ethics: "Ética Editorial",
+          consen: "Consensus Académico",
+          copy: "&copy; 2026 Criterio Revista Digital. Todos los derechos reservados.",
+          cat_featured: "Investigación Principal",
+          cat_doc: "Documento",
+          readmore_featured: "Leer investigación completa &rarr;",
+          readmore_card: "Leer artículo &rarr;",
+          ayuda: "Ayuda en:",
+          date_label: "Edición Semanal — Julio 2026"
+        },
+        en: {
+          subtitle: "Fact-checking, Geoarchaeology & Historical Evidence",
+          nav_art: "Articles",
+          nav_met: "Methodology",
+          nav_pro: "Project",
+          sect_title: "Other Investigations",
+          ed_title: "Editorial Note & Scientific Rigor",
+          ed_body: "Criterio is an independent fact-checking and geoarchaeological investigation space. Our goal is to counter fallacious historical assertions and alternative theories lacking scientific foundation. We rely strictly on the rigorous cross-referencing of primary sources, the analysis of satellite remote sensing data (Sentinel/radar), and peer-reviewed publications. All published analysis follows a strict traceability protocol.",
+          contact: "Contact",
+          ethics: "Editorial Ethics",
+          consen: "Academic Consensus",
+          copy: "&copy; 2026 Criterio Digital Magazine. All rights reserved.",
+          cat_featured: "Main Research",
+          cat_doc: "Document",
+          readmore_featured: "Read full research &rarr;",
+          readmore_card: "Read article &rarr;",
+          ayuda: "Help language:",
+          date_label: "Weekly Edition — July 2026"
+        }
+      };
+
+      // Traduit toute la page d'accueil vers la langue sélectionnée
+      function translatePage(lang) {
+        currentLang = lang;
+        
+        // Mettre à jour les boutons actifs
+        globalLangSwitch.querySelectorAll('.lang-btn').forEach(function(b) {
+          b.classList.toggle('active', b.getAttribute('data-lang') === lang);
+        });
+
+        // Traduire les éléments statiques
+        var tr = UI_TRANSLATIONS[lang];
+        document.getElementById('ui-date').textContent = tr.date_label;
+        document.getElementById('ui-subtitle').textContent = tr.subtitle;
+        document.getElementById('ui-nav-art').textContent = tr.nav_art;
+        document.getElementById('ui-nav-met').textContent = tr.nav_met;
+        document.getElementById('ui-nav-pro').textContent = tr.nav_pro;
+        document.getElementById('ui-sect-title').textContent = tr.sect_title;
+        document.getElementById('ui-ed-title').textContent = tr.ed_title;
+        document.getElementById('ui-ed-body').textContent = tr.ed_body;
+        document.getElementById('ui-contact').textContent = tr.contact;
+        document.getElementById('ui-ethics').textContent = tr.ethics;
+        document.getElementById('ui-consen').textContent = tr.consen;
+        document.getElementById('ui-copy').innerHTML = tr.copy;
+        document.getElementById('ui-ayuda').textContent = tr.ayuda;
+
+        // Traduire les cartes (Titre et Résumé) en fonction des attributs data-title-xx
+        document.querySelectorAll('.featured-story, .magazine-card').forEach(function(card) {
+          var title = card.getAttribute('data-title-' + lang) || card.getAttribute('data-title-fr');
+          var summary = card.getAttribute('data-summary-' + lang) || card.getAttribute('data-summary-fr');
+          
+          var titleEl = card.querySelector('.story-title, .card-title');
+          var summaryEl = card.querySelector('.story-excerpt, .card-excerpt');
+          
+          if (titleEl) titleEl.textContent = title;
+          if (summaryEl) summaryEl.textContent = summary;
+
+          // Traduire le badge de catégorie
+          var catEl = card.querySelector('.story-category-label, .card-category-label');
+          if (catEl) {
+            var catType = catEl.getAttribute('data-category');
+            catEl.textContent = catType === 'featured' ? tr.cat_featured : tr.cat_doc;
+          }
+
+          // Traduire le bouton lire la suite
+          var readMoreEl = card.querySelector('[data-readmore]');
+          if (readMoreEl) {
+            var readType = readMoreEl.getAttribute('data-readmore');
+            readMoreEl.innerHTML = readType === 'featured' ? tr.readmore_featured : tr.readmore_card;
+          }
+        });
+
+        // Configurer automatiquement la langue d'aide par défaut de la modal
+        if (lang === 'es' || lang === 'en') {
+          helperLangSelect.value = lang;
+        } else {
+          helperLangSelect.value = 'es'; // Par défaut espagnol si le site est en français
+        }
+      }
+
+      // Écouteur de clic sur le sélecteur global de langue
+      globalLangSwitch.addEventListener('click', function(e) {
+        var btn = e.target.closest('.lang-btn');
+        if (btn) {
+          var targetLang = btn.getAttribute('data-lang');
+          translatePage(targetLang);
+        }
+      });
 
       function openModal(card) {
         var contentEl = card.querySelector('.dcell-content');
         if (!contentEl) return;
 
-        // Charger le contenu HTML et didactique
         var level = contentEl.getAttribute('data-level') || '';
         var glossaryData = contentEl.getAttribute('data-glossary') || '{}';
         var quizData = contentEl.getAttribute('data-quiz') || '[]';
@@ -1776,7 +1955,6 @@
           currentQuiz = [];
         }
 
-        // Créer l'entête de l'article avec le badge de niveau
         var headerHtml = '';
         if (level && level !== 'Lectura General') {
           headerHtml = '<div class="article-header"><span class="level-badge">Nivel FLE ' + level + '</span></div>';
@@ -1784,12 +1962,9 @@
 
         modalBody.innerHTML = headerHtml + contentEl.innerHTML;
         
-        // Configurer la barre d'outils didactiques
-        // Elle s'affiche uniquement s'il y a du vocabulaire de glossaire associé
         var hasDidactic = Object.keys(currentGlossary).length > 0;
         didacticToolbar.style.display = hasDidactic ? 'flex' : 'none';
         
-        // Reset le toggle didactique
         didacticToggle.checked = false;
         helperLangContainer.style.display = 'none';
         
@@ -1808,19 +1983,15 @@
         }, 300);
       }
 
-      // Gérer l'activation du mode d'étude (Modo Estudiante)
       didacticToggle.addEventListener('change', function() {
         var isStudyMode = didacticToggle.checked;
         helperLangContainer.style.display = isStudyMode ? 'block' : 'none';
         
-        // Activer / désactiver les styles du mode d'étude
-        // 1. Boutons d'actions des paragraphes
         var actions = modalBody.querySelectorAll('.paragraph-actions');
         actions.forEach(function(el) {
           el.style.display = isStudyMode ? 'flex' : 'none';
         });
         
-        // 2. Glossaire (surlignage des mots)
         var terms = modalBody.querySelectorAll('.glossary-term');
         terms.forEach(function(el) {
           if (isStudyMode) {
@@ -1832,7 +2003,6 @@
           }
         });
         
-        // Si le mode d'étude est désactivé, masquer toutes les traductions ouvertes
         if (!isStudyMode) {
           modalBody.querySelectorAll('.paragraph-es, .paragraph-en').forEach(function(el) {
             el.style.display = 'none';
@@ -1842,18 +2012,14 @@
           });
           removeTooltip();
           
-          // Supprimer la section quiz si présente
           var quizSec = modalBody.querySelector('.quiz-section');
           if (quizSec) quizSec.remove();
         } else {
-          // Si activé, générer la section quiz à la fin de l'article si elle existe
           renderQuiz();
         }
       });
 
-      // Gérer le changement de langue d'aide
       helperLangSelect.addEventListener('change', function() {
-        // Mettre à jour les traductions de paragraphes ouvertes
         var lang = helperLangSelect.value;
         modalBody.querySelectorAll('.paragraph-block').forEach(function(block) {
           var showEs = lang === 'es' && block.querySelector('.btn-translate-es').classList.contains('active');
@@ -1866,7 +2032,6 @@
           if (pEn) pEn.style.display = showEn ? 'block' : 'none';
         });
         
-        // Recréer le tooltip ouvert si nécessaire
         if (activeTooltip) {
           var term = activeTooltip.getAttribute('data-origin-term');
           var word = activeTooltip.getAttribute('data-origin-word');
@@ -1876,13 +2041,10 @@
           }
         }
         
-        // Rafraîchir les questions du quiz s'il est affiché
         renderQuiz();
       });
 
-      // Trazando los clics del párrafo y glosario
       modalBody.addEventListener('click', function(e) {
-        // Clic sur un bouton de traduction de paragraphe
         var btn = e.target.closest('.btn-translate-es, .btn-translate-en');
         if (btn) {
           e.stopPropagation();
@@ -1894,7 +2056,6 @@
           if (targetEl) {
             var isVisible = targetEl.style.display === 'block';
             
-            // Masquer les autres langues pour ce bloc
             block.querySelectorAll('.paragraph-es, .paragraph-en').forEach(function(el) {
               el.style.display = 'none';
             });
@@ -1910,7 +2071,6 @@
           return;
         }
 
-        // Clic sur un mot du glossaire
         var term = e.target.closest('.glossary-term.active-didactic');
         if (term) {
           e.stopPropagation();
@@ -1919,16 +2079,12 @@
           return;
         }
 
-        // Clic à l'extérieur pour enlever le tooltip
         removeTooltip();
       });
 
-      // Tooltip du glossaire
       function showGlossaryTooltip(element, wordKey, originalText) {
         removeTooltip();
         
-        // Trouver la définition et la traduction correspondante dans le JSON
-        // Recherche insensible à la casse dans les clés du glossaire
         var key = Object.keys(currentGlossary).find(function(k) {
           return k.toLowerCase() === wordKey;
         });
@@ -1953,7 +2109,6 @@
         
         document.body.appendChild(tooltip);
         
-        // Positionner le tooltip au-dessus du mot cliqué
         var rect = element.getBoundingClientRect();
         var scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
         var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
@@ -1971,7 +2126,6 @@
         }
       }
 
-      // Rendu du Quiz
       function renderQuiz() {
         var existingQuizSec = modalBody.querySelector('.quiz-section');
         if (existingQuizSec) existingQuizSec.remove();
@@ -2004,7 +2158,6 @@
         quizSec.innerHTML = html;
         modalBody.appendChild(quizSec);
         
-        // Attacher les écouteurs de clic sur les options du quiz
         var quizItems = quizSec.querySelectorAll('.quiz-item');
         quizItems.forEach(function(item) {
           var qIdx = parseInt(item.getAttribute('data-question'));
@@ -2018,27 +2171,22 @@
               var optIdx = parseInt(opt.getAttribute('data-option'));
               var isCorrect = optIdx === qData.answer;
               
-              // Désactiver toutes les options pour cette question
               options.forEach(function(o) {
                 o.classList.add('disabled');
               });
               
-              // Colorer le choix
               if (isCorrect) {
                 opt.classList.add('selected-correct');
               } else {
                 opt.classList.add('selected-incorrect');
-                // Montrer le bon choix en vert discret
                 options[qData.answer].classList.add('selected-correct');
               }
               
-              // Afficher l'explication didactique
               var expl = document.createElement('div');
               expl.className = 'quiz-explanation';
               expl.innerHTML = '<strong>' + (isCorrect ? '¡Correcto!' : 'Incorrecto') + ' :</strong> ' + qData.explanation;
               item.appendChild(expl);
               
-              // Vérifier si toutes les questions sont répondues pour afficher le score final
               checkQuizScore();
             });
           });
@@ -2050,25 +2198,19 @@
         var answeredCount = 0;
         var correctCount = 0;
         
-        quizItems.forEach(function(item, idx) {
+        quizItems.forEach(function(item) {
           var selectedCorrect = item.querySelector('.quiz-option.selected-correct');
           var selectedIncorrect = item.querySelector('.quiz-option.selected-incorrect');
           
           if (selectedCorrect || selectedIncorrect) {
             answeredCount++;
           }
-          // Si l'option sélectionnée par l'utilisateur (celle qui a reçu le clic original) est correcte
-          // Pour s'assurer de ne pas compter double si on a forcé l'affichage vert de la bonne réponse
-          var correctSelected = item.querySelector('.quiz-option.selected-correct:not(.disabled)');
-          // Le plus fiable : vérifier si l'option correcte a la classe correcte ET était celle choisie
-          // Si l'utilisateur s'est trompé, l'option choisie a selected-incorrect.
           if (selectedCorrect && !selectedIncorrect) {
             correctCount++;
           }
         });
         
         if (answeredCount === quizItems.length) {
-          // Afficher le score
           var scoreContainer = modalBody.querySelector('.quiz-score-box');
           if (scoreContainer) scoreContainer.remove();
           
@@ -2089,7 +2231,10 @@
         }
       }
 
-      // Attacher le clic sur les articles de la grille et à l'article vedette
+      // Initialisation par défaut en français
+      // (Puisque c'est un site pour apprendre le français, la page d'accueil commence en FR)
+      translatePage('fr');
+
       document.addEventListener('click', function(e) {
         var card = e.target.closest('.magazine-card, .featured-story');
         if (card) {
@@ -2097,7 +2242,6 @@
         }
       });
 
-      // Attacher les touches clavier pour l'accessibilité
       document.addEventListener('keydown', function(e) {
         if (e.key === 'Enter') {
           var card = document.activeElement;
@@ -2119,7 +2263,6 @@
         if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
       });
 
-      // Effet d'apparition au défilement (reveal effect)
       var revealEls = document.querySelectorAll('.reveal');
       if (revealEls.length && 'IntersectionObserver' in window) {
         var obs = new IntersectionObserver(function (entries) {
