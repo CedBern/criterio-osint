@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Criterio — Revista de Geoarqueología e Investigación Histórica</title>
+  <title>Criterio — Revista de Geoarqueología e Didáctica del FLE</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -20,6 +20,7 @@
       --font-body: 'Outfit', system-ui, -apple-system, sans-serif;
       --max-w: 1040px;
       --radius: 8px;
+      --radius-sm: 4px;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -394,7 +395,7 @@
     .modal-container {
       background: #fdfdfb;
       width: 100%;
-      max-width: 760px;
+      max-width: 780px;
       height: 90vh;
       border-radius: var(--radius);
       border: 1px solid var(--border);
@@ -411,79 +412,169 @@
     }
     .modal-close {
       position: absolute;
-      top: 16px; right: 16px;
-      width: 36px; height: 36px;
+      top: 10px; right: 16px;
+      width: 32px; height: 32px;
       border-radius: 50%;
       background: rgba(0,0,0,0.03);
       border: 1px solid var(--border);
       cursor: pointer;
-      font-size: 20px;
+      font-size: 18px;
       line-height: 1;
       display: grid;
       place-items: center;
       color: var(--fg);
-      z-index: 10;
+      z-index: 110;
       transition: background 0.2s, color 0.2s;
     }
     .modal-close:hover {
       background: var(--fg);
       color: #ffffff;
     }
+    
+    /* Barre didactique FLE */
+    .didactic-toolbar {
+      padding: 12px 24px;
+      background: #f6f5f1;
+      border-bottom: 1.5px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      z-index: 90;
+    }
+    .didactic-toggle-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .toggle-switch {
+      position: relative;
+      display: inline-block;
+      width: 42px;
+      height: 22px;
+    }
+    .toggle-switch input {
+      opacity: 0; width: 0; height: 0;
+    }
+    .slider {
+      position: absolute; cursor: pointer; inset: 0;
+      background-color: #c9c7c0;
+      transition: .3s;
+      border-radius: 22px;
+    }
+    .slider:before {
+      position: absolute; content: "";
+      height: 16px; width: 16px;
+      left: 3px; bottom: 3px;
+      background-color: white;
+      transition: .3s;
+      border-radius: 50%;
+    }
+    input:checked + .slider {
+      background-color: var(--accent);
+    }
+    input:checked + .slider:before {
+      transform: translateX(20px);
+    }
+    .toggle-label {
+      font-size: 11.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--fg);
+      user-select: none;
+    }
+    .helper-lang-selector {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--muted);
+    }
+    .helper-lang-selector select {
+      padding: 3px 6px;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+      background: #ffffff;
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--fg);
+      cursor: pointer;
+      outline: none;
+    }
+
     .modal-body {
       flex: 1;
       overflow-y: auto;
-      padding: 50px clamp(20px, 6vw, 60px);
+      padding: 40px clamp(20px, 6vw, 54px);
     }
 
-    /* Styles pour le rendu de l'article dans la modal */
+    /* Rendu des articles dans la modal */
+    .article-header {
+      margin-bottom: 30px;
+      border-bottom: 1.5px solid var(--border);
+      padding-bottom: 16px;
+    }
+    .article-header .level-badge {
+      display: inline-block;
+      background: var(--accent-dim);
+      color: var(--accent);
+      border: 1px solid rgba(124,34,30,0.15);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 12px;
+    }
     .modal-body h2 {
       font-family: var(--font-display);
-      font-size: clamp(26px, 3.5vw, 38px);
+      font-size: clamp(24px, 3.2vw, 34px);
       font-weight: 800;
-      line-height: 1.15;
-      margin-bottom: 24px;
+      line-height: 1.2;
       color: var(--fg);
-      border-bottom: 1.5px solid var(--border);
-      padding-bottom: 18px;
     }
     .modal-body h3 {
       font-family: var(--font-display);
-      font-size: 22px;
+      font-size: 21px;
       font-weight: 700;
       margin-top: 36px;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
       color: var(--fg);
     }
     .modal-body h4 {
       font-family: var(--font-display);
-      font-size: 17px;
+      font-size: 16px;
       font-weight: 700;
       margin-top: 24px;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       color: var(--fg);
     }
     .modal-body p {
       font-size: 15.5px;
-      color: #333333;
+      color: #2b2b2b;
       line-height: 1.7;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
     }
     .modal-body blockquote {
       border-left: 3px solid var(--accent);
       padding-left: 20px;
       font-style: italic;
-      font-size: 16px;
+      font-size: 15.5px;
       color: var(--muted);
       margin: 28px 0;
     }
     .modal-body ul {
       margin-left: 24px;
       margin-bottom: 20px;
-      color: #333333;
+      color: #2b2b2b;
     }
     .modal-body li {
-      margin-bottom: 8px;
-      font-size: 15px;
+      margin-bottom: 6px;
+      font-size: 14.5px;
     }
     .modal-body strong {
       font-weight: 600;
@@ -497,11 +588,10 @@
       border-radius: var(--radius);
       overflow: hidden;
       border: 1px solid var(--border);
-      background: var(--surface-raised);
     }
     .article-media img {
       max-width: 100%;
-      max-height: 520px;
+      max-height: 480px;
       object-fit: contain;
       display: block;
       margin: 0 auto;
@@ -511,9 +601,225 @@
       padding: 10px 16px;
       font-size: 12px;
       color: var(--muted);
-      background: #faf9f6;
+      background: #fbfbfa;
       border-top: 1px solid var(--border);
       font-style: italic;
+    }
+
+    /* GLOSSAIRE INTERACTIF (FLE TOOLTIPS) */
+    .glossary-term {
+      border-bottom: 1.5px dashed var(--accent);
+      cursor: help;
+      background-color: transparent;
+      transition: background-color 0.2s;
+    }
+    .glossary-term:hover {
+      background-color: var(--accent-dim);
+    }
+    .glossary-tooltip {
+      position: absolute;
+      background: #ffffff;
+      border: 1.5px solid var(--accent);
+      border-radius: var(--radius);
+      box-shadow: 0 10px 30px rgba(124, 34, 30, 0.15);
+      padding: 14px 16px;
+      width: 270px;
+      z-index: 1200;
+      font-size: 13px;
+      line-height: 1.5;
+      color: var(--fg);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      animation: tooltipFadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    @keyframes tooltipFadeIn {
+      from { opacity: 0; transform: translateY(5px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .tooltip-word {
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--accent);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 4px;
+    }
+    .tooltip-translation {
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .tooltip-definition {
+      font-style: italic;
+      color: var(--muted);
+      font-size: 12.5px;
+    }
+
+    /* BLOCS DE PARAGRAPHE MULTILINGUES */
+    .paragraph-block {
+      position: relative;
+      margin-bottom: 20px;
+    }
+    .paragraph-actions {
+      display: flex;
+      gap: 6px;
+      margin-top: 4px;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+    .paragraph-block:hover .paragraph-actions {
+      opacity: 0.8;
+    }
+    .paragraph-actions button {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 2px 6px;
+      font-size: 11px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-weight: 600;
+      color: var(--muted);
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+      outline: none;
+    }
+    .paragraph-actions button:hover {
+      background: var(--border);
+      color: var(--fg);
+    }
+    .paragraph-actions button.active {
+      background: var(--accent-dim);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .paragraph-es, .paragraph-en {
+      margin-top: 8px;
+      padding: 12px 16px;
+      background: #f6f5f1;
+      border-left: 3px solid var(--accent);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      font-size: 14.5px !important;
+      color: var(--muted) !important;
+      line-height: 1.6;
+      animation: slideDown 0.2s ease-out;
+    }
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-5px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* SECTION DE QUIZ INTERACTIF */
+    .quiz-section {
+      margin-top: 50px;
+      border-top: 2px solid var(--fg);
+      padding-top: 36px;
+    }
+    .quiz-card-container {
+      background: #fbfbfa;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px clamp(16px, 4vw, 36px);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.01);
+    }
+    .quiz-title {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .quiz-item {
+      margin-bottom: 24px;
+      border-bottom: 1.5px solid var(--border);
+      padding-bottom: 20px;
+    }
+    .quiz-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    .quiz-question {
+      font-size: 14.5px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: var(--fg);
+    }
+    .quiz-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .quiz-option {
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: #ffffff;
+      cursor: pointer;
+      font-size: 13.5px;
+      font-weight: 500;
+      color: var(--fg);
+      text-align: left;
+      display: block;
+      width: 100%;
+      transition: background 0.2s, border-color 0.2s;
+      outline: none;
+    }
+    .quiz-option:hover:not(.disabled) {
+      background: #fcfbfa;
+      border-color: var(--muted);
+    }
+    .quiz-option.selected-correct {
+      background: #e6f4ea;
+      border-color: #22c55e;
+      color: #166534;
+      font-weight: 600;
+    }
+    .quiz-option.selected-incorrect {
+      background: #fdf2f2;
+      border-color: #ef4444;
+      color: #991b1b;
+      font-weight: 600;
+    }
+    .quiz-option.disabled {
+      cursor: default;
+    }
+    .quiz-explanation {
+      margin-top: 10px;
+      font-size: 12.5px;
+      color: var(--muted);
+      font-style: italic;
+      background: #f5f4ee;
+      padding: 8px 12px;
+      border-radius: var(--radius-sm);
+      border-left: 2px solid var(--accent);
+      animation: slideDown 0.2s ease-out;
+    }
+    .quiz-score-box {
+      margin-top: 20px;
+      text-align: center;
+      padding: 16px;
+      background: var(--accent-dim);
+      border-radius: var(--radius);
+      border: 1px dashed var(--accent);
+      animation: tooltipFadeIn 0.3s ease-out;
+    }
+    .score-title {
+      font-weight: 700;
+      color: var(--accent);
+      font-size: 15px;
+      margin-bottom: 2px;
+    }
+    .score-subtitle {
+      font-size: 13px;
+      color: var(--muted);
     }
   </style>
 </head>
@@ -548,7 +854,7 @@
         </div>
         <div class="featured-body">
           <div class="story-meta">
-            <span class="story-category">Investigación Principal</span>
+            <span class="story-category">Investigación Principal — Nivel Lectura General</span>
             <span class="story-date">Julio 2026</span>
           </div>
           <h2 class="story-title">Le secret des bâtisseurs : Comment la découverte d'une branche perdue du Nil réécrit l’histoire des Pyramides</h2>
@@ -556,7 +862,10 @@
           <div class="story-footer">
             <span class="read-more-btn">Leer investigación completa &rarr;</span>
           </div>
-          <div class="dcell-content" style="display:none;">
+          <div class="dcell-content" style="display:none;" 
+               data-level="Lectura General"
+               data-glossary='{}'
+               data-quiz='[]'>
             <h2>Le secret des bâtisseurs : Comment la découverte d'une branche perdue du Nil réécrit l’histoire des Pyramides</h2>
 <div class="article-media"><img src="images/1.png" alt="El canal Ahramat fluyendo junto a las pirámides"><span class="media-caption">El canal Ahramat fluyendo junto a las pirámides</span></div>
 <p>Durant des millénaires, l'alignement mystérieux des pyramides d'Égypte à travers le désert stérile a alimenté les fantasmes les plus fous, des bâtisseurs extraterrestres aux civilisations perdues d'avant le déluge. En 2024, la science a enfin percé le secret de cette configuration chirurgicale : une branche perdue du Nil, l'Ahramat, servait d'autoroute logistique fluviale pour transporter des millions de tonnes de pierre. Plongée au cœur d'une découverte archéologique majeure qui réécrit l'histoire de l'ingénierie antique et redonne aux bâtisseurs humains leur véritable génie.</p>
@@ -615,7 +924,7 @@
           </div>
           <div class="card-body">
             <div class="card-meta">
-              <span class="card-category">Documento científico</span>
+              <span class="card-category">Documento — Lectura General</span>
               <span class="card-date">2026</span>
             </div>
             <h3 class="card-title">Théories sur la méthode de construction des pyramides égyptiennes — Wikipédia</h3>
@@ -623,7 +932,10 @@
             <div class="card-footer">
               <span class="read-more-link">Leer artículo &rarr;</span>
             </div>
-            <div class="dcell-content" style="display:none;">
+            <div class="dcell-content" style="display:none;" 
+                 data-level="Lectura General"
+                 data-glossary='{}'
+                 data-quiz='[]'>
               <h2>Théories sur la méthode de construction des pyramides égyptiennes — Wikipédia</h2>
 <p>Source: E:\nexome_web\documents_debunking\Wikipedia_Construction_Pyramides.html</p>
 <p>Lesméthodes de construction des pyramides égyptiennesdemeurent incertaines. Les données archéologiques sur ces chantiers gigantesques restent très fragmentaires, tandis que les théories fleurissent et se multiplient, surtout depuis la fin duXIXesiècle, sans parler des diverses spéculationspseudo-scientifiquesdepyramidologie.</p>
@@ -892,7 +1204,7 @@
           </div>
           <div class="card-body">
             <div class="card-meta">
-              <span class="card-category">Documento científico</span>
+              <span class="card-category">Documento — Lectura General</span>
               <span class="card-date">2026</span>
             </div>
             <h3 class="card-title">Fouiller_en_Egypte_intro</h3>
@@ -900,7 +1212,10 @@
             <div class="card-footer">
               <span class="read-more-link">Leer artículo &rarr;</span>
             </div>
-            <div class="dcell-content" style="display:none;">
+            <div class="dcell-content" style="display:none;" 
+                 data-level="Lectura General"
+                 data-glossary='{}'
+                 data-quiz='[]'>
               <h2>Fouiller_en_Egypte_intro</h2>
 <p>Source: E:\nexome_web\documents_debunking\Fouiller_en_Egypte_intro.html</p>
 <p>Loading...</p>
@@ -918,7 +1233,7 @@
           </div>
           <div class="card-body">
             <div class="card-meta">
-              <span class="card-category">Documento científico</span>
+              <span class="card-category">Documento — Lectura General</span>
               <span class="card-date">2026</span>
             </div>
             <h3 class="card-title">ENiM - Une revue d’égyptologie sur internet</h3>
@@ -926,7 +1241,10 @@
             <div class="card-footer">
               <span class="read-more-link">Leer artículo &rarr;</span>
             </div>
-            <div class="dcell-content" style="display:none;">
+            <div class="dcell-content" style="display:none;" 
+                 data-level="Lectura General"
+                 data-glossary='{}'
+                 data-quiz='[]'>
               <h2>ENiM - Une revue d’égyptologie sur internet</h2>
 <p>Source: E:\nexome_web\documents_debunking\ENiM_Revue_Presentation.html</p>
 <h3>Bienvenue</h3>
@@ -1095,15 +1413,18 @@
           </div>
           <div class="card-body">
             <div class="card-meta">
-              <span class="card-category">Documento científico</span>
+              <span class="card-category">Documento — Lectura General</span>
               <span class="card-date">2026</span>
             </div>
             <h3 class="card-title">BOE</h3>
-            <p class="card-excerpt">Análisis de evidencias científicas y forenses para el contraste histórico.</p>
+            <p class="card-excerpt">Análisis de evidencias científicas y contraste histórico.</p>
             <div class="card-footer">
               <span class="read-more-link">Leer artículo &rarr;</span>
             </div>
-            <div class="dcell-content" style="display:none;">
+            <div class="dcell-content" style="display:none;" 
+                 data-level="Lectura General"
+                 data-glossary='{}'
+                 data-quiz='[]'>
               <h2>BOE</h2>
 <p>Source: E:\nexome_web\documents_debunking\BOE_Presentation.html</p>
             </div>
@@ -1118,7 +1439,7 @@
         <div class="editorial-card">
           <h2>Nota Editorial & Rigor Científico</h2>
           <p>
-            Criterio es un espacio de fact-checking e investigación arqueológica independiente. Nuestra meta es contrarrestar falsas afirmaciones históricas y teorías alternativas carentes de fundamentos. Nos basamos estrictamente en el contraste riguroso de fuentes primarias, el análisis de datos de teledetección satelital (Sentinel/radar) y publicaciones indexadas sometidas al referato científico. Todo análisis publicado se realiza bajo un estricto protocolo de trazabilidad.
+            Criterio es un espacio de fact-checking e investigación geoarqueológica independiente. Nuestra meta es contrarrestar falsas afirmaciones históricas y teorías alternativas carentes de fundamentos científicos. Nos basamos estrictamente en el contraste riguroso de fuentes primarias, el análisis de datos de teledetección satelital (Sentinel/radar) y publicaciones indexadas sometidas al referato científico. Todo análisis publicado se realiza bajo un estricto protocolo de trazabilidad.
           </p>
         </div>
       </section>
@@ -1138,6 +1459,25 @@
   <div class="modal-overlay" id="articleModal">
     <div class="modal-container">
       <button class="modal-close" id="modalCloseBtn" aria-label="Cerrar artículo">&times;</button>
+      
+      <!-- Barre d'outils didactiques FLE -->
+      <div class="didactic-toolbar" id="didacticToolbar" style="display:none;">
+        <div class="didactic-toggle-container">
+          <label class="toggle-switch">
+            <input type="checkbox" id="didacticToggle">
+            <span class="slider"></span>
+          </label>
+          <span class="toggle-label" id="toggleLabel">Modo Estudio (FLE)</span>
+        </div>
+        <div class="helper-lang-selector" id="helperLangContainer" style="display:none;">
+          <span>Ayuda en:</span>
+          <select id="helperLangSelect">
+            <option value="es">🇲🇽 Español (MX)</option>
+            <option value="en">🇬🇧 English</option>
+          </select>
+        </div>
+      </div>
+
       <div class="modal-body" id="modalBodyContent">
         <!-- Contenido dinámico del artículo -->
       </div>
@@ -1149,9 +1489,50 @@
       var modal = document.getElementById('articleModal');
       var modalBody = document.getElementById('modalBodyContent');
       var modalClose = document.getElementById('modalCloseBtn');
+      
+      var didacticToolbar = document.getElementById('didacticToolbar');
+      var didacticToggle = document.getElementById('didacticToggle');
+      var helperLangContainer = document.getElementById('helperLangContainer');
+      var helperLangSelect = document.getElementById('helperLangSelect');
+      
+      var currentGlossary = {};
+      var currentQuiz = [];
+      var activeTooltip = null;
 
-      function openModal(contentHtml) {
-        modalBody.innerHTML = contentHtml;
+      function openModal(card) {
+        var contentEl = card.querySelector('.dcell-content');
+        if (!contentEl) return;
+
+        // Charger le contenu HTML et didactique
+        var level = contentEl.getAttribute('data-level') || '';
+        var glossaryData = contentEl.getAttribute('data-glossary') || '{}';
+        var quizData = contentEl.getAttribute('data-quiz') || '[]';
+        
+        try {
+          currentGlossary = JSON.parse(glossaryData);
+          currentQuiz = JSON.parse(quizData);
+        } catch(e) {
+          currentGlossary = {};
+          currentQuiz = [];
+        }
+
+        // Créer l'entête de l'article avec le badge de niveau
+        var headerHtml = '';
+        if (level && level !== 'Lectura General') {
+          headerHtml = '<div class="article-header"><span class="level-badge">Nivel FLE ' + level + '</span></div>';
+        }
+
+        modalBody.innerHTML = headerHtml + contentEl.innerHTML;
+        
+        // Configurer la barre d'outils didactiques
+        // Elle s'affiche uniquement s'il y a du vocabulaire de glossaire associé
+        var hasDidactic = Object.keys(currentGlossary).length > 0;
+        didacticToolbar.style.display = hasDidactic ? 'flex' : 'none';
+        
+        // Reset le toggle didactique
+        didacticToggle.checked = false;
+        helperLangContainer.style.display = 'none';
+        
         modal.classList.add('open');
         document.body.style.overflow = 'hidden';
       }
@@ -1159,19 +1540,300 @@
       function closeModal() {
         modal.classList.remove('open');
         document.body.style.overflow = '';
+        removeTooltip();
         setTimeout(function() {
           modalBody.innerHTML = '';
+          currentGlossary = {};
+          currentQuiz = [];
         }, 300);
       }
 
-      // Attacher le clic aux articles de la grille et à l'article vedette
+      // Gérer l'activation du mode d'étude (Modo Estudiante)
+      didacticToggle.addEventListener('change', function() {
+        var isStudyMode = didacticToggle.checked;
+        helperLangContainer.style.display = isStudyMode ? 'block' : 'none';
+        
+        // Activer / désactiver les styles du mode d'étude
+        // 1. Boutons d'actions des paragraphes
+        var actions = modalBody.querySelectorAll('.paragraph-actions');
+        actions.forEach(function(el) {
+          el.style.display = isStudyMode ? 'flex' : 'none';
+        });
+        
+        // 2. Glossaire (surlignage des mots)
+        var terms = modalBody.querySelectorAll('.glossary-term');
+        terms.forEach(function(el) {
+          if (isStudyMode) {
+            el.classList.add('active-didactic');
+            el.style.pointerEvents = 'auto';
+          } else {
+            el.classList.remove('active-didactic');
+            el.style.pointerEvents = 'none';
+          }
+        });
+        
+        // Si le mode d'étude est désactivé, masquer toutes les traductions ouvertes
+        if (!isStudyMode) {
+          modalBody.querySelectorAll('.paragraph-es, .paragraph-en').forEach(function(el) {
+            el.style.display = 'none';
+          });
+          modalBody.querySelectorAll('.paragraph-actions button').forEach(function(el) {
+            el.classList.remove('active');
+          });
+          removeTooltip();
+          
+          // Supprimer la section quiz si présente
+          var quizSec = modalBody.querySelector('.quiz-section');
+          if (quizSec) quizSec.remove();
+        } else {
+          // Si activé, générer la section quiz à la fin de l'article si elle existe
+          renderQuiz();
+        }
+      });
+
+      // Gérer le changement de langue d'aide
+      helperLangSelect.addEventListener('change', function() {
+        // Mettre à jour les traductions de paragraphes ouvertes
+        var lang = helperLangSelect.value;
+        modalBody.querySelectorAll('.paragraph-block').forEach(function(block) {
+          var showEs = lang === 'es' && block.querySelector('.btn-translate-es').classList.contains('active');
+          var showEn = lang === 'en' && block.querySelector('.btn-translate-en').classList.contains('active');
+          
+          var pEs = block.querySelector('.paragraph-es');
+          var pEn = block.querySelector('.paragraph-en');
+          
+          if (pEs) pEs.style.display = showEs ? 'block' : 'none';
+          if (pEn) pEn.style.display = showEn ? 'block' : 'none';
+        });
+        
+        // Recréer le tooltip ouvert si nécessaire
+        if (activeTooltip) {
+          var term = activeTooltip.getAttribute('data-origin-term');
+          var word = activeTooltip.getAttribute('data-origin-word');
+          var trigger = modalBody.querySelector('.glossary-term[data-word="' + word + '"]');
+          if (trigger) {
+            showGlossaryTooltip(trigger, word, term);
+          }
+        }
+        
+        // Rafraîchir les questions du quiz s'il est affiché
+        renderQuiz();
+      });
+
+      // Trazando los clics del párrafo y glosario
+      modalBody.addEventListener('click', function(e) {
+        // Clic sur un bouton de traduction de paragraphe
+        var btn = e.target.closest('.btn-translate-es, .btn-translate-en');
+        if (btn) {
+          e.stopPropagation();
+          var block = btn.closest('.paragraph-block');
+          var isEs = btn.classList.contains('btn-translate-es');
+          var targetClass = isEs ? '.paragraph-es' : '.paragraph-en';
+          
+          var targetEl = block.querySelector(targetClass);
+          if (targetEl) {
+            var isVisible = targetEl.style.display === 'block';
+            
+            // Masquer les autres langues pour ce bloc
+            block.querySelectorAll('.paragraph-es, .paragraph-en').forEach(function(el) {
+              el.style.display = 'none';
+            });
+            block.querySelectorAll('.paragraph-actions button').forEach(function(b) {
+              b.classList.remove('active');
+            });
+            
+            if (!isVisible) {
+              targetEl.style.display = 'block';
+              btn.classList.add('active');
+            }
+          }
+          return;
+        }
+
+        // Clic sur un mot du glossaire
+        var term = e.target.closest('.glossary-term.active-didactic');
+        if (term) {
+          e.stopPropagation();
+          var wordKey = term.getAttribute('data-word').toLowerCase();
+          showGlossaryTooltip(term, wordKey, term.textContent);
+          return;
+        }
+
+        // Clic à l'extérieur pour enlever le tooltip
+        removeTooltip();
+      });
+
+      // Tooltip du glossaire
+      function showGlossaryTooltip(element, wordKey, originalText) {
+        removeTooltip();
+        
+        // Trouver la définition et la traduction correspondante dans le JSON
+        // Recherche insensible à la casse dans les clés du glossaire
+        var key = Object.keys(currentGlossary).find(function(k) {
+          return k.toLowerCase() === wordKey;
+        });
+        
+        if (!key || !currentGlossary[key]) return;
+        
+        var wordData = currentGlossary[key];
+        var lang = helperLangSelect.value;
+        var translation = lang === 'es' ? wordData.es : wordData.en;
+        var flag = lang === 'es' ? '🇲🇽' : '🇬🇧';
+        
+        var tooltip = document.createElement('div');
+        tooltip.className = 'glossary-tooltip';
+        tooltip.setAttribute('data-origin-term', originalText);
+        tooltip.setAttribute('data-origin-word', wordKey);
+        
+        tooltip.innerHTML = `
+          <div class="tooltip-word">${originalText}</div>
+          <div class="tooltip-translation">${flag} ${translation}</div>
+          <div class="tooltip-definition">📖 ${wordData.def}</div>
+        `;
+        
+        document.body.appendChild(tooltip);
+        
+        // Positionner le tooltip au-dessus du mot cliqué
+        var rect = element.getBoundingClientRect();
+        var scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+        var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        tooltip.style.left = (rect.left + scrollLeft + (rect.width / 2) - 135) + 'px';
+        tooltip.style.top = (rect.top + scrollTop - tooltip.offsetHeight - 10) + 'px';
+        
+        activeTooltip = tooltip;
+      }
+
+      function removeTooltip() {
+        if (activeTooltip) {
+          activeTooltip.remove();
+          activeTooltip = null;
+        }
+      }
+
+      // Rendu du Quiz
+      function renderQuiz() {
+        var existingQuizSec = modalBody.querySelector('.quiz-section');
+        if (existingQuizSec) existingQuizSec.remove();
+        
+        if (!currentQuiz || currentQuiz.length === 0) return;
+        
+        var quizSec = document.createElement('div');
+        quizSec.className = 'quiz-section';
+        
+        var lang = helperLangSelect.value;
+        var titleText = lang === 'es' ? 'Actividades de comprensión' : 'Comprehension Activities';
+        
+        var html = '<div class="quiz-card-container">';
+        html += '<h3 class="quiz-title">📝 ' + titleText + '</h3>';
+        
+        currentQuiz.forEach(function(q, qIdx) {
+          html += '<div class="quiz-item" data-question="' + qIdx + '">';
+          html += '  <div class="quiz-question">' + (qIdx + 1) + '. ' + q.question + '</div>';
+          html += '  <div class="quiz-options">';
+          
+          q.options.forEach(function(opt, optIdx) {
+            html += '    <button class="quiz-option" data-option="' + optIdx + '">' + opt + '</button>';
+          });
+          
+          html += '  </div>';
+          html += '</div>';
+        });
+        
+        html += '</div>';
+        quizSec.innerHTML = html;
+        modalBody.appendChild(quizSec);
+        
+        // Attacher les écouteurs de clic sur les options du quiz
+        var quizItems = quizSec.querySelectorAll('.quiz-item');
+        quizItems.forEach(function(item) {
+          var qIdx = parseInt(item.getAttribute('data-question'));
+          var qData = currentQuiz[qIdx];
+          var options = item.querySelectorAll('.quiz-option');
+          
+          options.forEach(function(opt) {
+            opt.addEventListener('click', function() {
+              if (opt.classList.contains('disabled')) return;
+              
+              var optIdx = parseInt(opt.getAttribute('data-option'));
+              var isCorrect = optIdx === qData.answer;
+              
+              // Désactiver toutes les options pour cette question
+              options.forEach(function(o) {
+                o.classList.add('disabled');
+              });
+              
+              // Colorer le choix
+              if (isCorrect) {
+                opt.classList.add('selected-correct');
+              } else {
+                opt.classList.add('selected-incorrect');
+                // Montrer le bon choix en vert discret
+                options[qData.answer].classList.add('selected-correct');
+              }
+              
+              // Afficher l'explication didactique
+              var expl = document.createElement('div');
+              expl.className = 'quiz-explanation';
+              expl.innerHTML = '<strong>' + (isCorrect ? '¡Correcto!' : 'Incorrecto') + ' :</strong> ' + qData.explanation;
+              item.appendChild(expl);
+              
+              // Vérifier si toutes les questions sont répondues pour afficher le score final
+              checkQuizScore();
+            });
+          });
+        });
+      }
+
+      function checkQuizScore() {
+        var quizItems = modalBody.querySelectorAll('.quiz-item');
+        var answeredCount = 0;
+        var correctCount = 0;
+        
+        quizItems.forEach(function(item, idx) {
+          var selectedCorrect = item.querySelector('.quiz-option.selected-correct');
+          var selectedIncorrect = item.querySelector('.quiz-option.selected-incorrect');
+          
+          if (selectedCorrect || selectedIncorrect) {
+            answeredCount++;
+          }
+          // Si l'option sélectionnée par l'utilisateur (celle qui a reçu le clic original) est correcte
+          // Pour s'assurer de ne pas compter double si on a forcé l'affichage vert de la bonne réponse
+          var correctSelected = item.querySelector('.quiz-option.selected-correct:not(.disabled)');
+          // Le plus fiable : vérifier si l'option correcte a la classe correcte ET était celle choisie
+          // Si l'utilisateur s'est trompé, l'option choisie a selected-incorrect.
+          if (selectedCorrect && !selectedIncorrect) {
+            correctCount++;
+          }
+        });
+        
+        if (answeredCount === quizItems.length) {
+          // Afficher le score
+          var scoreContainer = modalBody.querySelector('.quiz-score-box');
+          if (scoreContainer) scoreContainer.remove();
+          
+          var lang = helperLangSelect.value;
+          var congratTitle = lang === 'es' ? '¡Actividad Completada!' : 'Activity Completed!';
+          var congratSub = lang === 'es' 
+            ? 'Lograste ' + correctCount + ' de ' + quizItems.length + ' respuestas correctas.'
+            : 'You got ' + correctCount + ' out of ' + quizItems.length + ' correct answers.';
+            
+          scoreContainer = document.createElement('div');
+          scoreContainer.className = 'quiz-score-box';
+          scoreContainer.innerHTML = `
+            <div class="score-title">🎉 ${congratTitle}</div>
+            <div class="score-subtitle">${congratSub}</div>
+          `;
+          
+          modalBody.querySelector('.quiz-card-container').appendChild(scoreContainer);
+        }
+      }
+
+      // Attacher le clic sur les articles de la grille et à l'article vedette
       document.addEventListener('click', function(e) {
         var card = e.target.closest('.magazine-card, .featured-story');
         if (card) {
-          var contentEl = card.querySelector('.dcell-content');
-          if (contentEl) {
-            openModal(contentEl.innerHTML);
-          }
+          openModal(card);
         }
       });
 
@@ -1180,10 +1842,7 @@
         if (e.key === 'Enter') {
           var card = document.activeElement;
           if (card && (card.classList.contains('magazine-card') || card.classList.contains('featured-story'))) {
-            var contentEl = card.querySelector('.dcell-content');
-            if (contentEl) {
-              openModal(contentEl.innerHTML);
-            }
+            openModal(card);
           }
         }
       });
