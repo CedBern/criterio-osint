@@ -1301,20 +1301,21 @@
         <!-- FEATURED_START -->
       <article class="featured-story" tabindex="0" 
                data-title-fr="Le secret des bâtisseurs : Comment la découverte d’une branche perdue du Nil réécrit l’histoire des pyramides" data-title-es="El secreto de los constructores: Cómo el descubrimiento de un brazo perdido del Nilo reescribe la historia de las Pirámides" data-title-en="The Builders' Secret: How the Discovery of a Lost Nile Branch Rewrites the History of the Pyramids"
-               data-summary-fr="Pourquoi **31 pyramides**, dont les légendaires monuments de Gizeh, s’alignent-elles avec une précision chirurgicale le long d’une bande de terre aride, loin du Nil actuel ? Depuis..." data-summary-es="¿Por qué 31 pirámides, incluyendo los íconos eternos de la meseta de Guiza, están hoy alineadas con precisión quirúrgica a lo largo de una franja de tierra árida e inhóspita? Hasta..." data-summary-en="Why are 31 pyramids, including the eternal icons of the Giza plateau, aligned with surgical precision today along a strip of dry and inhospitable land? Until now, the location of t...">
+               data-summary-fr="Pourquoi **31 pyramides**, dont les légendaires monuments de Gizeh, s’alignent-elles avec une précision chirurgicale le long d’une bande de terre aride, loin du Nil actuel ? Depuis..." data-summary-es="¿Por qué 31 pirámides, incluyendo los íconos eternos de la meseta de Guiza, están hoy alineadas con precisión quirúrgica a lo largo de una franja de tierra árida e inhóspita? Hasta..." data-summary-en="Why are 31 pyramids, including the eternal icons of the Giza plateau, aligned with surgical precision today along a strip of dry and inhospitable land? Until now, the location of t..."
+               data-level-fr="B1/B2 (Intermédiaire)" data-level-es="B1/B2 (Intermedio)" data-level-en="B1/B2 (Intermediate)">
         <div class="featured-img-container">
           <img src="images/1a.jpg" alt="Le secret des bâtisseurs : Comment la découverte d’une branche perdue du Nil réécrit l’histoire des pyramides" class="featured-img">
         </div>
         <div class="featured-body">
           <div class="story-meta">
-            <span class="story-category-label" data-category="featured">Investigación Principal</span>
-            <span class="story-level"> — B1/B2 (Intermedio)</span>
+            <span class="story-category-label" data-category="featured">Investigaci&oacute;n Principal</span>
+            <span class="story-level"> &mdash; B1/B2 (Intermedio)</span>
             <span class="story-date">Julio 2026</span>
           </div>
           <h2 class="story-title">Le secret des bâtisseurs : Comment la découverte d’une branche perdue du Nil réécrit l’histoire des pyramides</h2>
           <p class="story-excerpt">Pourquoi **31 pyramides**, dont les légendaires monuments de Gizeh, s’alignent-elles avec une précision chirurgicale le long d’une bande de terre aride, loin du Nil actuel ? Depuis...</p>
           <div class="story-footer">
-            <span class="read-more-btn" data-readmore="featured">Leer investigación completa &rarr;</span>
+            <span class="read-more-btn" data-readmore="featured">Leer investigaci&oacute;n completa &rarr;</span>
           </div>
           <div class="dcell-content" style="display:none;" 
                data-level="B1/B2 (Intermedio)"
@@ -1633,11 +1634,12 @@
           <!-- DOSSIERS_START -->
         <article class="magazine-card reveal" tabindex="0"
                  data-title-fr="Le mirage de la connexion globale des pyramides : Pourquoi la science réfute le mythe de la civilisation mère" data-title-es="El espejismo de la conexión global de las pirámides: Por qué la ciencia refuta el mito de la civilización madre" data-title-en="The Mirage of the Global Pyramid Connection: Why Science Refutes the Mother Civilization Myth"
-                 data-summary-fr="Depuis des millénaires, les pyramides captivent l’humanité. De Gizeh à Teotihuacán, ces monuments de pierre défient le temps et nourrissent notre imagination. Pourtant, cette admir..." data-summary-es="Desde hace milenios, las pirámides cautivan a la humanidad. De Guiza a Teotihuacán, estos monumentos de piedra desafían el tiempo y alimentan nuestra imaginación. Sin embargo, esta..." data-summary-en="For millennia, pyramids have captivated humanity. From Giza to Teotihuacan, these stone monuments defy time and feed our imagination. However, this legitimate admiration has given ...">
+                 data-summary-fr="Depuis des millénaires, les pyramides captivent l’humanité. De Gizeh à Teotihuacán, ces monuments de pierre défient le temps et nourrissent notre imagination. Pourtant, cette admir..." data-summary-es="Desde hace milenios, las pirámides cautivan a la humanidad. De Guiza a Teotihuacán, estos monumentos de piedra desafían el tiempo y alimentan nuestra imaginación. Sin embargo, esta..." data-summary-en="For millennia, pyramids have captivated humanity. From Giza to Teotihuacan, these stone monuments defy time and feed our imagination. However, this legitimate admiration has given ..."
+                 data-level-fr="B1/B2 (Intermédiaire)" data-level-es="B1/B2 (Intermedio)" data-level-en="B1/B2 (Intermediate)">
           <div class="card-body">
             <div class="card-meta">
               <span class="card-category-label" data-category="doc">Documento</span>
-              <span class="card-level"> — B1/B2 (Intermedio)</span>
+              <span class="card-level"> &mdash; B1/B2 (Intermedio)</span>
               <span class="card-date">2026</span>
             </div>
             <h3 class="card-title">Le mirage de la connexion globale des pyramides : Pourquoi la science réfute le mythe de la civilisation mère</h3>
@@ -2192,6 +2194,12 @@
           if (readMoreEl) {
             var readType = readMoreEl.getAttribute('data-readmore');
             readMoreEl.innerHTML = readType === 'featured' ? tr.readmore_featured : tr.readmore_card;
+          }
+
+          var levelEl = card.querySelector('.story-level, .card-level');
+          if (levelEl) {
+            var levelText = card.getAttribute('data-level-' + lang);
+            if (levelText) levelEl.textContent = ' \u2014 ' + levelText;
           }
         });
 
