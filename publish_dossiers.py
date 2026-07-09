@@ -79,7 +79,9 @@ def md_to_html(md_text):
         block = block.strip()
         if not block:
             continue
-        if block.startswith('<h') or block.startswith('<ul') or block.startswith('<blockquote') or block.startswith('<div'):
+        if block == '---':
+            paragraphs.append('<hr>')
+        elif block.startswith('<h') or block.startswith('<ul') or block.startswith('<blockquote') or block.startswith('<div') or block.startswith('<hr'):
             paragraphs.append(block)
         else:
             block = block.replace('\n', '<br>')
