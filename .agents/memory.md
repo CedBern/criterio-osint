@@ -35,3 +35,10 @@
 ## Préférences de travail de l'utilisateur
 - Réponses concises et directes.
 - Skills et documentation du projet en français, portables (utilisables par n'importe quelle IA).
+- Objectif du dépôt public : uniquement publier le site gratuitement (GitHub Pages). Monétisation « douce », non intrusive, sans cookies de préférence.
+
+## Architecture des dépôts (depuis 2026-07-09)
+- **`E:\nexome_web`** (branche `master`, remote public `criterio-osint`) = fabrique du site : `documents_debunking/`, `publish_dossiers.py`, `generate_illustrations.py`, `instagram_carousel/`, `.agents/`. + le site déployé sur branche `main` (dossier `website/`, GitHub Pages via `.github/workflows/static.yml`).
+- **`E:\nexome_app`** = app OSINT interne « Sherlock » (main.py, config/llm/tools, templates app, pages légales de l'app, tests) — **dépôt git privé LOCAL, sans remote**. Ne jamais la republier sur le dépôt public. 31 tests.
+- Monétisation site : `website/soutien.html` (dons Ko-fi/Liberapay/PayPal en PLACEHOLDER `VOTRE_PSEUDO` à remplacer + divulgation d'affiliation FR/ES, sans cookie) ; lien footer `soutien.html` ajouté HORS des placeholders (survit à la régénération).
+- Reste à faire par l'utilisateur : remplacer les `VOTRE_PSEUDO` par les vrais comptes ; lier ses cours FLE ; (optionnel) purge d'historique du dépôt public pour effacer les anciennes versions de l'app, et/ou passer la fabrique en dépôt privé.
