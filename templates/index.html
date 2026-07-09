@@ -1523,8 +1523,7 @@ function renderFinalAnswerCard(data) {
         <span class="card-badge" style="color:var(--pink);border-color:var(--pink)">IA OSINT AGENT</span>
       </div>
       <div class="sherlock-answer"><p>${md2html(raw)}</p></div>
-      <div class="mt12">
-        <button class="copy-btn" onclick="copyText(${JSON.stringify(raw)})">[ COPIER ANALYSE ]</button>
+        <button class="copy-btn" onclick="copyTextFromElement(this)" data-raw="${escHtml(raw)}">[ COPIER ANALYSE ]</button>
       </div>
     </div>
   `);
@@ -1579,6 +1578,11 @@ function copyText(text) {
   navigator.clipboard.writeText(text).then(() => {
     addLine('term-info', now(), 'Texte copié dans le presse-papier.');
   });
+}
+
+function copyTextFromElement(btn) {
+  const text = btn.getAttribute('data-raw');
+  copyText(text);
 }
 
 function exportResults() {

@@ -1,0 +1,2 @@
+Notification sent to user on 2026-07-08T13:51:00Z:
+Please check OpenAlex terms at https://developers.openalex.org/ and always verify licenses of retrieved papers for restrictions.

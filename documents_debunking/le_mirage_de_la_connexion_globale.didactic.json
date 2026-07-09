@@ -1,0 +1,90 @@
+{
+  "level": "B1/B2 (Intermedio)",
+  "glossary": {
+    "infondées": {
+      "es": "infundadas",
+      "en": "groundless / unfounded",
+      "def": "Qui n'ont pas de base réelle, qui ne sont pas justifiées par des preuves."
+    },
+    "s'effondre": {
+      "es": "se derrumbe / se caiga",
+      "en": "collapses / falls down",
+      "def": "Tomber brusquement, s'écrouler sous son propre poids."
+    },
+    "invention": {
+      "es": "invención",
+      "en": "invention",
+      "def": "Création d'une nouvelle technique ou d'une nouvelle idée."
+    },
+    "convergente": {
+      "es": "convergente",
+      "en": "convergent",
+      "def": "Qui tend vers un même résultat sans avoir la même origine."
+    },
+    "érosion": {
+      "es": "erosión",
+      "en": "erosion",
+      "def": "Usure de la pierre ou du sol causée par le vent ou l'eau."
+    },
+    "nécropoles": {
+      "es": "necrópolis",
+      "en": "necropolises",
+      "def": "Grands cimetières antiques ou sites de tombes monumentales."
+    },
+    "logistique": {
+      "es": "logística",
+      "en": "logistics",
+      "def": "Organisation du transport et du matériel pour un grand projet."
+    },
+    "ensablement": {
+      "es": "obstrucción con arena / azolvamiento",
+      "en": "silting up / getting filled with sand",
+      "def": "Action d'un cours d'eau qui se remplit de sable et disparaît."
+    },
+    "ingénieuses": {
+      "es": "ingeniosas",
+      "en": "ingenious",
+      "def": "Qui fait preuve d'invention, d'adresse, de créativité pour résoudre un problème."
+    },
+    "mythologies": {
+      "es": "mitologías",
+      "en": "mythologies",
+      "def": "Ensemble de récits légendaires qui expliquent le monde ou l'histoire."
+    }
+  },
+  "quiz": [
+    {
+      "question": "Pourquoi l'auteur dit-il que la forme pyramidale est une « nécessité physique » ?",
+      "options": [
+        "Parce que c'était un symbole religieux universel.",
+        "Parce que c'est la structure la plus stable pour construire en hauteur avec de la pierre.",
+        "Parce que les matériaux anciens ne permettaient que des formes triangulaires.",
+        "Parce que toutes les civilisations ont copié le même plan d'origine."
+      ],
+      "answer": 1,
+      "explanation": "Le texte explique que la pyramide permet de répartir le poids de manière optimale pour éviter que la structure ne s'effondre sous sa propre masse."
+    },
+    {
+      "question": "Quel rôle a joué la « branche d'Ahramat » découverte par Eman Ghoneim ?",
+      "options": [
+        "C'était un chemin sacré reliant l'Égypte au Mexique.",
+        "C'était une voie d'eau utilisée pour transporter les blocs de pierre et les ouvriers.",
+        "C'était une tombe inondée découverte sous la Grande Pyramide.",
+        "C'était un système d'irrigation pour les jardins royaux de Memphis."
+      ],
+      "answer": 1,
+      "explanation": "Cette branche du Nil fonctionnait comme une autoroute logistique pour acheminer les blocs lourds depuis les carrières jusqu'aux temples."
+    },
+    {
+      "question": "Selon Jean-Loïc Le Quellec, pourquoi est-il difficile de convaincre les partisans de la pseudo-archéologie avec des faits scientifiques ?",
+      "options": [
+        "Parce que les scientifiques n'ont pas assez de preuves.",
+        "Parce que ces théories fonctionnent comme des mythologies ou des visions du monde, et non comme de la science.",
+        "Parce que les livres de pseudo-archéologie sont moins chers que les livres scientifiques.",
+        "Parce que les gens préfèrent les histoires sur le climat que sur les extraterrestres."
+      ],
+      "answer": 1,
+      "explanation": "Le texte indique que ces théories sont des récits mythologiques modernes qui offrent une vision romantique du monde, rendant le démontage purement rationnel inefficace."
+    }
+  ]
+}
