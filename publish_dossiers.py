@@ -278,6 +278,13 @@ def main():
                     print(f"Error reading {info['json']}: {exc}")
                     
         level = didactic_config.get("level", "Lectura General")
+        LEVEL_LABELS = {
+            "B1/B2 (Intermedio)": {"fr": "B1/B2 (Interm\u00e9diaire)", "es": "B1/B2 (Intermedio)", "en": "B1/B2 (Intermediate)"},
+            "Lectura General": {"fr": "Lecture G\u00e9n\u00e9rale", "es": "Lectura General", "en": "General Reading"},
+        }
+        level_fr = LEVEL_LABELS.get(level, {}).get("fr", level)
+        level_es = LEVEL_LABELS.get(level, {}).get("es", level)
+        level_en = LEVEL_LABELS.get(level, {}).get("en", level)
         glossary = didactic_config.get("glossary", {})
         quiz = didactic_config.get("quiz", [])
         quiz_es = didactic_config.get("quiz_es", [])
@@ -310,6 +317,9 @@ def main():
             "cover": cover,
             "year": year,
             "level": level,
+            "level_fr": level_fr,
+            "level_es": level_es,
+            "level_en": level_en,
             "glossary_attr": glossary_attr,
             "quiz_attr": quiz_attr,
             "quiz_es_attr": quiz_es_attr,
@@ -322,20 +332,21 @@ def main():
     featured_html = f"""
       <article class="featured-story" tabindex="0" 
                data-title-fr="{feat['title_fr']}" data-title-es="{feat['title_es']}" data-title-en="{feat['title_en']}"
-               data-summary-fr="{feat['summary_fr']}" data-summary-es="{feat['summary_es']}" data-summary-en="{feat['summary_en']}">
+               data-summary-fr="{feat['summary_fr']}" data-summary-es="{feat['summary_es']}" data-summary-en="{feat['summary_en']}"
+               data-level-fr="{feat['level_fr']}" data-level-es="{feat['level_es']}" data-level-en="{feat['level_en']}">
         <div class="featured-img-container">
           <img src="{feat['cover']}" alt="{feat['title_fr']}" class="featured-img">
         </div>
         <div class="featured-body">
           <div class="story-meta">
-            <span class="story-category-label" data-category="featured">Investigación Principal</span>
-            <span class="story-level"> — {feat['level']}</span>
+            <span class="story-category-label" data-category="featured">Investigaci&oacute;n Principal</span>
+            <span class="story-level"> &mdash; {feat['level_es']}</span>
             <span class="story-date">Julio 2026</span>
           </div>
           <h2 class="story-title">{feat['title_fr']}</h2>
           <p class="story-excerpt">{feat['summary_fr']}</p>
           <div class="story-footer">
-            <span class="read-more-btn" data-readmore="featured">Leer investigación completa &rarr;</span>
+            <span class="read-more-btn" data-readmore="featured">Leer investigaci&oacute;n completa &rarr;</span>
           </div>
           <div class="dcell-content" style="display:none;" 
                data-level="{feat['level']}"
@@ -354,11 +365,12 @@ def main():
         card_html = f"""
         <article class="magazine-card reveal" tabindex="0"
                  data-title-fr="{card['title_fr']}" data-title-es="{card['title_es']}" data-title-en="{card['title_en']}"
-                 data-summary-fr="{card['summary_fr']}" data-summary-es="{card['summary_es']}" data-summary-en="{card['summary_en']}">
+                 data-summary-fr="{card['summary_fr']}" data-summary-es="{card['summary_es']}" data-summary-en="{card['summary_en']}"
+                 data-level-fr="{card['level_fr']}" data-level-es="{card['level_es']}" data-level-en="{card['level_en']}">
           <div class="card-body">
             <div class="card-meta">
               <span class="card-category-label" data-category="doc">Documento</span>
-              <span class="card-level"> — {card['level']}</span>
+              <span class="card-level"> &mdash; {card['level_es']}</span>
               <span class="card-date">{card['year']}</span>
             </div>
             <h3 class="card-title">{card['title_fr']}</h3>
