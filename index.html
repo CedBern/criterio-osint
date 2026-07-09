@@ -647,16 +647,21 @@
       font-style: italic;
     }
 
-    /* GLOSSAIRE */
+    /* GLOSSAIRE - Souligné et avec curseur point d'interrogation SEULEMENT en mode étude actif */
     .glossary-term {
-      border-bottom: 1.5px dashed var(--accent);
-      cursor: help;
+      border-bottom: none;
+      cursor: inherit;
       background-color: transparent;
       transition: background-color 0.2s;
     }
-    .glossary-term:hover {
+    .glossary-term.active-didactic {
+      border-bottom: 1.5px dashed var(--accent);
+      cursor: help;
+    }
+    .glossary-term.active-didactic:hover {
       background-color: var(--accent-dim);
     }
+    
     .glossary-tooltip {
       position: absolute;
       background: #ffffff;
@@ -1224,20 +1229,20 @@
 
             <div class="sources-wrapper">
               <div class="sources-fr"><h4>📚 Sources & Références Scientifiques</h4>
-<em>   <strong>Ghoneim, E. et al. (2024).</strong> </em>The Egyptian pyramid chain was built along the now abandoned Ahramat Nile Branch.* Nature Communications Earth & Environment. [DOI: 10.1038/s43247-024-01379-7]
-<em>   <strong>Tallet, P. (2017).</strong> </em>Les papyrus de la mer Rouge I : Le journal de Merer (Papyrus Jarf A et B).* Mémoires de l'IFAO.
-<em>   <strong>Le Quellec, J.-L. (2018).</strong> </em>L'Archéologie romantique : sens et vanité du debunking rationnel.* Éditions CNRS.
-<em>   <strong>Karbovnik, D. (2017).</strong> </em>De l’alterscience au conspirationnisme : le cas de la pseudo-archéologie.* Quaderni, 94.</div>
+<ul><li><strong>Ghoneim, E. et al. (2024).</strong> <em>The Egyptian pyramid chain was built along the now abandoned Ahramat Nile Branch.</em> Nature Communications Earth & Environment. [DOI: 10.1038/s43247-024-01379-7]</li>
+<li><strong>Tallet, P. (2017).</strong> <em>Les papyrus de la mer Rouge I : Le journal de Merer (Papyrus Jarf A et B).</em> Mémoires de l'IFAO.</li>
+<li><strong>Le Quellec, J.-L. (2018).</strong> <em>L'Archéologie romantique : sens et vanité du debunking rationnel.</em> Éditions CNRS.</li>
+<li><strong>Karbovnik, D. (2017).</strong> <em>De l’alterscience au conspirationnisme : le cas de la pseudo-archéologie.</em> Quaderni, 94.</li></ul></div>
               <div class="sources-es" style="display:none;"><h4>📚 Fuentes & Referencias Científicas</h4>
-<em>   <strong>Ghoneim, E. et al. (2024).</strong> </em>The Egyptian pyramid chain was built along the now abandoned Ahramat Nile Branch.* Nature Communications Earth & Environment. [DOI: 10.1038/s43247-024-01379-7]
-<em>   <strong>Tallet, P. (2017).</strong> </em>Les papyrus de la mer Rouge I : Le journal de Merer (Papyrus Jarf A et B).* Mémoires de l'IFAO.
-<em>   <strong>Le Quellec, J.-L. (2018).</strong> </em>L'Archéologie romantique : sens et vanité du debunking rationnel.* Éditions CNRS.
-<em>   <strong>Karbovnik, D. (2017).</strong> </em>De l’alterscience au conspirationnisme : le cas de la pseudo-archéologie.* Quaderni, 94.</div>
+<ul><li><strong>Ghoneim, E. et al. (2024).</strong> <em>The Egyptian pyramid chain was built along the now abandoned Ahramat Nile Branch.</em> Nature Communications Earth & Environment. [DOI: 10.1038/s43247-024-01379-7]</li>
+<li><strong>Tallet, P. (2017).</strong> <em>Les papyrus de la mer Rouge I : Le journal de Merer (Papyrus Jarf A et B).</em> Mémoires de l'IFAO.</li>
+<li><strong>Le Quellec, J.-L. (2018).</strong> <em>L'Archéologie romantique : sens et vanité du debunking rationnel.</em> Éditions CNRS.</li>
+<li><strong>Karbovnik, D. (2017).</strong> <em>De l’alterscience au conspirationnisme : le cas de la pseudo-archéologie.</em> Quaderni, 94.</li></ul></div>
               <div class="sources-en" style="display:none;"><h4>📚 Sources & Scientific References</h4>
-<em>   <strong>Ghoneim, E. et al. (2024).</strong> </em>The Egyptian pyramid chain was built along the now abandoned Ahramat Nile Branch.* Nature Communications Earth & Environment. [DOI: 10.1038/s43247-024-01379-7]
-<em>   <strong>Tallet, P. (2017).</strong> </em>Les papyrus de la mer Rouge I : Le journal de Merer (Papyrus Jarf A et B).* Mémoires de l'IFAO.
-<em>   <strong>Le Quellec, J.-L. (2018).</strong> </em>L'Archéologie romantique : sens et vanité du debunking rationnel.* Éditions CNRS.
-<em>   <strong>Karbovnik, D. (2017).</strong> </em>De l’alterscience au conspirationnisme : le cas de la pseudo-archéologie.* Quaderni, 94.</div>
+<ul><li><strong>Ghoneim, E. et al. (2024).</strong> <em>The Egyptian pyramid chain was built along the now abandoned Ahramat Nile Branch.</em> Nature Communications Earth & Environment. [DOI: 10.1038/s43247-024-01379-7]</li>
+<li><strong>Tallet, P. (2017).</strong> <em>Les papyrus de la mer Rouge I : Le journal de Merer (Papyrus Jarf A et B).</em> Mémoires de l'IFAO.</li>
+<li><strong>Le Quellec, J.-L. (2018).</strong> <em>L'Archéologie romantique : sens et vanité du debunking rationnel.</em> Éditions CNRS.</li>
+<li><strong>Karbovnik, D. (2017).</strong> <em>De l’alterscience au conspirationnisme : le cas de la pseudo-archéologie.</em> Quaderni, 94.</li></ul></div>
             </div>
           </div>
         </div>
@@ -1945,7 +1950,6 @@
           helperLangSelect.value = 'es';
         }
         
-        // Mettre à jour l'affichage des sources si la modal est ouverte
         if (modal.classList.contains('open')) {
           updateSourcesVisibility();
         }
