@@ -1,0 +1,151 @@
+{
+  "level": "B1-B2",
+  "glossary": {
+    "pierres taillées": {
+      "es": "piedras talladas",
+      "en": "carved stones",
+      "def": "Blocs de calcaire ou de granit découpés et façonnés à la main dans des carrières."
+    },
+    "chaux": {
+      "es": "cal",
+      "en": "lime",
+      "def": "Liant chimique obtenu en calcinant du calcaire, utilisé historiquement dans les mortiers."
+    },
+    "géopolymère": {
+      "es": "geopolímero",
+      "en": "geopolymer",
+      "def": "Matériau synthétique obtenu par réaction chimique entre un liant minéral et de la roche broyée."
+    },
+    "paléomagnétisme": {
+      "es": "paleomagnetismo",
+      "en": "paleomagnetism",
+      "def": "Étude de l'orientation du champ magnétique terrestre fossilisé dans les roches au moment de leur formation."
+    },
+    "points cardinaux": {
+      "es": "puntos cardinales",
+      "en": "cardinal points",
+      "def": "Les quatre directions principales de la boussole : le Nord, le Sud, l'Est et l'Ouest."
+    },
+    "carottages": {
+      "es": "testigos de perforación",
+      "en": "sediment coring",
+      "def": "Opération consistant à prélever des cylindres de sédiments ou de roche pour analyser le sol en profondeur."
+    },
+    "bateliers": {
+      "es": "barqueros",
+      "en": "boatmen",
+      "def": "Marins chargés de diriger et naviguer sur des embarcations fluviales ou des barges."
+    },
+    "abrasion": {
+      "es": "abrasión",
+      "en": "abrasion",
+      "def": "Usure ou polissage d'une surface dure par frottement mécanique avec des grains abrasifs."
+    },
+    "ciseaux": {
+      "es": "cinceles",
+      "en": "chisels",
+      "def": "Outils métalliques tranchants utilisés en sculpture ou en maçonnerie pour tailler la pierre."
+    },
+    "bâtisseurs": {
+      "es": "constructores",
+      "en": "builders",
+      "def": "Personnes qui conçoivent et supervisent la construction de monuments ou d'édifices."
+    }
+  },
+  "quiz": [
+    {
+      "question": "Quelle est la principale différence entre la théorie de Joseph Davidovits et le consensus des égyptologues ?",
+      "options": [
+        "Davidovits pense que les pyramides ont été construites par des extraterrestres.",
+        "Davidovits soutient que la majorité des blocs ont été coulés comme du béton, alors que les égyptologues estiment qu'ils ont été taillés dans la roche naturelle.",
+        "Davidovits affirme que le Nil ne passait pas près des pyramides."
+      ],
+      "answer": 1,
+      "explanation": "Joseph Davidovits a proposé la théorie des blocs moulés (béton géopolymère), tandis que la majorité des égyptologues s'accordent à dire que les blocs ont été taillés dans les carrières environnantes."
+    },
+    {
+      "question": "Comment l'étude paléomagnétique de 2012 apporte-t-elle un argument à la théorie du béton antique ?",
+      "options": [
+        "Elle a montré que les pyramides sont alignées sur le nord géographique.",
+        "Elle a révélé que les particules magnétiques de certains blocs sont toutes alignées vers le nord, ce qui suggère qu'ils ont séché in situ sous forme liquide.",
+        "Elle a prouvé que les pyramides ont été construites lors d'un séisme majeur."
+      ],
+      "answer": 1,
+      "explanation": "Si les blocs avaient été taillés puis transportés, l'orientation de leurs particules magnétiques serait aléatoire. L'orientation commune nord-sud indique que ces blocs spécifiques ont été coulés sous forme liquide directement sur place."
+    },
+    {
+      "question": "Quelle découverte récente explique le transport des blocs de plusieurs tonnes ?",
+      "options": [
+        "La découverte de roues en fer sous le sable.",
+        "La découverte de la branche d'Ahramat, un ancien bras du Nil aujourd'hui disparu.",
+        "La découverte de pistes de luge géantes menant à Toura."
+      ],
+      "answer": 1,
+      "explanation": "La découverte en 2024 du bras d'Ahramat a mis en évidence une ancienne autoroute fluviale passant juste à côté des chantiers, facilitant le transport des blocs par bateau."
+    }
+  ],
+  "quiz_es": [
+    {
+      "question": "¿Cuál es la principal diferencia entre la teoría de Joseph Davidovits y el consenso de los egiptólogos?",
+      "options": [
+        "Davidovits piensa que las pirámides fueron construidas por extraterrestres.",
+        "Davidovits sostiene que la mayoría de los bloques fueron vertidos como hormigón, mientras que los egiptólogos estiman que fueron tallados en roca natural.",
+        "Davidovits afirma que el Nilo no pasaba cerca de las pirámides."
+      ],
+      "answer": 1,
+      "explanation": "Joseph Davidovits propuso la teoría de los bloques moldeados (hormigón geopolímero), mientras que la mayoría de los egiptólogos coinciden en que los bloques fueron tallados en las canteras circundantes."
+    },
+    {
+      "question": "¿Cómo aporta el estudio paleomagnético de 2012 un argumento a la teoría del hormigón antiguo?",
+      "options": [
+        "Demostró que las pirámides están alineadas con el norte geográfico.",
+        "Reveló que las partículas magnéticas de ciertos bloques están todas alineadas hacia el norte, lo que sugiere que se secaron in situ en forma líquida.",
+        "Probó que las pirámides fueron construidas durante un terremoto importante."
+      ],
+      "answer": 1,
+      "explanation": "Si los bloques hubieran sido tallados y luego transportados, la orientación de sus partículas magnéticas sería aleatoria. La orientación común norte-sur indica que estos bloques específicos fueron vertidos en forma líquida directamente en el sitio."
+    },
+    {
+      "question": "¿Qué descubrimiento reciente explica el transporte de bloques de varias toneladas?",
+      "options": [
+        "El descubrimiento de ruedas de hierro bajo la arena.",
+        "El descubrimiento del brazo de Ahramat, una antigua rama del Nilo hoy desaparecida.",
+        "El descubrimiento de pistas de trineo gigantes que conducen a Tura."
+      ],
+      "answer": 1,
+      "explanation": "El descubrimiento en 2024 del brazo de Ahramat evidenció una antigua autopista fluvial que pasaba justo al lado de las obras, facilitando el transporte de los bloques en barco."
+    }
+  ],
+  "quiz_en": [
+    {
+      "question": "What is the main difference between Joseph Davidovits' theory and the consensus of Egyptologists?",
+      "options": [
+        "Davidovits thinks the pyramids were built by aliens.",
+        "Davidovits argues that most blocks were poured like concrete, whereas Egyptologists believe they were carved from natural stone.",
+        "Davidovits claims that the Nile did not flow near the pyramids."
+      ],
+      "answer": 1,
+      "explanation": "Joseph Davidovits proposed the molded blocks theory (geopolymer concrete), while most Egyptologists agree that the blocks were carved in local quarries."
+    },
+    {
+      "question": "How does the 2012 paleomagnetic study support the ancient concrete theory?",
+      "options": [
+        "It showed that the pyramids are aligned with the geographical north.",
+        "It revealed that magnetic particles in certain blocks are all aligned toward the north, suggesting they dried in situ in liquid form.",
+        "It proved that the pyramids were built during a major earthquake."
+      ],
+      "answer": 1,
+      "explanation": "If the blocks had been carved and then transported, the orientation of their magnetic particles would be random. The common north-south alignment indicates that these specific blocks were poured in liquid form directly on site."
+    },
+    {
+      "question": "What recent discovery explains the transport of blocks weighing several tons?",
+      "options": [
+        "The discovery of iron wheels under the sand.",
+        "The discovery of the Ahramat branch, a lost branch of the Nile.",
+        "The discovery of giant sled tracks leading to Tura."
+      ],
+      "answer": 1,
+      "explanation": "The discovery of the Ahramat branch in 2024 revealed an ancient river highway passing right next to the construction sites, facilitating boat transport of the blocks."
+    }
+  ]
+}
