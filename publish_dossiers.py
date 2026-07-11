@@ -367,6 +367,9 @@ def main():
                  data-title-fr="{card['title_fr']}" data-title-es="{card['title_es']}" data-title-en="{card['title_en']}"
                  data-summary-fr="{card['summary_fr']}" data-summary-es="{card['summary_es']}" data-summary-en="{card['summary_en']}"
                  data-level-fr="{card['level_fr']}" data-level-es="{card['level_es']}" data-level-en="{card['level_en']}">
+          <div class="card-img-container">
+            <img src="{card['cover']}" alt="{card['title_fr']}" class="card-img">
+          </div>
           <div class="card-body">
             <div class="card-meta">
               <span class="card-category-label" data-category="doc">Documento</span>
