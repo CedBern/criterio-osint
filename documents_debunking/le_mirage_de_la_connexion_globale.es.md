@@ -1,5 +1,6 @@
 # El espejismo de la conexión global de las pirámides: Por qué la ciencia refuta el mito de la civilización madre
 
+Etiquetas: Egipto antiguo, Pseudoarqueología, Historia
 ![La fascinación magnética de las pirámides](images/c_1.jpg)
 
 Desde hace milenios, las pirámides cautivan a la humanidad. De Guiza a Teotihuacán, estos monumentos de piedra desafían el tiempo y alimentan nuestra imaginación. Sin embargo, esta admiración legítima ha dado origen a teorías "alternativas" tan atractivas como infundadas. En las redes sociales, influencers como Marita Rojas o Graham Hancock afirman la existencia de una "civilización madre" desaparecida, o incluso de una intervención extraterrestre, para explicar las similitudes entre las pirámides de los diferentes continentes.

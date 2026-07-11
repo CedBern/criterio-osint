@@ -1,5 +1,6 @@
 # The Pyramids of Giza: Stone block or ancient concrete?
 
+Tags: Ancient Egypt, Chemistry, Technology
 ![Reconstruction of Giza plateau crossed by the Ahramat canal](images/c3_1.png)
 
 ## 1. Introduction : Le mystère des blocs parfaits

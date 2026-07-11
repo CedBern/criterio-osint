@@ -1,5 +1,6 @@
 # Las pirámides de Gizeh: ¿Bloque de piedra u hormigón antiguo?
 
+Etiquetas: Egipto antiguo, Química, Tecnología
 ![Reconstitución del plateau de Gizeh cruzado por el canal de Ahramat](images/c3_1.png)
 
 ## 1. Introduction : Le mystère des blocs parfaits

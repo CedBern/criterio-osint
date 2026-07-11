@@ -1,5 +1,6 @@
 # Le mirage de la connexion globale des pyramides : Pourquoi la science réfute le mythe de la civilisation mère
 
+Tags: Égypte ancienne, Pseudo-archéologie, Histoire
 ![La fascination magnétique des pyramides](images/c_1.jpg)
 
 Depuis des millénaires, les pyramides captivent l’humanité. De Gizeh à Teotihuacán, ces monuments de pierre défient le temps et nourrissent notre imagination. Pourtant, cette admiration légitime a donné naissance à des théories « alternatives » aussi séduisantes qu’infondées. Sur les réseaux sociaux, des influenceurs comme Marita Rojas ou Graham Hancock affirment l’existence d’une « civilisation mère » disparue, ou même d’une intervention extraterrestre, pour expliquer les similitudes entre les pyramides des différents continents.

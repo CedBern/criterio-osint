@@ -1,5 +1,6 @@
 # The Builders' Secret: How the Discovery of a Lost Nile Branch Rewrites the History of the Pyramids
 
+Tags: Ancient Egypt, Climate, Technology
 ![The Ahramat canal flowing next to the pyramids](images/1a.png)
 
 ## 1. Introduction: The Riddle of the Desert

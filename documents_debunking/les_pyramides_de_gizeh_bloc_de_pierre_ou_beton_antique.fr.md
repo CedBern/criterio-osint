@@ -1,5 +1,6 @@
 # Les pyramides de Gizeh : Bloc de pierre ou béton antique ?
 
+Tags: Égypte ancienne, Chimie, Technologie
 ![Reconstitution du plateau de Gizeh traversé par le canal d'Ahramat](images/c3_1.png)
 
 ## 1. Introduction : Le mystère des blocs parfaits

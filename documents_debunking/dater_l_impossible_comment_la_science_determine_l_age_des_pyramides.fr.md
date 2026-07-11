@@ -1,5 +1,6 @@
 # Dater l'impossible : Comment la science détermine l'âge des pyramides
 
+Tags: Égypte ancienne, Archéologie, Technologie
 ![Le Sphinx de Gizeh et la Grande Pyramide au coucher du soleil](images/c4_1.jpg)
 
 ## 1. Introduction : Le paradoxe de la pierre et du temps

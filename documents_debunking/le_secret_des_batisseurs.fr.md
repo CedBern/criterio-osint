@@ -1,5 +1,6 @@
 # Le secret des bâtisseurs : Comment la découverte d’une branche perdue du Nil réécrit l’histoire des pyramides
 
+Tags: Égypte ancienne, Climat, Technologie
 ![Le canal d'Ahramat coulant près des pyramides](images/1a.png)
 
 ## 1. Introduction : L’énigme du désert

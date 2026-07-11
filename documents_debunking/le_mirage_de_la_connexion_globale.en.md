@@ -1,5 +1,6 @@
 # The Mirage of the Global Pyramid Connection: Why Science Refutes the Mother Civilization Myth
 
+Tags: Ancient Egypt, Pseudo-archaeology, History
 ![The magnetic fascination of pyramids](images/c_1.jpg)
 
 For millennia, pyramids have captivated humanity. From Giza to Teotihuacan, these stone monuments defy time and feed our imagination. However, this legitimate admiration has given rise to "alternative" theories that are as appealing as they are groundless. On social media, influencers like Marita Rojas or Graham Hancock claim the existence of a lost "mother civilization," or even extraterrestrial intervention, to explain the similarities between pyramids on different continents.

@@ -1,5 +1,6 @@
 # El secreto de los constructores: Cómo el descubrimiento de un brazo perdido del Nilo reescribe la historia de las Pirámides
 
+Etiquetas: Egipto antiguo, Clima, Tecnología
 ![El canal Ahramat fluyendo junto a las pirámides](images/1a.png)
 
 ## 1. Introducción: El enigma del desierto

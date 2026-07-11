@@ -181,13 +181,21 @@ def parse_lang_meta(filepath):
     title_match = re.search(r"^#\s+(.+)$", content, re.MULTILINE)
     title = title_match.group(1).strip() if title_match else ""
     
-    paragraphs = [p.strip() for p in content.split("\n") if p.strip() and not p.startswith("#")]
+    paragraphs = [p.strip() for p in content.split("\n") if p.strip() and not p.startswith("#") and not p.lower().startswith(("tags:", "etiquetas:"))]
     summary = ""
     for p in paragraphs:
         if len(p) > 40 and not p.startswith("Source:") and not p.startswith("*") and not p.startswith("!"):
             summary = p[:180] + "..." if len(p) > 180 else p
             break
     return title, summary
+
+def extract_tags_from_file(filepath):
+    if not os.path.exists(filepath):
+        return []
+    with open(filepath, "r", encoding="utf-8", errors="ignore") as f:
+        content = f.read()
+    tags_match = re.search(r"^(?:Tags|Etiquetas):\s+(.+)$", content, re.MULTILINE | re.IGNORECASE)
+    return [t.strip() for t in tags_match.group(1).split(",")] if tags_match else []
 
 def main():
     print("=== NEXOME MAGAZINE PUBLISHER ===")
@@ -239,8 +247,13 @@ def main():
         info = dossiers_map[base]
         
         title_fr, summary_fr = parse_lang_meta(info["fr"])
+        tags_fr = extract_tags_from_file(info["fr"])
+        
         title_es, summary_es = parse_lang_meta(info["es"]) if "es" in info else ("", "")
+        tags_es = extract_tags_from_file(info["es"]) if "es" in info else []
+        
         title_en, summary_en = parse_lang_meta(info["en"]) if "en" in info else ("", "")
+        tags_en = extract_tags_from_file(info["en"]) if "en" in info else []
         
         if not title_fr:
             title_fr = base.replace("_", " ")
@@ -330,16 +343,25 @@ def main():
             "quiz_attr": quiz_attr,
             "quiz_es_attr": quiz_es_attr,
             "quiz_en_attr": quiz_en_attr,
+            "tags_fr": tags_fr,
+            "tags_es": tags_es,
+            "tags_en": tags_en,
             "full_html": full_html
         })
         
     # 1. Générer le Featured Article
     feat = dossiers_data[0]
+    feat_tags_fr_attr = ",".join(feat['tags_fr'])
+    feat_tags_es_attr = ",".join(feat['tags_es'])
+    feat_tags_en_attr = ",".join(feat['tags_en'])
+    feat_tags_badges = "".join([f'<span class="tag-badge">{t}</span>' for t in feat['tags_fr']])
+    
     featured_html = f"""
       <article class="featured-story" tabindex="0" 
                data-title-fr="{feat['title_fr']}" data-title-es="{feat['title_es']}" data-title-en="{feat['title_en']}"
                data-summary-fr="{feat['summary_fr']}" data-summary-es="{feat['summary_es']}" data-summary-en="{feat['summary_en']}"
-               data-level-fr="{feat['level_fr']}" data-level-es="{feat['level_es']}" data-level-en="{feat['level_en']}">
+               data-level-fr="{feat['level_fr']}" data-level-es="{feat['level_es']}" data-level-en="{feat['level_en']}"
+               data-tags-fr="{feat_tags_fr_attr}" data-tags-es="{feat_tags_es_attr}" data-tags-en="{feat_tags_en_attr}">
         <div class="featured-img-container">
           <img src="{feat['cover']}" alt="{feat['title_fr']}" class="featured-img">
         </div>
@@ -351,6 +373,7 @@ def main():
           </div>
           <h2 class="story-title">{feat['title_fr']}</h2>
           <p class="story-excerpt">{feat['summary_fr']}</p>
+          <div class="card-tags">{feat_tags_badges}</div>
           <div class="story-footer">
             <span class="read-more-btn" data-readmore="featured">Leer investigaci&oacute;n completa &rarr;</span>
           </div>
@@ -365,14 +388,19 @@ def main():
         </div>
       </article>"""
       
-    # 2. Générer la grille
     cards_html_list = []
     for card in dossiers_data[1:]:
+        card_tags_fr_attr = ",".join(card['tags_fr'])
+        card_tags_es_attr = ",".join(card['tags_es'])
+        card_tags_en_attr = ",".join(card['tags_en'])
+        card_tags_badges = "".join([f'<span class="tag-badge">{t}</span>' for t in card['tags_fr']])
+        
         card_html = f"""
         <article class="magazine-card reveal" tabindex="0"
                  data-title-fr="{card['title_fr']}" data-title-es="{card['title_es']}" data-title-en="{card['title_en']}"
                  data-summary-fr="{card['summary_fr']}" data-summary-es="{card['summary_es']}" data-summary-en="{card['summary_en']}"
-                 data-level-fr="{card['level_fr']}" data-level-es="{card['level_es']}" data-level-en="{card['level_en']}">
+                 data-level-fr="{card['level_fr']}" data-level-es="{card['level_es']}" data-level-en="{card['level_en']}"
+                 data-tags-fr="{card_tags_fr_attr}" data-tags-es="{card_tags_es_attr}" data-tags-en="{card_tags_en_attr}">
           <div class="card-img-container">
             <img src="{card['cover']}" alt="{card['title_fr']}" class="card-img">
           </div>
@@ -384,6 +412,7 @@ def main():
             </div>
             <h3 class="card-title">{card['title_fr']}</h3>
             <p class="card-excerpt">{card['summary_fr']}</p>
+            <div class="card-tags">{card_tags_badges}</div>
             <div class="card-footer">
               <span class="read-more-link" data-readmore="card">Leer artículo &rarr;</span>
             </div>
