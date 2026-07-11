@@ -475,6 +475,96 @@ def main():
         </article>"""
         cards_html_list.append(card_html)
         
+    # Horizons B1.4 Student Webzines
+    horizons_webzines = [
+        {
+            "id": "horizons_maya",
+            "title_fr": "Le Mémoire Maya",
+            "title_es": "El Memoria Maya",
+            "title_en": "The Mayan Memory",
+            "summary_fr": "Le patrimoine culturel n'est pas à vendre : focus sur le parc Xcaret, le retour des linteaux sacrés du trafic illicite et la gastronomie yucatèque.",
+            "summary_es": "El patrimonio cultural no está en venta: enfoque en Xcaret, el regreso de los dinteles mayas del tráfico ilícito y la gastronomía yucateca.",
+            "summary_en": "Cultural heritage is not for sale: focus on Xcaret, the return of Mayan lintels from illicit trafficking, and Yucatecan gastronomy.",
+            "cover": "https://cedbern.github.io/horizons-b14/cover-maya.webp",
+            "url": "https://cedbern.github.io/horizons-b14/",
+            "level_fr": "Recommandé B1",
+            "level_es": "Recomendado B1",
+            "level_en": "Recommended B1",
+            "tags_fr": ["Projet Horizons", "Alliance Française", "Mexique", "Culture"],
+            "tags_es": ["Proyecto Horizons", "Alliance Française", "México", "Cultura"],
+            "tags_en": ["Horizons Project", "Alliance Française", "Mexico", "Culture"],
+            "year": "2026"
+        },
+        {
+            "id": "horizons_suisse",
+            "title_fr": "Entre les Alpes et le Costco",
+            "title_es": "Entre los Alpes y el Costco",
+            "title_en": "Between the Alps and Costco",
+            "summary_fr": "De la gestion des bunkers en Suisse à la coopération écologique au Yucatán. Un contraste souterrain et environnemental étonnant.",
+            "summary_es": "De la gestión de búnkeres en Suiza a la cooperación ecológica en Yucatán. Un contraste subterráneo y ambiental sorprendente.",
+            "summary_en": "From the management of bunkers in Switzerland to ecological cooperation in Yucatan. A surprising underground and environmental contrast.",
+            "cover": "https://cedbern.github.io/horizons-b14/cover-suisse.webp",
+            "url": "https://cedbern.github.io/horizons-b14/",
+            "level_fr": "Recommandé B1",
+            "level_es": "Recomendado B1",
+            "level_en": "Recommended B1",
+            "tags_fr": ["Projet Horizons", "Alliance Française", "Suisse", "Écologie"],
+            "tags_es": ["Proyecto Horizons", "Alliance Française", "Suiza", "Ecología"],
+            "tags_en": ["Horizons Project", "Alliance Française", "Switzerland", "Ecology"],
+            "year": "2026"
+        },
+        {
+            "id": "horizons_histoire",
+            "title_fr": "Le Mexique en Histoire",
+            "title_es": "El México en Historia",
+            "title_en": "Mexico in History",
+            "summary_fr": "Du Porfiriato aux événements de 1985 : une fresque historique vivante, enrichie d'analyses de films (Roma, Coco) et de récits insolites.",
+            "summary_es": "Del Porfiriato a los eventos de 1985: una fresca histórica viva, enriquecida con análisis de películas (Roma, Coco) e historias insólitas.",
+            "summary_en": "From Porfiriato to the events of 1985: a lively historical fresco, enriched with film analyses (Roma, Coco) and unusual stories.",
+            "cover": "https://cedbern.github.io/horizons-b14/cover-histoire.webp",
+            "url": "https://cedbern.github.io/horizons-b14/",
+            "level_fr": "Recommandé B1",
+            "level_es": "Recomendado B1",
+            "level_en": "Recommended B1",
+            "tags_fr": ["Projet Horizons", "Alliance Française", "Histoire", "Yucatán"],
+            "tags_es": ["Proyecto Horizons", "Alliance Française", "Historia", "Yucatán"],
+            "tags_en": ["Horizons Project", "Alliance Française", "History", "Yucatan"],
+            "year": "2026"
+        }
+    ]
+
+    for card in horizons_webzines:
+        card_tags_fr_attr = ",".join(card['tags_fr'])
+        card_tags_es_attr = ",".join(card['tags_es'])
+        card_tags_en_attr = ",".join(card['tags_en'])
+        card_tags_badges = "".join([f'<span class="tag-badge">{t}</span>' for t in card['tags_fr']])
+        
+        card_html = f"""
+        <article class="magazine-card reveal" tabindex="0"
+                 data-external-url="{card['url']}"
+                 data-title-fr="{card['title_fr']}" data-title-es="{card['title_es']}" data-title-en="{card['title_en']}"
+                 data-summary-fr="{card['summary_fr']}" data-summary-es="{card['summary_es']}" data-summary-en="{card['summary_en']}"
+                 data-level-fr="{card['level_fr']}" data-level-es="{card['level_es']}" data-level-en="{card['level_en']}"
+                 data-tags-fr="{card_tags_fr_attr}" data-tags-es="{card_tags_es_attr}" data-tags-en="{card_tags_en_attr}">
+          <div class="card-img-container">
+            <img src="{card['cover']}" alt="{card['title_fr']}" class="card-img">
+          </div>
+          <div class="card-body">
+            <div class="card-meta">
+              <span class="card-category-label" data-category="horizons">Webzine Horizons</span>
+              <span class="card-level"> &mdash; {card['level_es']}</span>
+              <span class="card-date">{card['year']}</span>
+            </div>
+            <h3 class="card-title">{card['title_fr']}</h3>
+            <p class="card-excerpt">{card['summary_fr']}</p>
+            <div class="card-tags">{card_tags_badges}</div>
+            <div class="card-footer">
+              <span class="read-more-link" data-readmore="external">Découvrir le webzine &rarr;</span>
+            </div>
+          </div>
+        </article>"""
+        cards_html_list.append(card_html)
+        
     cards_html = "\n".join(cards_html_list)
 
     if not os.path.exists(html_path):
