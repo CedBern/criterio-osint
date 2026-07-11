@@ -3273,20 +3273,36 @@
 
       function getVisibleParagraphTextAndLang(block) {
         var callouts = block.querySelectorAll('.translation-callout');
+        var targetEl = null;
+        var lang = 'fr';
+        
         for (var i = 0; i < callouts.length; i++) {
           if (callouts[i].style.display === 'block') {
-            var text = callouts[i].innerText;
-            var lang = 'fr';
+            targetEl = callouts[i];
             if (callouts[i].classList.contains('paragraph-es')) lang = 'es';
             if (callouts[i].classList.contains('paragraph-en')) lang = 'en';
-            return { text: text, lang: lang };
+            break;
           }
         }
-        var targetLang = currentLang;
-        var pEl = block.querySelector('.paragraph-' + targetLang);
-        if (!pEl) pEl = block.querySelector('.paragraph-fr');
-        if (pEl) {
-          return { text: pEl.innerText, lang: targetLang };
+        
+        if (!targetEl) {
+          lang = currentLang;
+          targetEl = block.querySelector('.paragraph-' + lang);
+          if (!targetEl) targetEl = block.querySelector('.paragraph-fr');
+        }
+        
+        if (targetEl) {
+          var clone = targetEl.cloneNode(true);
+          clone.querySelectorAll('.media-caption, .article-media, img, figure, figcaption, .paragraph-actions').forEach(function(el) {
+            el.remove();
+          });
+          
+          var cleanText = clone.innerText;
+          // Clean up "Tags: ..." or "Etiquetas: ..."
+          cleanText = cleanText.replace(/^(Tags|Etiquetas)\s*:\s*.+$/gim, '');
+          cleanText = cleanText.trim();
+          
+          return { text: cleanText, lang: lang };
         }
         return null;
       }
@@ -3308,7 +3324,9 @@
         block.scrollIntoView({ behavior: 'smooth', block: 'center' });
         
         var textInfo = getVisibleParagraphTextAndLang(block);
-        if (!textInfo) {
+        if (!textInfo || !textInfo.text) {
+          // Remove highlight if it was added
+          block.classList.remove('speech-active-paragraph');
           currentQueueIndex++;
           playNextInQueue();
           return;
