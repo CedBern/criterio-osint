@@ -291,7 +291,7 @@ def main():
                         didactic_config = json.load(f)
                     if "glossary" not in didactic_config:
                         print(f"Warning: {info['json']} missing 'glossary' - no clickable terms")
-                    if "quiz" not in didactic_config:
+                    if not any(k in didactic_config for k in ["quiz", "quiz_a2", "quiz_b1", "quiz_b2"]):
                         print(f"Warning: {info['json']} missing 'quiz' - no FLE questionnaire")
                 except Exception as exc:
                     print(f"Error reading {info['json']}: {exc}")
@@ -305,9 +305,17 @@ def main():
         level_es = LEVEL_LABELS.get(level, {}).get("es", level)
         level_en = LEVEL_LABELS.get(level, {}).get("en", level)
         glossary = didactic_config.get("glossary", {})
-        quiz = didactic_config.get("quiz", [])
-        quiz_es = didactic_config.get("quiz_es", [])
-        quiz_en = didactic_config.get("quiz_en", [])
+        quiz_a2 = didactic_config.get("quiz_a2", [])
+        quiz_a2_es = didactic_config.get("quiz_a2_es", [])
+        quiz_a2_en = didactic_config.get("quiz_a2_en", [])
+        
+        quiz_b1 = didactic_config.get("quiz_b1", [])
+        quiz_b1_es = didactic_config.get("quiz_b1_es", [])
+        quiz_b1_en = didactic_config.get("quiz_b1_en", [])
+        
+        quiz_b2 = didactic_config.get("quiz_b2", [])
+        quiz_b2_es = didactic_config.get("quiz_b2_es", [])
+        quiz_b2_en = didactic_config.get("quiz_b2_en", [])
         
         if info["type"] == "multilingual":
             full_html = generate_multilingual_html(content_fr, content_es, content_en, glossary)
@@ -315,9 +323,17 @@ def main():
             full_html = md_to_html(content_fr)
             
         glossary_attr = json.dumps(glossary, ensure_ascii=False).replace("'", "&apos;")
-        quiz_attr = json.dumps(quiz, ensure_ascii=False).replace("'", "&apos;")
-        quiz_es_attr = json.dumps(quiz_es, ensure_ascii=False).replace("'", "&apos;")
-        quiz_en_attr = json.dumps(quiz_en, ensure_ascii=False).replace("'", "&apos;")
+        quiz_a2_attr = json.dumps(quiz_a2, ensure_ascii=False).replace("'", "&apos;")
+        quiz_a2_es_attr = json.dumps(quiz_a2_es, ensure_ascii=False).replace("'", "&apos;")
+        quiz_a2_en_attr = json.dumps(quiz_a2_en, ensure_ascii=False).replace("'", "&apos;")
+        
+        quiz_b1_attr = json.dumps(quiz_b1, ensure_ascii=False).replace("'", "&apos;")
+        quiz_b1_es_attr = json.dumps(quiz_b1_es, ensure_ascii=False).replace("'", "&apos;")
+        quiz_b1_en_attr = json.dumps(quiz_b1_en, ensure_ascii=False).replace("'", "&apos;")
+        
+        quiz_b2_attr = json.dumps(quiz_b2, ensure_ascii=False).replace("'", "&apos;")
+        quiz_b2_es_attr = json.dumps(quiz_b2_es, ensure_ascii=False).replace("'", "&apos;")
+        quiz_b2_en_attr = json.dumps(quiz_b2_en, ensure_ascii=False).replace("'", "&apos;")
         
         title_fr_esc = title_fr.replace('"', '&quot;')
         title_es_esc = title_es.replace('"', '&quot;')
@@ -340,9 +356,15 @@ def main():
             "level_es": level_es,
             "level_en": level_en,
             "glossary_attr": glossary_attr,
-            "quiz_attr": quiz_attr,
-            "quiz_es_attr": quiz_es_attr,
-            "quiz_en_attr": quiz_en_attr,
+            "quiz_a2_attr": quiz_a2_attr,
+            "quiz_a2_es_attr": quiz_a2_es_attr,
+            "quiz_a2_en_attr": quiz_a2_en_attr,
+            "quiz_b1_attr": quiz_b1_attr,
+            "quiz_b1_es_attr": quiz_b1_es_attr,
+            "quiz_b1_en_attr": quiz_b1_en_attr,
+            "quiz_b2_attr": quiz_b2_attr,
+            "quiz_b2_es_attr": quiz_b2_es_attr,
+            "quiz_b2_en_attr": quiz_b2_en_attr,
             "tags_fr": tags_fr,
             "tags_es": tags_es,
             "tags_en": tags_en,
@@ -380,9 +402,15 @@ def main():
           <div class="dcell-content" style="display:none;" 
                data-level="{feat['level']}"
                data-glossary='{feat['glossary_attr']}'
-               data-quiz-fr='{feat['quiz_attr']}'
-               data-quiz-es='{feat['quiz_es_attr']}'
-               data-quiz-en='{feat['quiz_en_attr']}'>
+               data-quiz-a2-fr='{feat['quiz_a2_attr']}'
+               data-quiz-a2-es='{feat['quiz_a2_es_attr']}'
+               data-quiz-a2-en='{feat['quiz_a2_en_attr']}'
+               data-quiz-b1-fr='{feat['quiz_b1_attr']}'
+               data-quiz-b1-es='{feat['quiz_b1_es_attr']}'
+               data-quiz-b1-en='{feat['quiz_b1_en_attr']}'
+               data-quiz-b2-fr='{feat['quiz_b2_attr']}'
+               data-quiz-b2-es='{feat['quiz_b2_es_attr']}'
+               data-quiz-b2-en='{feat['quiz_b2_en_attr']}'>
             {feat['full_html']}
           </div>
         </div>
@@ -419,9 +447,15 @@ def main():
             <div class="dcell-content" style="display:none;" 
                  data-level="{card['level']}"
                  data-glossary='{card['glossary_attr']}'
-                 data-quiz-fr='{card['quiz_attr']}'
-                 data-quiz-es='{card['quiz_es_attr']}'
-                 data-quiz-en='{card['quiz_en_attr']}'>
+                 data-quiz-a2-fr='{card['quiz_a2_attr']}'
+                 data-quiz-a2-es='{card['quiz_a2_es_attr']}'
+                 data-quiz-a2-en='{card['quiz_a2_en_attr']}'
+                 data-quiz-b1-fr='{card['quiz_b1_attr']}'
+                 data-quiz-b1-es='{card['quiz_b1_es_attr']}'
+                 data-quiz-b1-en='{card['quiz_b1_en_attr']}'
+                 data-quiz-b2-fr='{card['quiz_b2_attr']}'
+                 data-quiz-b2-es='{card['quiz_b2_es_attr']}'
+                 data-quiz-b2-en='{card['quiz_b2_en_attr']}'>
               {card['full_html']}
             </div>
           </div>

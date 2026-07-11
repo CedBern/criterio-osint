@@ -52,100 +52,472 @@
       "def": "Personnes qui conçoivent et supervisent la construction de monuments ou d'édifices."
     }
   },
-  "quiz": [
+  "quiz_a2": [
     {
-      "question": "Quelle est la principale différence entre la théorie de Joseph Davidovits et le consensus des égyptologues ?",
+      "question": "De quoi sont faites les pyramides de Gizeh selon les archéologues ?",
       "options": [
-        "Davidovits pense que les pyramides ont été construites par des extraterrestres.",
-        "Davidovits soutient que la majorité des blocs ont été coulés comme du béton, alors que les égyptologues estiment qu'ils ont été taillés dans la roche naturelle.",
-        "Davidovits affirme que le Nil ne passait pas près des pyramides."
+        "De calcaire naturel taillé dans des carrières",
+        "De blocs de béton moderne coulés sur place",
+        "De briques de terre cuite et de paille"
       ],
-      "answer": 1,
-      "explanation": "Joseph Davidovits a proposé la théorie des blocs moulés (béton géopolymère), tandis que la majorité des égyptologues s'accordent à dire que les blocs ont été taillés dans les carrières environnantes."
+      "answerIndex": 0,
+      "explanation": "Les analyses montrent que la quasi-totalité des blocs est composée de calcaire issu de carrières naturelles."
     },
     {
-      "question": "Comment l'étude paléomagnétique de 2012 apporte-t-elle un argument à la théorie du béton antique ?",
+      "question": "Qui a proposé la théorie du « béton géopolymère » en 1978 ?",
       "options": [
-        "Elle a montré que les pyramides sont alignées sur le nord géographique.",
-        "Elle a révélé que les particules magnétiques de certains blocs sont toutes alignées vers le nord, ce qui suggère qu'ils ont séché in situ sous forme liquide.",
-        "Elle a prouvé que les pyramides ont été construites lors d'un séisme majeur."
+        "Le chimiste français Joseph Davidovits",
+        "Le pharaon Khéops lui-même",
+        "Le chercheur américain Michel Barsoum"
       ],
-      "answer": 1,
-      "explanation": "Si les blocs avaient été taillés puis transportés, l'orientation de leurs particules magnétiques serait aléatoire. L'orientation commune nord-sud indique que ces blocs spécifiques ont été coulés sous forme liquide directement sur place."
+      "answerIndex": 0,
+      "explanation": "Joseph Davidovits est l'inventeur des géopolymères et a proposé que les blocs aient été coulés dans des moules."
     },
     {
-      "question": "Quelle découverte récente explique le transport des blocs de plusieurs tonnes ?",
+      "question": "Les Égyptiens ont-ils utilisé des moules pour fabriquer tous les blocs des pyramides ?",
       "options": [
-        "La découverte de roues en fer sous le sable.",
-        "La découverte de la branche d'Ahramat, un ancien bras du Nil aujourd'hui disparu.",
-        "La découverte de pistes de luge géantes menant à Toura."
+        "Non, les blocs ont été extraits et taillés dans la roche.",
+        "Oui, tous les blocs sans aucune exception.",
+        "Oui, mais seulement pour les chambres intérieures."
       ],
-      "answer": 1,
-      "explanation": "La découverte en 2024 du bras d'Ahramat a mis en évidence une ancienne autoroute fluviale passant juste à côté des chantiers, facilitant le transport des blocs par bateau."
+      "answerIndex": 0,
+      "explanation": "Les preuves géologiques et archéologiques confirment que la méthode principale était la taille de la pierre naturelle."
+    },
+    {
+      "question": "Quelle preuve géologique simple montre que les pierres sont d'origine naturelle ?",
+      "options": [
+        "La présence de fossiles marins entiers et intacts dans la roche",
+        "La couleur bleue de certains blocs de pierre",
+        "Le fait que les blocs flottent sur l'eau du Nil"
+      ],
+      "answerIndex": 0,
+      "explanation": "Les fossiles marins (comme les coquilles de nummulites) sont intacts et orientés naturellement, ce qui exclut le broyage nécessaire pour faire du béton."
+    },
+    {
+      "question": "Où se trouvent les carrières de pierre exploitées pour le chantier de Gizeh ?",
+      "options": [
+        "Directement sur le plateau de Gizeh et à Tourah",
+        "Dans des pays voisins en Europe",
+        "Au fond du fleuve du Nil"
+      ],
+      "answerIndex": 0,
+      "explanation": "Les carrières locales entourent le site de Gizeh, et les pierres de parement venaient de Tourah, juste en face."
     }
   ],
-  "quiz_es": [
+  "quiz_a2_es": [
     {
-      "question": "¿Cuál es la principal diferencia entre la teoría de Joseph Davidovits y el consenso de los egiptólogos?",
+      "question": "¿De qué están hechas las pirámides de Giza según los arqueólogos?",
       "options": [
-        "Davidovits piensa que las pirámides fueron construidas por extraterrestres.",
-        "Davidovits sostiene que la mayoría de los bloques fueron vertidos como hormigón, mientras que los egiptólogos estiman que fueron tallados en roca natural.",
-        "Davidovits afirma que el Nilo no pasaba cerca de las pirámides."
+        "De piedra caliza natural tallada en canteras",
+        "De bloques de hormigón moderno vertidos in situ",
+        "De ladrillos de arcilla cocida y paja"
       ],
-      "answer": 1,
-      "explanation": "Joseph Davidovits propuso la teoría de los bloques moldeados (hormigón geopolímero), mientras que la mayoría de los egiptólogos coinciden en que los bloques fueron tallados en las canteras circundantes."
+      "answerIndex": 0,
+      "explanation": "Los análisis muestran que casi la totalidad de los bloques está compuesta por caliza procedente de canteras naturales."
     },
     {
-      "question": "¿Cómo aporta el estudio paleomagnético de 2012 un argumento a la teoría del hormigón antiguo?",
+      "question": "¿Quién propuso la teoría del «hormigón geopolímero» en 1978?",
       "options": [
-        "Demostró que las pirámides están alineadas con el norte geográfico.",
-        "Reveló que las partículas magnéticas de ciertos bloques están todas alineadas hacia el norte, lo que sugiere que se secaron in situ en forma líquida.",
-        "Probó que las pirámides fueron construidas durante un terremoto importante."
+        "El químico francés Joseph Davidovits",
+        "El propio faraón Keops",
+        "El investigador estadounidense Michel Barsoum"
       ],
-      "answer": 1,
-      "explanation": "Si los bloques hubieran sido tallados y luego transportados, la orientación de sus partículas magnéticas sería aleatoria. La orientación común norte-sur indica que estos bloques específicos fueron vertidos en forma líquida directamente en el sitio."
+      "answerIndex": 0,
+      "explanation": "Joseph Davidovits es el inventor de los geopolímeros y propuso que los bloques fueron moldeados."
     },
     {
-      "question": "¿Qué descubrimiento reciente explica el transporte de bloques de varias toneladas?",
+      "question": "¿Utilizaron los egipcios moldes para fabricar todos los bloques de las pirámides?",
       "options": [
-        "El descubrimiento de ruedas de hierro bajo la arena.",
-        "El descubrimiento del brazo de Ahramat, una antigua rama del Nilo hoy desaparecida.",
-        "El descubrimiento de pistas de trineo gigantes que conducen a Tura."
+        "No, los bloques fueron extraídos y tallados de la roca.",
+        "Sí, todos los bloques sin excepción alguna.",
+        "Sí, pero solo para las cámaras interiores."
       ],
-      "answer": 1,
-      "explanation": "El descubrimiento en 2024 del brazo de Ahramat evidenció una antigua autopista fluvial que pasaba justo al lado de las obras, facilitando el transporte de los bloques en barco."
+      "answerIndex": 0,
+      "explanation": "Las pruebas geológicas y arqueológicas confirman que el método principal era el tallado de piedra natural."
+    },
+    {
+      "question": "¿Qué prueba geológica simple demuestra que las piedras son de origen natural?",
+      "options": [
+        "La presencia de fósiles marinos enteros e intactos en la roca",
+        "El color azul de algunos bloques de piedra",
+        "El hecho de que los bloques floten en el agua del Nilo"
+      ],
+      "answerIndex": 0,
+      "explanation": "Los fósiles marinos (como las conchas de numulites) están intactos y orientados de forma natural, lo que excluye la trituración necesaria para hacer hormigón."
+    },
+    {
+      "question": "¿Dónde se encuentran las canteras de piedra explotadas para la obra de Giza?",
+      "options": [
+        "Directamente en la meseta de Giza y en Tura",
+        "En países vecinos de Europa",
+        "En el fondo del río Nilo"
+      ],
+      "answerIndex": 0,
+      "explanation": "Las canteras locales rodean el sitio de Giza, y las piedras de revestimiento provenían de Tura, justo enfrente."
     }
   ],
-  "quiz_en": [
+  "quiz_a2_en": [
     {
-      "question": "What is the main difference between Joseph Davidovits' theory and the consensus of Egyptologists?",
+      "question": "What are the Giza pyramids made of according to archaeologists?",
       "options": [
-        "Davidovits thinks the pyramids were built by aliens.",
-        "Davidovits argues that most blocks were poured like concrete, whereas Egyptologists believe they were carved from natural stone.",
-        "Davidovits claims that the Nile did not flow near the pyramids."
+        "Natural limestone carved in quarries",
+        "Modern concrete blocks poured on site",
+        "Baked clay bricks and straw"
       ],
-      "answer": 1,
-      "explanation": "Joseph Davidovits proposed the molded blocks theory (geopolymer concrete), while most Egyptologists agree that the blocks were carved in local quarries."
+      "answerIndex": 0,
+      "explanation": "Analyses show that almost all the blocks are composed of limestone from natural quarries."
     },
     {
-      "question": "How does the 2012 paleomagnetic study support the ancient concrete theory?",
+      "question": "Who proposed the 'geopolymer concrete' theory in 1978?",
       "options": [
-        "It showed that the pyramids are aligned with the geographical north.",
-        "It revealed that magnetic particles in certain blocks are all aligned toward the north, suggesting they dried in situ in liquid form.",
-        "It proved that the pyramids were built during a major earthquake."
+        "French chemist Joseph Davidovits",
+        "Pharaoh Khufu himself",
+        "American researcher Michel Barsoum"
       ],
-      "answer": 1,
-      "explanation": "If the blocks had been carved and then transported, the orientation of their magnetic particles would be random. The common north-south alignment indicates that these specific blocks were poured in liquid form directly on site."
+      "answerIndex": 0,
+      "explanation": "Joseph Davidovits is the inventor of geopolymers and proposed that the blocks were cast in molds."
     },
     {
-      "question": "What recent discovery explains the transport of blocks weighing several tons?",
+      "question": "Did the Egyptians use molds to make all the pyramid blocks?",
       "options": [
-        "The discovery of iron wheels under the sand.",
-        "The discovery of the Ahramat branch, a lost branch of the Nile.",
-        "The discovery of giant sled tracks leading to Tura."
+        "No, the blocks were extracted and carved from the rock.",
+        "Yes, every single block without exception.",
+        "Yes, but only for the inner chambers."
       ],
-      "answer": 1,
-      "explanation": "The discovery of the Ahramat branch in 2024 revealed an ancient river highway passing right next to the construction sites, facilitating boat transport of the blocks."
+      "answerIndex": 0,
+      "explanation": "Geological and archaeological evidence confirms that the primary method was carving natural stone."
+    },
+    {
+      "question": "What simple geological evidence shows that the stones are of natural origin?",
+      "options": [
+        "The presence of whole, intact marine fossils inside the rock",
+        "The blue color of certain stone blocks",
+        "The fact that the blocks float on Nile water"
+      ],
+      "answerIndex": 0,
+      "explanation": "Marine fossils (such as nummulite shells) are intact and naturally oriented, which rules out the crushing required to make concrete."
+    },
+    {
+      "question": "Where are the stone quarries exploited for the Giza site located?",
+      "options": [
+        "Directly on the Giza plateau and in Tura",
+        "In neighboring European countries",
+        "At the bottom of the Nile river"
+      ],
+      "answerIndex": 0,
+      "explanation": "Local quarries surround the Giza site, and the casing stones came from Tura, just opposite."
+    }
+  ],
+  "quiz_b1": [
+    {
+      "question": "Sur quel argument scientifique repose la théorie du géopolymère de Davidovits ?",
+      "options": [
+        "L'ajout d'un liant chimique à base de natron pour agglomérer du calcaire en poudre.",
+        "La découverte de recettes de mortier dans le Journal de Merer.",
+        "L'absence totale de calcaire naturel sur le plateau de Gizeh."
+      ],
+      "answerIndex": 0,
+      "explanation": "Davidovits soutient que les Égyptiens mélangeaient du calcaire désagrégé avec du natron et de la chaux pour recréer de la pierre solide dans des moules."
+    },
+    {
+      "question": "Quelle découverte de Michel Barsoum a jeté un doute temporaire sur l'origine des blocs ?",
+      "options": [
+        "La détection de micro-constituants riches en silicium et en eau dans ses échantillons.",
+        "L'analyse d'outils modernes en acier rouillé sous la Grande Pyramide.",
+        "La datation radiocarbone de la pierre elle-même."
+      ],
+      "answerIndex": 0,
+      "explanation": "Barsoum a observé des phases amorphes riches en silicium qui ressemblent à un liant artificiel, suggérant une origine humaine locale pour certains échantillons."
+    },
+    {
+      "question": "Comment les géologues expliquent-ils la présence de fossiles marins dans les pyramides ?",
+      "options": [
+        "La roche s'est formée à l'époque éocène dans des fonds marins préservés avant d'être extraite.",
+        "Les Égyptiens ont jeté des coquillages dans la pâte de béton liquide.",
+        "Les fossiles sont des dessins gravés à des fins esthétiques."
+      ],
+      "answerIndex": 0,
+      "explanation": "Le plateau de Gizeh est un ancien récif calcaire préhistorique riche en fossiles fossilisés naturellement au cours des ères géologiques."
+    },
+    {
+      "question": "Quel problème lié à l'approvisionnement en eau contredit la thèse du tout-béton ?",
+      "options": [
+        "L'acheminement de millions de mètres cubes d'eau sur le plateau sec aurait été impossible.",
+        "L'eau du Nil était trop salée pour permettre le durcissement du gypse.",
+        "L'Égypte traversait une période d'inondation continue empêchant le séchage."
+      ],
+      "answerIndex": 0,
+      "explanation": "Mélanger du béton pour 2,3 millions de blocs de pierre à Gizeh aurait consommé d'immenses ressources en eau douce, irréalisables sur ce plateau aride."
+    },
+    {
+      "question": "Quelle trace physique sur le terrain réfute l'hypothèse des moules ?",
+      "options": [
+        "Les fronts de taille des carrières de Gizeh montrant des marques d'outils et de leviers.",
+        "La découverte de moules en bois de taille géante pétrifiés.",
+        "L'absence totale d'outils de maçonnerie dans les cités d'ouvriers."
+      ],
+      "answerIndex": 0,
+      "explanation": "L'observation directe des carrières de calcaire locales montre clairement que la roche a été extraite par blocs rectangulaires à l'aide de burins."
+    }
+  ],
+  "quiz_b1_es": [
+    {
+      "question": "¿En qué argumento científico se basa la teoría del geopolímero de Davidovits?",
+      "options": [
+        "La adición de un aglutinante químico a base de natrón para aglomerar caliza en polvo.",
+        "El descubrimiento de recetas de mortero en el Diario de Merer.",
+        "La falta total de caliza natural en la meseta de Giza."
+      ],
+      "answerIndex": 0,
+      "explanation": "Davidovits sostiene que los egipcios mezclaban caliza desintegrada con natrón y cal para recrear piedra sólida en moldes."
+    },
+    {
+      "question": "¿Qué descubrimiento de Michel Barsoum sembró una duda temporal sobre el origen de los bloques?",
+      "options": [
+        "La detección de microconstituyentes ricos en silicio y agua en sus muestras.",
+        "El análisis de herramientas modernas de acero oxidado bajo la Gran Pirámide.",
+        "La datación por radiocarbono de la piedra en sí misma."
+      ],
+      "answerIndex": 0,
+      "explanation": "Barsoum observó fases amorfas ricas en silicio que se asemejan a un aglutinante artificial, sugiriendo un origen humano local para algunas muestras."
+    },
+    {
+      "question": "¿Cómo explican los geólogos la presencia de fósiles marinos en las pirámides?",
+      "options": [
+        "La roca se formó en la época del Eoceno en fondos marinos preservados antes de ser extraída.",
+        "Los egipcios arrojaron conchas en la pasta de hormigón líquido.",
+        "Los fósiles son dibujos grabados con fines estéticos."
+      ],
+      "answerIndex": 0,
+      "explanation": "La meseta de Giza es un antiguo arrecife de caliza prehistórico rico en fósiles fosilizados naturalmente durante las eras geológicas."
+    },
+    {
+      "question": "¿Qué problema relacionado con el suministro de agua contradice la tesis de que todo era hormigón?",
+      "options": [
+        "El transporte de millones de metros cúbicos de agua a la meseta seca habría sido imposible.",
+        "El agua del Nilo era demasiado salada para permitir el endurecimiento del yeso.",
+        "Egipto atravesaba un período de inundación continua que impedía el secado."
+      ],
+      "answerIndex": 0,
+      "explanation": "Mezclar hormigón para 2,3 millones de bloques de piedra en Giza habría consumido inmensos recursos de agua dulce, inviables en esta meseta árida."
+    },
+    {
+      "question": "¿Qué huella física en el terreno refuta la hipótesis de los moldes?",
+      "options": [
+        "Los frentes de explotación de las canteras de Giza que muestran marcas de herramientas y palancas.",
+        "El descubrimiento de moldes de madera gigantescos petrificados.",
+        "La falta total de herramientas de albañilería en las ciudades de los trabajadores."
+      ],
+      "answerIndex": 0,
+      "explanation": "La observación directa de las canteras de caliza locales muestra claramente que la roca fue extraída en bloques rectangulares con cinceles."
+    }
+  ],
+  "quiz_b1_en": [
+    {
+      "question": "On what scientific argument does Davidovits' geopolymer theory rely?",
+      "options": [
+        "The addition of a natron-based chemical binder to consolidate powdered limestone.",
+        "The discovery of mortar recipes in the Diary of Merer.",
+        "The total absence of natural limestone on the Giza plateau."
+      ],
+      "answerIndex": 0,
+      "explanation": "Davidovits claims that the Egyptians mixed disaggregated limestone with natron and lime to recreate solid stone within molds."
+    },
+    {
+      "question": "Which discovery by Michel Barsoum cast temporary doubt on the origin of the blocks?",
+      "options": [
+        "The detection of silicon- and water-rich micro-constituents in his samples.",
+        "The analysis of modern rusted steel tools beneath the Great Pyramid.",
+        "The radiocarbon dating of the stone itself."
+      ],
+      "answerIndex": 0,
+      "explanation": "Barsoum observed amorphous silicon-rich phases that resemble an artificial binder, suggesting a local human origin for some samples."
+    },
+    {
+      "question": "How do geologists explain the presence of marine fossils in the pyramids?",
+      "options": [
+        "The rock formed during the Eocene epoch in preserved seabeds before being quarried.",
+        "The Egyptians threw shells into the liquid concrete paste.",
+        "The fossils are drawings engraved for aesthetic purposes."
+      ],
+      "answerIndex": 0,
+      "explanation": "The Giza plateau is a prehistoric limestone reef rich in fossils that fossilized naturally over geological eras."
+    },
+    {
+      "question": "What water supply problem contradicts the all-concrete thesis?",
+      "options": [
+        "Transporting millions of cubic meters of water to the dry plateau would have been impossible.",
+        "Nile water was too salty to allow the gypsum to harden.",
+        "Egypt was experiencing a period of continuous flooding that prevented drying."
+      ],
+      "answerIndex": 0,
+      "explanation": "Mixing concrete for 2.3 million stone blocks at Giza would have consumed immense freshwater resources, which was unfeasible on this arid plateau."
+    },
+    {
+      "question": "What physical trace on the ground refutes the mold hypothesis?",
+      "options": [
+        "The quarry faces at Giza showing tool and lever marks.",
+        "The discovery of giant petrified wooden molds.",
+        "The total lack of masonry tools in the workers' villages."
+      ],
+      "answerIndex": 0,
+      "explanation": "Direct observation of local limestone quarries clearly shows that the rock was extracted in rectangular blocks using chisels."
+    }
+  ],
+  "quiz_b2": [
+    {
+      "question": "Quelle distinction minéralogique majeure écarte la thèse du broyage et du moulage des blocs de Gizeh ?",
+      "options": [
+        "L'orientation naturelle et la préservation intacte des coquilles fossiles de nummulites dans la matrice calcaire.",
+        "L'absence complète d'eau cristallisée à l'intérieur des minéraux de calcite.",
+        "La présence de granite d'Assouan broyé mélangé à la silice."
+      ],
+      "answerIndex": 0,
+      "explanation": "Si les blocs avaient été coulés, les fossiles auraient été broyés ou déposés de façon désordonnée au fond du moule par gravité."
+    },
+    {
+      "question": "Pourquoi l'inventaire volumétrique des carrières de Gizeh est-il un argument décisif ?",
+      "options": [
+        "Parce que le volume creusé dans les carrières correspond exactement à celui des blocs empilés sur la pyramide.",
+        "Parce que les carrières locales n'ont été exploitées qu'à partir du Moyen Empire.",
+        "Parce qu'il démontre que les carrières contenaient exclusivement du gypse."
+      ],
+      "answerIndex": 0,
+      "explanation": "La correspondance volumétrique prouve physiquement que la pierre a été déplacée de la carrière vers le monument voisin."
+    },
+    {
+      "question": "Comment concilier les observations de Michel Barsoum avec le consensus géologique naturel ?",
+      "options": [
+        "Ses prélèvements contenaient des résidus de mortiers de gypse ou des blocs de scellement tardifs reconstitués.",
+        "Ses résultats ont été faussés par une contamination radioactive récente du laboratoire.",
+        "Ses analyses s'appliquent à l'ensemble des blocs de revêtement externe de Tourah."
+      ],
+      "answerIndex": 0,
+      "explanation": "Barsoum a analysé des échantillons de mortier ou de réparations locales, ce qui explique la présence sporadique de liant siliceux."
+    },
+    {
+      "question": "Quelles limites énergétiques rendent la théorie du tout-béton inapplicable sous la IVe dynastie ?",
+      "options": [
+        "La fabrication de la chaux et du gypse exigeait de cuire la pierre à haute température, consommant trop de bois.",
+        "Le natron requis pour la réaction chimique n'existait pas en Égypte à cette époque.",
+        "Le temps de séchage du béton sous le climat chaud aurait provoqué l'explosion des blocs."
+      ],
+      "answerIndex": 0,
+      "explanation": "La calcination de la chaux et du gypse à grande échelle aurait épuisé toutes les forêts de la région, rendant la logistique thermique irréaliste."
+    },
+    {
+      "question": "Quelle critique épistémologique fait-on à la théorie du géopolymère appliquée aux pyramides ?",
+      "options": [
+        "Elle cherche à imposer une solution technologique moderne complexe à un problème résolu par la force humaine et l'organisation sociale.",
+        "Elle ignore les techniques de fabrication du ciment décrites par Hérodote.",
+        "Elle contredit les datations au carbone 14 obtenues sur le mortier."
+      ],
+      "answerIndex": 0,
+      "explanation": "Cette théorie sous-estime la capacité d'organisation et l'ingéniosité des chantiers antiques, en cherchant à y plaquer des concepts de chimie moderne."
+    }
+  ],
+  "quiz_b2_es": [
+    {
+      "question": "¿Qué distinción mineralógica importante descarta la tesis de la trituración y el moldeado de los bloques de Giza?",
+      "options": [
+        "La orientación natural y la preservación intacta de las conchas fósiles de numulites en la matriz caliza.",
+        "La ausencia total de agua cristalizada dentro de los minerales de calcita.",
+        "La presencia de granito de Asuán triturado mezclado con sílice."
+      ],
+      "answerIndex": 0,
+      "explanation": "Si los bloques se hubieran vertido, los fósiles se habrían triturado o depositado de forma desordenada en el fondo del molde por gravedad."
+    },
+    {
+      "question": "¿Por qué el inventario volumétrico de las canteras de Giza es un argumento decisivo?",
+      "options": [
+        "Porque el volumen excavado en las canteras corresponde exactamente al de los bloques apilados en la pirámide.",
+        "Porque las canteras locales no fueron explotadas sino a partir del Imperio Medio.",
+        "Porque demuestra que las canteras contenían exclusivamente yeso."
+      ],
+      "answerIndex": 0,
+      "explanation": "La correspondencia volumétrica demuestra físicamente que la piedra fue trasladada de la cantera al monumento vecino."
+    },
+    {
+      "question": "¿Cómo conciliar las observaciones de Michel Barsoum con el consenso geológico natural?",
+      "options": [
+        "Sus muestras contenían residuos de morteros de yeso o bloques de sellado tardíos reconstituidos.",
+        "Sus resultados fueron sesgados por una contaminación radiactiva reciente en el laboratorio.",
+        "Sus análisis se aplican a todos los bloques de revestimiento externo de Tura."
+      ],
+      "answerIndex": 0,
+      "explanation": "Barsoum analizó muestras de mortero o de reparaciones locales, lo que explica la presencia esporádica de aglutinante silíceo."
+    },
+    {
+      "question": "¿Qué límites energéticos hacen que la teoría de que todo era hormigón sea inaplicable durante la IV dinastía?",
+      "options": [
+        "La fabricación de cal y yeso requería cocer la piedra a alta temperatura, consumiendo demasiada madera.",
+        "El natrón requerido para la reacción química no existía en Egipto en esa época.",
+        "El tiempo de secado del hormigón bajo el clima cálido habría provocado la explosión de los bloques."
+      ],
+      "answerIndex": 0,
+      "explanation": "La calcinación de cal y yeso a gran escala habría agotado todos los bosques de la región, haciendo inviable la logística térmica."
+    },
+    {
+      "question": "¿Qué crítica epistemológica se hace a la teoría del geopolímero aplicada a las pirámides?",
+      "options": [
+        "Busca imponer una solución tecnológica moderna compleja a un problema resuelto por la fuerza humana y la organización social.",
+        "Ignora las técnicas de fabricación de cemento descritas por Heródoto.",
+        "Contradice las dataciones por carbono 14 obtenidas en el mortero."
+      ],
+      "answerIndex": 0,
+      "explanation": "Esta teoría subestima la capacidad de organización y la ingenuidad de las obras antiguas, al intentar aplicar conceptos de química moderna."
+    }
+  ],
+  "quiz_b2_en": [
+    {
+      "question": "What major mineralogical distinction rules out the crushing and molding of the Giza blocks?",
+      "options": [
+        "The natural orientation and intact preservation of marine nummulite fossil shells within the limestone matrix.",
+        "The complete absence of crystallized water inside the calcite minerals.",
+        "The presence of crushed Aswan granite mixed with silica."
+      ],
+      "answerIndex": 0,
+      "explanation": "If the blocks had been cast, the fossils would have been crushed or deposited in a chaotic manner at the bottom of the mold by gravity."
+    },
+    {
+      "question": "Why is the volumetric inventory of the Giza quarries a decisive argument?",
+      "options": [
+        "Because the volume excavated from the quarries corresponds exactly to that of the blocks stacked on the pyramid.",
+        "Because the local quarries were only exploited starting from the Middle Kingdom.",
+        "Because it demonstrates that the quarries contained gypsum exclusively."
+      ],
+      "answerIndex": 0,
+      "explanation": "The volumetric match physically proves that the stone was moved from the quarry to the neighboring monument."
+    },
+    {
+      "question": "How can Michel Barsoum's observations be reconciled with the natural geological consensus?",
+      "options": [
+        "His samples contained residues of gypsum mortars or reconstructed late sealing blocks.",
+        "His results were distorted by recent radioactive contamination in the laboratory.",
+        "His analyses apply to all the outer casing blocks from Tura."
+      ],
+      "answerIndex": 0,
+      "explanation": "Barsoum analyzed samples of mortar or local repairs, which explains the sporadic presence of siliceous binder."
+    },
+    {
+      "question": "What energy limits make the all-concrete theory inapplicable during the 4th Dynasty?",
+      "options": [
+        "The manufacture of lime and gypsum required baking stone at high temperatures, consuming too much wood.",
+        "The natron required for the chemical reaction did not exist in Egypt at that time.",
+        "The drying time of concrete in the hot climate would have caused the blocks to explode."
+      ],
+      "answerIndex": 0,
+      "explanation": "Baking lime and gypsum on a large scale would have depleted all forests in the region, making thermal logistics unrealistic."
+    },
+    {
+      "question": "What epistemological criticism is made of the geopolymer theory applied to the pyramids?",
+      "options": [
+        "It attempts to impose a complex modern technological solution onto a problem solved by human force and social organization.",
+        "It ignores the cement-making techniques described by Herodotus.",
+        "It contradicts the carbon-14 dates obtained from the mortar."
+      ],
+      "answerIndex": 0,
+      "explanation": "This theory underestimates the organizational capacity and ingenuity of ancient construction sites by trying to overlay modern chemical concepts."
     }
   ]
 }

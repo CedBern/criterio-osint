@@ -52,109 +52,472 @@
       "def": "Ensemble de récits légendaires qui expliquent le monde ou l'histoire."
     }
   },
-  "quiz": [
+  "quiz_a2": [
     {
-      "question": "Pourquoi l'auteur dit-il que la forme pyramidale est une « nécessité physique » ?",
+      "question": "Quelle forme géométrique monumentale commune trouve-t-on en Égypte et au Mexique ?",
       "options": [
-        "Parce que c'était un symbole religieux universel.",
-        "Parce que c'est la structure la plus stable pour construire en hauteur avec de la pierre.",
-        "Parce que les matériaux anciens ne permettaient que des formes triangulaires.",
-        "Parce que toutes les civilisations ont copié le même plan d'origine."
+        "La pyramide",
+        "Le cercle",
+        "Le triangle plat"
       ],
-      "answer": 1,
-      "explanation": "Le texte explique que la pyramide permet de répartir le poids de manière optimale pour éviter que la structure ne s'effondre sous sa propre masse."
+      "answerIndex": 0,
+      "explanation": "Les deux civilisations ont construit des monuments en forme de pyramide à degrés ou à faces lisses."
     },
     {
-      "question": "Quel rôle a joué la « branche d'Ahramat » découverte par Eman Ghoneim ?",
+      "question": "Les pyramides d'Égypte et du Mexique ont-elles été construites à la même époque ?",
       "options": [
-        "C'était un chemin sacré reliant l'Égypte au Mexique.",
-        "C'était une voie d'eau utilisée pour transporter les blocs de pierre et les ouvriers.",
-        "C'était une tombe inondée découverte sous la Grande Pyramide.",
-        "C'était un système d'irrigation pour les jardins royaux de Memphis."
+        "Non, plusieurs milliers d'années séparent leurs constructions.",
+        "Oui, elles ont été construites au même siècle.",
+        "Oui, elles ont été construites exactement la même année."
       ],
-      "answer": 1,
-      "explanation": "Cette branche du Nil fonctionnait comme une autoroute logistique pour acheminer les blocs lourds depuis les carrières jusqu'aux temples."
+      "answerIndex": 0,
+      "explanation": "Les pyramides de Gizeh datent d'environ 2500 av. J.-C., tandis que la plupart des pyramides mexicaines datent du premier millénaire de notre ère (plus de 2500 ans d'écart)."
     },
     {
-      "question": "Selon Jean-Loïc Le Quellec, pourquoi est-il difficile de convaincre les partisans de la pseudo-archéologie avec des faits scientifiques ?",
+      "question": "Quelle était la fonction principale des pyramides en Égypte ancienne ?",
       "options": [
-        "Parce que les scientifiques n'ont pas assez de preuves.",
-        "Parce que ces théories fonctionnent comme des mythologies ou des visions du monde, et non comme de la science.",
-        "Parce que les livres de pseudo-archéologie sont moins chers que les livres scientifiques.",
-        "Parce que les gens préfèrent les histoires sur le climat que sur les extraterrestres."
+        "Des tombeaux sacrés pour les pharaons",
+        "Des observatoires pour guider les bateaux",
+        "Des marchés publics pour la population"
       ],
-      "answer": 1,
-      "explanation": "Le texte indique que ces théories sont des récits mythologiques modernes qui offrent une vision romantique du monde, rendant le démontage purement rationnel inefficace."
+      "answerIndex": 0,
+      "explanation": "En Égypte, les pyramides servaient principalement de tombes de pierre pour abriter le corps du roi et assurer son passage dans l'au-delà."
+    },
+    {
+      "question": "Quelle était la fonction principale des pyramides mésoaméricaines au Mexique ?",
+      "options": [
+        "Des temples de rituels publics au sommet",
+        "Des appartements pour les prêtres",
+        "Des entrepôts pour la nourriture"
+      ],
+      "answerIndex": 0,
+      "explanation": "Au Mexique, les pyramides étaient des plates-formes surmontées d'un temple où l'on célébrait des rituels publics visibles de tous."
+    },
+    {
+      "question": "La science archéologique moderne croit-elle à l'existence d'une « civilisation mère » disparue ?",
+      "options": [
+        "Non, il n'existe aucune preuve matérielle ou génétique.",
+        "Oui, cela a été officiellement accepté récemment.",
+        "Oui, les scientifiques ont trouvé des restes de cette civilisation."
+      ],
+      "answerIndex": 0,
+      "explanation": "L'archéologie scientifique réfute cette thèse faute d'éléments matériels ou de traces génétiques reliant ces cultures lointaines."
     }
   ],
-  "quiz_es": [
+  "quiz_a2_es": [
     {
-      "question": "¿Por qué dice el autor que la forma piramidal es una 'necesidad física'?",
+      "question": "¿Qué forma geométrica monumental común se encuentra en Egipto y México?",
       "options": [
-        "Porque era un símbolo religioso universal.",
-        "Porque es la estructura más estable para construir en altura con piedra.",
-        "Porque los materiales antiguos solo permitían formas triangulares.",
-        "Porque todas las civilizaciones copiaron el mismo plano original."
+        "La pirámide",
+        "El círculo",
+        "El triángulo plano"
       ],
-      "answer": 1,
-      "explanation": "El texto explica que la pirámide permite distribuir el peso de manera óptima para evitar que la estructura se derrumbe bajo su propia masa."
+      "answerIndex": 0,
+      "explanation": "Ambas civilizaciones construyeron monumentos en forma de pirámide escalonada o de caras lisas."
     },
     {
-      "question": "¿Qué papel jugó el 'brazo de Ahramat' descubierto por Eman Ghoneim?",
+      "question": "¿Se construyeron las pirámides de Egipto y México en la misma época?",
       "options": [
-        "Era un camino sagrado que conectaba Egipto con México.",
-        "Era una vía fluvial utilizada para transportar bloques de piedra y trabajadores.",
-        "Era una tumba inundada descubierta bajo la Gran Pirámide.",
-        "Era un sistema de riego para los jardines reales de Menfis."
+        "No, varios miles de años separan sus construcciones.",
+        "Sí, fueron construidas en el mismo siglo.",
+        "Sí, fueron construidas exactamente el mismo año."
       ],
-      "answer": 1,
-      "explanation": "Este brazo del Nilo funcionaba como una autopista logística para transportar bloques pesados desde las canteras hasta los templos."
+      "answerIndex": 0,
+      "explanation": "Las pirámides de Giza datan de aproximadamente 2500 a. C., mientras que la mayoría de las pirámides mexicanas datan del primer milenio d. C. (más de 2500 años de diferencia)."
     },
     {
-      "question": "Según Jean-Loïc Le Quellec, ¿por qué es difícil convencer a los defensores de la pseudoarqueología con hechos científicos?",
+      "question": "¿Cuál era la función principal de las pirámides en el antiguo Egipto?",
       "options": [
-        "Porque los científicos no tienen suficientes pruebas.",
-        "Porque estas teorías funcionan como mitologías o visiones del mundo, y no como ciencia.",
-        "Porque los libros de pseudoarqueología son más baratos que los científicos.",
-        "Porque la gente prefiere historias sobre el clima antes que sobre extraterrestres."
+        "Tumbas sagradas para los faraones",
+        "Observatorios para guiar barcos",
+        "Mercados públicos para la población"
       ],
-      "answer": 1,
-      "explanation": "El texto indica que estas teorías son relatos mitológicos modernos que ofrecen una visión romántica del mundo, haciendo inútil el desmontaje puramente racional."
+      "answerIndex": 0,
+      "explanation": "En Egipto, las pirámides servían principalmente como tumbas de piedra para albergar el cuerpo del rey y asegurar su paso al más allá."
+    },
+    {
+      "question": "¿Cuál era la función principal de las pirámides mesoamericanas en México?",
+      "options": [
+        "Templos para rituales públicos en la cima",
+        "Apartamentos para los sacerdotes",
+        "Almacenes de alimentos"
+      ],
+      "answerIndex": 0,
+      "explanation": "En México, las pirámides eran plataformas coronadas por un templo donde se celebraban rituales públicos visibles para todos."
+    },
+    {
+      "question": "¿Cree la ciencia arqueológica moderna en la existencia de una «civilización madre» perdida?",
+      "options": [
+        "No, no existe ninguna evidencia material o genética.",
+        "Sí, fue aceptado oficialmente hace poco.",
+        "Sí, los científicos encontraron restos de esta civilización."
+      ],
+      "answerIndex": 0,
+      "explanation": "La arqueología científica refuta esta tesis debido a la falta de elementos materiales o de huellas genéticas que vinculen estas culturas lejanas."
     }
   ],
-  "quiz_en": [
+  "quiz_a2_en": [
     {
-      "question": "Why does the author say that the pyramidal shape is a 'physical necessity'?",
+      "question": "What common monumental geometric shape is found in both Egypt and Mexico?",
       "options": [
-        "Because it was a universal religious symbol.",
-        "Because it is the most stable structure for building high with stone.",
-        "Because ancient materials only allowed triangular shapes.",
-        "Because all civilizations copied the same original blueprint."
+        "The pyramid",
+        "The circle",
+        "The flat triangle"
       ],
-      "answer": 1,
-      "explanation": "The text explains that the pyramid allows weight to be distributed optimally to prevent the structure from collapsing under its own mass."
+      "answerIndex": 0,
+      "explanation": "Both civilizations built monuments in the shape of stepped or smooth-sided pyramids."
     },
     {
-      "question": "What role did the 'Ahramat branch' discovered by Eman Ghoneim play?",
+      "question": "Were the pyramids of Egypt and Mexico built at the same time?",
       "options": [
-        "It was a sacred path connecting Egypt to Mexico.",
-        "It was a waterway used to transport stone blocks and workers.",
-        "It was a flooded tomb discovered under the Great Python.",
-        "It was an irrigation system for the royal gardens of Memphis."
+        "No, several thousand years separate their constructions.",
+        "Yes, they were built in the same century.",
+        "Yes, they were built in the exact same year."
       ],
-      "answer": 1,
-      "explanation": "This branch of the Nile functioned as a logistics highway to transport heavy blocks from the quarries to the temples."
+      "answerIndex": 0,
+      "explanation": "The Giza pyramids date back to around 2500 BC, while most Mexican pyramids date from the first millennium AD (more than a 2500-year difference)."
     },
     {
-      "question": "According to Jean-Loïc Le Quellec, why is it difficult to convince proponents of pseudo-archaeology with scientific facts?",
+      "question": "What was the primary function of the pyramids in ancient Egypt?",
       "options": [
-        "Under no circumstances do scientists have enough evidence.",
-        "Because these theories function as mythologies or worldviews, rather than science.",
-        "Because pseudo-archaeology books are cheaper than scientific ones.",
-        "Because people prefer stories about climate rather than aliens."
+        "Sacred tombs for the pharaos",
+        "Observatories to guide boats",
+        "Public markets for the population"
       ],
-      "answer": 1,
-      "explanation": "The text indicates that these theories are modern mythological narratives that offer a romantic worldview, rendering purely rational debunking ineffective."
+      "answerIndex": 0,
+      "explanation": "In Egypt, pyramids served primarily as stone tombs to house the king's body and ensure his transition to the afterlife."
+    },
+    {
+      "question": "What was the primary function of Mesoamerican pyramids in Mexico?",
+      "options": [
+        "Temples for public rituals at the summit",
+        "Apartments for priests",
+        "Warehouses for food storage"
+      ],
+      "answerIndex": 0,
+      "explanation": "In Mexico, pyramids were platforms topped by a temple where public rituals visible to all were celebrated."
+    },
+    {
+      "question": "Does modern archaeological science believe in a lost 'mother civilization'?",
+      "options": [
+        "No, there is no physical or genetic evidence.",
+        "Yes, this was officially accepted recently.",
+        "Yes, scientists found remains of this civilization."
+      ],
+      "answerIndex": 0,
+      "explanation": "Scientific archaeology refutes this thesis due to the lack of physical elements or genetic traces connecting these distant cultures."
+    }
+  ],
+  "quiz_b1": [
+    {
+      "question": "Qu'est-ce que l'évolution convergente appliquée à l'architecture ?",
+      "options": [
+        "C'est l'apparition indépendante de formes similaires pour répondre à des contraintes physiques identiques.",
+        "C'est l'échange direct de plans de construction par des voyageurs anciens.",
+        "C'est l'influence des constellations sur le tracé des monuments."
+      ],
+      "answerIndex": 0,
+      "explanation": "L'évolution convergente explique que des peuples sans lien créent la même forme stable (la pyramide) pour bâtir en hauteur avec de la pierre lourde."
+    },
+    {
+      "question": "Pourquoi la forme pyramidale a-t-elle été universellement adoptée par ces peuples ?",
+      "options": [
+        "Parce que c'est la seule forme géométrique stable pour monter haut avec des blocs lourds sans s'effondrer.",
+        "Parce qu'elle était imposée par des traités commerciaux intercontinentaux.",
+        "Parce qu'elle nécessitait moins d'ouvriers pour sa construction."
+      ],
+      "answerIndex": 0,
+      "explanation": "La répartition du poids d'une pyramide (base large, sommet pointu) est la solution physique la plus simple pour ériger des structures géantes en pierre."
+    },
+    {
+      "question": "Qui a popularisé la thèse conspirationniste de la civilisation mère disparue dans une série récente ?",
+      "options": [
+        "Graham Hancock",
+        "Jean-Loïc Le Quellec",
+        "Paul Tallet"
+      ],
+      "answerIndex": 0,
+      "explanation": "Graham Hancock est l'auteur qui défend l'existence d'une civilisation avancée oubliée, affirmant que les archéologues cachent la vérité."
+    },
+    {
+      "question": "Pourquoi l'isolement de l'Amérique précolombienne contredit-il l'idée d'une connexion globale ?",
+      "options": [
+        "Parce qu'aucun contact transocéanique n'est prouvé à l'époque de la construction des monuments.",
+        "Parce que l'océan Atlantique était impossible à traverser avec les technologies de l'époque.",
+        "Parce que les langues des deux peuples étaient trop différentes pour coopérer."
+      ],
+      "answerIndex": 0,
+      "explanation": "Aucun artefact égyptien au Mexique ou mexicain en Égypte n'a été découvert, ce qui confirme l'absence de contact direct à cette époque."
+    },
+    {
+      "question": "Quel est le rôle du « debunking rationnel » mené par les scientifiques ?",
+      "options": [
+        "Réfuter les affirmations fantastiques par des données de terrain et des analyses rigoureuses.",
+        "Soutenir la création de documentaires de fiction pour le grand public.",
+        "Trouver de nouvelles légendes pour attirer les touristes."
+      ],
+      "answerIndex": 0,
+      "explanation": "Le debunking rationnel vise à opposer des faits empiriques (archéologiques, géologiques) aux théories fantaisistes."
+    }
+  ],
+  "quiz_b1_es": [
+    {
+      "question": "¿Qué es la evolución convergente aplicada a la arquitectura?",
+      "options": [
+        "Es la aparición independiente de formas similares para responder a restricciones físicas idénticas.",
+        "Es el intercambio directo de planos de construcción por viajeros antiguos.",
+        "Es la influencia de las constelaciones en el diseño de los monumentos."
+      ],
+      "answerIndex": 0,
+      "explanation": "La evolución convergente explica que pueblos sin conexión crean la misma forma estable (la pirámide) para construir en altura con piedra pesada."
+    },
+    {
+      "question": "¿Por qué la forma piramidal fue adoptada universalmente por estos pueblos?",
+      "options": [
+        "Porque es la única forma geométrica estable para construir alto con bloques pesados sin derrumbarse.",
+        "Porque fue impuesta por tratados comerciales intercontinentales.",
+        "Porque requería menos trabajadores para su construcción."
+      ],
+      "answerIndex": 0,
+      "explanation": "La distribución del peso de una pirámide (base ancha, cima puntiaguda) es la solución física más simple para erigir estructuras de piedra gigantes."
+    },
+    {
+      "question": "¿Quién popularizó la tesis conspirativa de la civilización madre perdida en una serie reciente?",
+      "options": [
+        "Graham Hancock",
+        "Jean-Loïc Le Quellec",
+        "Paul Tallet"
+      ],
+      "answerIndex": 0,
+      "explanation": "Graham Hancock es el autor que defiende la existencia de una civilización avanzada olvidada, afirmando que los arqueólogos ocultan la verdad."
+    },
+    {
+      "question": "¿Por qué el aislamiento de la América precolombina contradice la idea de una conexión global?",
+      "options": [
+        "Porque no se ha probado ningún contacto transoceánico en la época de la construcción de los monumentos.",
+        "Porque el océano Atlántico era imposible de cruzar con las tecnologías de la época.",
+        "Porque las lenguas de ambos pueblos eran demasiado diferentes para cooperar."
+      ],
+      "answerIndex": 0,
+      "explanation": "No se ha descubierto ningún artefacto egipcio en México ni mexicano en Egipto, lo que confirma la falta de contacto directo en esa época."
+    },
+    {
+      "question": "¿Cuál es el papel del «debunking racional» llevado a cabo por los científicos?",
+      "options": [
+        "Refutar las afirmaciones fantásticas mediante datos de campo y análisis rigurosos.",
+        "Apoyar la creación de documentales de ficción para el público en general.",
+        "Encontrar nuevas leyendas para atraer a los turistas."
+      ],
+      "answerIndex": 0,
+      "explanation": "El debunking racional busca oponer hechos empíricos (arqueológicos, geológicos) a las teorías fantasiosas."
+    }
+  ],
+  "quiz_b1_en": [
+    {
+      "question": "What is convergent evolution applied to architecture?",
+      "options": [
+        "It is the independent emergence of similar shapes to address identical physical constraints.",
+        "It is the direct exchange of construction plans by ancient travelers.",
+        "It is the influence of constellations on the layout of monuments."
+      ],
+      "answerIndex": 0,
+      "explanation": "Convergent evolution explains that unconnected peoples create the same stable shape (the pyramid) to build upward using heavy stone."
+    },
+    {
+      "question": "Why was the pyramidal shape universally adopted by these peoples?",
+      "options": [
+        "Because it is the only stable geometric shape to build high with heavy blocks without collapsing.",
+        "Because it was mandated by intercontinental trade agreements.",
+        "Because it required fewer workers for its construction."
+      ],
+      "answerIndex": 0,
+      "explanation": "The distribution of weight in a pyramid (wide base, pointed top) is the simplest physical solution for erecting giant stone structures."
+    },
+    {
+      "question": "Who popularized the conspiracy theory of the lost mother civilization in a recent series?",
+      "options": [
+        "Graham Hancock",
+        "Jean-Loïc Le Quellec",
+        "Paul Tallet"
+      ],
+      "answerIndex": 0,
+      "explanation": "Graham Hancock is the author who defends the existence of a forgotten advanced civilization, claiming that archaeologists hide the truth."
+    },
+    {
+      "question": "Why does the isolation of pre-Columbian America contradict the idea of a global connection?",
+      "options": [
+        "Because no transoceanic contact is proven at the time the monuments were built.",
+        "Because the Atlantic Ocean was impossible to cross with the technologies of that era.",
+        "Because the languages of both peoples were too different to cooperate."
+      ],
+      "answerIndex": 0,
+      "explanation": "No Egyptian artifacts in Mexico or Mexican artifacts in Egypt have been discovered, confirming the lack of direct contact during that era."
+    },
+    {
+      "question": "What is the role of 'rational debunking' conducted by scientists?",
+      "options": [
+        "Refuting fantastic claims through field data and rigorous analysis.",
+        "Supporting the creation of fiction documentaries for the general public.",
+        "Finding new legends to attract tourists."
+      ],
+      "answerIndex": 0,
+      "explanation": "Rational debunking aims to oppose empirical facts (archaeological, geological) to fanciful theories."
+    }
+  ],
+  "quiz_b2": [
+    {
+      "question": "Comment l'anthropologue Jean-Loïc Le Quellec qualifie-t-il les dérives de la pseudo-archéologie ?",
+      "options": [
+        "De mythologies modernes qui répondent à un besoin de merveilleux au détriment de la rigueur scientifique.",
+        "De propositions d'alterscience qui méritent d'être enseignées à l'université.",
+        "D'erreurs mineures commises par des amateurs passionnés de géographie."
+      ],
+      "answerIndex": 0,
+      "explanation": "Pour Le Quellec, ces théories relèvent de la croyance mythologique et non de la démarche scientifique rationnelle."
+    },
+    {
+      "question": "Quel biais cognitif est principalement exploité par les partisans d'une connexion globale ?",
+      "options": [
+        "Le biais de corrélation illusoire, consistant à lier deux faits distincts par une même cause imaginaire.",
+        "Le biais de confirmation lié aux variations géologiques de la dérive des continents.",
+        "Le biais d'ancrage reposant uniquement sur les récits mythologiques locaux."
+      ],
+      "answerIndex": 0,
+      "explanation": "Les tenants de ces thèses voient des pyramides partout et en déduisent à tort un lien de parenté ou des contacts directs."
+    },
+    {
+      "question": "Pourquoi la comparaison matérielle des structures réfute-t-elle l'idée de bâtisseurs uniques ?",
+      "options": [
+        "Parce que les architectures révèlent des méthodes distinctes (empilement compact en Égypte vs structures de terre parementées au Mexique).",
+        "Parce que les blocs de pierre mésoaméricains sont exclusivement faits de mortier géopolymère.",
+        "Parce que les Égyptiens utilisaient exclusivement du granite poli, contrairement aux Mayas."
+      ],
+      "answerIndex": 0,
+      "explanation": "Les méthodes de construction et les agencements internes sont radicalement différents, ce qui exclut des architectes communs."
+    },
+    {
+      "question": "Quelle critique méthodologique l'auteur formule-t-il à l'encontre de la méthodologie de Graham Hancock ?",
+      "options": [
+        "Elle ignore délibérément les données stratigraphiques et historiques contradictoires pour valider ses hypothèses.",
+        "Elle se base sur une mauvaise interprétation des outils de mesure modernes comme le carbone 14.",
+        "Elle attribue un rôle excessif aux changements climatiques locaux du plateau de Gizeh."
+      ],
+      "answerIndex": 0,
+      "explanation": "La pseudo-archéologie sélectionne uniquement les indices qui l'arrangent (cherry-picking) en ignorant les faits contraires bien documentés."
+    },
+    {
+      "question": "En quoi l'explication de la « civilisation mère » est-elle jugée éthiquement problématique par les historiens ?",
+      "options": [
+        "Elle dénie aux peuples autochtones leur propre ingéniosité et leur capacité d'innovation technique autonome.",
+        "Elle attribue le mérite des pyramides à des souverains européens de l'Antiquité.",
+        "Elle suppose que les techniques mayas étaient supérieures à celles des Égyptiens."
+      ],
+      "answerIndex": 0,
+      "explanation": "Dire qu'une civilisation supérieure disparue a tout construit revient à priver les Incas, les Mayas ou les Égyptiens de leur génie propre."
+    }
+  ],
+  "quiz_b2_es": [
+    {
+      "question": "¿Cómo califica el antropólogo Jean-Loïc Le Quellec las desviaciones de la pseudoarqueología?",
+      "options": [
+        "Como mitologías modernas que responden a una necesidad de misterio a expensas del rigor científico.",
+        "Como propuestas de alterciencia que merecen ser enseñadas en la universidad.",
+        "Como errores menores cometidos por aficionados apasionados de la geografía."
+      ],
+      "answerIndex": 0,
+      "explanation": "Para Le Quellec, estas teorías pertenecen a la creencia mitológica y no al enfoque científico racional."
+    },
+    {
+      "question": "¿Qué sesgo cognitivo es explotado principalmente por los partidarios de una conexión global?",
+      "options": [
+        "El sesgo de correlación ilusoria, que consiste en vincular dos hechos distintos mediante una misma causa imaginaria.",
+        "El sesgo de confirmación relacionado con las variaciones geológicas de la deriva continental.",
+        "El sesgo de anclaje basado únicamente en relatos mitológicos locales."
+      ],
+      "answerIndex": 0,
+      "explanation": "Los defensores de estas tesis ven pirámides por todas partes y deducen erróneamente un vínculo de parentesco o contactos directos."
+    },
+    {
+      "question": "¿Por qué la comparación material de las estructuras refuta la idea de constructores comunes?",
+      "options": [
+        "Porque las arquitecturas revelan métodos distintos (apilamiento compacto en Egipto frente a estructuras de tierra revestidas en México).",
+        "Porque los bloques de piedra mesoamericanos están hechos exclusivamente de mortero geopolímero.",
+        "Porque los egipcios utilizaban exclusivamente granito pulido, a diferencia de los mayas."
+      ],
+      "answerIndex": 0,
+      "explanation": "Los métodos de construcción y las distribuciones internas son radicalmente diferentes, lo que excluye arquitectos comunes."
+    },
+    {
+      "question": "¿Qué crítica metodológica formula el autor contra la metodología de Graham Hancock?",
+      "options": [
+        "Ignora deliberadamente los datos estratigráficos e históricos contradictorios para validar sus hipótesis.",
+        "Se basa en una mala interpretación de las herramientas de medición modernas como el carbono 14.",
+        "Atribuye un papel excesivo a los cambios climáticos locales de la meseta de Giza."
+      ],
+      "answerIndex": 0,
+      "explanation": "La pseudoarqueología selecciona únicamente las pistas que le convienen (cherry-picking) ignorando los hechos contrarios bien documentados."
+    },
+    {
+      "question": "¿Por qué los historiadores consideran éticamente problemática la explicación de la «civilización madre»?",
+      "options": [
+        "Niega a los pueblos indígenas su propia ingenuidad y su capacidad de innovación técnica autónoma.",
+        "Atribuye el mérito de las pirámides a gobernantes europeos de la Antigüedad.",
+        "Supone que las técnicas mayas eran superiores a las de los egipcios."
+      ],
+      "answerIndex": 0,
+      "explanation": "Decir que una civilización superior desaparecida construyó todo equivale a privar a los incas, mayas o egipcios de su propio ingenio."
+    }
+  ],
+  "quiz_b2_en": [
+    {
+      "question": "How does anthropologist Jean-Loïc Le Quellec characterize the pitfalls of pseudo-archaeology?",
+      "options": [
+        "As modern mythologies that satisfy a need for wonder at the expense of scientific rigor.",
+        "As alterscience proposals that deserve to be taught at universities.",
+        "As minor mistakes made by amateurs passionate about geography."
+      ],
+      "answerIndex": 0,
+      "explanation": "For Le Quellec, these theories fall under mythological belief rather than a rational scientific approach."
+    },
+    {
+      "question": "What cognitive bias is primarily exploited by proponents of a global connection?",
+      "options": [
+        "The illusory correlation bias, linking two separate facts to the same imaginary cause.",
+        "The confirmation bias related to geological variations in continental drift.",
+        "The anchoring bias relying solely on local mythological narratives."
+      ],
+      "answerIndex": 0,
+      "explanation": "Proponents of these theses see pyramids everywhere and wrongly infer a family relationship or direct contact."
+    },
+    {
+      "question": "Why does a material comparison of the structures refute the idea of common builders?",
+      "options": [
+        "Because the architectures reveal distinct methods (compact stacking in Egypt vs faced earthen structures in Mexico).",
+        "Because Mesoamerican stone blocks are made exclusively of geopolymer mortar.",
+        "Because the Egyptians used polished granite exclusively, unlike the Mayans."
+      ],
+      "answerIndex": 0,
+      "explanation": "The construction methods and internal layouts are radically different, which rules out shared architects."
+    },
+    {
+      "question": "What methodological criticism does the author make against Graham Hancock's methodology?",
+      "options": [
+        "It deliberately ignores contradictory stratigraphical and historical data to validate its hypotheses.",
+        "It is based on a misunderstanding of modern measurement tools such as carbon-14.",
+        "It attributes an excessive role to local climate changes on the Giza plateau."
+      ],
+      "answerIndex": 0,
+      "explanation": "Pseudo-archaeology selects only the clues that suit it (cherry-picking) while ignoring well-documented contrary facts."
+    },
+    {
+      "question": "Why is the 'mother civilization' explanation deemed ethically problematic by historians?",
+      "options": [
+        "It denies indigenous peoples their own ingenuity and capacity for autonomous technical innovation.",
+        "It credits the pyramids to European rulers of Antiquity.",
+        "It assumes that Mayan techniques were superior to those of the Egyptians."
+      ],
+      "answerIndex": 0,
+      "explanation": "Claiming that a vanished superior civilization built everything is equivalent to stripping Incas, Mayans, or Egyptians of their own genius."
     }
   ]
 }

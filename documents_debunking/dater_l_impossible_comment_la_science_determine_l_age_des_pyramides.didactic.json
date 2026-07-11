@@ -52,96 +52,472 @@
       "def": "Processus de dégradation écologique transformant une région fertile en zone désertique aride."
     }
   },
-  "quiz": [
+  "quiz_a2": [
     {
-      "question": {
-        "fr": "Pourquoi est-il impossible de dater directement l'âge de construction d'une pyramide à partir du calcaire de ses blocs ?",
-        "es": "¿Por qué es imposible determinar directamente la edad de construcción de una pirámide a partir de la caliza de sus bloques?",
-        "en": "Why is it impossible to directly date the construction age of a pyramid from the limestone of its blocks?"
-      },
-      "options": {
-        "fr": [
-          "Parce que le calcaire n'est pas radioactif.",
-          "Parce que dater la roche elle-même ne révèle que son âge géologique (plusieurs millions d'années), pas le moment où elle a été taillée.",
-          "Parce que les Égyptiens ont effacé toutes les traces de taille."
-        ],
-        "es": [
-          "Porque la caliza no es radiactiva.",
-          "Porque datar la roca en sí misma solo revela su edad geológica (varios millones de años), no el momento en que fue tallada.",
-          "Porque los egipcios borraron todas las huellas de tallado."
-        ],
-        "en": [
-          "Because limestone is not radioactive.",
-          "Because dating the rock itself only reveals its geological age (several million years), not when it was carved.",
-          "Because the Egyptians erased all traces of carving."
-        ]
-      },
-      "answerIndex": 1,
-      "explanation": {
-        "fr": "Le calcaire s'est formé géologiquement il y a des millions d'années. La découpe d'une pierre ne réinitialise pas son horloge radioactive, il faut donc dater d'autres éléments comme le mortier.",
-        "es": "La caliza se formó geológicamente hace millones de años. El tallado de una piedra no reinicia su reloj radiactivo, por lo que es necesario datar otros elementos como el mortero.",
-        "en": "Limestone formed geologically millions of years ago. Carving a stone does not reset its radioactive clock, so other elements like mortar must be dated instead."
-      }
-    },
-    {
-      "question": {
-        "fr": "Quel élément organique piégé dans le mortier de gypse permet d'utiliser la datation au carbone 14 ?",
-        "es": "¿Qué elemento orgánico atrapado en el mortero de yeso permite utilizar la datation por carbono 14?",
-        "en": "What organic element trapped in the gypsum mortar allows the use of carbon-14 dating?"
-      },
-      "options": {
-        "fr": [
-          "Des restes d'outils en fer.",
-          "Des micro-fragments de charbon de bois issus du chauffage du gypse.",
-          "Des cheveux de pharaon."
-        ],
-        "es": [
-          "Restos de herramientas de hierro.",
-          "Microfragmentos de carbón vegetal procedentes del calentamiento del yeso.",
-          "Cabello de faraón."
-        ],
-        "en": [
-          "Remains of iron tools.",
-          "Micro-fragments of charcoal from the heating of the gypsum.",
-          "Pharaoh's hair."
-        ]
-      },
-      "answerIndex": 1,
-      "explanation": {
-        "fr": "Pour fabriquer le gypse du mortier, les Égyptiens devaient brûler du bois. Les cendres et le charbon de bois piégés dans le mortier fournissent la matière organique nécessaire à la datation C14.",
-        "es": "Para fabricar el yeso del mortero, los egipcios tenían que quemar madera. Las cenizas y el carbón vegetal atrapados en el mortero proporcionan la materia orgánica necesaria para la datación C14.",
-        "en": "To manufacture the gypsum for the mortar, the Egyptians had to burn wood. The ashes and charcoal trapped in the mortar provide the organic material needed for C-14 dating."
-      }
-    },
-    {
-      "question": {
-        "fr": "Quelle preuve historique contemporaine de Khéops documente la logistique du transport des blocs de pierre ?",
-        "es": "¿Qué prueba histórica contemporánea de Keops documenta la logística del transporte de los bloques de piedra?",
-        "en": "What historical evidence contemporary with Khufu documents the logistics of transporting the stone blocks?"
-      },
-      "options": {
-        "fr": [
-          "Le Journal de Merer, un papyrus administratif vieux de 4 500 ans rédigé par un inspecteur.",
-          "Un bas-relief montrant des extraterrestres.",
-          "Un décret écrit par Cléopâtre."
-        ],
-        "es": [
-          "El Diario de Merer, un papiro administrativo de 4500 años de antigüedad redactado por un inspector.",
-          "Un bajorrelieve que muestra extraterrestres.",
-          "Un decreto escrito por Cleopatra."
-        ],
-        "en": [
-          "The Diary of Merer, a 4,500-year-old administrative papyrus written by an inspector.",
-          "A bas-relief showing aliens.",
-          "A decree written by Cleopatra."
-        ]
-      },
+      "question": "Peut-on déterminer la date exacte de taille d'une pierre par analyse minérale directe ?",
+      "options": [
+        "Non, l'analyse ne donne que l'âge géologique de formation de la roche.",
+        "Oui, avec une précision à l'année près.",
+        "Oui, si l'on frotte de l'acide sur la pierre."
+      ],
       "answerIndex": 0,
-      "explanation": {
-        "fr": "Découvert en 2013, le Journal de Merer détaille jour après jour comment son équipe de bateliers transportait le calcaire de Tourah vers Gizeh sous Khéops.",
-        "es": "Descubierto en 2013, el Diario de Merer detalla día tras día cómo su equipo de barqueros transportaba la caliza de Tura a Gizeh bajo Keops.",
-        "en": "Discovered in 2013, the Diary of Merer details day by day how his team of boatmen transported Tura limestone to Giza under Khufu."
-      }
+      "explanation": "Le calcaire s'est formé il y a des millions d'années. Tailler la pierre ne modifie pas sa structure radioactive."
+    },
+    {
+      "question": "Quelle méthode scientifique utilise le charbon de bois pour dater les objets ?",
+      "options": [
+        "La datation au carbone 14",
+        "L'analyse satellite radar",
+        "La mesure de la taille des blocs"
+      ],
+      "answerIndex": 0,
+      "explanation": "La datation radiocarbone (carbone 14) mesure le taux de carbone 14 restant dans la matière organique."
+    },
+    {
+      "question": "Où trouve-t-on le charbon de bois utilisé pour dater la construction des pyramides ?",
+      "options": [
+        "Piégé à l'intérieur du mortier de gypse qui lie les blocs",
+        "Uniquement à l'intérieur de la chambre du Roi",
+        "Au sommet de la pyramide sous forme de suie"
+      ],
+      "answerIndex": 0,
+      "explanation": "Le mortier de gypse contient des micro-fragments de charbon de bois issus du feu nécessaire à sa fabrication."
+    },
+    {
+      "question": "Quel roi d'Égypte a ordonné la construction de la Grande Pyramide de Gizeh ?",
+      "options": [
+        "Khéops (Khoufou)",
+        "Ramsès II",
+        "Toutânkhamon"
+      ],
+      "answerIndex": 0,
+      "explanation": "La Grande Pyramide est le monument funéraire attribué au pharaon Khéops, de la IVe dynastie."
+    },
+    {
+      "question": "Combien d'années d'histoire le Journal de l'inspecteur Merer a-t-il ?",
+      "options": [
+        "Environ 4 500 ans",
+        "Environ 1 000 ans",
+        "Plus de 10 000 ans"
+      ],
+      "answerIndex": 0,
+      "explanation": "Le papyrus de Merer date du règne de Khéops, soit il y a environ 4 500 ans."
+    }
+  ],
+  "quiz_a2_es": [
+    {
+      "question": "¿Se puede determinar la fecha exacta de tallado de una piedra mediante análisis mineral directo?",
+      "options": [
+        "No, el análisis solo da la edad geológica de formación de la roca.",
+        "Sí, con una precisión de un año.",
+        "Sí, si se aplica ácido a la piedra."
+      ],
+      "answerIndex": 0,
+      "explanation": "La caliza se formó hace millones de años. Tallar la piedra no cambia su estructura radiactiva."
+    },
+    {
+      "question": "¿Qué método científico utiliza el carbón vegetal para datar los objetos?",
+      "options": [
+        "La datación por carbono 14",
+        "El análisis por radar satelital",
+        "La medición del tamaño de los bloques"
+      ],
+      "answerIndex": 0,
+      "explanation": "La datación por radiocarbono (carbono 14) mide el nivel de carbono 14 restante en la materia orgánica."
+    },
+    {
+      "question": "¿Dónde se encuentra el carbón vegetal utilizado para datar la construcción de las pirámides?",
+      "options": [
+        "Atrapado dentro del mortero de yeso que une los bloques",
+        "Únicamente en el interior de la cámara del Rey",
+        "En la cima de la pirámide en forma de hollín"
+      ],
+      "answerIndex": 0,
+      "explanation": "El mortero de yeso contiene microfragmentos de carbón vegetal procedentes del fuego necesario para su fabricación."
+    },
+    {
+      "question": "¿Qué rey de Egipto ordenó la construcción de la Gran Pirámide de Giza?",
+      "options": [
+        "Keops (Jufu)",
+        "Ramsés II",
+        "Tutankamón"
+      ],
+      "answerIndex": 0,
+      "explanation": "La Gran Pirámide es el monumento funerario atribuido al faraón Keops, de la IV dinastía."
+    },
+    {
+      "question": "¿Cuántos años de antigüedad tiene el Diario del inspector Merer?",
+      "options": [
+        "Aproximadamente 4500 años",
+        "Aproximadamente 1000 años",
+        "Más de 10 000 años"
+      ],
+      "answerIndex": 0,
+      "explanation": "El papiro de Merer data del reinado de Keops, es decir, hace unos 4500 años."
+    }
+  ],
+  "quiz_a2_en": [
+    {
+      "question": "Can you determine the exact carving date of a stone by direct mineral analysis?",
+      "options": [
+        "No, the analysis only gives the geological age of the rock's formation.",
+        "Yes, within a one-year precision.",
+        "Yes, by rubbing acid on the stone."
+      ],
+      "answerIndex": 0,
+      "explanation": "Limestone formed millions of years ago. Carving the stone does not alter its radioactive structure."
+    },
+    {
+      "question": "Which scientific method uses charcoal to date ancient objects?",
+      "options": [
+        "Carbon-14 dating",
+        "Satellite radar analysis",
+        "Block size measurement"
+      ],
+      "answerIndex": 0,
+      "explanation": "Radiocarbon dating (carbon-14) measures the level of carbon-14 remaining in organic matter."
+    },
+    {
+      "question": "Where is the charcoal used to date the pyramids' construction found?",
+      "options": [
+        "Trapped inside the gypsum mortar that binds the blocks",
+        "Only inside the King's Chamber",
+        "At the top of the pyramid as soot"
+      ],
+      "answerIndex": 0,
+      "explanation": "Gypsum mortar contains micro-fragments of charcoal from the fire needed to produce it."
+    },
+    {
+      "question": "Which King of Egypt ordered the construction of the Great Pyramid of Giza?",
+      "options": [
+        "Khufu (Cheops)",
+        "Ramesses II",
+        "Tutankhamun"
+      ],
+      "answerIndex": 0,
+      "explanation": "The Great Pyramid is the funerary monument attributed to Pharaoh Khufu of the 4th Dynasty."
+    },
+    {
+      "question": "How old is the Diary of Inspector Merer?",
+      "options": [
+        "About 4,500 years old",
+        "About 1,000 years old",
+        "Over 10,000 years old"
+      ],
+      "answerIndex": 0,
+      "explanation": "Merer's papyrus dates from the reign of Khufu, which is about 4,500 years ago."
+    }
+  ],
+  "quiz_b1": [
+    {
+      "question": "Pourquoi la datation du mortier résout-elle le problème de la datation de la pierre ?",
+      "options": [
+        "Parce que le mortier contient du charbon de bois issu de bois brûlé lors de sa fabrication, ce qui permet de dater l'activité humaine.",
+        "Parce que le mortier est plus récent que la pierre calcaire naturelle.",
+        "Parce que le mortier est composé de matériaux volcaniques radioactifs."
+      ],
+      "answerIndex": 0,
+      "explanation": "Pour fabriquer le mortier, les Égyptiens brûlaient du gypse. Les cendres piégées révèlent la date exacte de la construction."
+    },
+    {
+      "question": "Comment la statistique bayésienne aide-t-elle les physiciens dans la datation carbone 14 ?",
+      "options": [
+        "En croisant les dates scientifiques avec les règnes connus des pharaons pour affiner les marges d'erreur.",
+        "En calculant le nombre d'ouvriers requis pour ériger la pyramide.",
+        "En déterminant l'alignement des tombes avec le soleil."
+      ],
+      "answerIndex": 0,
+      "explanation": "Elle permet d'ajouter la contrainte chronologique connue des souverains égyptiens pour réduire les incertitudes physiques."
+    },
+    {
+      "question": "Quel processus logistique est détaillé par l'inspecteur Merer dans ses papyrus ?",
+      "options": [
+        "Le transport fluvial quotidien de blocs de calcaire de Tourah vers le chantier de Gizeh.",
+        "La construction d'un système de canaux au Mexique.",
+        "Le stockage du gypse pour la fabrication du mortier."
+      ],
+      "answerIndex": 0,
+      "explanation": "Merer décrit jour après jour comment sa flotte acheminait la pierre de parement blanc pour la pyramide de Khéops."
+    },
+    {
+      "question": "Pourquoi le projet David H. Koch de datation carbone 14 a-t-il été marquant ?",
+      "options": [
+        "Il a testé des dizaines d'échantillons sur plusieurs pyramides, validant globalement les époques historiques.",
+        "Il a découvert les papyrus de Wadi al-Jarf.",
+        "Il a prouvé que la Grande Pyramide avait été restaurée au Moyen Âge."
+      ],
+      "answerIndex": 0,
+      "explanation": "Cette vaste campagne d'analyses physiques a confirmé que les pyramides dataient bien de l'Ancien Empire égyptien."
+    },
+    {
+      "question": "Quel lien unit les analyses sédimentaires de la branche d'Ahramat et le texte de Merer ?",
+      "options": [
+        "Les sédiments prouvent qu'une rivière navigable passait près des pyramides à l'époque de Khéops, rendant le transport possible.",
+        "Les sédiments montrent que le fleuve était totalement asséché à son époque.",
+        "Il n'y a aucun rapport entre la sédimentation et les papyrus de Merer."
+      ],
+      "answerIndex": 0,
+      "explanation": "La branche d'Ahramat traversait la région de Gizeh, ce qui valide scientifiquement le trajet en bateau décrit par Merer."
+    }
+  ],
+  "quiz_b1_es": [
+    {
+      "question": "¿Por qué la datación del mortero resuelve el problema de la datación de la piedra?",
+      "options": [
+        "Porque el mortero contiene carbón vegetal procedente de madera quemada durante su fabricación, lo que permite datar la actividad humana.",
+        "Porque el mortero es más reciente que la piedra caliza natural.",
+        "Porque el mortero está compuesto por materiales volcánicos radiactivos."
+      ],
+      "answerIndex": 0,
+      "explanation": "Para fabricar el mortero, los egipcios quemaban yeso. Las cenizas atrapadas revelan la fecha exacta de la construcción."
+    },
+    {
+      "question": "¿Cómo ayuda la estadística bayesiana a los físicos en la datación por carbono 14?",
+      "options": [
+        "Al cruzar las fechas científicas con los reinados conocidos de los faraones para reducir los márgenes de error.",
+        "Al calcular el número de trabajadores requeridos para erigir la pirámide.",
+        "Al determinar la alineación de las tumbas con el sol."
+      ],
+      "answerIndex": 0,
+      "explanation": "Permite añadir la restricción cronológica conocida de los gobernantes egipcios para reducir las incertidumbres físicas."
+    },
+    {
+      "question": "¿Qué proceso logístico detalla el inspector Merer en sus papiros?",
+      "options": [
+        "El transporte fluvial diario de bloques de caliza de Tura hacia la obra de Giza.",
+        "La construcción de un sistema de canales en México.",
+        "El almacenamiento de yeso para la fabricación de mortero."
+      ],
+      "answerIndex": 0,
+      "explanation": "Merer describe día tras día cómo su flota transportaba la piedra de revestimiento blanca para la pirámide de Keops."
+    },
+    {
+      "question": "¿Por qué fue importante el proyecto de datación por carbono 14 de David H. Koch?",
+      "options": [
+        "Probó decenas de muestras en varias pirámides, validando en general las épocas históricas.",
+        "Descubrió los papiros de Wadi al-Jarf.",
+        "Demostró que la Gran Pirámide fue restaurada en la Edad Media."
+      ],
+      "answerIndex": 0,
+      "explanation": "Esta amplia campaña de análisis físicos confirmó que las pirámides databan efectivamente del Imperio Antiguo egipcio."
+    },
+    {
+      "question": "¿Qué vínculo une los análisis sedimentarios del brazo de Ahramat con el texto de Merer?",
+      "options": [
+        "Los sedimentos demuestran que un río navegable pasaba cerca de las pirámides en la época de Keops, haciendo posible el transporte.",
+        "Los sedimentos muestran que el río estaba totalmente seco en su época.",
+        "No hay relación alguna entre la sedimentación y los papiros de Merer."
+      ],
+      "answerIndex": 0,
+      "explanation": "El brazo de Ahramat cruzaba la región de Giza, lo que valida científicamente el trayecto en barco descrito por Merer."
+    }
+  ],
+  "quiz_b1_en": [
+    {
+      "question": "Why does dating the mortar solve the problem of dating the stone?",
+      "options": [
+        "Because the mortar contains charcoal from wood burned during its creation, which dates human activity.",
+        "Because the mortar is newer than the natural limestone.",
+        "Because the mortar is composed of radioactive volcanic materials."
+      ],
+      "answerIndex": 0,
+      "explanation": "To make mortar, the Egyptians burned gypsum. The trapped ash reveals the exact date of construction."
+    },
+    {
+      "question": "How does Bayesian statistics assist physicists in carbon-14 dating?",
+      "options": [
+        "By combining scientific dates with the known reigns of pharaohs to narrow margins of error.",
+        "By calculating the number of workers required to build the pyramid.",
+        "By determining the alignment of tombs with the sun."
+      ],
+      "answerIndex": 0,
+      "explanation": "It allows incorporating the known chronological sequence of Egyptian rulers to reduce physical uncertainties."
+    },
+    {
+      "question": "What logistical process is detailed by Inspector Merer in his papyri?",
+      "options": [
+        "The daily river transport of limestone blocks from Tura to the Giza construction site.",
+        "The building of a canal system in Mexico.",
+        "The storage of gypsum for mortar manufacturing."
+      ],
+      "answerIndex": 0,
+      "explanation": "Merer describes day by day how his fleet transported the white casing stones for the pyramid of Khufu."
+    },
+    {
+      "question": "Why was the David H. Koch radiocarbon dating project significant?",
+      "options": [
+        "It tested dozens of samples across several pyramids, globally validating historical timelines.",
+        "It discovered the Wadi al-Jarf papyri.",
+        "It proved that the Great Pyramid was restored during the Middle Ages."
+      ],
+      "answerIndex": 0,
+      "explanation": "This vast campaign of physical analysis confirmed that the pyramids indeed date back to the Egyptian Old Kingdom."
+    },
+    {
+      "question": "What connection links the sediment analysis of the Ahramat branch to Merer's text?",
+      "options": [
+        "The sediments prove that a navigable river flowed near Giza during Khufu's reign, making transport possible.",
+        "The sediments show that the river was completely dried up in his time.",
+        "There is no relationship between sedimentation and Merer's papyri."
+      ],
+      "answerIndex": 0,
+      "explanation": "The Ahramat branch crossed the Giza region, scientifically validating the boat route described by Merer."
+    }
+  ],
+  "quiz_b2": [
+    {
+      "question": "En quoi la statistique bayésienne réduit-elle les incertitudes physiques de la datation radiocarbone ?",
+      "options": [
+        "En intégrant la succession chronologique des règnes comme contrainte mathématique dans la calibration des courbes.",
+        "En éliminant automatiquement les données carbone 14 discordantes issues des laboratoires.",
+        "En remplaçant l'usage de la physique atomique par des probabilités historiques."
+      ],
+      "answerIndex": 0,
+      "explanation": "Le croisement mathématique des données de règne connues avec les courbes de carbone 14 restreint la plage de dates probables."
+    },
+    {
+      "question": "Quel phénomène méthodologique explique l'écart d'âge parfois plus vieux du carbone 14 par rapport à la chronologie textuelle ?",
+      "options": [
+        "L'effet « vieux bois », lié à l'utilisation de bois ancien ou centenaire lors de la calcination du gypse.",
+        "Une instabilité de la désintégration atomique du carbone 14 sous les climats désertiques.",
+        "Une altération des sédiments fluviaux de la branche d'Ahramat au fil des siècles."
+      ],
+      "answerIndex": 0,
+      "explanation": "Dater le charbon revient à dater l'année où l'arbre a poussé. Si l'Égypte a utilisé du vieux bois mort, la date physique paraît plus ancienne."
+    },
+    {
+      "question": "Comment le Journal de Merer permet-il d'invalider de manière définitive les chronologies alternatives millénaires ?",
+      "options": [
+        "Il documente les livraisons de blocs sous Khéops par des ouvriers contemporains, ancrant la pyramide au 26e siècle av. J.-C.",
+        "Il mentionne que les pyramides étaient déjà debout à son époque et qu'il les restaurait.",
+        "Il affirme que son équipe a voyagé vers d'autres continents pour copier l'architecture."
+      ],
+      "answerIndex": 0,
+      "explanation": "Ce papyrus est un registre administratif direct, quotidien et authentique liant l'activité de transport au souverain Khéops."
+    },
+    {
+      "question": "Quelle valeur épistémologique a le croisement des données physiques (C14), sédimentaires et textuelles ?",
+      "options": [
+        "Il offre une convergence de preuves indépendantes renforçant la solidité du consensus scientifique face aux théories alternatives.",
+        "Il démontre que chaque discipline isolée commet trop d'erreurs méthodologiques.",
+        "Il prouve la suprématie des méthodes physiques sur l'analyse des textes hiéroglyphiques."
+      ],
+      "answerIndex": 0,
+      "explanation": "La cohésion entre la géographie d'Ahramat, le journal de transport et les datations physiques rend le faisceau de preuves incontestable."
+    },
+    {
+      "question": "Pourquoi l'absence de gravures détaillant la construction sur les pyramides n'est-elle pas une preuve de mystère ?",
+      "options": [
+        "La logistique courante était documentée sur des papyrus administratifs d'archivage (comme à Wadi al-Jarf) et non sur les parois des tombes sacrées.",
+        "Les Égyptiens voulaient dissimuler les secrets de leur ingénierie aux yeux des pilleurs.",
+        "Les hiéroglyphes racontant la logistique ont été systématiquement effacés lors des profanations tardives."
+      ],
+      "answerIndex": 0,
+      "explanation": "Les monuments sacrés égyptiens servaient de temples et demeures d'éternité ; les écrits administratifs courants de chantier n'avaient pas leur place sur les parois sacrées."
+    }
+  ],
+  "quiz_b2_es": [
+    {
+      "question": "¿Cómo reduce la estadística bayesiana las incertidumbres físicas de la datación por radiocarbono?",
+      "options": [
+        "Al integrar la sucesión cronológica de los reinados como restricción matemática en la calibración de las curvas.",
+        "Al eliminar automáticamente los datos de carbono 14 discordantes procedentes de los laboratorios.",
+        "Al reemplazar el uso de la física atómica por probabilidades históricas."
+      ],
+      "answerIndex": 0,
+      "explanation": "El cruce matemático de los datos de reinado conocidos con las curvas de carbono 14 restringe el rango de fechas probables."
+    },
+    {
+      "question": "¿Qué fenómeno metodológico explica la diferencia de edad, a veces mayor, del carbono 14 con respecto a la cronología textual?",
+      "options": [
+        "El efecto «madera vieja», relacionado con el uso de madera antigua o centenaria durante la calcinación del yeso.",
+        "Una inestabilidad de la desintegración atómica del carbono 14 bajo climas desérticos.",
+        "Una alteración de los sedimentos fluviales del brazo de Ahramat a lo largo de los siglos."
+      ],
+      "answerIndex": 0,
+      "explanation": "Datar el carbón equivale a datar el año en que creció el árbol. Si Egipto utilizó madera muerta vieja, la fecha física parece más antigua."
+    },
+    {
+      "question": "¿Cómo permite el Diario de Merer invalidar de forma definitiva las cronologías alternativas milenarias?",
+      "options": [
+        "Documenta las entregas de bloques bajo Keops por trabajadores contemporáneos, anclando la pirámide al siglo XXVI a. C.",
+        "Menciona que las pirámides ya estaban en pie en su época y que las estaba restaurando.",
+        "Afirma que su equipo viajó a otros continentes para copiar la arquitectura."
+      ],
+      "answerIndex": 0,
+      "explanation": "Este papiro es un registro administrativo directo, diario y auténtico que vincula la actividad de transporte con el gobernante Keops."
+    },
+    {
+      "question": "¿Qué valor epistemológico tiene el cruce de datos físicos (C14), sedimentarios y textuales?",
+      "options": [
+        "Ofrece una convergencia de pruebas independientes que refuerza la solidez del consenso científico frente a teorías alternativas.",
+        "Demuestra que cada disciplina aislada comete demasiados errores metodológicos.",
+        "Prueba la supremacía de los métodos físicos sobre el análisis de textos jeroglíficos."
+      ],
+      "answerIndex": 0,
+      "explanation": "La cohesión entre la geografía de Ahramat, el diario de transporte y las dataciones físicas hace que el conjunto de pruebas sea incontestable."
+    },
+    {
+      "question": "¿Por qué la ausencia de grabados que detallen la construcción en las pirámides no es una prueba de misterio?",
+      "options": [
+        "La logística habitual se documentaba en papiros administrativos de archivo (como en Wadi al-Jarf) y no en las paredes de las tumbas sagradas.",
+        "Los egipcios querían ocultar los secretos de su ingeniería a los ojos de los saqueadores.",
+        "Los jeroglíficos que narraban la logística fueron borrados sistemáticamente durante las profanaciones tardías."
+      ],
+      "answerIndex": 0,
+      "explanation": "Los monumentos sagrados egipcios servían como templos y moradas de eternidad; los escritos administrativos de obra no tenían cabida en las paredes sagradas."
+    }
+  ],
+  "quiz_b2_en": [
+    {
+      "question": "How does Bayesian statistics reduce the physical uncertainties of radiocarbon dating?",
+      "options": [
+        "By integrating the chronological succession of reigns as a mathematical constraint in calibrating the curves.",
+        "By automatically discarding discordant carbon-14 data from laboratories.",
+        "By replacing atomic physics with historical probabilities."
+      ],
+      "answerIndex": 0,
+      "explanation": "The mathematical cross-referencing of known reign data with carbon-14 curves restricts the range of probable dates."
+    },
+    {
+      "question": "What methodological phenomenon explains the older carbon-14 age compared to textual chronology?",
+      "options": [
+        "The 'old wood' effect, linked to the use of ancient or centennial wood during gypsum calcination.",
+        "An instability in carbon-14 atomic decay under desert climates.",
+        "An alteration of river sediments in the Ahramat branch over centuries."
+      ],
+      "answerIndex": 0,
+      "explanation": "Dating charcoal means dating the year the tree grew. If Egypt used old dead wood, the physical date appears older than the construction."
+    },
+    {
+      "question": "How does the Diary of Merer definitively invalidate millenary alternative chronologies?",
+      "options": [
+        "It documents block deliveries under Khufu by contemporary workers, anchoring the pyramid to the 26th century BC.",
+        "It mentions that the pyramids were already standing in his time and that he was restoring them.",
+        "It claims that his team traveled to other continents to copy the architecture."
+      ],
+      "answerIndex": 0,
+      "explanation": "This papyrus is a direct, daily, and authentic administrative log linking the transport activity to the ruler Khufu."
+    },
+    {
+      "question": "What is the epistemological value of cross-referencing physical (C14), sedimentary, and textual data?",
+      "options": [
+        "It provides a convergence of independent lines of evidence, strengthening the scientific consensus against alternative theories.",
+        "It shows that each isolated discipline commits too many methodological errors.",
+        "It proves the supremacy of physical methods over the analysis of hieroglyphic texts."
+      ],
+      "answerIndex": 0,
+      "explanation": "The cohesion between the geography of Ahramat, the transport journal, and the physical datings makes the body of evidence indisputable."
+    },
+    {
+      "question": "Why is the lack of engravings detailing construction inside the pyramids not a sign of mystery?",
+      "options": [
+        "Routine logistics were documented on administrative papyri (such as at Wadi al-Jarf) and not on the walls of sacred tombs.",
+        "The Egyptians wanted to hide the secrets of their engineering from tomb raiders.",
+        "Hieroglyphs recounting logistics were systematically erased during late desecrations."
+      ],
+      "answerIndex": 0,
+      "explanation": "Ancient Egyptian monuments served as temples and eternal homes; daily construction logistics had no place on sacred temple walls."
     }
   ]
 }
