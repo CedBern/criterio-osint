@@ -64,3 +64,10 @@ Como explica el investigador **Jean-Loïc Le Quellec**, la ciencia no está aqu�
 - **innovar constantemente** para superar los desafíos técnicos.
 
 En resumen, ya sea que los bloques hayan sido **tallados, transportados o a veces vertidos**, una cosa es segura: **el genio de los constructores reside en su dominio de la naturaleza, y no en misterios inexplicados**.
+
+---
+
+### 📚 Fuentes & Referencias Científicas
+*   **Davidovits, J. (1988).** *Ellos construyeron las pirámides.* Éditions Jean-Cyrille Godefroy.
+*   **Barsoum, M. W. et al. (2006).** *Microstructural and mineralogical characterization of Egypt’s Giza pyramids.* Journal of the American Ceramic Society. [DOI: 10.1111/j.1551-2916.2006.01302.x]
+*   **Klemm, D. D. & Klemm, R. (2001).** *The stones of the pyramids: Provenance of the building stones of the Old Kingdom pyramids of Egypt.* Journal of African Earth Sciences.

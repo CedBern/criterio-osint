@@ -61,3 +61,10 @@ El **rigor científico**, sumado a **nuevas tecnologías** como los **testigos d
 ![Geoarqueóloga realizando un muestreo de sedimentos cerca de las pirámides](images/c4_6.png)
 
 Gracias a la **geoarqueología**, hoy comprendemos que estos monumentos se inscribían en un **paisaje dinámico**, donde **el agua** y **el piedra** estaban íntimamente ligadas. Preservar este patrimonio es, ante todo, **respecter la verdad material** de quienes lo edificaron.
+
+---
+
+### 📚 Fuentes & Referencias Científicas
+*   **Bonani, G. y col. (2001).** *Radiocarbon dates of Old and Middle Kingdom monuments in Egypt.* Radiocarbon.
+*   **Tallet, P. (2017).** *Les papyrus de la mer Rouge I : Le journal de Merer (Papyrus Jarf A et B).* Mémoires de l'IFAO.
+*   **Ghoneim, E. y col. (2024).** *The Egyptian pyramid chain was built along the now abandoned Ahramat Nile Branch.* Nature Communications Earth & Environment. [DOI: 10.1038/s43247-024-01379-7]

@@ -64,3 +64,10 @@ Comme l’explique le chercheur **Jean-Loïc Le Quellec**, la science n’est pa
 - **innover sans cesse** pour surmonter les défis techniques.
 
 En somme, que les blocs aient été **taillés, transportés ou parfois coulés**, une chose est sûre : **le génie des bâtisseurs réside dans leur maîtrise de la nature, et non dans des mystères inexpliqués**.
+
+---
+
+### 📚 Sources & Références Scientifiques
+*   **Davidovits, J. (1988).** *Ils ont bâti les pyramides.* Éditions Jean-Cyrille Godefroy.
+*   **Barsoum, M. W. et al. (2006).** *Microstructural and mineralogical characterization of Egypt’s Giza pyramids.* Journal of the American Ceramic Society. [DOI: 10.1111/j.1551-2916.2006.01302.x]
+*   **Klemm, D. D. & Klemm, R. (2001).** *The stones of the pyramids: Provenance of the building stones of the Old Kingdom pyramids of Egypt.* Journal of African Earth Sciences.

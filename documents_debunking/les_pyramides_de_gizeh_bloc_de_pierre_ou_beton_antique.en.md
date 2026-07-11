@@ -64,3 +64,10 @@ As researcher **Jean-Loïc Le Quellec** explains, science is not there to **"sha
 - **innovate constantly** to overcome technical challenges.
 
 In short, whether the blocks were **carved, transported, or sometimes poured**, one thing is certain: **the builders' genius lies in their mastery of nature, and not in unexplained mysteries**.
+
+---
+
+### 📚 Sources & Scientific References
+*   **Davidovits, J. (1988).** *The Pyramids: An Enigma Solved.* Hippocrene Books.
+*   **Barsoum, M. W. et al. (2006).** *Microstructural and mineralogical characterization of Egypt’s Giza pyramids.* Journal of the American Ceramic Society. [DOI: 10.1111/j.1551-2916.2006.01302.x]
+*   **Klemm, D. D. & Klemm, R. (2001).** *The stones of the pyramids: Provenance of the building stones of the Old Kingdom pyramids of Egypt.* Journal of African Earth Sciences.

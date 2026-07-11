@@ -61,3 +61,10 @@ This **climate pressure** pushed societies to organize in increasingly complex w
 ![Geoarchaeologist taking sediment samples near the pyramids](images/c4_6.png)
 
 Thanks to **geoarchaeology**, we understand today that these monuments were part of a **dynamic landscape** where **water** and **stone** were intimately linked. Preserving this heritage is, above all, about **respecting the physical truth** of those who built it.
+
+---
+
+### 📚 Sources & Scientific References
+*   **Bonani, G. et al. (2001).** *Radiocarbon dates of Old and Middle Kingdom monuments in Egypt.* Radiocarbon.
+*   **Tallet, P. (2017).** *Les papyrus de la mer Rouge I : Le journal de Merer (Papyrus Jarf A et B).* Mémoires de l'IFAO.
+*   **Ghoneim, E. et al. (2024).** *The Egyptian pyramid chain was built along the now abandoned Ahramat Nile Branch.* Nature Communications Earth & Environment. [DOI: 10.1038/s43247-024-01379-7]
