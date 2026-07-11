@@ -1267,6 +1267,62 @@
     .styled-table tbody tr:hover {
       background-color: rgba(0, 0, 0, 0.015);
     }
+    
+    /* Tags and Interactive Features Styles */
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 8px 0 12px 0;
+    }
+    .tag-badge {
+      background: var(--accent-dim);
+      color: var(--accent);
+      border: 1px solid rgba(124, 34, 30, 0.12);
+      border-radius: 12px;
+      padding: 2px 8px;
+      font-size: 10.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+    .filter-pill {
+      background: var(--surface);
+      color: var(--muted);
+      border: 1.5px solid var(--border);
+      border-radius: 20px;
+      padding: 6px 16px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.25s;
+    }
+    .filter-pill:hover {
+      border-color: var(--muted);
+      color: var(--fg);
+    }
+    .filter-pill.active {
+      background: var(--accent) !important;
+      color: #ffffff !important;
+      border-color: var(--accent) !important;
+      box-shadow: 0 2px 8px var(--accent-glow);
+    }
+    .search-wrapper input:focus {
+      border-color: var(--accent) !important;
+      box-shadow: 0 0 0 3px var(--accent-dim) !important;
+    }
+    .stats-dashboard button:hover {
+      opacity: 1 !important;
+    }
+    .modal-body p, .modal-body li {
+      font-size: var(--reading-font-size, 16px) !important;
+      line-height: 1.7;
+    }
+    .font-size-controls button:hover {
+      border-color: var(--accent) !important;
+      color: var(--accent) !important;
+      background: var(--accent-dim) !important;
+    }
   </style>
 </head>
 <body>
@@ -1297,6 +1353,13 @@
         <a href="#metodologia" class="nav-link" id="ui-nav-met">Méthodologie</a>
         <a href="#contacto" class="nav-link" id="ui-nav-pro">Projet</a>
       </nav>
+      
+      <!-- Stats Dashboard -->
+      <div class="stats-dashboard" id="statsDashboard" style="max-width: 480px; margin: 16px auto 0; padding: 12px 20px; background: rgba(255,255,255,0.5); backdrop-filter: blur(4px); border: 1.5px solid var(--border); border-radius: var(--radius); display: flex; align-items: center; justify-content: space-between; font-size: 12.5px; font-weight: 600; color: var(--muted); display: none;">
+        <span style="display: flex; align-items: center; gap: 6px;">🎯 <span id="ui-stats-title">Vos Progrès Quiz :</span></span>
+        <span style="color: var(--accent);"><strong id="statsCompleted">0</strong>/4 complétés (&nbsp;<strong id="statsAccuracy">0%</strong> de précision&nbsp;)</span>
+        <button id="resetStatsBtn" title="Réinitialiser" style="background: none; border: none; cursor: pointer; font-size: 11px; color: var(--accent); opacity: 0.7; transition: opacity 0.2s;">🔄</button>
+      </div>
     </header>
 
     <main>
@@ -1306,7 +1369,8 @@
       <article class="featured-story" tabindex="0" 
                data-title-fr="Dater l'impossible : Comment la science détermine l'âge des pyramides" data-title-es="Datar lo imposible: Cómo la ciencia determina la edad de las pirámides" data-title-en="Dating the Impossible: How Science Determines the Age of the Pyramids"
                data-summary-fr="Une objection revient souvent dans les débats sur les théories alternatives : *« On ne peut pas dater la taille d’une pierre. »* Sur un plan strictement minéralogique, cette affirm..." data-summary-es="Una objeción surge a menudo en los debates sobre teorías alternativas: *«No se puede datar el tallado de una piedra».* Desde un punto de vista estrictamente mineralógico, esta afir..." data-summary-en="An objection often arises in debates about alternative theories: *“You cannot date the carving of a stone.”* From a strictly mineralogical standpoint, this statement is correct. A ..."
-               data-level-fr="B1-B2" data-level-es="B1-B2" data-level-en="B1-B2">
+               data-level-fr="B1-B2" data-level-es="B1-B2" data-level-en="B1-B2"
+               data-tags-fr="Égypte ancienne,Archéologie,Technologie" data-tags-es="Egipto antiguo,Arqueología,Tecnología" data-tags-en="Ancient Egypt,Archaeology,Technology">
         <div class="featured-img-container">
           <img src="images/c4_1.jpg" alt="Dater l'impossible : Comment la science détermine l'âge des pyramides" class="featured-img">
         </div>
@@ -1318,6 +1382,7 @@
           </div>
           <h2 class="story-title">Dater l'impossible : Comment la science détermine l'âge des pyramides</h2>
           <p class="story-excerpt">Une objection revient souvent dans les débats sur les théories alternatives : *« On ne peut pas dater la taille d’une pierre. »* Sur un plan strictement minéralogique, cette affirm...</p>
+          <div class="card-tags"><span class="tag-badge">Égypte ancienne</span><span class="tag-badge">Archéologie</span><span class="tag-badge">Technologie</span></div>
           <div class="story-footer">
             <span class="read-more-btn" data-readmore="featured">Leer investigaci&oacute;n completa &rarr;</span>
           </div>
@@ -1337,7 +1402,16 @@
                 <button class="btn-translate-en" title="English translation">🇬🇧</button>
               </div>
             </div>
-<div class="media-block"><div class="article-media"><img src="images/c4_1.jpg" alt="Le Sphinx de Gizeh et la Grande Pyramide au coucher du soleil"><span class="media-caption">Le Sphinx de Gizeh et la Grande Pyramide au coucher du soleil</span></div></div>
+
+            <div class="paragraph-block">
+              <div class="paragraph-fr"><p>Tags: Égypte ancienne, Archéologie, Technologie<br><div class="article-media"><img src="images/c4_1.jpg" alt="Le Sphinx de Gizeh et la Grande Pyramide au coucher du soleil"><span class="media-caption">Le Sphinx de Gizeh et la Grande Pyramide au coucher du soleil</span></div></p></div>
+              <div class="paragraph-es" style="display:none;"><p>Etiquetas: Egipto antiguo, Arqueología, Tecnología<br><div class="article-media"><img src="images/c4_1.jpg" alt="Reconstitución del Sphinx de Gizeh y la Gran Pirámide al atardecer"><span class="media-caption">Reconstitución del Sphinx de Gizeh y la Gran Pirámide al atardecer</span></div></p></div>
+              <div class="paragraph-en" style="display:none;"><p>Tags: Ancient Egypt, Archaeology, Technology<br><div class="article-media"><img src="images/c4_1.jpg" alt="Reconstruction of the Sphinx of Giza and the Great Pyramid at sunset"><span class="media-caption">Reconstruction of the Sphinx of Giza and the Great Pyramid at sunset</span></div></p></div>
+              <div class="paragraph-actions" style="display:none;">
+                <button class="btn-translate-es" title="Traducción al español">🇲🇽</button>
+                <button class="btn-translate-en" title="English translation">🇬🇧</button>
+              </div>
+            </div>
 
             <div class="paragraph-block">
               <div class="paragraph-fr"><h3>1. Introduction : Le paradoxe de la pierre et du temps</h3></div>
@@ -1627,12 +1701,33 @@
       <!-- Section Articles Grid -->
       <section class="articles-grid-section" id="articulos">
         <h2 class="section-title" id="ui-sect-title">Autres Recherches</h2>
+        
+        <!-- Controls Container -->
+        <div class="articles-controls" style="margin-bottom: 30px; display: flex; flex-direction: column; gap: 16px;">
+          <!-- Search Bar -->
+          <div class="search-wrapper" style="position: relative; width: 100%; max-width: 480px; margin: 0 auto;">
+            <input type="text" id="articleSearchInput" placeholder="Rechercher un article..." style="width: 100%; padding: 12px 16px 12px 40px; border: 1.5px solid var(--border); border-radius: 30px; font-size: 14px; background: var(--surface); color: var(--fg); transition: all 0.3s; outline: none; box-shadow: 0 2px 8px rgba(0,0,0,0.02); box-sizing: border-box;">
+            <span class="search-icon" style="position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--muted); font-size: 14px;">🔍</span>
+          </div>
+          <!-- Thematic Filters -->
+          <div class="thematic-filters" id="thematicFilters" style="display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; margin-top: 4px;">
+            <button class="filter-pill active" data-filter="all" data-text-fr="Tout" data-text-es="Todo" data-text-en="All">Tout</button>
+            <button class="filter-pill" data-filter="Égypte ancienne" data-text-fr="Égypte ancienne" data-text-es="Egipto antiguo" data-text-en="Ancient Egypt">Égypte ancienne</button>
+            <button class="filter-pill" data-filter="Climat" data-text-fr="Climat" data-text-es="Clima" data-text-en="Climate">Climat</button>
+            <button class="filter-pill" data-filter="Technologie" data-text-fr="Technologie" data-text-es="Tecnología" data-text-en="Technology">Technologie</button>
+            <button class="filter-pill" data-filter="Archéologie" data-text-fr="Archéologie" data-text-es="Arqueología" data-text-en="Archaeology">Archéologie</button>
+            <button class="filter-pill" data-filter="Histoire" data-text-fr="Histoire" data-text-es="Historia" data-text-en="History">Histoire</button>
+            <button class="filter-pill" data-filter="Chimie" data-text-fr="Chimie" data-text-es="Química" data-text-en="Chemistry">Chimie</button>
+          </div>
+        </div>
+        
         <div class="articles-grid">
           <!-- DOSSIERS_START -->
         <article class="magazine-card reveal" tabindex="0"
                  data-title-fr="Les pyramides de Gizeh : Bloc de pierre ou béton antique ?" data-title-es="Las pirámides de Gizeh: ¿Bloque de piedra u hormigón antiguo?" data-title-en="The Pyramids of Giza: Stone block or ancient concrete?"
                  data-summary-fr="Une idée intrigante circule depuis des années sur les réseaux sociaux : les pyramides d’Égypte n’auraient pas été construites avec des **pierres taillées**, mais avec du **béton an..." data-summary-es="Una idea intrigante circula desde hace años en las redes sociales: las pirámides de Egipto no habrían sido construites con **piedras talladas**, sino con **hormigón antiguo**. Segú..." data-summary-en="An intriguing idea has been circulating on social media for years: the pyramids of Egypt were not built with **carved stones**, but with **ancient concrete**. According to this the..."
-                 data-level-fr="B1-B2" data-level-es="B1-B2" data-level-en="B1-B2">
+                 data-level-fr="B1-B2" data-level-es="B1-B2" data-level-en="B1-B2"
+                 data-tags-fr="Égypte ancienne,Chimie,Technologie" data-tags-es="Egipto antiguo,Química,Tecnología" data-tags-en="Ancient Egypt,Chemistry,Technology">
           <div class="card-img-container">
             <img src="images/c3_1.png" alt="Les pyramides de Gizeh : Bloc de pierre ou béton antique ?" class="card-img">
           </div>
@@ -1644,6 +1739,7 @@
             </div>
             <h3 class="card-title">Les pyramides de Gizeh : Bloc de pierre ou béton antique ?</h3>
             <p class="card-excerpt">Une idée intrigante circule depuis des années sur les réseaux sociaux : les pyramides d’Égypte n’auraient pas été construites avec des **pierres taillées**, mais avec du **béton an...</p>
+            <div class="card-tags"><span class="tag-badge">Égypte ancienne</span><span class="tag-badge">Chimie</span><span class="tag-badge">Technologie</span></div>
             <div class="card-footer">
               <span class="read-more-link" data-readmore="card">Leer artículo &rarr;</span>
             </div>
@@ -1663,7 +1759,16 @@
                 <button class="btn-translate-en" title="English translation">🇬🇧</button>
               </div>
             </div>
-<div class="media-block"><div class="article-media"><img src="images/c3_1.png" alt="Reconstitution du plateau de Gizeh traversé par le canal d'Ahramat"><span class="media-caption">Reconstitution du plateau de Gizeh traversé par le canal d'Ahramat</span></div></div>
+
+            <div class="paragraph-block">
+              <div class="paragraph-fr"><p>Tags: Égypte ancienne, Chimie, Technologie<br><div class="article-media"><img src="images/c3_1.png" alt="Reconstitution du plateau de Gizeh traversé par le canal d'Ahramat"><span class="media-caption">Reconstitution du plateau de Gizeh traversé par le canal d'Ahramat</span></div></p></div>
+              <div class="paragraph-es" style="display:none;"><p>Etiquetas: Egipto antiguo, Química, Tecnología<br><div class="article-media"><img src="images/c3_1.png" alt="Reconstitución del plateau de Gizeh cruzado por el canal de Ahramat"><span class="media-caption">Reconstitución del plateau de Gizeh cruzado por el canal de Ahramat</span></div></p></div>
+              <div class="paragraph-en" style="display:none;"><p>Tags: Ancient Egypt, Chemistry, Technology<br><div class="article-media"><img src="images/c3_1.png" alt="Reconstruction of Giza plateau crossed by the Ahramat canal"><span class="media-caption">Reconstruction of Giza plateau crossed by the Ahramat canal</span></div></p></div>
+              <div class="paragraph-actions" style="display:none;">
+                <button class="btn-translate-es" title="Traducción al español">🇲🇽</button>
+                <button class="btn-translate-en" title="English translation">🇬🇧</button>
+              </div>
+            </div>
 
             <div class="paragraph-block">
               <div class="paragraph-fr"><h3>1. Introduction : Le mystère des blocs parfaits</h3></div>
@@ -1890,7 +1995,8 @@
         <article class="magazine-card reveal" tabindex="0"
                  data-title-fr="Le mirage de la connexion globale des pyramides : Pourquoi la science réfute le mythe de la civilisation mère" data-title-es="El espejismo de la conexión global de las pirámides: Por qué la ciencia refuta el mito de la civilización madre" data-title-en="The Mirage of the Global Pyramid Connection: Why Science Refutes the Mother Civilization Myth"
                  data-summary-fr="Depuis des millénaires, les pyramides captivent l’humanité. De Gizeh à Teotihuacán, ces monuments de pierre défient le temps et nourrissent notre imagination. Pourtant, cette admir..." data-summary-es="Desde hace milenios, las pirámides cautivan a la humanidad. De Guiza a Teotihuacán, estos monumentos de piedra desafían el tiempo y alimentan nuestra imaginación. Sin embargo, esta..." data-summary-en="For millennia, pyramids have captivated humanity. From Giza to Teotihuacan, these stone monuments defy time and feed our imagination. However, this legitimate admiration has given ..."
-                 data-level-fr="B1/B2 (Intermédiaire)" data-level-es="B1/B2 (Intermedio)" data-level-en="B1/B2 (Intermediate)">
+                 data-level-fr="B1/B2 (Intermédiaire)" data-level-es="B1/B2 (Intermedio)" data-level-en="B1/B2 (Intermediate)"
+                 data-tags-fr="Égypte ancienne,Pseudo-archéologie,Histoire" data-tags-es="Egipto antiguo,Pseudoarqueología,Historia" data-tags-en="Ancient Egypt,Pseudo-archaeology,History">
           <div class="card-img-container">
             <img src="images/c_1.jpg" alt="Le mirage de la connexion globale des pyramides : Pourquoi la science réfute le mythe de la civilisation mère" class="card-img">
           </div>
@@ -1902,6 +2008,7 @@
             </div>
             <h3 class="card-title">Le mirage de la connexion globale des pyramides : Pourquoi la science réfute le mythe de la civilisation mère</h3>
             <p class="card-excerpt">Depuis des millénaires, les pyramides captivent l’humanité. De Gizeh à Teotihuacán, ces monuments de pierre défient le temps et nourrissent notre imagination. Pourtant, cette admir...</p>
+            <div class="card-tags"><span class="tag-badge">Égypte ancienne</span><span class="tag-badge">Pseudo-archéologie</span><span class="tag-badge">Histoire</span></div>
             <div class="card-footer">
               <span class="read-more-link" data-readmore="card">Leer artículo &rarr;</span>
             </div>
@@ -1921,7 +2028,16 @@
                 <button class="btn-translate-en" title="English translation">🇬🇧</button>
               </div>
             </div>
-<div class="media-block"><div class="article-media"><img src="images/c_1.jpg" alt="La fascination magnétique des pyramides"><span class="media-caption">La fascination magnétique des pyramides</span></div></div>
+
+            <div class="paragraph-block">
+              <div class="paragraph-fr"><p>Tags: Égypte ancienne, Pseudo-archéologie, Histoire<br><div class="article-media"><img src="images/c_1.jpg" alt="La fascination magnétique des pyramides"><span class="media-caption">La fascination magnétique des pyramides</span></div></p></div>
+              <div class="paragraph-es" style="display:none;"><p>Etiquetas: Egipto antiguo, Pseudoarqueología, Historia<br><div class="article-media"><img src="images/c_1.jpg" alt="La fascinación magnética de las pirámides"><span class="media-caption">La fascinación magnética de las pirámides</span></div></p></div>
+              <div class="paragraph-en" style="display:none;"><p>Tags: Ancient Egypt, Pseudo-archaeology, History<br><div class="article-media"><img src="images/c_1.jpg" alt="The magnetic fascination of pyramids"><span class="media-caption">The magnetic fascination of pyramids</span></div></p></div>
+              <div class="paragraph-actions" style="display:none;">
+                <button class="btn-translate-es" title="Traducción al español">🇲🇽</button>
+                <button class="btn-translate-en" title="English translation">🇬🇧</button>
+              </div>
+            </div>
 
             <div class="paragraph-block">
               <div class="paragraph-fr"><p>Depuis des millénaires, les pyramides captivent l’humanité. De Gizeh à Teotihuacán, ces monuments de pierre défient le temps et nourrissent notre imagination. Pourtant, cette admiration légitime a donné naissance à des théories « alternatives » aussi séduisantes qu’<span class="glossary-term" data-word="infondées">infondées</span>. Sur les réseaux sociaux, des influenceurs comme Marita Rojas ou Graham Hancock affirment l’existence d’une « civilisation mère » disparue, ou même d’une intervention extraterrestre, pour expliquer les similitudes entre les pyramides des différents continents.</p></div>
@@ -2250,7 +2366,8 @@
         <article class="magazine-card reveal" tabindex="0"
                  data-title-fr="Le secret des bâtisseurs : Comment la découverte d’une branche perdue du Nil réécrit l’histoire des pyramides" data-title-es="El secreto de los constructores: Cómo el descubrimiento de un brazo perdido del Nilo reescribe la historia de las Pirámides" data-title-en="The Builders' Secret: How the Discovery of a Lost Nile Branch Rewrites the History of the Pyramids"
                  data-summary-fr="Pourquoi **31 pyramides**, dont les légendaires monuments de Gizeh, s’alignent-elles avec une précision chirurgicale le long d’une bande de terre aride, loin du Nil actuel ? Depuis..." data-summary-es="¿Por qué 31 pirámides, incluyendo los íconos eternos de la meseta de Guiza, están hoy alineadas con precisión quirúrgica a lo largo de una franja de tierra árida e inhóspita? Hasta..." data-summary-en="Why are 31 pyramids, including the eternal icons of the Giza plateau, aligned with surgical precision today along a strip of dry and inhospitable land? Until now, the location of t..."
-                 data-level-fr="B1/B2 (Intermédiaire)" data-level-es="B1/B2 (Intermedio)" data-level-en="B1/B2 (Intermediate)">
+                 data-level-fr="B1/B2 (Intermédiaire)" data-level-es="B1/B2 (Intermedio)" data-level-en="B1/B2 (Intermediate)"
+                 data-tags-fr="Égypte ancienne,Climat,Technologie" data-tags-es="Egipto antiguo,Clima,Tecnología" data-tags-en="Ancient Egypt,Climate,Technology">
           <div class="card-img-container">
             <img src="images/1a.png" alt="Le secret des bâtisseurs : Comment la découverte d’une branche perdue du Nil réécrit l’histoire des pyramides" class="card-img">
           </div>
@@ -2262,6 +2379,7 @@
             </div>
             <h3 class="card-title">Le secret des bâtisseurs : Comment la découverte d’une branche perdue du Nil réécrit l’histoire des pyramides</h3>
             <p class="card-excerpt">Pourquoi **31 pyramides**, dont les légendaires monuments de Gizeh, s’alignent-elles avec une précision chirurgicale le long d’une bande de terre aride, loin du Nil actuel ? Depuis...</p>
+            <div class="card-tags"><span class="tag-badge">Égypte ancienne</span><span class="tag-badge">Climat</span><span class="tag-badge">Technologie</span></div>
             <div class="card-footer">
               <span class="read-more-link" data-readmore="card">Leer artículo &rarr;</span>
             </div>
@@ -2281,7 +2399,16 @@
                 <button class="btn-translate-en" title="English translation">🇬🇧</button>
               </div>
             </div>
-<div class="media-block"><div class="article-media"><img src="images/1a.png" alt="Le canal d'Ahramat coulant près des pyramides"><span class="media-caption">Le canal d'Ahramat coulant près des pyramides</span></div></div>
+
+            <div class="paragraph-block">
+              <div class="paragraph-fr"><p>Tags: Égypte ancienne, Climat, Technologie<br><div class="article-media"><img src="images/1a.png" alt="Le canal d'Ahramat coulant près des pyramides"><span class="media-caption">Le canal d'Ahramat coulant près des pyramides</span></div></p></div>
+              <div class="paragraph-es" style="display:none;"><p>Etiquetas: Egipto antiguo, Clima, Tecnología<br><div class="article-media"><img src="images/1a.png" alt="El canal Ahramat fluyendo junto a las pirámides"><span class="media-caption">El canal Ahramat fluyendo junto a las pirámides</span></div></p></div>
+              <div class="paragraph-en" style="display:none;"><p>Tags: Ancient Egypt, Climate, Technology<br><div class="article-media"><img src="images/1a.png" alt="The Ahramat canal flowing next to the pyramids"><span class="media-caption">The Ahramat canal flowing next to the pyramids</span></div></p></div>
+              <div class="paragraph-actions" style="display:none;">
+                <button class="btn-translate-es" title="Traducción al español">🇲🇽</button>
+                <button class="btn-translate-en" title="English translation">🇬🇧</button>
+              </div>
+            </div>
 
             <div class="paragraph-block">
               <div class="paragraph-fr"><h3>1. Introduction : L’énigme du désert</h3></div>
@@ -2626,6 +2753,12 @@
           </div>
           <span id="progressText">0/0</span>
         </div>
+        
+        <!-- Font Size Controls -->
+        <div class="font-size-controls" style="display: flex; align-items: center; gap: 8px; border-left: 1px solid var(--border); padding-left: 12px; margin-left: auto;">
+          <button id="fontDecBtn" title="Diminuer la taille du texte" style="background: none; border: 1px solid var(--border); border-radius: 50%; width: 26px; height: 26px; font-size: 11px; font-weight: bold; cursor: pointer; color: var(--muted); transition: all 0.2s; display: flex; align-items: center; justify-content: center; outline: none; box-sizing: border-box;">A-</button>
+          <button id="fontIncBtn" title="Agrandir la taille du texte" style="background: none; border: 1px solid var(--border); border-radius: 50%; width: 26px; height: 26px; font-size: 13px; font-weight: bold; cursor: pointer; color: var(--muted); transition: all 0.2s; display: flex; align-items: center; justify-content: center; outline: none; box-sizing: border-box;">A+</button>
+        </div>
       </div>
 
       <div class="modal-body" id="modalBodyContent">
@@ -2671,6 +2804,8 @@
       var currentGlossary = {};
       var currentQuiz = [];
       var activeTooltip = null;
+      var activeArticleId = '';
+      var currentTagFilter = 'all';
 
       var UI_TRANSLATIONS = {
         fr: {
@@ -2796,6 +2931,40 @@
         if (modal.classList.contains('open')) {
           updateSourcesVisibility();
         }
+        
+        // Rebuild tags badges
+        document.querySelectorAll('.featured-story, .magazine-card').forEach(function(card) {
+          var tagsAttr = card.getAttribute('data-tags-' + lang) || card.getAttribute('data-tags-fr') || '';
+          var tagsContainer = card.querySelector('.card-tags');
+          if (tagsContainer) {
+            tagsContainer.innerHTML = tagsAttr.split(',').map(function(t) {
+              t = t.trim();
+              return t ? '<span class="tag-badge">' + t + '</span>' : '';
+            }).join('');
+          }
+        });
+
+        // Translate thematic filters
+        document.querySelectorAll('.filter-pill').forEach(function(pill) {
+          var text = pill.getAttribute('data-text-' + lang);
+          if (text) pill.innerText = text;
+        });
+
+        // Translate search input placeholder
+        var searchInput = document.getElementById('articleSearchInput');
+        if (searchInput) {
+          if (lang === 'fr') searchInput.placeholder = "Rechercher un article...";
+          else if (lang === 'es') searchInput.placeholder = "Buscar un artículo...";
+          else if (lang === 'en') searchInput.placeholder = "Search an article...";
+        }
+
+        // Translate stats dashboard title
+        var statsTitle = document.getElementById('ui-stats-title');
+        if (statsTitle) {
+          if (lang === 'fr') statsTitle.innerText = "Vos Progrès Quiz :";
+          else if (lang === 'es') statsTitle.innerText = "Progreso de Quiz:";
+          else if (lang === 'en') statsTitle.innerText = "Quiz Progress:";
+        }
       }
 
       globalLangSwitch.addEventListener('click', function(e) {
@@ -2916,6 +3085,8 @@
         var contentEl = card.querySelector('.dcell-content');
         if (!contentEl) return;
 
+        activeArticleId = card.getAttribute('data-title-fr') || '';
+
         var level = contentEl.getAttribute('data-level') || '';
         var glossaryData = contentEl.getAttribute('data-glossary') || '{}';
         
@@ -2943,11 +3114,15 @@
         modalBody.innerHTML = headerHtml + contentEl.innerHTML;
         
         var hasDidactic = Object.keys(currentGlossary).length > 0;
-        didacticToolbar.style.display = hasDidactic ? 'flex' : 'none';
+        didacticToolbar.style.display = 'flex'; // Always show for font size controls
+        document.querySelector('.didactic-toggle-container').style.display = hasDidactic ? 'flex' : 'none';
+        var helperContainer = document.getElementById('helperLangContainer');
+        if (helperContainer) helperContainer.style.display = hasDidactic ? 'block' : 'none';
         
         didacticToggle.checked = false;
         
         syncParagraphsAndToolbar();
+        applyFontSize(currentFontSize);
         
         modal.classList.add('open');
         document.body.style.overflow = 'hidden';
@@ -2963,6 +3138,7 @@
           currentQuizFr = [];
           currentQuizEs = [];
           currentQuizEn = [];
+          activeArticleId = ''; // Reset active article
         }, 300);
       }
 
@@ -3235,6 +3411,21 @@
           }
           
           updateProgress();
+          
+          if (activeArticleId) {
+            var scores = {};
+            try {
+              scores = JSON.parse(localStorage.getItem('criterio_quiz_scores') || '{}');
+            } catch(e) {
+              scores = {};
+            }
+            scores[activeArticleId] = {
+              correct: correctCount,
+              total: quizItems.length
+            };
+            localStorage.setItem('criterio_quiz_scores', JSON.stringify(scores));
+            updateQuizStatsDashboard();
+          }
         }
       }
 
@@ -3292,6 +3483,139 @@
           el.style.transform = 'translateY(0)';
         });
       }
+      
+      // Font size preference and controls
+      var fontDecBtn = document.getElementById('fontDecBtn');
+      var fontIncBtn = document.getElementById('fontIncBtn');
+      var currentFontSize = parseInt(localStorage.getItem('criterio_font_size') || '16');
+      
+      function applyFontSize(size) {
+        var container = document.querySelector('.modal-container');
+        if (container) {
+          container.style.setProperty('--reading-font-size', size + 'px');
+        }
+      }
+      
+      if (fontDecBtn) {
+        fontDecBtn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          if (currentFontSize > 12) {
+            currentFontSize--;
+            applyFontSize(currentFontSize);
+            localStorage.setItem('criterio_font_size', currentFontSize);
+          }
+        });
+      }
+      if (fontIncBtn) {
+        fontIncBtn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          if (currentFontSize < 24) {
+            currentFontSize++;
+            applyFontSize(currentFontSize);
+            localStorage.setItem('criterio_font_size', currentFontSize);
+          }
+        });
+      }
+
+      // Quiz statistics dashboard
+      function updateQuizStatsDashboard() {
+        var dashboard = document.getElementById('statsDashboard');
+        if (!dashboard) return;
+        
+        var scores = {};
+        try {
+          scores = JSON.parse(localStorage.getItem('criterio_quiz_scores') || '{}');
+        } catch(e) {
+          scores = {};
+        }
+        
+        var keys = Object.keys(scores);
+        if (keys.length === 0) {
+          dashboard.style.display = 'none';
+          return;
+        }
+        
+        var totalCompleted = keys.length;
+        var totalQuestions = 0;
+        var totalCorrect = 0;
+        
+        keys.forEach(function(key) {
+          totalQuestions += scores[key].total;
+          totalCorrect += scores[key].correct;
+        });
+        
+        var pct = totalQuestions > 0 ? Math.round((totalCorrect / totalQuestions) * 100) : 0;
+        
+        document.getElementById('statsCompleted').innerText = totalCompleted;
+        document.getElementById('statsAccuracy').innerText = pct + '%';
+        dashboard.style.display = 'flex';
+      }
+
+      var resetStatsBtn = document.getElementById('resetStatsBtn');
+      if (resetStatsBtn) {
+        resetStatsBtn.addEventListener('click', function(e) {
+          e.stopPropagation();
+          if (confirm('Voulez-vous réinitialiser vos scores de quiz ? / ¿Desea restablecer sus puntuaciones? / Reset quiz scores?')) {
+            localStorage.removeItem('criterio_quiz_scores');
+            updateQuizStatsDashboard();
+          }
+        });
+      }
+
+      // Search & Thematic filter logic
+      var searchInput = document.getElementById('articleSearchInput');
+      var filterPills = document.querySelectorAll('.filter-pill');
+      
+      function filterArticles() {
+        var query = (searchInput ? searchInput.value : '').toLowerCase().trim();
+        var cards = document.querySelectorAll('.magazine-card');
+        var featuredSection = document.querySelector('.featured-section');
+        
+        cards.forEach(function(card) {
+          var title = (card.getAttribute('data-title-' + currentLang) || card.getAttribute('data-title-fr') || '').toLowerCase();
+          var summary = (card.getAttribute('data-summary-' + currentLang) || card.getAttribute('data-summary-fr') || '').toLowerCase();
+          
+          // Match tag on the French tags attribute (acting as our universal key)
+          var tagsFrAttr = card.getAttribute('data-tags-fr') || '';
+          var tagsFrList = tagsFrAttr.split(',').map(function(t) { return t.trim().toLowerCase(); });
+          
+          // Read current language tags to match query keywords
+          var tagsCurrentAttr = card.getAttribute('data-tags-' + currentLang) || card.getAttribute('data-tags-fr') || '';
+          var tagsCurrentList = tagsCurrentAttr.split(',').map(function(t) { return t.trim().toLowerCase(); });
+          
+          var matchesSearch = !query || title.includes(query) || summary.includes(query) || tagsCurrentList.some(function(t) { return t.includes(query); });
+          var matchesTag = currentTagFilter === 'all' || tagsFrList.includes(currentTagFilter.toLowerCase());
+          
+          if (matchesSearch && matchesTag) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+        
+        // Hide featured story if search or tag filter is active
+        if (query || currentTagFilter !== 'all') {
+          if (featuredSection) featuredSection.style.display = 'none';
+        } else {
+          if (featuredSection) featuredSection.style.display = 'block';
+        }
+      }
+      
+      if (searchInput) {
+        searchInput.addEventListener('input', filterArticles);
+      }
+      
+      filterPills.forEach(function(pill) {
+        pill.addEventListener('click', function() {
+          filterPills.forEach(function(p) { p.classList.remove('active'); });
+          pill.classList.add('active');
+          currentTagFilter = pill.getAttribute('data-filter');
+          filterArticles();
+        });
+      });
+
+      // Initial stats load
+      updateQuizStatsDashboard();
     })();
   </script>
 </body>
