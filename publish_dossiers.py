@@ -85,7 +85,20 @@ def md_to_html(md_text):
             paragraphs.append(block)
         else:
             block = block.replace('\n', '<br>')
-            paragraphs.append(f'<p>{block}</p>')
+            block = re.sub(r'<br>\s*(<ul>|</ul>|<li>|</li>|<div|</div>|<blockquote>|</blockquote>|<ol>|</ol>|<hr>|<table>|</table>|<tr>|</tr>|<th>|</th>|<td>|</td>)', r'\1', block)
+            block = re.sub(r'(<ul>|</ul>|<li>|</li>|<div|</div>|<blockquote>|</blockquote>|<ol>|</ol>|<hr>|<table>|</table>|<tr>|</tr>|<th>|</th>|<td>|</td>)\s*<br>', r'\1', block)
+            
+            if any(tag in block for tag in ['<ul>', '<blockquote>', '<div', '<ol>', '<table']):
+                block_formatted = f'<p>{block}</p>'
+                block_formatted = block_formatted.replace('<ul>', '</p><ul>').replace('</ul>', '</ul><p>')
+                block_formatted = block_formatted.replace('<ol>', '</p><ol>').replace('</ol>', '</ol><p>')
+                block_formatted = block_formatted.replace('<blockquote>', '</p><blockquote>').replace('</blockquote>', '</blockquote><p>')
+                block_formatted = block_formatted.replace('<div', '</p><div').replace('</div>', '</div><p>')
+                block_formatted = block_formatted.replace('<table', '</p><table').replace('</table>', '</table><p>')
+                block_formatted = re.sub(r'<p>\s*</p>', '', block_formatted)
+                paragraphs.append(block_formatted)
+            else:
+                paragraphs.append(f'<p>{block}</p>')
             
     return '\n'.join(paragraphs)
 
