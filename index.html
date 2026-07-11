@@ -2756,12 +2756,15 @@
       
       <!-- Barre d'outils didactiques FLE -->
       <div class="didactic-toolbar" id="didacticToolbar" style="display:none;">
-        <div class="didactic-toggle-container">
-          <label class="toggle-switch">
-            <input type="checkbox" id="didacticToggle">
-            <span class="slider"></span>
-          </label>
-          <span class="toggle-label" id="toggleLabel">Modo Estudio (FLE)</span>
+        <div class="didactic-toggle-container" style="display: flex; flex-direction: column; align-items: flex-start; gap: 4px;">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <label class="toggle-switch">
+              <input type="checkbox" id="didacticToggle">
+              <span class="slider"></span>
+            </label>
+            <span class="toggle-label" id="toggleLabel" style="font-weight: 700; font-size: 13.5px;">Modo Estudio (FLE)</span>
+          </div>
+          <span class="toggle-hint" id="toggleHint" style="font-size: 10.5px; color: var(--muted); margin-left: 58px; font-weight: 500; font-family: 'Outfit', sans-serif;">💡 Traductions et définitions au survol des mots soulignés</span>
         </div>
         <div class="helper-lang-selector" id="helperLangContainer" style="display:none;">
           <span id="ui-ayuda">Ayuda en:</span>
@@ -2992,6 +2995,14 @@
           else if (lang === 'es') statsTitle.innerText = "Progreso de Quiz:";
           else if (lang === 'en') statsTitle.innerText = "Quiz Progress:";
         }
+
+        // Translate didactic toggle hint
+        var toggleHint = document.getElementById('toggleHint');
+        if (toggleHint) {
+          if (lang === 'fr') toggleHint.innerText = "💡 Traductions et définitions au survol des mots soulignés";
+          else if (lang === 'es') toggleHint.innerText = "💡 Traducciones y definiciones al pasar el cursor sobre palabras subrayadas";
+          else if (lang === 'en') toggleHint.innerText = "💡 Hover over underlined words for translations and definitions";
+        }
       }
 
       globalLangSwitch.addEventListener('click', function(e) {
@@ -3164,6 +3175,7 @@
         
         didacticToggle.checked = false;
         
+        translatePage(currentLang);
         syncParagraphsAndToolbar();
         applyFontSize(currentFontSize);
         
