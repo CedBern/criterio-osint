@@ -60,6 +60,27 @@
       --radius-xl: 16px;
       --sepia: #f5f0e1;
       --sepia-text: #3a3226;
+
+      /* T-1 — Echelle typographique (6 marches, sans demi-pixels) */
+      --text-xs:   12px;  /* meta, badges, captions */
+      --text-sm:   14px;  /* corps secondaire, labels */
+      --text-base: 16px;  /* corps principal */
+      --text-md:   20px;  /* sous-titres, excerpts */
+      --text-lg:   28px;  /* titres de cartes */
+      --text-xl:   40px;  /* titre featured, modal h2 */
+
+      /* C-1 — Tokens mode nuit (valeurs par défaut = mode clair) */
+      --night-bg:        #1a1a1e;
+      --night-surface:   #22222a;
+      --night-surface-2: #25252d;
+      --night-fg:        #cfcfd4;
+      --night-fg-strong: #e4e4ea;
+      --night-fg-title:  #e0e0e6;
+      --night-muted:     #a0a0aa;
+      --night-border:    #333;
+      --night-border-2:  #444;
+      --night-border-3:  #666;
+      --night-modal-bg:  #1e1e24;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -82,27 +103,28 @@
     body.reading-sepia .modal-container { background: var(--sepia); }
     body.reading-sepia .modal-body p { color: var(--sepia-text); }
     body.reading-sepia .didactic-toolbar { background: rgba(240, 230, 210, 0.85); }
+    /* C-1 — Mode nuit : toutes les valeurs dérivées des tokens --night-* */
     body.reading-night {
-      background: #1a1a1e;
-      color: #cfcfd4;
+      background: var(--night-bg);
+      color: var(--night-fg);
     }
-    body.reading-night .logo { color: #e0e0e6; }
+    body.reading-night .logo { color: var(--night-fg-title); }
     body.reading-night .magazine-card { border-color: transparent; }
-    body.reading-night .magazine-card:hover { background: #22222a; border-color: #333; }
-    body.reading-night #readingModeBtn { color: #a0a0aa !important; border-color: #444 !important; }
-    body.reading-night .modal-container { background: #1e1e24; border-color: #333; }
-    body.reading-night .modal-body p { color: #bfbfc8; }
-    body.reading-night .didactic-toolbar { background: rgba(30, 30, 36, 0.92); border-color: #333; }
-    body.reading-night .modal-body blockquote { color: #a0a0aa; }
-    body.reading-night .paragraph-es, body.reading-night .paragraph-en { background: #25252d; }
+    body.reading-night .magazine-card:hover { background: var(--night-surface); border-color: var(--night-border); }
+    body.reading-night #readingModeBtn { color: var(--night-muted) !important; border-color: var(--night-border-2) !important; }
+    body.reading-night .modal-container { background: var(--night-modal-bg); border-color: var(--night-border); }
+    body.reading-night .modal-body p { color: var(--night-fg); }
+    body.reading-night .didactic-toolbar { background: rgba(30, 30, 36, 0.92); border-color: var(--night-border); }
+    body.reading-night .modal-body blockquote { color: var(--night-muted); }
+    body.reading-night .paragraph-es, body.reading-night .paragraph-en { background: var(--night-surface-2); }
     body.reading-night .sources-wrapper { color: #999; }
-    body.reading-night .editorial-card { background: #22222a; }
+    body.reading-night .editorial-card { background: var(--night-surface); }
     body.reading-night .story-title,
     body.reading-night .card-title,
     body.reading-night .modal-body h2,
     body.reading-night .modal-body h3,
     body.reading-night .modal-body h4,
-    body.reading-night .article-header h2 { color: #e4e4ea; }
+    body.reading-night .article-header h2 { color: var(--night-fg-strong); }
     body.reading-night .lang-btn,
     body.reading-night .lang-btn:hover,
     body.reading-night .lang-btn.active,
@@ -167,48 +189,59 @@
     body.reading-night .quiz-option.correct:hover,
     body.reading-night .quiz-option.incorrect:hover,
     body.reading-night .styled-table thead {
-      color: #cfcfd4 !important;
+      color: var(--night-fg) !important;
     }
-    body.reading-night .lang-btn { border-color: #444; }
-    body.reading-night .lang-btn:hover { border-color: #666; }
-    body.reading-night .lang-btn.active { background: #7c221e; border-color: #7c221e; color: #fff !important; }
+    body.reading-night .lang-btn { border-color: var(--night-border-2); }
+    body.reading-night .lang-btn:hover { border-color: var(--night-border-3); }
+    body.reading-night .lang-btn.active { background: var(--accent); border-color: var(--accent); color: #fff !important; }
     body.reading-night .paragraph-actions button {
       background: rgba(255,255,255,0.08);
-      border-color: #444;
+      border-color: var(--night-border-2);
     }
     body.reading-night .paragraph-actions button:hover {
-      background: #2a2a32;
-      border-color: #666;
+      background: var(--night-surface-2);
+      border-color: var(--night-border-3);
     }
     body.reading-night .paragraph-actions button.active {
       background: rgba(124,34,30,0.3);
-      border-color: #7c221e;
+      border-color: var(--accent);
       color: #e0b0a8 !important;
     }
-    body.reading-night .modal-close { background: rgba(255,255,255,0.06); border-color: #444; }
-    body.reading-night .modal-close:hover { background: #7c221e; color: #fff !important; }
-    body.reading-night .quiz-option { background: #25252d; border-color: #444; }
-    body.reading-night .quiz-option:hover:not(.disabled) { background: #2a2a34; border-color: #666; }
+    body.reading-night .modal-close { background: rgba(255,255,255,0.06); border-color: var(--night-border-2); }
+    body.reading-night .modal-close:hover { background: var(--accent); color: #fff !important; }
+    body.reading-night .quiz-option { background: var(--night-surface-2); border-color: var(--night-border-2); }
+    body.reading-night .quiz-option:hover:not(.disabled) { background: #2a2a34; border-color: var(--night-border-3); }
     body.reading-night .quiz-option.correct { background: rgba(0,180,60,0.2); border-color: #00b43c; color: #8fca9c !important; }
     body.reading-night .quiz-option.incorrect { background: rgba(180,40,40,0.2); border-color: #b42828; color: #d99090 !important; }
-    body.reading-night .glossary-tooltip { background: #25252d; border-color: #444; }
+    body.reading-night .glossary-tooltip { background: var(--night-surface-2); border-color: var(--night-border-2); }
     body.reading-night .glossary-tooltip .tooltip-word { border-bottom-color: #555; }
     body.reading-night .glossary-tooltip .tooltip-definition { border-left-color: rgba(124,34,30,0.4); }
     body.reading-night .glossary-term.active-didactic { border-bottom-color: #a0403a; }
-    body.reading-night .score-action-btn { background: #25252d; border-color: #444; }
-    body.reading-night .score-action-btn:hover { background: #2a2a34; border-color: #666; }
-    body.reading-night .score-action-btn.primary { background: #7c221e; border-color: #7c221e; color: #fff !important; }
-    body.reading-night .styled-table th { border-bottom-color: #7c221e; }
-    body.reading-night .styled-table td { border-bottom-color: #444; }
-    body.reading-night .helper-lang-selector select { background: rgba(30,30,36,0.9); border-color: #444; }
+    body.reading-night .score-action-btn { background: var(--night-surface-2); border-color: var(--night-border-2); }
+    body.reading-night .score-action-btn:hover { background: #2a2a34; border-color: var(--night-border-3); }
+    body.reading-night .score-action-btn.primary { background: var(--accent); border-color: var(--accent); color: #fff !important; }
+    body.reading-night .styled-table th { border-bottom-color: var(--accent); }
+    body.reading-night .styled-table td { border-bottom-color: var(--night-border-2); }
+    body.reading-night .helper-lang-selector select { background: rgba(30,30,36,0.9); border-color: var(--night-border-2); }
     body.reading-night .helper-lang-selector select:hover,
-    body.reading-night .helper-lang-selector select:focus { border-color: #7c221e; }
-    body.reading-night .featured-story:hover { background: #22222a; border-color: #333; }
-    body.reading-night .quiz-card-container { background: rgba(30,30,36,0.6); border-color: #333; }
-    body.reading-night .didactic-progress-bar { background: #444; }
+    body.reading-night .helper-lang-selector select:focus { border-color: var(--accent); }
+    body.reading-night .featured-story:hover { background: var(--night-surface); border-color: var(--night-border); }
+    body.reading-night .quiz-card-container { background: rgba(30,30,36,0.6); border-color: var(--night-border); }
+    body.reading-night .didactic-progress-bar { background: var(--night-border-2); }
     body.reading-night .paragraph-es, body.reading-night .paragraph-en { border-left-color: rgba(124,34,30,0.4); }
     body.reading-night .media-caption { background: rgba(0,0,0,0.3); }
     body.reading-night .article-header .level-badge { background: rgba(124,34,30,0.2); border-color: rgba(124,34,30,0.3); }
+
+    /* A-1 : Animation d'entree des cartes (enrichit, ne conditionne pas la visibilite) */
+    .reveal-pending {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+    .reveal-pending.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
     /* Grille de fond type papier */
     .bg-paper {
@@ -2905,7 +2938,11 @@
   </div>
 
   <!-- Modal Structure -->
-  <div class="modal-overlay" id="articleModal">
+  <div class="modal-overlay" id="articleModal"
+       role="dialog"
+       aria-modal="true"
+       aria-labelledby="modalArticleTitle"
+       aria-hidden="true">
     <div class="modal-container">
       <button class="modal-close" id="modalCloseBtn" aria-label="Cerrar artículo">&times;</button>
       
@@ -2938,8 +2975,8 @@
         
         <!-- Font Size Controls -->
         <div class="font-size-controls" style="display: flex; align-items: center; gap: 8px; border-left: 1px solid var(--border); padding-left: 12px; margin-left: auto;">
-          <button id="fontDecBtn" title="Diminuer la taille du texte" style="background: none; border: 1px solid var(--border); border-radius: 50%; width: 26px; height: 26px; font-size: 11px; font-weight: bold; cursor: pointer; color: var(--muted); transition: all 0.2s; display: flex; align-items: center; justify-content: center; outline: none; box-sizing: border-box;">A-</button>
-          <button id="fontIncBtn" title="Agrandir la taille du texte" style="background: none; border: 1px solid var(--border); border-radius: 50%; width: 26px; height: 26px; font-size: 13px; font-weight: bold; cursor: pointer; color: var(--muted); transition: all 0.2s; display: flex; align-items: center; justify-content: center; outline: none; box-sizing: border-box;">A+</button>
+          <button id="fontDecBtn" aria-label="Diminuer la taille du texte" title="Diminuer la taille du texte" style="background: none; border: 1px solid var(--border); border-radius: 50%; width: 26px; height: 26px; font-size: 11px; font-weight: bold; cursor: pointer; color: var(--muted); transition: all 0.2s; display: flex; align-items: center; justify-content: center; outline: none; box-sizing: border-box;">A-</button>
+          <button id="fontIncBtn" aria-label="Agrandir la taille du texte" title="Agrandir la taille du texte" style="background: none; border: 1px solid var(--border); border-radius: 50%; width: 26px; height: 26px; font-size: 13px; font-weight: bold; cursor: pointer; color: var(--muted); transition: all 0.2s; display: flex; align-items: center; justify-content: center; outline: none; box-sizing: border-box;">A+</button>
         </div>
       </div>
 
@@ -3445,7 +3482,15 @@
         else if (level.indexOf('B2') !== -1) currentQuizLevel = 'b2';
         
         modal.classList.add('open');
+        modal.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';
+        // Focus trap : mettre le focus sur le premier element interactif du modal
+        setTimeout(function() {
+          var focusable = Array.from(modal.querySelectorAll(
+            'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+          )).filter(function(el) { return !el.disabled && el.offsetParent !== null; });
+          if (focusable.length) focusable[0].focus();
+        }, 50);
       }
 
       function stopSpeech() {
@@ -3658,6 +3703,7 @@
       function closeModal() {
         stopSpeech();
         modal.classList.remove('open');
+        modal.setAttribute('aria-hidden', 'true');
         document.body.style.overflow = '';
         removeTooltip();
         setTimeout(function() {
@@ -4037,31 +4083,49 @@
         if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
       });
 
+      // A-1 : .reveal visible par defaut (l'animation enrichit, ne conditionne pas)
       var revealEls = document.querySelectorAll('.reveal');
+      // Etat visible de base pour la degradation gracieuse (pas de JS = contenu visible)
+      revealEls.forEach(function(el) {
+        el.style.opacity = 1;
+        el.style.transform = 'translateY(0)';
+      });
       if (revealEls.length && 'IntersectionObserver' in window) {
         var obs = new IntersectionObserver(function (entries) {
           entries.forEach(function (entry) {
             if (entry.isIntersecting) {
-              entry.target.style.opacity = 1;
-              entry.target.style.transform = 'translateY(0)';
+              entry.target.classList.add('revealed');
               obs.unobserve(entry.target);
             }
           });
         }, { threshold: 0.05 });
-        
         revealEls.forEach(function (el) {
-          el.style.opacity = 0;
-          el.style.transform = 'translateY(15px)';
-          el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+          el.style.opacity = '';
+          el.style.transform = '';
+          el.classList.add('reveal-pending');
           obs.observe(el);
         });
-      } else {
-        revealEls.forEach(function (el) {
-          el.style.opacity = 1;
-          el.style.transform = 'translateY(0)';
-        });
       }
-      
+
+      // A-1 : Focus trap dans le modal
+      function getFocusableEls() {
+        return Array.from(modal.querySelectorAll(
+          'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+        )).filter(function(el) { return !el.disabled && el.offsetParent !== null; });
+      }
+      document.addEventListener('keydown', function(e) {
+        if (!modal.classList.contains('open')) return;
+        if (e.key !== 'Tab') return;
+        var focusable = getFocusableEls();
+        if (!focusable.length) return;
+        var first = focusable[0], last = focusable[focusable.length - 1];
+        if (e.shiftKey) {
+          if (document.activeElement === first) { e.preventDefault(); last.focus(); }
+        } else {
+          if (document.activeElement === last) { e.preventDefault(); first.focus(); }
+        }
+      });
+
       // Font size preference and controls
       var fontDecBtn = document.getElementById('fontDecBtn');
       var fontIncBtn = document.getElementById('fontIncBtn');
