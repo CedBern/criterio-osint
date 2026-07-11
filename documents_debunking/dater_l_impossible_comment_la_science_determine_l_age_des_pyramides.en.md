@@ -1,4 +1,4 @@
-# Dater l'impossible : Comment la science détermine l'âge des pyramides
+# Dating the Impossible: How Science Determines the Age of the Pyramids
 
 ![Reconstruction of the Sphinx of Giza and the Great Pyramid at sunset](images/c4_1.png)
 

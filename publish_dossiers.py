@@ -220,9 +220,15 @@ def main():
         print("No dossiers found to publish.")
         return
         
+    ORDER = {
+        "dater_l_impossible_comment_la_science_determine_l_age_des_pyramides": 4,
+        "les_pyramides_de_gizeh_bloc_de_pierre_ou_beton_antique": 3,
+        "le_mirage_de_la_connexion_globale": 2,
+        "le_secret_des_batisseurs": 1
+    }
     sorted_bases = sorted(
         dossiers_map.keys(),
-        key=lambda b: os.path.getmtime(dossiers_map[b]["fr"]),
+        key=lambda b: ORDER.get(b, 0),
         reverse=True
     )
     

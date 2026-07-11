@@ -1,4 +1,4 @@
-# Dater l'impossible : Comment la science détermine l'âge des pyramides
+# Datar lo imposible: Cómo la ciencia determina la edad de las pirámides
 
 ![Reconstitución del Sphinx de Gizeh y la Gran Pirámide al atardecer](images/c4_1.png)
 
