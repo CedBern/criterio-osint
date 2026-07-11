@@ -3402,59 +3402,27 @@
 
       function playSingleParagraph(block) {
         window.speechSynthesis.cancel();
-        isSpeechPlaying = false;
+        
+        var blocks = Array.from(modalBody.querySelectorAll('.paragraph-block'));
+        if (blocks.length === 0) return;
+        
+        speechQueue = blocks;
+        var idx = speechQueue.indexOf(block);
+        if (idx === -1) return;
+        
+        currentQueueIndex = idx;
+        isSpeechPlaying = true;
         
         var mainPlayBtn = document.getElementById('audioMainPlayBtn');
         if (mainPlayBtn) {
-          var listenText = currentLang === 'es' ? 'Escuchar artículo completo' : (currentLang === 'fr' ? 'Écouter l\'article complet' : 'Listen to full article');
-          mainPlayBtn.querySelector('.audio-icon').innerText = '▶️';
-          mainPlayBtn.querySelector('.audio-text').innerText = listenText;
+          mainPlayBtn.querySelector('.audio-icon').innerText = '⏸️';
         }
         var mainStopBtn = document.getElementById('audioMainStopBtn');
         if (mainStopBtn) {
-          mainStopBtn.style.display = 'none';
+          mainStopBtn.style.display = 'block';
         }
         
-        if (activeAudioElement) {
-          activeAudioElement.classList.remove('speech-active-paragraph');
-        }
-        
-        activeAudioElement = block;
-        block.classList.add('speech-active-paragraph');
-        
-        var textInfo = getVisibleParagraphTextAndLang(block);
-        if (!textInfo) return;
-        
-        speechUtterance = new SpeechSynthesisUtterance(textInfo.text);
-        
-        if (textInfo.lang === 'fr') speechUtterance.lang = 'fr-FR';
-        else if (textInfo.lang === 'es') speechUtterance.lang = 'es-MX';
-        else if (textInfo.lang === 'en') speechUtterance.lang = 'en-US';
-        
-        var voices = window.speechSynthesis.getVoices();
-        var matchingVoice = voices.find(function(v) {
-          return v.lang.startsWith(speechUtterance.lang);
-        });
-        if (matchingVoice) speechUtterance.voice = matchingVoice;
-        
-        var speedSelect = document.getElementById('audioSpeedSelect');
-        if (speedSelect) {
-          speechUtterance.rate = parseFloat(speedSelect.value);
-        } else {
-          speechUtterance.rate = 1.0;
-        }
-        
-        speechUtterance.onend = function() {
-          block.classList.remove('speech-active-paragraph');
-          activeAudioElement = null;
-        };
-        
-        speechUtterance.onerror = function() {
-          block.classList.remove('speech-active-paragraph');
-          activeAudioElement = null;
-        };
-        
-        window.speechSynthesis.speak(speechUtterance);
+        playNextInQueue();
       }
 
       function closeModal() {
