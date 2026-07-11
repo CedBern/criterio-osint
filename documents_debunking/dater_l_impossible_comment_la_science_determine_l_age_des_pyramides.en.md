@@ -1,6 +1,6 @@
 # Dating the Impossible: How Science Determines the Age of the Pyramids
 
-![Reconstruction of the Sphinx of Giza and the Great Pyramid at sunset](images/c4_1.png)
+![Reconstruction of the Sphinx of Giza and the Great Pyramid at sunset](images/c4_1.jpg)
 
 ## 1. Introduction : Le mystère des blocs parfaits
 

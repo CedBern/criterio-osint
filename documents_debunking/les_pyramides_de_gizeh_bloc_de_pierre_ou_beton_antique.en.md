@@ -15,7 +15,7 @@ Davidovits' theory is based on a **chemical principle**: the blocks are not natu
 - **lime** (a chemical binder);
 - **water from the Nile**.
 
-![Infographic comparative between natural limestone and molded geopolymer](images/c3_2.png)
+![Infographic comparative between natural limestone and molded geopolymer](images/c3_2a.png)
 
 In **2006**, researcher **Michel Barsoum** (Drexel University) studied the stones of the pyramid of **Dahshur**. His conclusions provide a **crucial nuance**:
 - **The vast majority of the blocks are indeed natural stones**, extracted from quarries.
@@ -25,7 +25,7 @@ In **2006**, researcher **Michel Barsoum** (Drexel University) studied the stone
 
 Another scientific proof comes from **physics**. In **2012**, researchers **Igor Túnyi and Ibrahim A. El-hemaly** published a study in *Europhysics News* using **paleomagnetism**, a technique that analyzes **magnetic traces** in rocks.
 
-![Schema of the paleomagnetic orientation of iron particles](images/c3_3.png)
+![Schema of the paleomagnetic orientation of iron particles](images/c3_3a.png)
 
 Their discovery is surprising: in **certain blocks**, the magnetic particles are **all aligned toward the north**. This phenomenon occurs when a material is **liquid** and **dries in place**. If the blocks had been **transported from a quarry**, these particles would be oriented **in all directions**, with no specific order.
 
@@ -40,7 +40,7 @@ In **2024**, the team of **Professor Eman Ghoneim** discovered the **"Ahramat br
 - **geophysical surveys**;
 - **sediment coring** (samples of deep earth cylinders).
 
-![Geo-archaeological map of the course of the Ahramat branch](images/c3_4.png)
+![Geo-archaeological map of the course of the Ahramat branch](images/c3_4a.png)
 
 This branch was a **true logistical highway**:
 - **Length**: 64 km;

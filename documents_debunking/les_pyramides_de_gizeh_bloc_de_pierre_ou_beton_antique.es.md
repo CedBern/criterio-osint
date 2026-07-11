@@ -15,7 +15,7 @@ La teoría de Davidovits se basa en un **principio químico**: los bloques no se
 - **cal** (un aglutinante químico);
 - **agua del Nilo**.
 
-![Infografía comparativa entre caliza natural y geopolímero moldeado](images/c3_2.png)
+![Infografía comparativa entre caliza natural y geopolímero moldeado](images/c3_2a.png)
 
 En **2006**, el investigador **Michel Barsoum** (Universidad Drexel) estudió las piedras de la pirámide de **Dahshur**. Sus conclusiones aportan un **matiz crucial**:
 - **La gran mayoría de los bloques son piedras naturales**, extraídas de canteras.
@@ -25,7 +25,7 @@ En **2006**, el investigador **Michel Barsoum** (Universidad Drexel) estudió la
 
 Otra prueba científica proviene de la **física**. En **2012**, los investigadores **Igor Túnyi e Ibrahim A. El-hemaly** publicaron un estudio en *Europhysics News* utilizando el **paleomagnetismo**, una técnica que analiza las **huellas magnéticas** en las rocas.
 
-![Esquema de la orientación paleomagnética de las partículas de hierro](images/c3_3.png)
+![Esquema de la orientación paleomagnética de las partículas de hierro](images/c3_3a.png)
 
 Su descubrimiento es sorprendente: en **ciertos bloques**, las partículas magnéticas están **todas alineadas hacia el norte**. Este fenómeno ocurre cuando un material es **líquido** y **se seca en el lugar**. Si los bloques hubieran sido **transportados desde una cantera**, estas partículas estarían orientadas **en todas direcciones**, sin un orden específico.
 
@@ -40,7 +40,7 @@ En **2024**, el equipo de la **profesora Eman Ghoneim** descubrió el **"brazo d
 - **sondeos geofísicos**;
 - **testigos de perforación** (muestras de cilindros de tierra profunda).
 
-![Mapa geoarqueológico del curso del brazo de Ahramat](images/c3_4.png)
+![Mapa geoarqueológico del curso del brazo de Ahramat](images/c3_4a.png)
 
 Esta rama era una **verdadera autopista logística**:
 - **Longitud**: 64 km;

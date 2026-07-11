@@ -1,6 +1,6 @@
 # Datar lo imposible: Cómo la ciencia determina la edad de las pirámides
 
-![Reconstitución del Sphinx de Gizeh y la Gran Pirámide al atardecer](images/c4_1.png)
+![Reconstitución del Sphinx de Gizeh y la Gran Pirámide al atardecer](images/c4_1.jpg)
 
 ## 1. Introduction : Le mystère des blocs parfaits
 

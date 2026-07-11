@@ -15,7 +15,7 @@ La théorie de Davidovits repose sur un **principe chimique** : les blocs ne ser
 - de la **chaux** (un liant chimique) ;
 - de l’**eau du Nil**.
 
-![Infographie comparative entre calcaire naturel et géopolymère moulé](images/c3_2.png)
+![Infographie comparative entre calcaire naturel et géopolymère moulé](images/c3_2a.png)
 
 En **2006**, le chercheur **Michel Barsoum** (Université Drexel) a étudié les pierres de la pyramide de **Dahchour**. Ses conclusions apportent une **nuance cruciale** :
 - **La grande majorité des blocs sont bien des pierres naturelles**, extraites de carrières.
@@ -25,7 +25,7 @@ En **2006**, le chercheur **Michel Barsoum** (Université Drexel) a étudié les
 
 Une autre preuve scientifique vient de la **physique**. En **2012**, les chercheurs **Igor Túnyi et Ibrahim A. El-hemaly** ont publié une étude dans *Europhysics News* en utilisant le **paléomagnétisme**, une technique qui analyse les **traces magnétiques** dans les roches.
 
-![Schéma de l'orientation paléomagnétique des particules de fer](images/c3_3.png)
+![Schéma de l'orientation paléomagnétique des particules de fer](images/c3_3a.png)
 
 Leur découverte est surprenante : dans **certains blocs**, les particules magnétiques sont **toutes alignées vers le nord**. Ce phénomène se produit lorsque un matériau est **liquide** et **sèche sur place**. Si les blocs avaient été **transportés depuis une carrière**, ces particules seraient orientées **dans tous les sens**, sans ordre précis.
 
@@ -40,7 +40,7 @@ En **2024**, l’équipe de la **professeure Eman Ghoneim** a découvert le **«
 - des **sondages géophysiques** ;
 - des **carottages** (prélèvements de cylindres de terre profonde).
 
-![Carte géoarchéologique du cours du bras d'Ahramat](images/c3_4.png)
+![Carte géoarchéologique du cours du bras d'Ahramat](images/c3_4a.png)
 
 Cette branche était une **véritable autoroute logistique** :
 - **Longueur** : 64 km ;
