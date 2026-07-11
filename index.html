@@ -3,7 +3,42 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Criterio — Geoarchéologie & FLE</title>
+  <title>CRITERIO — Fact-checking, Géoarchéologie &amp; Preuves Historiques</title>
+
+  <!-- SEO -->
+  <meta name="description" content="Criterio est un magazine numérique trilingue de fact-checking et d'investigation géoarchéologique. Nous déconstruisons les mythes historiques avec des sources primaires et des données satellitaires.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://cedbern.github.io/criterio-osint/">
+
+  <!-- Open Graph (partage réseaux sociaux) -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://cedbern.github.io/criterio-osint/">
+  <meta property="og:title" content="CRITERIO — Fact-checking &amp; Géoarchéologie">
+  <meta property="og:description" content="Magazine numérique trilingue (FR·ES·EN) d’investigation géoarchéologique et de débunking historique. Sources primaires, données satellitaires, niveaux CECRL.">
+  <meta property="og:image" content="https://cedbern.github.io/criterio-osint/images/og-cover.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:locale:alternate" content="es_MX">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:site_name" content="Criterio">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="CRITERIO — Fact-checking &amp; Géoarchéologie">
+  <meta name="twitter:description" content="Magazine trilingue de débunking historique et géoarchéologique.">
+  <meta name="twitter:image" content="https://cedbern.github.io/criterio-osint/images/og-cover.jpg">
+
+  <!-- Favicon &amp; couleur navigateur -->
+  <link rel="icon" type="image/png" href="images/logo_criterio.png">
+  <meta name="theme-color" content="#7c221e">
+
+  <!-- hreflang : trilingue actuel (extensible) -->
+  <link rel="alternate" hreflang="fr" href="https://cedbern.github.io/criterio-osint/">
+  <link rel="alternate" hreflang="es" href="https://cedbern.github.io/criterio-osint/">
+  <link rel="alternate" hreflang="en" href="https://cedbern.github.io/criterio-osint/">
+  <link rel="alternate" hreflang="x-default" href="https://cedbern.github.io/criterio-osint/">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -250,6 +285,34 @@
 
     .brand-section {
       margin-bottom: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .brand-lockup {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: clamp(14px, 2vw, 28px);
+    }
+    .brand-logo-wrap {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .brand-logo-wrap img {
+      height: clamp(56px, 9vw, 96px);
+      width: auto;
+      display: block;
+      border-radius: 8px;
+      filter: drop-shadow(0 3px 10px rgba(0,0,0,0.12));
+    }
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 2px;
     }
     .logo {
       font-family: var(--font-display);
@@ -258,14 +321,17 @@
       letter-spacing: -0.03em;
       color: var(--fg);
       line-height: 1;
+      margin: 0;
     }
     .logo-sub {
       font-family: var(--font-display);
-      font-size: clamp(12px, 2vw, 15px);
-      font-style: italic;
+      font-size: clamp(11px, 1.5vw, 13px);
+      font-style: normal;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
       color: var(--accent);
-      margin-top: 10px;
-      letter-spacing: 0.06em;
+      margin-top: 6px;
     }
 
     .magazine-nav {
@@ -1353,12 +1419,16 @@
           <button id="readingModeBtn" class="read-mode-btn" title="Reading mode" style="background:none;border:1px solid var(--border);border-radius:20px;padding:3px 10px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;cursor:pointer;color:var(--muted);transition:all 0.2s;">📖 Modo Lectura</button>
         </div>
       </div>
-      <div class="brand-section" style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
-        <div style="display: flex; align-items: center; justify-content: center; gap: clamp(10px, 1.5vw, 18px);">
-          <img src="images/logo_criterio.png" alt="Logo Criterio" class="brand-logo" style="height: clamp(40px, 6.5vw, 70px); width: auto; display: block; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.06));">
-          <h1 class="logo" style="margin: 0;">CRITERIO</h1>
+      <div class="brand-section">
+        <div class="brand-lockup">
+          <div class="brand-logo-wrap">
+            <img src="images/logo_criterio.png" alt="Logo Criterio">
+          </div>
+          <div class="brand-text">
+            <h1 class="logo">CRITERIO</h1>
+            <p class="logo-sub" id="ui-subtitle">Fact-checking, Géoarchéologie & Preuves Historiques</p>
+          </div>
         </div>
-        <p class="logo-sub" id="ui-subtitle">Fact-checking, Géoarchéologie & Preuves Historiques</p>
       </div>
       <nav class="magazine-nav">
         <a href="#articulos" class="nav-link" id="ui-nav-art">Articles</a>
@@ -1384,7 +1454,7 @@
                data-level-fr="B1-B2" data-level-es="B1-B2" data-level-en="B1-B2"
                data-tags-fr="Égypte ancienne,Archéologie,Technologie" data-tags-es="Egipto antiguo,Arqueología,Tecnología" data-tags-en="Ancient Egypt,Archaeology,Technology">
         <div class="featured-img-container">
-          <img src="images/c4_1.jpg" alt="Dater l'impossible : Comment la science détermine l'âge des pyramides" class="featured-img">
+          <img src="images/c4_1.webp" alt="Dater l'impossible : Comment la science détermine l'âge des pyramides" class="featured-img">
         </div>
         <div class="featured-body">
           <div class="story-meta">
@@ -1748,7 +1818,7 @@
                  data-level-fr="B1-B2" data-level-es="B1-B2" data-level-en="B1-B2"
                  data-tags-fr="Égypte ancienne,Chimie,Technologie" data-tags-es="Egipto antiguo,Química,Tecnología" data-tags-en="Ancient Egypt,Chemistry,Technology">
           <div class="card-img-container">
-            <img src="images/c3_1.png" alt="Les pyramides de Gizeh : Bloc de pierre ou béton antique ?" class="card-img">
+            <img src="images/c3_1.webp" alt="Les pyramides de Gizeh : Bloc de pierre ou béton antique ?" class="card-img">
           </div>
           <div class="card-body">
             <div class="card-meta">
@@ -2023,7 +2093,7 @@
                  data-level-fr="B1/B2 (Intermédiaire)" data-level-es="B1/B2 (Intermedio)" data-level-en="B1/B2 (Intermediate)"
                  data-tags-fr="Égypte ancienne,Pseudo-archéologie,Histoire" data-tags-es="Egipto antiguo,Pseudoarqueología,Historia" data-tags-en="Ancient Egypt,Pseudo-archaeology,History">
           <div class="card-img-container">
-            <img src="images/c_1.jpg" alt="Le mirage de la connexion globale des pyramides : Pourquoi la science réfute le mythe de la civilisation mère" class="card-img">
+            <img src="images/c_1.webp" alt="Le mirage de la connexion globale des pyramides : Pourquoi la science réfute le mythe de la civilisation mère" class="card-img">
           </div>
           <div class="card-body">
             <div class="card-meta">
@@ -2400,7 +2470,7 @@
                  data-level-fr="B1/B2 (Intermédiaire)" data-level-es="B1/B2 (Intermedio)" data-level-en="B1/B2 (Intermediate)"
                  data-tags-fr="Égypte ancienne,Climat,Technologie" data-tags-es="Egipto antiguo,Clima,Tecnología" data-tags-en="Ancient Egypt,Climate,Technology">
           <div class="card-img-container">
-            <img src="images/1a.png" alt="Le secret des bâtisseurs : Comment la découverte d’une branche perdue du Nil réécrit l’histoire des pyramides" class="card-img">
+            <img src="images/1a.webp" alt="Le secret des bâtisseurs : Comment la découverte d’une branche perdue du Nil réécrit l’histoire des pyramides" class="card-img">
           </div>
           <div class="card-body">
             <div class="card-meta">
@@ -2996,9 +3066,44 @@
           study_mode: "Study Mode (FLE)",
           date_label: "Weekly Edition — July 2026"
         }
+        // --- SCAFFOLDING NOUVELLES LANGUES ---
+        // Pour ajouter une langue, copier le bloc 'en' ci-dessus et créer une clé avec le code ISO 639-1/3.
+        // Langues européennes planifiées : de (allemand), it (italien), pt (portugais),
+        //   nl (néerlandais), pl (polonais), ca (catalan), eu (basque), gl (galicien)
+        // Langue ambrindienne planifiée : yua (maya yucatèque)
+        // Exemple :
+        // , yua: {
+        //   subtitle: "Maʼalob fact-checking, Geoarkeologia &amp; Séeba’an Tʼaan",
+        //   nav_art: "Tsʼibʼoʼob",
+        //   nav_met: "Bejlaʼeʼ",
+        //   nav_pro: "Kajoʼol",
+        //   date_label: "2026",
+        //   ... (compléter les autres clés)
+        // }
+      };
+
+      // Architecture langues évolutive
+      // Ajouter ici chaque langue activée pour les boutons et le balisage html[lang]
+      var LANG_META = {
+        fr:  { label: "FR", flag: "\uD83C\uDDEB\uD83C\uDDF7", hreflang: "fr",  dir: "ltr" },
+        es:  { label: "ES", flag: "\uD83C\uDDF2\uD83C\uDDFD", hreflang: "es",  dir: "ltr" },
+        en:  { label: "EN", flag: "\uD83C\uDDEC\uD83C\uDDE7", hreflang: "en",  dir: "ltr" }
+        // Langues européennes à activer progressivement :
+        // , de:  { label: "DE", flag: "\uD83C\uDDE9\uD83C\uDDEA", hreflang: "de",  dir: "ltr" }
+        // , it:  { label: "IT", flag: "\uD83C\uDDEE\uD83C\uDDF9", hreflang: "it",  dir: "ltr" }
+        // , pt:  { label: "PT", flag: "\uD83C\uDDF5\uD83C\uDDF9", hreflang: "pt",  dir: "ltr" }
+        // , nl:  { label: "NL", flag: "\uD83C\uDDF3\uD83C\uDDF1", hreflang: "nl",  dir: "ltr" }
+        // , pl:  { label: "PL", flag: "\uD83C\uDDF5\uD83C\uDDF1", hreflang: "pl",  dir: "ltr" }
+        // , ca:  { label: "CA", flag: "\uD83C\uDDE8\uD83C\uDDE6", hreflang: "ca",  dir: "ltr" }
+        // , eu:  { label: "EU", flag: "\uD83C\uDDEA\uD83C\uDDF8", hreflang: "eu",  dir: "ltr" }
+        // , gl:  { label: "GL", flag: "\uD83C\uDDEA\uD83C\uDDF8", hreflang: "gl",  dir: "ltr" }
+        // Langue ambrindienne :
+        // , yua: { label: "YUA", flag: "\uD83C\uDDF2\uD83C\uDDFD", hreflang: "yua", dir: "ltr" }
       };
 
       function translatePage(lang) {
+        // Mettre à jour l’attribut lang du document (SEO + lecteurs d’écran)
+        document.documentElement.lang = lang;
         currentLang = lang;
         
         globalLangSwitch.querySelectorAll('.lang-btn').forEach(function(b) {

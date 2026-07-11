@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://cedbern.github.io/criterio-osint/sitemap.xml

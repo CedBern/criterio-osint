@@ -1,0 +1,42 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Le mirage de la connexion globale des pyramides : Pourquoi la science réfute le mythe de la civilisation mère",
+      "description": "Depuis des millénaires, les pyramides captivent l’humanité. De Gizeh à Teotihuacán, ces monuments de pierre défient le temps et nourrissent notre imagination. Pourtant, cette admir...",
+      "image": "https://cedbern.github.io/criterio-osint/images/c_1.webp",
+      "datePublished": "2026",
+      "inLanguage": "fr",
+      "author": {
+        "@type": "Organization",
+        "name": "Criterio",
+        "url": "https://cedbern.github.io/criterio-osint"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Criterio",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://cedbern.github.io/criterio-osint/images/logo_criterio.webp"
+        }
+      }
+    },
+    {
+      "@type": "ClaimReview",
+      "url": "https://cedbern.github.io/criterio-osint/#le-mirage-de-la-connexion-globale-des-py",
+      "claimReviewed": "Le mirage de la connexion globale des pyramides : Pourquoi la science réfute le mythe de la civilisation mère",
+      "author": {
+        "@type": "Organization",
+        "name": "Criterio"
+      },
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "1",
+        "bestRating": "5",
+        "worstRating": "1",
+        "alternateName": "Debunked"
+      }
+    }
+  ]
+}

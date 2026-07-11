@@ -1,0 +1,42 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Dater l'impossible : Comment la science détermine l'âge des pyramides",
+      "description": "Une objection revient souvent dans les débats sur les théories alternatives : *« On ne peut pas dater la taille d’une pierre. »* Sur un plan strictement minéralogique, cette affirm...",
+      "image": "https://cedbern.github.io/criterio-osint/images/c4_1.webp",
+      "datePublished": "2026",
+      "inLanguage": "fr",
+      "author": {
+        "@type": "Organization",
+        "name": "Criterio",
+        "url": "https://cedbern.github.io/criterio-osint"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Criterio",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://cedbern.github.io/criterio-osint/images/logo_criterio.webp"
+        }
+      }
+    },
+    {
+      "@type": "ClaimReview",
+      "url": "https://cedbern.github.io/criterio-osint/#dater-l-impossible---comment-la-science-",
+      "claimReviewed": "Dater l'impossible : Comment la science détermine l'âge des pyramides",
+      "author": {
+        "@type": "Organization",
+        "name": "Criterio"
+      },
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "1",
+        "bestRating": "5",
+        "worstRating": "1",
+        "alternateName": "Debunked"
+      }
+    }
+  ]
+}
