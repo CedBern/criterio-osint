@@ -53,8 +53,18 @@ def md_to_html(md_text):
     html = re.sub(r'^##\s+(.+)$', r'<h3>\1</h3>', html, flags=re.MULTILINE)
     html = re.sub(r'^#\s+(.+)$', r'<h2>\1</h2>', html, flags=re.MULTILINE)
     
-    # Images (ex: ![alt](src))
-    html = re.sub(r'!\[(.*?)\]\((.*?)\)', r'<div class="article-media"><img src="\2" alt="\1"><span class="media-caption">\1</span></div>', html)
+    # Images (ex: ![alt](src)) — sert la version WebP si elle existe + lazy-load
+    def _img_sub(m):
+        alt, src = m.group(1), m.group(2)
+        if src.lower().endswith((".png", ".jpg", ".jpeg")):
+            stem = re.sub(r'\.(png|jpe?g)$', '', src, flags=re.IGNORECASE)
+            webp_rel = stem + ".webp"
+            # src est de la forme "images/xxx.ext" -> vérifier la jumelle dans website/images
+            if (website_dir / webp_rel).exists():
+                src = webp_rel
+        return (f'<div class="article-media"><img src="{src}" alt="{alt}" '
+                f'loading="lazy" decoding="async"><span class="media-caption">{alt}</span></div>')
+    html = re.sub(r'!\[(.*?)\]\((.*?)\)', _img_sub, html)
     
     # Liens: [text](url) -> <a href="url" target="_blank" rel="noopener noreferrer">text</a>
     html = re.sub(r'(?<!\!)\[([^\]]+)\]\(([^\)]+)\)', r'<a href="\2" target="_blank" rel="noopener noreferrer">\1</a>', html)
@@ -194,6 +204,22 @@ def get_cover_image(base_name: str, content_fr: str = "") -> str:
             return src
     return "images/Piramides_de_Guiza.webp" if (images_dir / "Piramides_de_Guiza.webp").exists() else "images/Piramides_de_Guiza.jpg"
 
+def strip_markdown(text: str) -> str:
+    """Supprime le formatage markdown inline (gras, italique, code) pour les extraits de cartes."""
+    # **gras** et __gras__
+    text = re.sub(r'\*\*(.*?)\*\*', r'\1', text)
+    text = re.sub(r'__(.*?)__', r'\1', text)
+    # *italique* et _italique_
+    text = re.sub(r'\*(.*?)\*', r'\1', text)
+    text = re.sub(r'_(.*?)_', r'\1', text)
+    # `code`
+    text = re.sub(r'`(.*?)`', r'\1', text)
+    # Liens [texte](url) -> texte
+    text = re.sub(r'\[([^\]]+)\]\([^\)]+\)', r'\1', text)
+    # Guillemets de citation > ...
+    text = re.sub(r'^>\s*', '', text, flags=re.MULTILINE)
+    return text.strip()
+
 def parse_lang_meta(filepath):
     if not os.path.exists(filepath):
         return "", ""
@@ -201,12 +227,15 @@ def parse_lang_meta(filepath):
         content = f.read()
     title_match = re.search(r"^#\s+(.+)$", content, re.MULTILINE)
     title = title_match.group(1).strip() if title_match else ""
+    # Strip le markdown du titre aussi
+    title = strip_markdown(title)
     
     paragraphs = [p.strip() for p in content.split("\n") if p.strip() and not p.startswith("#") and not p.lower().startswith(("tags:", "etiquetas:"))]
     summary = ""
     for p in paragraphs:
         if len(p) > 40 and not p.startswith("Source:") and not p.startswith("*") and not p.startswith("!"):
-            summary = p[:180] + "..." if len(p) > 180 else p
+            clean = strip_markdown(p)
+            summary = clean[:180] + "..." if len(clean) > 180 else clean
             break
     return title, summary
 
@@ -412,7 +441,7 @@ def main():
           <div class="story-meta">
             <span class="story-category-label" data-category="featured">Investigaci&oacute;n Principal</span>
             <span class="story-level"> &mdash; {feat['level_es']}</span>
-            <span class="story-date">Julio 2026</span>
+            <span class="story-date" id="ui-story-date">Julio 2026</span>
           </div>
           <h2 class="story-title">{feat['title_fr']}</h2>
           <p class="story-excerpt">{feat['summary_fr']}</p>
