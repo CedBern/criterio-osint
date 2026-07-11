@@ -32,6 +32,20 @@
 - **DÉCISION UTILISATEUR** : les skills `.agents/skills/` restent HORS git (distribués séparément en .skill). L'orchestrateur AGENTS.md route donc vers des fichiers non présents dans un clone — assumé.
 - Reste ouvert (non bloquant) : chantier RGPD à finaliser côté contenu des 3 pages légales + base légale des outils OSINT ciblant des personnes ; validation juridique recommandée.
 
+## Audit design du site 2026-07-09 (AUDIT_DESIGN_2026-07-09.md)
+- Objectif utilisateur : faire du site LA référence du genre (fact-checking + FLE).
+- Identité visuelle = point fort à CONSERVER (rouge brique #7c221e + sépia, Lora/Outfit ; contraste clair conforme AA ; 44/44 alt).
+- 3 verrous techniques : (P-1 🔴) images 179 Mo, fichiers 8-9 Mo → optimiser WebP ≤250 Ko + lazy ; (S-1 🟠) AUCUN SEO/OG/JSON-LD → injecter head + **ClaimReview** (levier Google spécifique fact-check) + sitemap/robots/favicon ; (I-1 🟠) `<html lang>` figé + pas de hreflang → MAJ lang au switch.
+- Finition : (T-1) 14 tailles de police dont demi-pixels → échelle 6 marches ; (C-1) mode nuit en hex one-off → tokeniser ; (A-1) modal sans role/aria-modal/focus-trap, .reveal cache le contenu si JS échoue.
+- Automatiser SEO+ClaimReview+images dans publish_dossiers.py pour que chaque futur dossier soit optimisé par défaut.
+
+## Sprints 1&2 FINALISÉS + vérifiés en ligne (2026-07-09)
+- Images : 52/52 `<img>` servis en WebP, 52/52 `loading="lazy"`. Chargement initial ≈ néant côté contenu (avant : 44 images / 179 Mo chargées d'un coup, navigateur qui gelait). Vérifié sur https://cedbern.github.io/criterio-osint/.
+- Durabilité : `publish_dossiers.py` → `md_to_html` sert désormais WebP + lazy (19 tests verts). Toute régénération conserve l'optimisation.
+- JSON-LD `Article` + `ClaimReview` (×2, verdict « Faux ») injecté dans `<head>` (survit aux régénérations) — levier Google fact-check actif. Bloc idempotent `<!-- JSONLD_START/END -->`.
+- Typo : 0 demi-pixel restant. Mode nuit : tokens `--n-*` définis (tokenisation partielle, iso-valeur, sans régression ; règles multi-lignes encore en hex brut → follow-up sûr).
+- RESTE mineur : `logo_criterio.png` sert de favicon en 588 Ko (à réduire à un vrai favicon léger) ; covers featured/cards encore en .jpg dans le template (lignes ~428/473/577 de publish_dossiers.py) → à passer en webp aussi.
+
 ## Préférences de travail de l'utilisateur
 - Réponses concises et directes.
 - Skills et documentation du projet en français, portables (utilisables par n'importe quelle IA).
