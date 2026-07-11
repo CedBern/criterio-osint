@@ -1024,6 +1024,16 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
+    /* SYNTHÈSE VOCALE - PARAGRAPHE ACTIF */
+    .speech-active-paragraph {
+      border-left: 4px solid var(--accent) !important;
+      background: var(--accent-dim) !important;
+      padding: 14px 18px !important;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px var(--accent-glow);
+      transition: all 0.3s ease;
+    }
+
     /* BLOCS DE SOURCES */
     .sources-wrapper {
       margin-top: 44px;
@@ -2836,6 +2846,13 @@
       var activeTooltip = null;
       var activeArticleId = '';
       var currentTagFilter = 'all';
+      
+      // Speech synthesis state
+      var speechUtterance = null;
+      var isSpeechPlaying = false;
+      var speechQueue = [];
+      var currentQueueIndex = -1;
+      var activeAudioElement = null;
 
       var UI_TRANSLATIONS = {
         fr: {
@@ -3091,10 +3108,13 @@
           if (targetLang === 'en' && pEn) mainEl = pEn;
           mainEl.style.display = 'block';
           
+          actions.style.display = 'flex';
+          actions.innerHTML = '';
+          
+          var listenLabel = targetLang === 'es' ? 'Escuchar' : (targetLang === 'fr' ? 'Écouter' : 'Listen');
+          actions.innerHTML += '<button class="btn-listen-paragraph" title="' + listenLabel + '"><span>🔊</span> <span class="listen-btn-text">' + listenLabel + '</span></button>';
+          
           if (isStudyMode) {
-            actions.style.display = 'flex';
-            
-            actions.innerHTML = '';
             if (targetLang !== 'fr' && pFr) {
               actions.innerHTML += '<button class="btn-translate-fr" title="Traduction en français">🇫🇷</button>';
             }
@@ -3104,8 +3124,6 @@
             if (targetLang !== 'en' && pEn) {
               actions.innerHTML += '<button class="btn-translate-en" title="English translation">🇬🇧</button>';
             }
-          } else {
-            actions.style.display = 'none';
           }
         });
         
@@ -3167,6 +3185,51 @@
 
         modalBody.innerHTML = headerHtml + contentEl.innerHTML;
         
+        // Inject global audio controller under the main title
+        var titleEl = modalBody.querySelector('h1, h2');
+        if (titleEl) {
+          var audioBtnContainer = document.createElement('div');
+          audioBtnContainer.className = 'audio-main-controls';
+          audioBtnContainer.style.margin = '12px 0 24px 0';
+          audioBtnContainer.style.display = 'flex';
+          audioBtnContainer.style.alignItems = 'center';
+          audioBtnContainer.style.gap = '12px';
+          
+          var listenText = currentLang === 'es' ? 'Escuchar artículo completo' : (currentLang === 'fr' ? 'Écouter l\'article complet' : 'Listen to full article');
+          var speedText = currentLang === 'es' ? 'Velocidad' : (currentLang === 'fr' ? 'Vitesse' : 'Speed');
+          
+          audioBtnContainer.innerHTML = `
+            <button class="audio-main-btn" id="audioMainPlayBtn" style="background: var(--accent); color: white; border: none; border-radius: 25px; padding: 10px 20px; font-weight: bold; font-family: 'Outfit', sans-serif; cursor: pointer; display: flex; align-items: center; gap: 8px; font-size: 13.5px; transition: all 0.2s; box-shadow: 0 4px 12px var(--accent-glow);">
+              <span class="audio-icon">▶️</span>
+              <span class="audio-text">${listenText}</span>
+            </button>
+            <button class="audio-main-btn secondary" id="audioMainStopBtn" style="background: none; border: 1.5px solid var(--border); border-radius: 25px; padding: 9px 18px; font-weight: bold; font-family: 'Outfit', sans-serif; cursor: pointer; display: flex; align-items: center; gap: 6px; font-size: 13.5px; color: var(--muted); transition: all 0.2s; display: none;">
+              <span>⏹️</span>
+            </button>
+            <div class="audio-speed-container" style="display: flex; align-items: center; gap: 6px; font-size: 12px; font-family: 'Outfit', sans-serif; color: var(--muted);">
+              <span>${speedText}:</span>
+              <select id="audioSpeedSelect" style="background: none; border: 1px solid var(--border); border-radius: 5px; color: var(--fg); padding: 2px 6px; font-size: 12px; outline: none; cursor: pointer;">
+                <option value="0.8">0.8x</option>
+                <option value="1" selected>1.0x</option>
+                <option value="1.2">1.2x</option>
+                <option value="1.5">1.5x</option>
+              </select>
+            </div>
+          `;
+          
+          titleEl.parentNode.insertBefore(audioBtnContainer, titleEl.nextSibling);
+          
+          // Attach listeners for main audio controls
+          document.getElementById('audioMainPlayBtn').addEventListener('click', function(e) {
+            e.stopPropagation();
+            toggleSpeechContinuous();
+          });
+          document.getElementById('audioMainStopBtn').addEventListener('click', function(e) {
+            e.stopPropagation();
+            stopSpeech();
+          });
+        }
+        
         var hasDidactic = Object.keys(currentGlossary).length > 0;
         didacticToolbar.style.display = 'flex'; // Always show for font size controls
         document.querySelector('.didactic-toggle-container').style.display = hasDidactic ? 'flex' : 'none';
@@ -3187,7 +3250,195 @@
         document.body.style.overflow = 'hidden';
       }
 
+      function stopSpeech() {
+        window.speechSynthesis.cancel();
+        isSpeechPlaying = false;
+        if (activeAudioElement) {
+          activeAudioElement.classList.remove('speech-active-paragraph');
+          activeAudioElement = null;
+        }
+        var mainPlayBtn = document.getElementById('audioMainPlayBtn');
+        if (mainPlayBtn) {
+          var listenText = currentLang === 'es' ? 'Escuchar artículo completo' : (currentLang === 'fr' ? 'Écouter l\'article complet' : 'Listen to full article');
+          mainPlayBtn.querySelector('.audio-icon').innerText = '▶️';
+          mainPlayBtn.querySelector('.audio-text').innerText = listenText;
+        }
+        var mainStopBtn = document.getElementById('audioMainStopBtn');
+        if (mainStopBtn) {
+          mainStopBtn.style.display = 'none';
+        }
+      }
+
+      function getVisibleParagraphTextAndLang(block) {
+        var callouts = block.querySelectorAll('.translation-callout');
+        for (var i = 0; i < callouts.length; i++) {
+          if (callouts[i].style.display === 'block') {
+            var text = callouts[i].innerText;
+            var lang = 'fr';
+            if (callouts[i].classList.contains('paragraph-es')) lang = 'es';
+            if (callouts[i].classList.contains('paragraph-en')) lang = 'en';
+            return { text: text, lang: lang };
+          }
+        }
+        var targetLang = currentLang;
+        var pEl = block.querySelector('.paragraph-' + targetLang);
+        if (!pEl) pEl = block.querySelector('.paragraph-fr');
+        if (pEl) {
+          return { text: pEl.innerText, lang: targetLang };
+        }
+        return null;
+      }
+
+      function playNextInQueue() {
+        if (currentQueueIndex >= speechQueue.length) {
+          stopSpeech();
+          return;
+        }
+        
+        if (activeAudioElement) {
+          activeAudioElement.classList.remove('speech-active-paragraph');
+        }
+        
+        var block = speechQueue[currentQueueIndex];
+        activeAudioElement = block;
+        block.classList.add('speech-active-paragraph');
+        
+        block.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        
+        var textInfo = getVisibleParagraphTextAndLang(block);
+        if (!textInfo) {
+          currentQueueIndex++;
+          playNextInQueue();
+          return;
+        }
+        
+        speechUtterance = new SpeechSynthesisUtterance(textInfo.text);
+        
+        if (textInfo.lang === 'fr') speechUtterance.lang = 'fr-FR';
+        else if (textInfo.lang === 'es') speechUtterance.lang = 'es-MX';
+        else if (textInfo.lang === 'en') speechUtterance.lang = 'en-US';
+        
+        var voices = window.speechSynthesis.getVoices();
+        var matchingVoice = voices.find(function(v) {
+          return v.lang.startsWith(speechUtterance.lang);
+        });
+        if (matchingVoice) speechUtterance.voice = matchingVoice;
+        
+        var speedSelect = document.getElementById('audioSpeedSelect');
+        if (speedSelect) {
+          speechUtterance.rate = parseFloat(speedSelect.value);
+        } else {
+          speechUtterance.rate = 1.0;
+        }
+        
+        speechUtterance.onend = function() {
+          currentQueueIndex++;
+          playNextInQueue();
+        };
+        
+        speechUtterance.onerror = function() {
+          stopSpeech();
+        };
+        
+        window.speechSynthesis.speak(speechUtterance);
+      }
+
+      function toggleSpeechContinuous() {
+        if (isSpeechPlaying) {
+          if (window.speechSynthesis.paused) {
+            window.speechSynthesis.resume();
+            var mainPlayBtn = document.getElementById('audioMainPlayBtn');
+            if (mainPlayBtn) {
+              mainPlayBtn.querySelector('.audio-icon').innerText = '⏸️';
+            }
+          } else {
+            window.speechSynthesis.pause();
+            var mainPlayBtn = document.getElementById('audioMainPlayBtn');
+            if (mainPlayBtn) {
+              mainPlayBtn.querySelector('.audio-icon').innerText = '▶️';
+            }
+          }
+        } else {
+          window.speechSynthesis.cancel();
+          var blocks = Array.from(modalBody.querySelectorAll('.paragraph-block'));
+          if (blocks.length === 0) return;
+          
+          speechQueue = blocks;
+          currentQueueIndex = 0;
+          isSpeechPlaying = true;
+          
+          var mainPlayBtn = document.getElementById('audioMainPlayBtn');
+          if (mainPlayBtn) {
+            mainPlayBtn.querySelector('.audio-icon').innerText = '⏸️';
+          }
+          var mainStopBtn = document.getElementById('audioMainStopBtn');
+          if (mainStopBtn) {
+            mainStopBtn.style.display = 'block';
+          }
+          
+          playNextInQueue();
+        }
+      }
+
+      function playSingleParagraph(block) {
+        window.speechSynthesis.cancel();
+        isSpeechPlaying = false;
+        
+        var mainPlayBtn = document.getElementById('audioMainPlayBtn');
+        if (mainPlayBtn) {
+          var listenText = currentLang === 'es' ? 'Escuchar artículo completo' : (currentLang === 'fr' ? 'Écouter l\'article complet' : 'Listen to full article');
+          mainPlayBtn.querySelector('.audio-icon').innerText = '▶️';
+          mainPlayBtn.querySelector('.audio-text').innerText = listenText;
+        }
+        var mainStopBtn = document.getElementById('audioMainStopBtn');
+        if (mainStopBtn) {
+          mainStopBtn.style.display = 'none';
+        }
+        
+        if (activeAudioElement) {
+          activeAudioElement.classList.remove('speech-active-paragraph');
+        }
+        
+        activeAudioElement = block;
+        block.classList.add('speech-active-paragraph');
+        
+        var textInfo = getVisibleParagraphTextAndLang(block);
+        if (!textInfo) return;
+        
+        speechUtterance = new SpeechSynthesisUtterance(textInfo.text);
+        
+        if (textInfo.lang === 'fr') speechUtterance.lang = 'fr-FR';
+        else if (textInfo.lang === 'es') speechUtterance.lang = 'es-MX';
+        else if (textInfo.lang === 'en') speechUtterance.lang = 'en-US';
+        
+        var voices = window.speechSynthesis.getVoices();
+        var matchingVoice = voices.find(function(v) {
+          return v.lang.startsWith(speechUtterance.lang);
+        });
+        if (matchingVoice) speechUtterance.voice = matchingVoice;
+        
+        var speedSelect = document.getElementById('audioSpeedSelect');
+        if (speedSelect) {
+          speechUtterance.rate = parseFloat(speedSelect.value);
+        } else {
+          speechUtterance.rate = 1.0;
+        }
+        
+        speechUtterance.onend = function() {
+          block.classList.remove('speech-active-paragraph');
+          activeAudioElement = null;
+        };
+        
+        speechUtterance.onerror = function() {
+          block.classList.remove('speech-active-paragraph');
+          activeAudioElement = null;
+        };
+        
+        window.speechSynthesis.speak(speechUtterance);
+      }
+
       function closeModal() {
+        stopSpeech();
         modal.classList.remove('open');
         document.body.style.overflow = '';
         removeTooltip();
@@ -3242,6 +3493,14 @@
       });
 
       modalBody.addEventListener('click', function(e) {
+        var listenBtn = e.target.closest('.btn-listen-paragraph');
+        if (listenBtn) {
+          e.stopPropagation();
+          var block = listenBtn.closest('.paragraph-block');
+          playSingleParagraph(block);
+          return;
+        }
+
         var btn = e.target.closest('.btn-translate-es, .btn-translate-en, .btn-translate-fr');
         if (btn) {
           e.stopPropagation();
