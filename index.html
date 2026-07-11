@@ -3307,6 +3307,35 @@
         return null;
       }
 
+      function selectBestVoice(langCode) {
+        var voices = window.speechSynthesis.getVoices();
+        var langVoices = voices.filter(function(v) {
+          return v.lang.toLowerCase().replace('_', '-').startsWith(langCode.toLowerCase());
+        });
+        
+        if (langVoices.length === 0) return null;
+        
+        // 1. Prioritize Google voices (Chrome Cloud voices)
+        var googleVoice = langVoices.find(function(v) {
+          return v.name.toLowerCase().indexOf('google') !== -1;
+        });
+        if (googleVoice) return googleVoice;
+        
+        // 2. Prioritize Microsoft Natural voices (Edge Natural)
+        var naturalVoice = langVoices.find(function(v) {
+          return v.name.toLowerCase().indexOf('natural') !== -1;
+        });
+        if (naturalVoice) return naturalVoice;
+        
+        // 3. Prioritize Premium voices (macOS / iOS)
+        var premiumVoice = langVoices.find(function(v) {
+          return v.name.toLowerCase().indexOf('premium') !== -1 || v.name.toLowerCase().indexOf('high') !== -1;
+        });
+        if (premiumVoice) return premiumVoice;
+        
+        return langVoices[0];
+      }
+
       function playNextInQueue() {
         if (currentQueueIndex >= speechQueue.length) {
           stopSpeech();
@@ -3334,14 +3363,19 @@
         
         speechUtterance = new SpeechSynthesisUtterance(textInfo.text);
         
-        if (textInfo.lang === 'fr') speechUtterance.lang = 'fr-FR';
-        else if (textInfo.lang === 'es') speechUtterance.lang = 'es-MX';
-        else if (textInfo.lang === 'en') speechUtterance.lang = 'en-US';
+        var targetLangCode = 'fr';
+        if (textInfo.lang === 'fr') {
+          speechUtterance.lang = 'fr-FR';
+          targetLangCode = 'fr';
+        } else if (textInfo.lang === 'es') {
+          speechUtterance.lang = 'es-MX';
+          targetLangCode = 'es';
+        } else if (textInfo.lang === 'en') {
+          speechUtterance.lang = 'en-US';
+          targetLangCode = 'en';
+        }
         
-        var voices = window.speechSynthesis.getVoices();
-        var matchingVoice = voices.find(function(v) {
-          return v.lang.startsWith(speechUtterance.lang);
-        });
+        var matchingVoice = selectBestVoice(targetLangCode);
         if (matchingVoice) speechUtterance.voice = matchingVoice;
         
         var speedSelect = document.getElementById('audioSpeedSelect');
