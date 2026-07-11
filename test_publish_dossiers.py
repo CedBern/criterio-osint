@@ -105,7 +105,7 @@ def test_parse_lang_meta_missing_file():
 def test_get_cover_image_default():
     from publish_dossiers import get_cover_image
     cover = get_cover_image("unknown_slug")
-    assert cover == "images/Piramides_de_Guiza.jpg"
+    assert cover in ("images/Piramides_de_Guiza.webp", "images/Piramides_de_Guiza.jpg")
 
 
 def test_get_cover_image_from_content():

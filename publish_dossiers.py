@@ -177,14 +177,22 @@ def generate_multilingual_html(content_fr, content_es, content_en, glossary):
 
 def get_cover_image(base_name: str, content_fr: str = "") -> str:
     images_dir = _BASE / "website" / "images"
-    slug_image = images_dir / f"{base_name}.webp"
-    if slug_image.exists():
-        return f"images/{base_name}.webp"
+    # Prefer WebP
+    for ext in (".webp", ".png", ".jpg", ".jpeg"):
+        candidate = images_dir / f"{base_name}{ext}"
+        if candidate.exists():
+            return f"images/{base_name}{ext}"
     if content_fr:
         m = re.search(r'!\[.*?\]\((.*?)\)', content_fr)
         if m:
-            return m.group(1)
-    return "images/Piramides_de_Guiza.jpg"
+            src = m.group(1)
+            # Try WebP variant of found image
+            p = Path(src)
+            webp = images_dir / (p.stem + ".webp")
+            if webp.exists():
+                return f"images/{p.stem}.webp"
+            return src
+    return "images/Piramides_de_Guiza.webp" if (images_dir / "Piramides_de_Guiza.webp").exists() else "images/Piramides_de_Guiza.jpg"
 
 def parse_lang_meta(filepath):
     if not os.path.exists(filepath):
@@ -602,23 +610,111 @@ def main():
         
     print("OK: index.html successfully updated with your multilingual magazine layout!")
 
+    # --- SEO: Generate sitemap.xml ---
+    generate_sitemap(dossiers_data)
+
+    # --- SEO: Generate JSON-LD per dossier ---
+    generate_json_ld(dossiers_data)
+
     # Copier dans le cache Open Design (optionnel, via NEXOME_OD_CACHE)
     if _OD_CACHE:
         od_path = Path(_OD_CACHE)
         try:
             od_path.parent.mkdir(parents=True, exist_ok=True)
             od_path.write_text(html_code, encoding="utf-8")
-            print(f"OK: Open Design cache synced → {_OD_CACHE}")
+            print(f"OK: Open Design cache synced -> {_OD_CACHE}")
         except Exception as e:
             print(f"Warning Open Design cache sync failed: {e}")
 
-    # Git commit (optionnel, seulement si le répo existe)
+    # Git commit (optionnel, seulement si le repo existe)
     git_dir = website_dir / ".git"
     if git_dir.exists():
-        print("\nGit commit disponible — exécuter manuellement :")
-        print(f"  cd {website_dir} && git add index.html && git commit -m \"Mise à jour publication {datetime.date.today()}\"")
+        print("\nGit commit disponible — executer manuellement :")
+        print(f"  cd {website_dir} && git add index.html && git commit -m 'Mise a jour publication {datetime.date.today()}'")
     else:
-        print("(Pas de repo git dans website/ — commit ignoré)")
+        print("(Pas de repo git dans website/ — commit ignore)")
+
+
+SITE_URL = "https://cedbern.github.io/criterio-osint"
+
+def generate_sitemap(dossiers_data: list):
+    """Genere website/sitemap.xml avec les dossiers publies."""
+    today = datetime.date.today().isoformat()
+    urls = [f"""  <url>
+    <loc>{SITE_URL}/</loc>
+    <lastmod>{today}</lastmod>
+    <priority>1.0</priority>
+  </url>"""]
+    for d in dossiers_data:
+        slug = d.get("slug", "")
+        if slug:
+            urls.append(f"""  <url>
+    <loc>{SITE_URL}/#{slug}</loc>
+    <lastmod>{today}</lastmod>
+    <priority>0.8</priority>
+  </url>""")
+    sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n'
+    sitemap += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+    sitemap += "\n".join(urls)
+    sitemap += "\n</urlset>\n"
+    out = website_dir / "sitemap.xml"
+    out.write_text(sitemap, encoding="utf-8")
+    print(f"OK: sitemap.xml generated ({len(dossiers_data)+1} URLs)")
+
+
+def generate_json_ld(dossiers_data: list):
+    """Genere un fichier JSON-LD par dossier pour Article + ClaimReview schema.org."""
+    out_dir = website_dir / "jsonld"
+    out_dir.mkdir(exist_ok=True)
+    for d in dossiers_data:
+        slug = d.get("slug", d.get("title_fr", "article")[:40])
+        slug_clean = re.sub(r'[^a-z0-9_-]', '-', slug.lower().replace(' ', '-'))
+        structured = {
+            "@context": "https://schema.org",
+            "@graph": [
+                {
+                    "@type": "Article",
+                    "headline": d.get("title_fr", ""),
+                    "description": d.get("summary_fr", ""),
+                    "image": f"{SITE_URL}/{d.get('cover', '')}",
+                    "datePublished": str(d.get("year", datetime.date.today().year)),
+                    "inLanguage": "fr",
+                    "author": {
+                        "@type": "Organization",
+                        "name": "Criterio",
+                        "url": SITE_URL
+                    },
+                    "publisher": {
+                        "@type": "Organization",
+                        "name": "Criterio",
+                        "logo": {
+                            "@type": "ImageObject",
+                            "url": f"{SITE_URL}/images/logo_criterio.webp"
+                        }
+                    }
+                },
+                {
+                    "@type": "ClaimReview",
+                    "url": f"{SITE_URL}/#{slug_clean}",
+                    "claimReviewed": d.get("title_fr", ""),
+                    "author": {
+                        "@type": "Organization",
+                        "name": "Criterio"
+                    },
+                    "reviewRating": {
+                        "@type": "Rating",
+                        "ratingValue": "1",
+                        "bestRating": "5",
+                        "worstRating": "1",
+                        "alternateName": "Debunked"
+                    }
+                }
+            ]
+        }
+        out_file = out_dir / f"{slug_clean}.json"
+        out_file.write_text(json.dumps(structured, ensure_ascii=False, indent=2), encoding="utf-8")
+    print(f"OK: {len(dossiers_data)} JSON-LD files generated in website/jsonld/")
+
 
 if __name__ == "__main__":
     main()
