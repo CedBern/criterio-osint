@@ -104,6 +104,9 @@
     body.reading-sepia .modal-body p { color: var(--sepia-text); }
     body.reading-sepia .didactic-toolbar { background: rgba(240, 230, 210, 0.85); }
     /* C-1 — Mode nuit : toutes les valeurs dérivées des tokens --night-* */
+    /* Tokens mode nuit (valeurs identiques, tokenisées) */
+    body.reading-night{--n-bg:#1e1e24;--n-surface:#22222a;--n-surface-2:#25252d;--n-elev:#2a2a34;--n-border:#333;--n-border-strong:#444;--n-dot:#555;--n-fg:#e0e0e6;--n-text:#bfbfc8;--n-muted:#a0a0aa;}
+
     body.reading-night {
       background: var(--night-bg);
       color: var(--night-fg);
@@ -210,15 +213,15 @@
     body.reading-night .modal-close { background: rgba(255,255,255,0.06); border-color: var(--night-border-2); }
     body.reading-night .modal-close:hover { background: var(--accent); color: #fff !important; }
     body.reading-night .quiz-option { background: var(--night-surface-2); border-color: var(--night-border-2); }
-    body.reading-night .quiz-option:hover:not(.disabled) { background: #2a2a34; border-color: var(--night-border-3); }
+    body.reading-night .quiz-option:hover:not(.disabled) { background: var(--n-elev); border-color: var(--night-border-3); }
     body.reading-night .quiz-option.correct { background: rgba(0,180,60,0.2); border-color: #00b43c; color: #8fca9c !important; }
     body.reading-night .quiz-option.incorrect { background: rgba(180,40,40,0.2); border-color: #b42828; color: #d99090 !important; }
     body.reading-night .glossary-tooltip { background: var(--night-surface-2); border-color: var(--night-border-2); }
-    body.reading-night .glossary-tooltip .tooltip-word { border-bottom-color: #555; }
+    body.reading-night .glossary-tooltip .tooltip-word { border-bottom-color: var(--n-dot); }
     body.reading-night .glossary-tooltip .tooltip-definition { border-left-color: rgba(124,34,30,0.4); }
     body.reading-night .glossary-term.active-didactic { border-bottom-color: #a0403a; }
     body.reading-night .score-action-btn { background: var(--night-surface-2); border-color: var(--night-border-2); }
-    body.reading-night .score-action-btn:hover { background: #2a2a34; border-color: var(--night-border-3); }
+    body.reading-night .score-action-btn:hover { background: var(--n-elev); border-color: var(--night-border-3); }
     body.reading-night .score-action-btn.primary { background: var(--accent); border-color: var(--accent); color: #fff !important; }
     body.reading-night .styled-table th { border-bottom-color: var(--accent); }
     body.reading-night .styled-table td { border-bottom-color: var(--night-border-2); }
@@ -256,7 +259,7 @@
     }
     body.reading-sepia .bg-paper { opacity: 0.15; }
     body.reading-sepia .bg-paper { background-image: radial-gradient(#c9b99a 0.5px, transparent 0.5px); }
-    body.reading-night .bg-paper { opacity: 0.08; background-image: radial-gradient(#555 0.5px, transparent 0.5px); }
+    body.reading-night .bg-paper { opacity: 0.08; background-image: radial-gradient(var(--n-dot) 0.5px, transparent 0.5px); }
 
     .container {
       max-width: var(--max-w);
@@ -297,7 +300,7 @@
       border: 1px solid var(--border);
       padding: 4px 10px;
       border-radius: 20px;
-      font-size: 10.5px;
+      font-size: 10px;
       font-weight: 700;
       color: var(--muted);
       cursor: pointer;
@@ -554,7 +557,7 @@
     .card-meta {
       display: flex;
       gap: 10px;
-      font-size: 10.5px;
+      font-size: 10px;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.06em;
@@ -575,7 +578,7 @@
       margin-bottom: 12px;
     }
     .card-excerpt {
-      font-size: 13.5px;
+      font-size: 14px;
       color: var(--muted);
       margin-bottom: 18px;
       line-height: 1.6;
@@ -840,7 +843,7 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      font-size: 10.5px;
+      font-size: 10px;
       font-weight: 600;
       color: var(--muted);
       text-transform: uppercase;
@@ -883,7 +886,7 @@
       background: var(--accent-dim);
       color: var(--accent);
       border: 1px solid rgba(124,34,30,0.2);
-      font-size: 10.5px;
+      font-size: 10px;
       font-weight: 700;
       padding: 4px 10px;
       border-radius: 20px;
@@ -1047,12 +1050,12 @@
       display: flex;
       align-items: center;
       gap: 6px;
-      font-size: 13.5px;
+      font-size: 14px;
       color: var(--fg);
     }
     .tooltip-definition {
       color: var(--muted);
-      font-size: 12.5px;
+      font-size: 12px;
       line-height: 1.5;
       border-left: 2px solid var(--accent-dim);
       padding-left: 10px;
@@ -1069,14 +1072,12 @@
     .paragraph-actions {
       display: flex;
       gap: 8px;
-      margin-top: 6px;
-      opacity: 0;
-      transition: opacity 0.3s ease, transform 0.3s ease;
-      transform: translateY(4px);
+      margin-top: 8px;
+      opacity: 0.72;
+      transition: opacity 0.2s ease;
     }
     .paragraph-block:hover .paragraph-actions {
       opacity: 1;
-      transform: translateY(0);
     }
     .paragraph-actions button {
       background: rgba(255,255,255,0.6);
@@ -1113,7 +1114,7 @@
       background: #f6f5f1;
       border-left: 3px solid var(--accent);
       border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-      font-size: 14.5px !important;
+      font-size: 14px !important;
       color: var(--muted) !important;
       line-height: 1.6;
       animation: slideDown 0.25s cubic-bezier(0.16, 1, 0.3, 1);
@@ -1390,7 +1391,7 @@
       border: 1px solid rgba(124, 34, 30, 0.12);
       border-radius: 12px;
       padding: 2px 8px;
-      font-size: 10.5px;
+      font-size: 10px;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.03em;
@@ -1433,6 +1434,113 @@
       background: var(--accent-dim) !important;
     }
   </style>
+<!-- JSONLD_START -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "name": "Criterio",
+      "url": "https://cedbern.github.io/criterio-osint/",
+      "logo": "https://cedbern.github.io/criterio-osint/images/logo_criterio.png"
+    },
+    {
+      "@type": "Article",
+      "headline": "Le secret des bâtisseurs : comment une branche perdue du Nil réécrit l'histoire des pyramides",
+      "description": "La science réfute l'idée d'une technologie ou d'une civilisation mystérieuse : les pyramides s'alignent le long de la branche disparue de l'Ahramat, une voie fluviale de transport (Ghoneim et al., 2024).",
+      "inLanguage": "fr",
+      "image": "https://cedbern.github.io/criterio-osint/images/og-cover.jpg",
+      "mainEntityOfPage": "https://cedbern.github.io/criterio-osint/",
+      "author": {
+        "@type": "Organization",
+        "name": "Criterio",
+        "url": "https://cedbern.github.io/criterio-osint/",
+        "logo": "https://cedbern.github.io/criterio-osint/images/logo_criterio.png"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Criterio",
+        "url": "https://cedbern.github.io/criterio-osint/",
+        "logo": "https://cedbern.github.io/criterio-osint/images/logo_criterio.png"
+      }
+    },
+    {
+      "@type": "ClaimReview",
+      "url": "https://cedbern.github.io/criterio-osint/",
+      "datePublished": "2026-07",
+      "claimReviewed": "Les pyramides d'Égypte, isolées dans le désert, auraient nécessité une technologie perdue ou une civilisation avancée inconnue.",
+      "author": {
+        "@type": "Organization",
+        "name": "Criterio",
+        "url": "https://cedbern.github.io/criterio-osint/"
+      },
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": 1,
+        "bestRating": 5,
+        "worstRating": 1,
+        "alternateName": "Faux"
+      },
+      "itemReviewed": {
+        "@type": "Claim",
+        "appearance": {
+          "@type": "CreativeWork",
+          "url": "https://cedbern.github.io/criterio-osint/"
+        }
+      },
+      "reviewBody": "Les pyramides s'alignent le long d'une ancienne branche du Nil (l'Ahramat) servant au transport fluvial des pierres."
+    },
+    {
+      "@type": "Article",
+      "headline": "Le mirage de la connexion globale des pyramides : pourquoi la science réfute le mythe de la civilisation mère",
+      "description": "L'hyperdiffusionnisme est réfuté : les pyramides d'Égypte, du Mexique et d'ailleurs résultent de convergences architecturales indépendantes, non d'une civilisation mère unique.",
+      "inLanguage": "fr",
+      "image": "https://cedbern.github.io/criterio-osint/images/og-cover.jpg",
+      "mainEntityOfPage": "https://cedbern.github.io/criterio-osint/",
+      "author": {
+        "@type": "Organization",
+        "name": "Criterio",
+        "url": "https://cedbern.github.io/criterio-osint/",
+        "logo": "https://cedbern.github.io/criterio-osint/images/logo_criterio.png"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Criterio",
+        "url": "https://cedbern.github.io/criterio-osint/",
+        "logo": "https://cedbern.github.io/criterio-osint/images/logo_criterio.png"
+      }
+    },
+    {
+      "@type": "ClaimReview",
+      "url": "https://cedbern.github.io/criterio-osint/",
+      "datePublished": "2026-07",
+      "claimReviewed": "Les pyramides du monde entier seraient reliées et issues d'une même civilisation mère globale.",
+      "author": {
+        "@type": "Organization",
+        "name": "Criterio",
+        "url": "https://cedbern.github.io/criterio-osint/"
+      },
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": 1,
+        "bestRating": 5,
+        "worstRating": 1,
+        "alternateName": "Faux"
+      },
+      "itemReviewed": {
+        "@type": "Claim",
+        "appearance": {
+          "@type": "CreativeWork",
+          "url": "https://cedbern.github.io/criterio-osint/"
+        }
+      },
+      "reviewBody": "Convergence architecturale indépendante ; aucune preuve d'une civilisation mère mondiale."
+    }
+  ]
+}
+</script>
+<!-- JSONLD_END -->
 </head>
 <body>
 
@@ -1455,7 +1563,7 @@
       <div class="brand-section">
         <div class="brand-lockup">
           <div class="brand-logo-wrap">
-            <img src="images/logo_criterio.png" alt="Logo Criterio">
+            <img loading="lazy" decoding="async" src="images/logo_criterio.webp" alt="Logo Criterio">
           </div>
           <div class="brand-text">
             <h1 class="logo">CRITERIO</h1>
@@ -1470,7 +1578,7 @@
       </nav>
       
       <!-- Stats Dashboard -->
-      <div class="stats-dashboard" id="statsDashboard" style="max-width: 480px; margin: 16px auto 0; padding: 12px 20px; background: rgba(255,255,255,0.5); backdrop-filter: blur(4px); border: 1.5px solid var(--border); border-radius: var(--radius); display: flex; align-items: center; justify-content: space-between; font-size: 12.5px; font-weight: 600; color: var(--muted); display: none;">
+      <div class="stats-dashboard" id="statsDashboard" style="max-width: 480px; margin: 16px auto 0; padding: 12px 20px; background: rgba(255,255,255,0.5); backdrop-filter: blur(4px); border: 1.5px solid var(--border); border-radius: var(--radius); display: flex; align-items: center; justify-content: space-between; font-size: 12px; font-weight: 600; color: var(--muted); display: none;">
         <span style="display: flex; align-items: center; gap: 6px;">🎯 <span id="ui-stats-title">Vos Progrès Quiz :</span></span>
         <span style="color: var(--accent);"><strong id="statsCompleted">0</strong>/4 complétés (&nbsp;<strong id="statsAccuracy">0%</strong> de précision&nbsp;)</span>
         <button id="resetStatsBtn" title="Réinitialiser" style="background: none; border: none; cursor: pointer; font-size: 11px; color: var(--accent); opacity: 0.7; transition: opacity 0.2s;">🔄</button>
@@ -1487,7 +1595,7 @@
                data-level-fr="B1-B2" data-level-es="B1-B2" data-level-en="B1-B2"
                data-tags-fr="Égypte ancienne,Archéologie,Technologie" data-tags-es="Egipto antiguo,Arqueología,Tecnología" data-tags-en="Ancient Egypt,Archaeology,Technology">
         <div class="featured-img-container">
-          <img src="images/c4_1.webp" alt="Dater l'impossible : Comment la science détermine l'âge des pyramides" class="featured-img">
+          <img loading="lazy" decoding="async" src="images/c4_1.webp" alt="Dater l'impossible : Comment la science détermine l'âge des pyramides" class="featured-img">
         </div>
         <div class="featured-body">
           <div class="story-meta">
@@ -1525,9 +1633,9 @@
             </div>
 
             <div class="paragraph-block">
-              <div class="paragraph-fr"><p>Tags: Égypte ancienne, Archéologie, Technologie</p><div class="article-media"><img src="images/c4_1.jpg" alt="Le Sphinx de Gizeh et la Grande Pyramide au coucher du soleil"><span class="media-caption">Le Sphinx de Gizeh et la Grande Pyramide au coucher du soleil</span></div></div>
-              <div class="paragraph-es" style="display:none;"><p>Etiquetas: Egipto antiguo, Arqueología, Tecnología</p><div class="article-media"><img src="images/c4_1.jpg" alt="Reconstitución del Sphinx de Gizeh y la Gran Pirámide al atardecer"><span class="media-caption">Reconstitución del Sphinx de Gizeh y la Gran Pirámide al atardecer</span></div></div>
-              <div class="paragraph-en" style="display:none;"><p>Tags: Ancient Egypt, Archaeology, Technology</p><div class="article-media"><img src="images/c4_1.jpg" alt="Reconstruction of the Sphinx of Giza and the Great Pyramid at sunset"><span class="media-caption">Reconstruction of the Sphinx of Giza and the Great Pyramid at sunset</span></div></div>
+              <div class="paragraph-fr"><p>Tags: Égypte ancienne, Archéologie, Technologie</p><div class="article-media"><img loading="lazy" decoding="async" src="images/c4_1.webp" alt="Le Sphinx de Gizeh et la Grande Pyramide au coucher du soleil"><span class="media-caption">Le Sphinx de Gizeh et la Grande Pyramide au coucher du soleil</span></div></div>
+              <div class="paragraph-es" style="display:none;"><p>Etiquetas: Egipto antiguo, Arqueología, Tecnología</p><div class="article-media"><img loading="lazy" decoding="async" src="images/c4_1.webp" alt="Reconstitución del Sphinx de Gizeh y la Gran Pirámide al atardecer"><span class="media-caption">Reconstitución del Sphinx de Gizeh y la Gran Pirámide al atardecer</span></div></div>
+              <div class="paragraph-en" style="display:none;"><p>Tags: Ancient Egypt, Archaeology, Technology</p><div class="article-media"><img loading="lazy" decoding="async" src="images/c4_1.webp" alt="Reconstruction of the Sphinx of Giza and the Great Pyramid at sunset"><span class="media-caption">Reconstruction of the Sphinx of Giza and the Great Pyramid at sunset</span></div></div>
               <div class="paragraph-actions" style="display:none;">
                 <button class="btn-translate-es" title="Traducción al español">🇲🇽</button>
                 <button class="btn-translate-en" title="English translation">🇬🇧</button>
@@ -1593,7 +1701,7 @@
                 <button class="btn-translate-en" title="English translation">🇬🇧</button>
               </div>
             </div>
-<div class="media-block"><div class="article-media"><img src="images/c4_2.png" alt="Schéma explicatif de la datation C14 des fragments de charbon dans le mortier"><span class="media-caption">Schéma explicatif de la datation C14 des fragments de charbon dans le mortier</span></div></div>
+<div class="media-block"><div class="article-media"><img loading="lazy" decoding="async" src="images/c4_2.webp" alt="Schéma explicatif de la datation C14 des fragments de charbon dans le mortier"><span class="media-caption">Schéma explicatif de la datation C14 des fragments de charbon dans le mortier</span></div></div>
 
             <div class="paragraph-block">
               <div class="paragraph-fr"><p>Ces résidus organiques peuvent être datés grâce à la <strong>méthode du <span class="glossary-term" data-word="carbone 14">carbone 14</span></strong>. Les célèbres <em>David H. Koch Pyramids Radiocarbon Projects</em>, menés en 1984 et 1995, ont été enrichis en 2025 par une <strong>analyse <span class="glossary-term" data-word="statistique bayésienne">statistique bayésienne</span></strong> portant sur plus de 200 échantillons. Tous ces travaux convergent vers une date précise : <strong>2580 avant notre ère</strong> pour la construction de la pyramide de Khéops.</p></div>
@@ -1644,7 +1752,7 @@
                 <button class="btn-translate-en" title="English translation">🇬🇧</button>
               </div>
             </div>
-<div class="media-block"><div class="article-media"><img src="images/c4_3.jpg" alt="Inspecteur Merer écrivant sur un papyrus avec le chantier en arrière-plan"><span class="media-caption">Inspecteur Merer écrivant sur un papyrus avec le chantier en arrière-plan</span></div></div>
+<div class="media-block"><div class="article-media"><img loading="lazy" decoding="async" src="images/c4_3.webp" alt="Inspecteur Merer écrivant sur un papyrus avec le chantier en arrière-plan"><span class="media-caption">Inspecteur Merer écrivant sur un papyrus avec le chantier en arrière-plan</span></div></div>
 
             <div class="paragraph-block">
               <div class="paragraph-fr"><p><strong>À retenir</strong> : Les archives administratives de l’époque nomment explicitement les <strong>responsables</strong> et les <strong>matériaux</strong> utilisés sur le chantier.</p></div>
@@ -1685,7 +1793,7 @@
                 <button class="btn-translate-en" title="English translation">🇬🇧</button>
               </div>
             </div>
-<div class="media-block"><div class="article-media"><img src="images/c4_4.png" alt="Carte cartographique de la branche d'Ahramat reliant les nécropoles"><span class="media-caption">Carte cartographique de la branche d'Ahramat reliant les nécropoles</span></div></div>
+<div class="media-block"><div class="article-media"><img loading="lazy" decoding="async" src="images/c4_4.webp" alt="Carte cartographique de la branche d'Ahramat reliant les nécropoles"><span class="media-caption">Carte cartographique de la branche d'Ahramat reliant les nécropoles</span></div></div>
 
             <div class="paragraph-block">
               <div class="paragraph-fr"><p>Au fil des millénaires, la <strong><span class="glossary-term" data-word="désertification">désertification</span></strong> et des <strong>mouvements tectoniques</strong> ont progressivement déplacé le cours du Nil vers l’est, asséchant la branche d’Ahramat et recouvrant les anciens ports de sable.</p></div>
@@ -1726,7 +1834,7 @@
                 <button class="btn-translate-en" title="English translation">🇬🇧</button>
               </div>
             </div>
-<div class="media-block"><div class="article-media"><img src="images/c4_5.png" alt="Illustration conceptuelle de la transition climatique de la savane au désert"><span class="media-caption">Illustration conceptuelle de la transition climatique de la savane au désert</span></div></div>
+<div class="media-block"><div class="article-media"><img loading="lazy" decoding="async" src="images/c4_5.webp" alt="Illustration conceptuelle de la transition climatique de la savane au désert"><span class="media-caption">Illustration conceptuelle de la transition climatique de la savane au désert</span></div></div>
 
             <div class="paragraph-block">
               <div class="paragraph-fr"><p>La science explique l’émergence de cette civilisation par un <strong>phénomène climatique majeur</strong> : vers <strong>3000 avant notre ère</strong>, la fin de la <strong>« période humide africaine »</strong> a transformé la savane en désert. Ce changement environnemental a été le <strong>moteur de l’histoire</strong>, forçant les populations à migrer vers la vallée du Nil.</p></div>
@@ -1777,7 +1885,7 @@
                 <button class="btn-translate-en" title="English translation">🇬🇧</button>
               </div>
             </div>
-<div class="media-block"><div class="article-media"><img src="images/c4_6.png" alt="Géoarchéologue effectuant un prélèvement de sédiments près des pyramides"><span class="media-caption">Géoarchéologue effectuant un prélèvement de sédiments près des pyramides</span></div></div>
+<div class="media-block"><div class="article-media"><img loading="lazy" decoding="async" src="images/c4_6.webp" alt="Géoarchéologue effectuant un prélèvement de sédiments près des pyramides"><span class="media-caption">Géoarchéologue effectuant un prélèvement de sédiments près des pyramides</span></div></div>
 
             <div class="paragraph-block">
               <div class="paragraph-fr"><p>Grâce à la <strong><span class="glossary-term" data-word="géoarchéologie">géoarchéologie</span></strong>, nous comprenons aujourd’hui que ces monuments s’inscrivaient dans un <strong>paysage dynamique</strong>, où <strong>l’eau</strong> et <strong>la pierre</strong> étaient intimement liées. Préserver ce patrimoine, c’est avant tout <strong>respecter la vérité matérielle</strong> de ceux qui l’ont édifié.</p></div>
@@ -1851,7 +1959,7 @@
                  data-level-fr="B1-B2" data-level-es="B1-B2" data-level-en="B1-B2"
                  data-tags-fr="Égypte ancienne,Chimie,Technologie" data-tags-es="Egipto antiguo,Química,Tecnología" data-tags-en="Ancient Egypt,Chemistry,Technology">
           <div class="card-img-container">
-            <img src="images/c3_1.webp" alt="Les pyramides de Gizeh : Bloc de pierre ou béton antique ?" class="card-img">
+            <img loading="lazy" decoding="async" src="images/c3_1.webp" alt="Les pyramides de Gizeh : Bloc de pierre ou béton antique ?" class="card-img">
           </div>
           <div class="card-body">
             <div class="card-meta">
@@ -1889,9 +1997,9 @@
             </div>
 
             <div class="paragraph-block">
-              <div class="paragraph-fr"><p>Tags: Égypte ancienne, Chimie, Technologie</p><div class="article-media"><img src="images/c3_1.png" alt="Reconstitution du plateau de Gizeh traversé par le canal d'Ahramat"><span class="media-caption">Reconstitution du plateau de Gizeh traversé par le canal d'Ahramat</span></div></div>
-              <div class="paragraph-es" style="display:none;"><p>Etiquetas: Egipto antiguo, Química, Tecnología</p><div class="article-media"><img src="images/c3_1.png" alt="Reconstitución del plateau de Gizeh cruzado por el canal de Ahramat"><span class="media-caption">Reconstitución del plateau de Gizeh cruzado por el canal de Ahramat</span></div></div>
-              <div class="paragraph-en" style="display:none;"><p>Tags: Ancient Egypt, Chemistry, Technology</p><div class="article-media"><img src="images/c3_1.png" alt="Reconstruction of Giza plateau crossed by the Ahramat canal"><span class="media-caption">Reconstruction of Giza plateau crossed by the Ahramat canal</span></div></div>
+              <div class="paragraph-fr"><p>Tags: Égypte ancienne, Chimie, Technologie</p><div class="article-media"><img loading="lazy" decoding="async" src="images/c3_1.webp" alt="Reconstitution du plateau de Gizeh traversé par le canal d'Ahramat"><span class="media-caption">Reconstitution du plateau de Gizeh traversé par le canal d'Ahramat</span></div></div>
+              <div class="paragraph-es" style="display:none;"><p>Etiquetas: Egipto antiguo, Química, Tecnología</p><div class="article-media"><img loading="lazy" decoding="async" src="images/c3_1.webp" alt="Reconstitución del plateau de Gizeh cruzado por el canal de Ahramat"><span class="media-caption">Reconstitución del plateau de Gizeh cruzado por el canal de Ahramat</span></div></div>
+              <div class="paragraph-en" style="display:none;"><p>Tags: Ancient Egypt, Chemistry, Technology</p><div class="article-media"><img loading="lazy" decoding="async" src="images/c3_1.webp" alt="Reconstruction of Giza plateau crossed by the Ahramat canal"><span class="media-caption">Reconstruction of Giza plateau crossed by the Ahramat canal</span></div></div>
               <div class="paragraph-actions" style="display:none;">
                 <button class="btn-translate-es" title="Traducción al español">🇲🇽</button>
                 <button class="btn-translate-en" title="English translation">🇬🇧</button>
@@ -1947,7 +2055,7 @@
                 <button class="btn-translate-en" title="English translation">🇬🇧</button>
               </div>
             </div>
-<div class="media-block"><div class="article-media"><img src="images/c3_2a.png" alt="Infographie comparative entre calcaire naturel et géopolymère moulé"><span class="media-caption">Infographie comparative entre calcaire naturel et géopolymère moulé</span></div></div>
+<div class="media-block"><div class="article-media"><img loading="lazy" decoding="async" src="images/c3_2a.webp" alt="Infographie comparative entre calcaire naturel et géopolymère moulé"><span class="media-caption">Infographie comparative entre calcaire naturel et géopolymère moulé</span></div></div>
 
             <div class="paragraph-block">
               <div class="paragraph-fr"><p>En <strong>2006</strong>, le chercheur <strong>Michel Barsoum</strong> (Université Drexel) a étudié les pierres de la pyramide de <strong>Dahchour</strong>. Ses conclusions apportent une <strong>nuance cruciale</strong> :</p><ul><li><strong>La grande majorité des blocs sont bien des pierres naturelles</strong>, extraites de carrières.</li><li><strong>Cependant</strong>, certains blocs <strong>spécifiques</strong>, comme ceux du <strong>revêtement extérieur</strong>, pourraient avoir été <strong>coulés sur place</strong> pour obtenir une surface <strong>parfaitement lisse</strong>.</li></ul></div>
@@ -1978,7 +2086,7 @@
                 <button class="btn-translate-en" title="English translation">🇬🇧</button>
               </div>
             </div>
-<div class="media-block"><div class="article-media"><img src="images/c3_3a.png" alt="Schéma de l'orientation paléomagnétique des particules de fer"><span class="media-caption">Schéma de l'orientation paléomagnétique des particules de fer</span></div></div>
+<div class="media-block"><div class="article-media"><img loading="lazy" decoding="async" src="images/c3_3a.webp" alt="Schéma de l'orientation paléomagnétique des particules de fer"><span class="media-caption">Schéma de l'orientation paléomagnétique des particules de fer</span></div></div>
 
             <div class="paragraph-block">
               <div class="paragraph-fr"><p>Leur découverte est surprenante : dans <strong>certains blocs</strong>, les particules magnétiques sont <strong>toutes alignées vers le nord</strong>. Ce phénomène se produit lorsque un matériau est <strong>liquide</strong> et <strong>sèche sur place</strong>. Si les blocs avaient été <strong>transportés depuis une carrière</strong>, ces particules seraient orientées <strong>dans tous les sens</strong>, sans ordre précis.</p></div>
@@ -2029,7 +2137,7 @@
                 <button class="btn-translate-en" title="English translation">🇬🇧</button>
               </div>
             </div>
-<div class="media-block"><div class="article-media"><img src="images/c3_4a.png" alt="Carte géoarchéologique du cours du bras d'Ahramat"><span class="media-caption">Carte géoarchéologique du cours du bras d'Ahramat</span></div></div>
+<div class="media-block"><div class="article-media"><img loading="lazy" decoding="async" src="images/c3_4a.webp" alt="Carte géoarchéologique du cours du bras d'Ahramat"><span class="media-caption">Carte géoarchéologique du cours du bras d'Ahramat</span></div></div>
 
             <div class="paragraph-block">
               <div class="paragraph-fr"><p>Cette branche était une <strong>véritable autoroute logistique</strong> :</p><ul><li><strong>Longueur</strong> : 64 km ;</li><li><strong>Largeur</strong> : entre 200 et 700 mètres (jusqu’à 1 km par endroits) ;</li><li><strong>Profondeur</strong> : 2 à 8 mètres (voire 25 m à certains points) ;</li><li><strong>Proximité</strong> : elle passait <strong>juste à côté des chantiers de Gizeh et Saqqara</strong>.</li></ul></div>
@@ -2070,7 +2178,7 @@
                 <button class="btn-translate-en" title="English translation">🇬🇧</button>
               </div>
             </div>
-<div class="media-block"><div class="article-media"><img src="images/c3_5.png" alt="Artisans égyptiens taillant et polissant des blocs de calcaire"><span class="media-caption">Artisans égyptiens taillant et polissant des blocs de calcaire</span></div></div>
+<div class="media-block"><div class="article-media"><img loading="lazy" decoding="async" src="images/c3_5.webp" alt="Artisans égyptiens taillant et polissant des blocs de calcaire"><span class="media-caption">Artisans égyptiens taillant et polissant des blocs de calcaire</span></div></div>
 
             <div class="paragraph-block">
               <div class="paragraph-fr"><p>Comme l’explique le chercheur <strong>Jean-Loïc Le Quellec</strong>, la science n’est pas là pour <strong>« casser le rêve »</strong>. Au contraire, elle révèle une vérité <strong>encore plus impressionnante</strong> : les pyramides ne sont pas le résultat d’une <strong>recette magique</strong>, mais celui d’une <strong>intelligence humaine exceptionnelle</strong>. Le <strong>vrai miracle de Gizeh</strong>, c’est la capacité des Égyptiens à :</p><ul><li><strong>organiser un travail collectif immense</strong> ;</li><li><strong>exploiter la force du Nil</strong> pour déplacer des montagnes de pierre ;</li><li><strong>innover sans cesse</strong> pour surmonter les défis techniques.</li></ul></div>
@@ -2126,7 +2234,7 @@
                  data-level-fr="B1/B2 (Intermédiaire)" data-level-es="B1/B2 (Intermedio)" data-level-en="B1/B2 (Intermediate)"
                  data-tags-fr="Égypte ancienne,Pseudo-archéologie,Histoire" data-tags-es="Egipto antiguo,Pseudoarqueología,Historia" data-tags-en="Ancient Egypt,Pseudo-archaeology,History">
           <div class="card-img-container">
-            <img src="images/c_1.webp" alt="Le mirage de la connexion globale des pyramides : Pourquoi la science réfute le mythe de la civilisation mère" class="card-img">
+            <img loading="lazy" decoding="async" src="images/c_1.webp" alt="Le mirage de la connexion globale des pyramides : Pourquoi la science réfute le mythe de la civilisation mère" class="card-img">
           </div>
           <div class="card-body">
             <div class="card-meta">
@@ -2164,9 +2272,9 @@
             </div>
 
             <div class="paragraph-block">
-              <div class="paragraph-fr"><p>Tags: Égypte ancienne, Pseudo-archéologie, Histoire</p><div class="article-media"><img src="images/c_1.jpg" alt="La fascination magnétique des pyramides"><span class="media-caption">La fascination magnétique des pyramides</span></div></div>
-              <div class="paragraph-es" style="display:none;"><p>Etiquetas: Egipto antiguo, Pseudoarqueología, Historia</p><div class="article-media"><img src="images/c_1.jpg" alt="La fascinación magnética de las pirámides"><span class="media-caption">La fascinación magnética de las pirámides</span></div></div>
-              <div class="paragraph-en" style="display:none;"><p>Tags: Ancient Egypt, Pseudo-archaeology, History</p><div class="article-media"><img src="images/c_1.jpg" alt="The magnetic fascination of pyramids"><span class="media-caption">The magnetic fascination of pyramids</span></div></div>
+              <div class="paragraph-fr"><p>Tags: Égypte ancienne, Pseudo-archéologie, Histoire</p><div class="article-media"><img loading="lazy" decoding="async" src="images/c_1.webp" alt="La fascination magnétique des pyramides"><span class="media-caption">La fascination magnétique des pyramides</span></div></div>
+              <div class="paragraph-es" style="display:none;"><p>Etiquetas: Egipto antiguo, Pseudoarqueología, Historia</p><div class="article-media"><img loading="lazy" decoding="async" src="images/c_1.webp" alt="La fascinación magnética de las pirámides"><span class="media-caption">La fascinación magnética de las pirámides</span></div></div>
+              <div class="paragraph-en" style="display:none;"><p>Tags: Ancient Egypt, Pseudo-archaeology, History</p><div class="article-media"><img loading="lazy" decoding="async" src="images/c_1.webp" alt="The magnetic fascination of pyramids"><span class="media-caption">The magnetic fascination of pyramids</span></div></div>
               <div class="paragraph-actions" style="display:none;">
                 <button class="btn-translate-es" title="Traducción al español">🇲🇽</button>
                 <button class="btn-translate-en" title="English translation">🇬🇧</button>
@@ -2182,7 +2290,7 @@
                 <button class="btn-translate-en" title="English translation">🇬🇧</button>
               </div>
             </div>
-<div class="media-block"><div class="article-media"><img src="images/c_2.png" alt="L'investigation scientifique dissipe les théories alternatives"><span class="media-caption">L'investigation scientifique dissipe les théories alternatives</span></div></div>
+<div class="media-block"><div class="article-media"><img loading="lazy" decoding="async" src="images/c_2.webp" alt="L'investigation scientifique dissipe les théories alternatives"><span class="media-caption">L'investigation scientifique dissipe les théories alternatives</span></div></div>
 
             <div class="paragraph-block">
               <div class="paragraph-fr"><p>La réalité est bien plus fascinante. Grâce à des découvertes récentes, comme celle de la <strong>branche d’Ahramat</strong> — un ancien bras du Nil identifié par des levés géophysiques, des données satellitaires radar et des carottages profonds —, la science éclaire ces mystères par des explications tangibles. Ces avancées montrent que les pyramides sont le fruit d’une adaptation humaine brillante, et non d’un héritage commun imaginaire.</p></div>
@@ -2223,7 +2331,7 @@
                 <button class="btn-translate-en" title="English translation">🇬🇧</button>
               </div>
             </div>
-<div class="media-block"><div class="article-media"><img src="images/c_3a.png" alt="La géométrie stable de la pyramide"><span class="media-caption">La géométrie stable de la pyramide</span></div></div>
+<div class="media-block"><div class="article-media"><img loading="lazy" decoding="async" src="images/c_3a.webp" alt="La géométrie stable de la pyramide"><span class="media-caption">La géométrie stable de la pyramide</span></div></div>
 
             <div class="paragraph-block">
               <div class="paragraph-fr"><p>Pourquoi des cultures sans lien ont-elles construit des pyramides ? La réponse ne réside pas dans un complot mondial, mais dans les <strong>lois de la physique</strong> et un phénomène bien documenté : <strong>l’évolution <span class="glossary-term" data-word="convergente">convergente</span></strong>. Ce concept, emprunté à la biologie, désigne l’apparition indépendante de solutions similaires face à des défis identiques. En architecture, cela signifie que des sociétés éloignées ont pu développer des formes pyramidales pour répondre aux mêmes contraintes techniques.</p></div>
@@ -2234,7 +2342,7 @@
                 <button class="btn-translate-en" title="English translation">🇬🇧</button>
               </div>
             </div>
-<div class="media-block"><div class="article-media"><img src="images/c_4.png" alt="Résistance naturelle face à la gravité"><span class="media-caption">Résistance naturelle face à la gravité</span></div></div>
+<div class="media-block"><div class="article-media"><img loading="lazy" decoding="async" src="images/c_4.webp" alt="Résistance naturelle face à la gravité"><span class="media-caption">Résistance naturelle face à la gravité</span></div></div>
 
             <div class="paragraph-block">
               <div class="paragraph-fr"><p>À l’âge du bronze, bâtir en hauteur sans que la structure ne s’effondre était un défi de taille. La pyramide, avec sa base large et son sommet effilé, offre la <strong>solution la plus stable au monde</strong> pour répartir une masse colossale. Trois principes physiques expliquent cette forme universelle :</p></div>
@@ -2291,7 +2399,7 @@
                 <button class="btn-translate-en" title="English translation">🇬🇧</button>
               </div>
             </div>
-<div class="media-block"><div class="article-media"><img src="images/c_5a.png" alt="Différence fonctionnelle : Tombeaux fermés vs Temples ouverts"><span class="media-caption">Différence fonctionnelle : Tombeaux fermés vs Temples ouverts</span></div></div>
+<div class="media-block"><div class="article-media"><img loading="lazy" decoding="async" src="images/c_5a.webp" alt="Différence fonctionnelle : Tombeaux fermés vs Temples ouverts"><span class="media-caption">Différence fonctionnelle : Tombeaux fermés vs Temples ouverts</span></div></div>
 
             <div class="paragraph-block">
               <div class="paragraph-fr"><p>Si les pyramides partagent une silhouette commune, leurs <strong>rôles</strong> et leurs <strong>contexte culturels</strong> révèlent des visions du monde opposées.</p></div>
@@ -2312,7 +2420,7 @@
                 <button class="btn-translate-en" title="English translation">🇬🇧</button>
               </div>
             </div>
-<div class="media-block"><div class="article-media"><img src="images/c_6.jpg" alt="La branche d'Ahramat comme autoroute logistique"><span class="media-caption">La branche d'Ahramat comme autoroute logistique</span></div></div>
+<div class="media-block"><div class="article-media"><img loading="lazy" decoding="async" src="images/c_6.webp" alt="La branche d'Ahramat comme autoroute logistique"><span class="media-caption">La branche d'Ahramat comme autoroute logistique</span></div></div>
 
             <div class="paragraph-block">
               <div class="paragraph-fr"><p>En Égypte, ces monuments étaient des <strong>tombeaux scellés</strong>, conçus pour garantir au pharaon une vie éternelle dans l’au-delà. La découverte de la <strong>branche d’Ahramat</strong> — un ancien bras du Nil long de <strong>64 km</strong>, large de <strong>200 à 700 mètres</strong> (jusqu’à 1 km par endroits) et profond de <strong>2 à 8 mètres</strong> (voire 25 m à certains points) — a révolutionné notre compréhension de leur construction. Active pendant la <strong>période humide africaine</strong> (12 500 à 3 000 av. J.-C.), cette voie d’eau servait d’<strong>« autoroute <span class="glossary-term" data-word="logistique">logistique</span> »</strong> : les temples de la vallée fonctionnaient comme des ports pour acheminer les matériaux et les ouvriers. Son <span class="glossary-term" data-word="ensablement">ensablement</span>, causé par une <strong>sécheresse sévère</strong> et des <strong>tempêtes de sable</strong>, a marqué la fin de son utilisation. Les Égyptiens ont également utilisé des <strong>techniques <span class="glossary-term" data-word="ingénieuses">ingénieuses</span></strong> pour faciliter le transport : humidification du sable pour réduire les frottements, et systèmes de rampes pour hisser les blocs. Ces méthodes, combinées à l’exploitation du Nil, témoignent d’une <strong>maîtrise avancée des principes physiques</strong>.</p></div>
@@ -2333,7 +2441,7 @@
                 <button class="btn-translate-en" title="English translation">🇬🇧</button>
               </div>
             </div>
-<div class="media-block"><div class="article-media"><img src="images/c_7.jpg" alt="Les temples ouverts de Mésoamérique"><span class="media-caption">Les temples ouverts de Mésoamérique</span></div></div>
+<div class="media-block"><div class="article-media"><img loading="lazy" decoding="async" src="images/c_7.webp" alt="Les temples ouverts de Mésoamérique"><span class="media-caption">Les temples ouverts de Mésoamérique</span></div></div>
 
             <div class="paragraph-block">
               <div class="paragraph-fr"><p>À l’inverse, les pyramides de Mésoamérique, comme celles de Teotihuacán, étaient des <strong>temples ouverts</strong>, situés au cœur de cités densément peuplées. Leur <strong>sommet plat</strong> supportait des sanctuaires dédiés aux dieux, et leurs <strong>escaliers extérieurs monumentaux</strong> permettaient un accès public. Contrairement aux pyramides égyptiennes — aux <strong>faces lisses</strong> et peu décorées —, celles de Mésoamérique étaient souvent <strong>peintes et ornées</strong>, reflétant une fonction <strong>rituelle et politique</strong> marquée.</p></div>
@@ -2394,7 +2502,7 @@
                 <button class="btn-translate-en" title="English translation">🇬🇧</button>
               </div>
             </div>
-<div class="media-block"><div class="article-media"><img src="images/c_8.jpg" alt="La démarche scientifique vs l'archéologie romantique"><span class="media-caption">La démarche scientifique vs l'archéologie romantique</span></div></div>
+<div class="media-block"><div class="article-media"><img loading="lazy" decoding="async" src="images/c_8.webp" alt="La démarche scientifique vs l'archéologie romantique"><span class="media-caption">La démarche scientifique vs l'archéologie romantique</span></div></div>
 
             <div class="paragraph-block">
               <div class="paragraph-fr"><p>Pourtant, comme le souligne l’expert <strong>Jean-Loïc Le Quellec</strong>, le <strong>debunking rationnel</strong> a ses limites : ces théories ne relèvent pas de la mauvaise science, mais de <strong><span class="glossary-term" data-word="mythologies">mythologies</span> modernes</strong>. Leurs partisans, comme Graham Hancock, s’appuient sur des <strong>interprétations hasardeuses</strong> de sites comme <strong>Göbekli Tepe</strong> ou <strong>Cholula</strong>, ou sur des <strong>corrélations non fondées</strong> entre des monuments éloignés. Ces récits, qualifiés d’<strong>« archéologie romantique »</strong>, répondent à un besoin de mystère plutôt qu’à une <strong>démarche rigoureuse</strong>.</p></div>
@@ -2503,7 +2611,7 @@
                  data-level-fr="B1/B2 (Intermédiaire)" data-level-es="B1/B2 (Intermedio)" data-level-en="B1/B2 (Intermediate)"
                  data-tags-fr="Égypte ancienne,Climat,Technologie" data-tags-es="Egipto antiguo,Clima,Tecnología" data-tags-en="Ancient Egypt,Climate,Technology">
           <div class="card-img-container">
-            <img src="images/1a.webp" alt="Le secret des bâtisseurs : Comment la découverte d’une branche perdue du Nil réécrit l’histoire des pyramides" class="card-img">
+            <img loading="lazy" decoding="async" src="images/1a.webp" alt="Le secret des bâtisseurs : Comment la découverte d’une branche perdue du Nil réécrit l’histoire des pyramides" class="card-img">
           </div>
           <div class="card-body">
             <div class="card-meta">
@@ -2541,9 +2649,9 @@
             </div>
 
             <div class="paragraph-block">
-              <div class="paragraph-fr"><p>Tags: Égypte ancienne, Climat, Technologie</p><div class="article-media"><img src="images/1a.png" alt="Le canal d'Ahramat coulant près des pyramides"><span class="media-caption">Le canal d'Ahramat coulant près des pyramides</span></div></div>
-              <div class="paragraph-es" style="display:none;"><p>Etiquetas: Egipto antiguo, Clima, Tecnología</p><div class="article-media"><img src="images/1a.png" alt="El canal Ahramat fluyendo junto a las pirámides"><span class="media-caption">El canal Ahramat fluyendo junto a las pirámides</span></div></div>
-              <div class="paragraph-en" style="display:none;"><p>Tags: Ancient Egypt, Climate, Technology</p><div class="article-media"><img src="images/1a.png" alt="The Ahramat canal flowing next to the pyramids"><span class="media-caption">The Ahramat canal flowing next to the pyramids</span></div></div>
+              <div class="paragraph-fr"><p>Tags: Égypte ancienne, Climat, Technologie</p><div class="article-media"><img loading="lazy" decoding="async" src="images/1a.webp" alt="Le canal d'Ahramat coulant près des pyramides"><span class="media-caption">Le canal d'Ahramat coulant près des pyramides</span></div></div>
+              <div class="paragraph-es" style="display:none;"><p>Etiquetas: Egipto antiguo, Clima, Tecnología</p><div class="article-media"><img loading="lazy" decoding="async" src="images/1a.webp" alt="El canal Ahramat fluyendo junto a las pirámides"><span class="media-caption">El canal Ahramat fluyendo junto a las pirámides</span></div></div>
+              <div class="paragraph-en" style="display:none;"><p>Tags: Ancient Egypt, Climate, Technology</p><div class="article-media"><img loading="lazy" decoding="async" src="images/1a.webp" alt="The Ahramat canal flowing next to the pyramids"><span class="media-caption">The Ahramat canal flowing next to the pyramids</span></div></div>
               <div class="paragraph-actions" style="display:none;">
                 <button class="btn-translate-es" title="Traducción al español">🇲🇽</button>
                 <button class="btn-translate-en" title="English translation">🇬🇧</button>
@@ -2569,7 +2677,7 @@
                 <button class="btn-translate-en" title="English translation">🇬🇧</button>
               </div>
             </div>
-<div class="media-block"><div class="article-media"><img src="images/2.png" alt="Le paradoxe des pyramides isolées dans le désert"><span class="media-caption">Le paradoxe des pyramides isolées dans le désert</span></div></div>
+<div class="media-block"><div class="article-media"><img loading="lazy" decoding="async" src="images/2.webp" alt="Le paradoxe des pyramides isolées dans le désert"><span class="media-caption">Le paradoxe des pyramides isolées dans le désert</span></div></div>
 
             <div class="paragraph-block">
               <div class="paragraph-fr"><p>L’explication ne relève ni du hasard ni de la magie, mais d’une <strong>symbiose parfaite</strong> entre la géographie ancienne et l’ambition architecturale. La découverte de la <strong>branche Ahramat</strong> — un bras du Nil aujourd’hui enseveli sous le désert — lève enfin le voile sur ce puzzle millénaire. Elle révèle que les <span class="glossary-term" data-word="bâtisseurs">bâtisseurs</span> n’ont pas seulement dompté la pierre : ils ont aussi <strong>exploité une autoroute fluviale</strong> aujourd’hui effacée par les sables.</p></div>
@@ -2600,7 +2708,7 @@
                 <button class="btn-translate-en" title="English translation">🇬🇧</button>
               </div>
             </div>
-<div class="media-block"><div class="article-media"><img src="images/3a.png" alt="Visualisation radar du canal enfoui d'Ahramat"><span class="media-caption">Visualisation radar du canal enfoui d'Ahramat</span></div></div>
+<div class="media-block"><div class="article-media"><img loading="lazy" decoding="async" src="images/3a.webp" alt="Visualisation radar du canal enfoui d'Ahramat"><span class="media-caption">Visualisation radar du canal enfoui d'Ahramat</span></div></div>
 
             <div class="paragraph-block">
               <div class="paragraph-fr"><p>Ses dimensions sont impressionnantes :</p><ul><li><strong>Longueur</strong> : 64 kilomètres, serpentant précisément au pied du plateau du désert occidental.</li><li><strong>Largeur</strong> : entre 200 et 700 mètres (jusqu’à 1 kilomètre par endroits).</li><li><strong>Profondeur</strong> : de 2 à 8 mètres (voire 25 mètres à certains points).</li></ul></div>
@@ -2611,7 +2719,7 @@
                 <button class="btn-translate-en" title="English translation">🇬🇧</button>
               </div>
             </div>
-<div class="media-block"><div class="article-media"><img src="images/4a.png" alt="Carte explicative de l'alignement des pyramides et du canal"><span class="media-caption">Carte explicative de l'alignement des pyramides et du canal</span></div></div>
+<div class="media-block"><div class="article-media"><img loading="lazy" decoding="async" src="images/4a.webp" alt="Carte explicative de l'alignement des pyramides et du canal"><span class="media-caption">Carte explicative de l'alignement des pyramides et du canal</span></div></div>
 
             <div class="paragraph-block">
               <div class="paragraph-fr"><p>Il ne s’agissait pas d’un simple affluent mineur, mais d’une <strong>artère vitale</strong>, alignée avec une précision remarquable sur les nécropoles royales.</p></div>
@@ -2642,7 +2750,7 @@
                 <button class="btn-translate-en" title="English translation">🇬🇧</button>
               </div>
             </div>
-<div class="media-block"><div class="article-media"><img src="images/5a.jpg" alt="Transport de blocs de pierre sur des barges le long du Nil"><span class="media-caption">Transport de blocs de pierre sur des barges le long du Nil</span></div></div>
+<div class="media-block"><div class="article-media"><img loading="lazy" decoding="async" src="images/5a.webp" alt="Transport de blocs de pierre sur des barges le long du Nil"><span class="media-caption">Transport de blocs de pierre sur des barges le long du Nil</span></div></div>
 
             <div class="paragraph-block">
               <div class="paragraph-fr"><p>Mieux encore : les archéologues ont découvert que les Égyptiens pratiquaient une <strong>« architecture adaptative »</strong>. L’emplacement des pyramides <strong>n’était pas figé</strong> :</p><ul><li>Lorsque le <span class="glossary-term" data-word="débit">débit</span> de la branche Ahramat était <strong>élevé</strong>, les rois faisaient construire leurs monuments <strong>plus à l’ouest</strong>, sur les hauteurs.</li><li>Lorsque le niveau <strong>baissait</strong>, les chantiers se rapprochaient du lit du fleuve, <strong>à l’est</strong>, pour faciliter le déchargement.</li></ul></div>
@@ -2684,7 +2792,7 @@
                 <button class="btn-translate-en" title="English translation">🇬🇧</button>
               </div>
             </div>
-<div class="media-block"><div class="article-media"><img src="images/6a.jpg" alt="Les temples de la vallée comme ports cérémoniels"><span class="media-caption">Les temples de la vallée comme ports cérémoniels</span></div></div>
+<div class="media-block"><div class="article-media"><img loading="lazy" decoding="async" src="images/6a.webp" alt="Les temples de la vallée comme ports cérémoniels"><span class="media-caption">Les temples de la vallée comme ports cérémoniels</span></div></div>
 
             <div class="paragraph-block">
               <div class="paragraph-fr"><p>Ces quais étaient les <strong>« décors construits »</strong> d’un spectacle rituel saisissant. Imaginez la <strong>flotte funéraire royale</strong> accostant au temple de la vallée : c’était le <strong>point d’entrée sacré</strong> pour le dernier voyage du pharaon. De là, d’immenses processions remontaient la chaussée pour conduire le corps vers sa <strong>demeure d’éternité</strong>, faisant du port la <strong>frontière entre le monde des vivants et celui des dieux</strong>.</p></div>
@@ -2715,7 +2823,7 @@
                 <button class="btn-translate-en" title="English translation">🇬🇧</button>
               </div>
             </div>
-<div class="media-block"><div class="article-media"><img src="images/7a.jpg" alt="La désertification et l'assèchement du canal d'Ahramat"><span class="media-caption">La désertification et l'assèchement du canal d'Ahramat</span></div></div>
+<div class="media-block"><div class="article-media"><img loading="lazy" decoding="async" src="images/7a.webp" alt="La désertification et l'assèchement du canal d'Ahramat"><span class="media-caption">La désertification et l'assèchement du canal d'Ahramat</span></div></div>
 
             <div class="paragraph-block">
               <div class="paragraph-fr"><p>Plusieurs facteurs ont scellé son sort :</p><ul><li><strong><span class="glossary-term" data-word="ensablement">Ensablement</span> massif</strong> : des tempêtes de sable répétées ont <strong>comblé le lit du fleuve</strong>. À Memphis, des carottages ont révélé <strong>jusqu’à 3 mètres de sable</strong> accumulés au-dessus des sédiments fluviaux.</li><li><strong>Migration du Nil</strong> : le fleuve principal s’est <strong>déplacé vers l’est</strong> à un rythme de <strong>2 à 3 kilomètres par millénaire</strong>.</li><li><strong>Tectonique</strong> : une activité sismique sur les failles locales a provoqué un <strong>basculement du terrain vers le nord-est</strong>, asséchant progressivement la branche.</li></ul></div>
@@ -2756,7 +2864,7 @@
                 <button class="btn-translate-en" title="English translation">🇬🇧</button>
               </div>
             </div>
-<div class="media-block"><div class="article-media"><img src="images/7.png" alt="Méthodes d'ingénierie antiques contre théories ésotériques"><span class="media-caption">Méthodes d'ingénierie antiques contre théories ésotériques</span></div></div>
+<div class="media-block"><div class="article-media"><img loading="lazy" decoding="async" src="images/7.webp" alt="Méthodes d'ingénierie antiques contre théories ésotériques"><span class="media-caption">Méthodes d'ingénierie antiques contre théories ésotériques</span></div></div>
 
             <div class="paragraph-block">
               <div class="paragraph-fr"><p>Pourtant, comme le souligne l’historien <strong>Jean-Loïc Le Quellec</strong>, il ne s’agit pas seulement de <strong>« casser » des mythes</strong>. Ces théories fantastiques naissent d’un <strong>besoin humain d’émerveillement</strong>. Mais la réalité scientifique — celle de ces <strong>ingénieurs antiques capables d’adapter l’implantation de leurs monuments aux cycles hydrologiques d’un fleuve</strong> — est <strong>bien plus fascinante</strong> que n’importe quelle fable.</p></div>
@@ -2797,7 +2905,7 @@
                 <button class="btn-translate-en" title="English translation">🇬🇧</button>
               </div>
             </div>
-<div class="media-block"><div class="article-media"><img src="images/8a.jpg" alt="Réflexion sur le destin de nos propres infrastructures"><span class="media-caption">Réflexion sur le destin de nos propres infrastructures</span></div></div>
+<div class="media-block"><div class="article-media"><img loading="lazy" decoding="async" src="images/8a.webp" alt="Réflexion sur le destin de nos propres infrastructures"><span class="media-caption">Réflexion sur le destin de nos propres infrastructures</span></div></div>
 
             <div class="paragraph-block">
               <div class="paragraph-fr"><p>Cette découverte nous pose une question <strong>pressante</strong>. Dans un monde où nos infrastructures sont de plus en plus vulnérables aux <strong>changements climatiques</strong>, l’histoire d’Ahramat nous interpelle :<br><em>Si un fleuve assez puissant pour porter des montagnes de pierre a pu disparaître de la mémoire humaine pendant trois millénaires…</em><br><strong>… que restera-t-il de nos propres « pyramides » de béton et d’acier dans trois mille ans ?</strong></p></div>
@@ -2847,7 +2955,7 @@
                  data-level-fr="Recommandé B1" data-level-es="Recomendado B1" data-level-en="Recommended B1"
                  data-tags-fr="Projet Horizons,Alliance Française,Mexique,Culture" data-tags-es="Proyecto Horizons,Alliance Française,México,Cultura" data-tags-en="Horizons Project,Alliance Française,Mexico,Culture">
           <div class="card-img-container">
-            <img src="https://cedbern.github.io/horizons-b14/cover-maya.webp" alt="Le Mémoire Maya" class="card-img">
+            <img loading="lazy" decoding="async" src="https://cedbern.github.io/horizons-b14/cover-maya.webp" alt="Le Mémoire Maya" class="card-img">
           </div>
           <div class="card-body">
             <div class="card-meta">
@@ -2871,7 +2979,7 @@
                  data-level-fr="Recommandé B1" data-level-es="Recomendado B1" data-level-en="Recommended B1"
                  data-tags-fr="Projet Horizons,Alliance Française,Suisse,Écologie" data-tags-es="Proyecto Horizons,Alliance Française,Suiza,Ecología" data-tags-en="Horizons Project,Alliance Française,Switzerland,Ecology">
           <div class="card-img-container">
-            <img src="https://cedbern.github.io/horizons-b14/cover-suisse.webp" alt="Entre les Alpes et le Costco" class="card-img">
+            <img loading="lazy" decoding="async" src="https://cedbern.github.io/horizons-b14/cover-suisse.webp" alt="Entre les Alpes et le Costco" class="card-img">
           </div>
           <div class="card-body">
             <div class="card-meta">
@@ -2895,7 +3003,7 @@
                  data-level-fr="Recommandé B1" data-level-es="Recomendado B1" data-level-en="Recommended B1"
                  data-tags-fr="Projet Horizons,Alliance Française,Histoire,Yucatán" data-tags-es="Proyecto Horizons,Alliance Française,Historia,Yucatán" data-tags-en="Horizons Project,Alliance Française,History,Yucatan">
           <div class="card-img-container">
-            <img src="https://cedbern.github.io/horizons-b14/cover-histoire.webp" alt="Le Mexique en Histoire" class="card-img">
+            <img loading="lazy" decoding="async" src="https://cedbern.github.io/horizons-b14/cover-histoire.webp" alt="Le Mexique en Histoire" class="card-img">
           </div>
           <div class="card-body">
             <div class="card-meta">
@@ -2954,9 +3062,9 @@
               <input type="checkbox" id="didacticToggle">
               <span class="slider"></span>
             </label>
-            <span class="toggle-label" id="toggleLabel" style="font-weight: 700; font-size: 13.5px;">Modo Estudio (FLE)</span>
+            <span class="toggle-label" id="toggleLabel" style="font-weight: 700; font-size: 14px;">Modo Estudio (FLE)</span>
           </div>
-          <span class="toggle-hint" id="toggleHint" style="font-size: 10.5px; color: var(--muted); margin-left: 58px; font-weight: 500; font-family: 'Outfit', sans-serif;">💡 Traductions et définitions au survol des mots soulignés</span>
+          <span class="toggle-hint" id="toggleHint" style="font-size: 10px; color: var(--muted); margin-left: 58px; font-weight: 500; font-family: 'Outfit', sans-serif;">💡 Traductions et définitions au survol des mots soulignés</span>
         </div>
         <div class="helper-lang-selector" id="helperLangContainer" style="display:none;">
           <span id="ui-ayuda">Ayuda en:</span>
@@ -3148,7 +3256,10 @@
         });
 
         var tr = UI_TRANSLATIONS[lang];
-        document.getElementById('ui-date').textContent = tr.date_label;
+        var dateEl = document.getElementById('ui-date');
+        if (dateEl) dateEl.textContent = tr.date_label;
+        var storyDateEl = document.getElementById('ui-story-date');
+        if (storyDateEl) storyDateEl.textContent = tr.date_label;
         document.getElementById('ui-subtitle').textContent = tr.subtitle;
         document.getElementById('ui-nav-art').textContent = tr.nav_art;
         document.getElementById('ui-nav-met').textContent = tr.nav_met;
@@ -3434,11 +3545,11 @@
           var speedText = currentLang === 'es' ? 'Velocidad' : (currentLang === 'fr' ? 'Vitesse' : 'Speed');
           
           audioBtnContainer.innerHTML = `
-            <button class="audio-main-btn" id="audioMainPlayBtn" style="background: var(--accent); color: white; border: none; border-radius: 25px; padding: 10px 20px; font-weight: bold; font-family: 'Outfit', sans-serif; cursor: pointer; display: flex; align-items: center; gap: 8px; font-size: 13.5px; transition: all 0.2s; box-shadow: 0 4px 12px var(--accent-glow);">
+            <button class="audio-main-btn" id="audioMainPlayBtn" style="background: var(--accent); color: white; border: none; border-radius: 25px; padding: 10px 20px; font-weight: bold; font-family: 'Outfit', sans-serif; cursor: pointer; display: flex; align-items: center; gap: 8px; font-size: 14px; transition: all 0.2s; box-shadow: 0 4px 12px var(--accent-glow);">
               <span class="audio-icon">▶️</span>
               <span class="audio-text">${listenText}</span>
             </button>
-            <button class="audio-main-btn secondary" id="audioMainStopBtn" style="background: none; border: 1.5px solid var(--border); border-radius: 25px; padding: 9px 18px; font-weight: bold; font-family: 'Outfit', sans-serif; cursor: pointer; display: flex; align-items: center; gap: 6px; font-size: 13.5px; color: var(--muted); transition: all 0.2s; display: none;">
+            <button class="audio-main-btn secondary" id="audioMainStopBtn" style="background: none; border: 1.5px solid var(--border); border-radius: 25px; padding: 9px 18px; font-weight: bold; font-family: 'Outfit', sans-serif; cursor: pointer; display: flex; align-items: center; gap: 6px; font-size: 14px; color: var(--muted); transition: all 0.2s; display: none;">
               <span>⏹️</span>
             </button>
             <div class="audio-speed-container" style="display: flex; align-items: center; gap: 6px; font-size: 12px; font-family: 'Outfit', sans-serif; color: var(--muted);">
