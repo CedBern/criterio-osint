@@ -1,0 +1,147 @@
+{
+  "level": "B1-B2",
+  "glossary": {
+    "minéralogique": {
+      "es": "mineralógica",
+      "en": "mineralogical",
+      "def": "Relatif à l'étude des minéraux (composition, structure, propriétés physiques)."
+    },
+    "gypse": {
+      "es": "yeso",
+      "en": "gypsum",
+      "def": "Roche sédimentaire évaporitique servant à fabriquer le plâtre et le mortier de gypse."
+    },
+    "mortier": {
+      "es": "mortero",
+      "en": "mortar",
+      "def": "Mélange de liant (chaux, gypse) et de sable utilisé en maçonnerie pour lier les pierres."
+    },
+    "carbone 14": {
+      "es": "carbono 14",
+      "en": "carbon-14",
+      "def": "Isotope radioactif du carbone utilisé en datation pour mesurer l'âge de débris organiques anciens."
+    },
+    "statistique bayésienne": {
+      "es": "análisis estadístico bayesiano",
+      "en": "Bayesian statistical analysis",
+      "def": "Méthode mathématique d'inférence combinant des données antérieures avec de nouvelles observations."
+    },
+    "registre administratif": {
+      "es": "registro administrativo",
+      "en": "administrative log",
+      "def": "Document comptable ou journal de bord servant à consigner les activités et les dépenses au quotidien."
+    },
+    "bateliers": {
+      "es": "barqueros",
+      "en": "boatmen",
+      "def": "Mariniers ou navigateurs professionnels guidant des bateaux ou barges sur les fleuves."
+    },
+    "géoarchéologie": {
+      "es": "geoarqueología",
+      "en": "geoarchaeology",
+      "def": "Discipline scientifique utilisant les méthodes de la géographie et des géosciences en archéologie."
+    },
+    "carrottages": {
+      "es": "testigos de perforación",
+      "en": "sediment coring",
+      "def": "Prélèvement d'une carotte (cylindre) de terre ou de roche pour analyser l'histoire géologique."
+    },
+    "désertification": {
+      "es": "desertificación",
+      "en": "desertification",
+      "def": "Processus de dégradation écologique transformant une région fertile en zone désertique aride."
+    }
+  },
+  "quiz": [
+    {
+      "question": {
+        "fr": "Pourquoi est-il impossible de dater directement l'âge de construction d'une pyramide à partir du calcaire de ses blocs ?",
+        "es": "¿Por qué es imposible determinar directamente la edad de construcción de una pirámide a partir de la caliza de sus bloques?",
+        "en": "Why is it impossible to directly date the construction age of a pyramid from the limestone of its blocks?"
+      },
+      "options": {
+        "fr": [
+          "Parce que le calcaire n'est pas radioactif.",
+          "Parce que dater la roche elle-même ne révèle que son âge géologique (plusieurs millions d'années), pas le moment où elle a été taillée.",
+          "Parce que les Égyptiens ont effacé toutes les traces de taille."
+        ],
+        "es": [
+          "Porque la caliza no es radiactiva.",
+          "Porque datar la roca en sí misma solo revela su edad geológica (varios millones de años), no el momento en que fue tallada.",
+          "Porque los egipcios borraron todas las huellas de tallado."
+        ],
+        "en": [
+          "Because limestone is not radioactive.",
+          "Because dating the rock itself only reveals its geological age (several million years), not when it was carved.",
+          "Because the Egyptians erased all traces of carving."
+        ]
+      },
+      "answerIndex": 1,
+      "explanation": {
+        "fr": "Le calcaire s'est formé géologiquement il y a des millions d'années. La découpe d'une pierre ne réinitialise pas son horloge radioactive, il faut donc dater d'autres éléments comme le mortier.",
+        "es": "La caliza se formó geológicamente hace millones de años. El tallado de una piedra no reinicia su reloj radiactivo, por lo que es necesario datar otros elementos como el mortero.",
+        "en": "Limestone formed geologically millions of years ago. Carving a stone does not reset its radioactive clock, so other elements like mortar must be dated instead."
+      }
+    },
+    {
+      "question": {
+        "fr": "Quel élément organique piégé dans le mortier de gypse permet d'utiliser la datation au carbone 14 ?",
+        "es": "¿Qué elemento orgánico atrapado en el mortero de yeso permite utilizar la datation por carbono 14?",
+        "en": "What organic element trapped in the gypsum mortar allows the use of carbon-14 dating?"
+      },
+      "options": {
+        "fr": [
+          "Des restes d'outils en fer.",
+          "Des micro-fragments de charbon de bois issus du chauffage du gypse.",
+          "Des cheveux de pharaon."
+        ],
+        "es": [
+          "Restos de herramientas de hierro.",
+          "Microfragmentos de carbón vegetal procedentes del calentamiento del yeso.",
+          "Cabello de faraón."
+        ],
+        "en": [
+          "Remains of iron tools.",
+          "Micro-fragments of charcoal from the heating of the gypsum.",
+          "Pharaoh's hair."
+        ]
+      },
+      "answerIndex": 1,
+      "explanation": {
+        "fr": "Pour fabriquer le gypse du mortier, les Égyptiens devaient brûler du bois. Les cendres et le charbon de bois piégés dans le mortier fournissent la matière organique nécessaire à la datation C14.",
+        "es": "Para fabricar el yeso del mortero, los egipcios tenían que quemar madera. Las cenizas y el carbón vegetal atrapados en el mortero proporcionan la materia orgánica necesaria para la datación C14.",
+        "en": "To manufacture the gypsum for the mortar, the Egyptians had to burn wood. The ashes and charcoal trapped in the mortar provide the organic material needed for C-14 dating."
+      }
+    },
+    {
+      "question": {
+        "fr": "Quelle preuve historique contemporaine de Khéops documente la logistique du transport des blocs de pierre ?",
+        "es": "¿Qué prueba histórica contemporánea de Keops documenta la logística del transporte de los bloques de piedra?",
+        "en": "What historical evidence contemporary with Khufu documents the logistics of transporting the stone blocks?"
+      },
+      "options": {
+        "fr": [
+          "Le Journal de Merer, un papyrus administratif vieux de 4 500 ans rédigé par un inspecteur.",
+          "Un bas-relief montrant des extraterrestres.",
+          "Un décret écrit par Cléopâtre."
+        ],
+        "es": [
+          "El Diario de Merer, un papiro administrativo de 4500 años de antigüedad redactado por un inspector.",
+          "Un bajorrelieve que muestra extraterrestres.",
+          "Un decreto escrito por Cleopatra."
+        ],
+        "en": [
+          "The Diary of Merer, a 4,500-year-old administrative papyrus written by an inspector.",
+          "A bas-relief showing aliens.",
+          "A decree written by Cleopatra."
+        ]
+      },
+      "answerIndex": 0,
+      "explanation": {
+        "fr": "Découvert en 2013, le Journal de Merer détaille jour après jour comment son équipe de bateliers transportait le calcaire de Tourah vers Gizeh sous Khéops.",
+        "es": "Descubierto en 2013, el Diario de Merer detalla día tras día cómo su equipo de barqueros transportaba la caliza de Tura a Gizeh bajo Keops.",
+        "en": "Discovered in 2013, the Diary of Merer details day by day how his team of boatmen transported Tura limestone to Giza under Khufu."
+      }
+    }
+  ]
+}
