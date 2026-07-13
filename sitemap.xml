@@ -2,7 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://cedbern.github.io/criterio-osint/</loc>
-    <lastmod>2026-07-11</lastmod>
+    <lastmod>2026-07-13</lastmod>
     <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://cedbern.github.io/criterio-osint/dossiers/dater_l_impossible_comment_la_science_determine_l_age_des_pyramides.html</loc>
+    <lastmod>2026-07-13</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cedbern.github.io/criterio-osint/dossiers/les_pyramides_de_gizeh_bloc_de_pierre_ou_beton_antique.html</loc>
+    <lastmod>2026-07-13</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cedbern.github.io/criterio-osint/dossiers/le_mirage_de_la_connexion_globale.html</loc>
+    <lastmod>2026-07-13</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cedbern.github.io/criterio-osint/dossiers/le_secret_des_batisseurs.html</loc>
+    <lastmod>2026-07-13</lastmod>
+    <priority>0.8</priority>
   </url>
 </urlset>
