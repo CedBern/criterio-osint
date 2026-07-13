@@ -1591,7 +1591,7 @@
       <!-- Section Featured Article -->
       <section class="featured-section">
         <!-- FEATURED_START -->
-      <article class="featured-story" tabindex="0" 
+      <article class="featured-story" tabindex="0" data-slug="dater_l_impossible_comment_la_science_determine_l_age_des_pyramides"
                data-title-fr="Dater l'impossible : Comment la science détermine l'âge des pyramides" data-title-es="Datar lo imposible: Cómo la ciencia determina la edad de las pirámides" data-title-en="Dating the Impossible: How Science Determines the Age of the Pyramids"
                data-summary-fr="Une objection revient souvent dans les débats sur les théories alternatives : « On ne peut pas dater la taille d’une pierre. » Sur un plan strictement minéralogique, cette affirmat..." data-summary-es="Una objeción surge a menudo en los debates sobre teorías alternativas: «No se puede datar el tallado de una piedra». Desde un punto de vista estrictamente mineralógico, esta afirma..." data-summary-en="An objection often arises in debates about alternative theories: “You cannot date the carving of a stone.” From a strictly mineralogical standpoint, this statement is correct. A li..."
                data-level-fr="B1-B2" data-level-es="B1-B2" data-level-en="B1-B2"
@@ -1955,7 +1955,7 @@
         
         <div class="articles-grid">
           <!-- DOSSIERS_START -->
-        <article class="magazine-card reveal" tabindex="0"
+        <article class="magazine-card reveal" tabindex="0" data-slug="les_pyramides_de_gizeh_bloc_de_pierre_ou_beton_antique"
                  data-title-fr="Les pyramides de Gizeh : Bloc de pierre ou béton antique ?" data-title-es="Las pirámides de Gizeh: ¿Bloque de piedra u hormigón antiguo?" data-title-en="The Pyramids of Giza: Stone block or ancient concrete?"
                  data-summary-fr="Une idée intrigante circule depuis des années sur les réseaux sociaux : les pyramides d’Égypte n’auraient pas été construites avec des pierres taillées, mais avec du béton antique...." data-summary-es="Una idea intrigante circula desde hace años en las redes sociales: las pirámides de Egipto no habrían sido construites con piedras talladas, sino con hormigón antiguo. Según esta t..." data-summary-en="An intriguing idea has been circulating on social media for years: the pyramids of Egypt were not built with carved stones, but with ancient concrete. According to this theory, pro..."
                  data-level-fr="B1-B2" data-level-es="B1-B2" data-level-en="B1-B2"
@@ -2230,7 +2230,7 @@
           </div>
         </article>
 
-        <article class="magazine-card reveal" tabindex="0"
+        <article class="magazine-card reveal" tabindex="0" data-slug="le_mirage_de_la_connexion_globale"
                  data-title-fr="Le mirage de la connexion globale des pyramides : Pourquoi la science réfute le mythe de la civilisation mère" data-title-es="El espejismo de la conexión global de las pirámides: Por qué la ciencia refuta el mito de la civilización madre" data-title-en="The Mirage of the Global Pyramid Connection: Why Science Refutes the Mother Civilization Myth"
                  data-summary-fr="Depuis des millénaires, les pyramides captivent l’humanité. De Gizeh à Teotihuacán, ces monuments de pierre défient le temps et nourrissent notre imagination. Pourtant, cette admir..." data-summary-es="Desde hace milenios, las pirámides cautivan a la humanidad. De Guiza a Teotihuacán, estos monumentos de piedra desafían el tiempo y alimentan nuestra imaginación. Sin embargo, esta..." data-summary-en="For millennia, pyramids have captivated humanity. From Giza to Teotihuacan, these stone monuments defy time and feed our imagination. However, this legitimate admiration has given ..."
                  data-level-fr="B1/B2 (Intermédiaire)" data-level-es="B1/B2 (Intermedio)" data-level-en="B1/B2 (Intermediate)"
@@ -2607,7 +2607,7 @@
           </div>
         </article>
 
-        <article class="magazine-card reveal" tabindex="0"
+        <article class="magazine-card reveal" tabindex="0" data-slug="le_secret_des_batisseurs"
                  data-title-fr="Le secret des bâtisseurs : Comment la découverte d’une branche perdue du Nil réécrit l’histoire des pyramides" data-title-es="El secreto de los constructores: Cómo el descubrimiento de un brazo perdido del Nilo reescribe la historia de las Pirámides" data-title-en="The Builders' Secret: How the Discovery of a Lost Nile Branch Rewrites the History of the Pyramids"
                  data-summary-fr="Pourquoi 31 pyramides, dont les légendaires monuments de Gizeh, s’alignent-elles avec une précision chirurgicale le long d’une bande de terre aride, loin du Nil actuel ? Depuis des..." data-summary-es="¿Por qué 31 pirámides, incluyendo los íconos eternos de la meseta de Guiza, están hoy alineadas con precisión quirúrgica a lo largo de una franja de tierra árida e inhóspita? Hasta..." data-summary-en="Why are 31 pyramids, including the eternal icons of the Giza plateau, aligned with surgical precision today along a strip of dry and inhospitable land? Until now, the location of t..."
                  data-level-fr="B1/B2 (Intermédiaire)" data-level-es="B1/B2 (Intermedio)" data-level-en="B1/B2 (Intermediate)"
@@ -3489,6 +3489,11 @@
         var contentEl = card.querySelector('.dcell-content');
         if (!contentEl) return;
 
+        // Reflète le dossier ouvert dans l'URL (permalien partageable).
+        // replaceState ne déclenche PAS 'hashchange' -> pas de boucle avec le routage.
+        var _slug = card.getAttribute('data-slug');
+        if (_slug) history.replaceState(null, '', '#' + _slug);
+
         activeArticleId = card.getAttribute('data-title-fr') || '';
 
         var level = contentEl.getAttribute('data-level') || '';
@@ -3817,6 +3822,8 @@
         stopSpeech();
         modal.classList.remove('open');
         modal.setAttribute('aria-hidden', 'true');
+        // Retire le #slug de l'URL sans recharger ni déclencher le routage par hash.
+        if (location.hash) history.replaceState(null, '', location.pathname + location.search);
         document.body.style.overflow = '';
         removeTooltip();
         setTimeout(function() {
@@ -4195,6 +4202,23 @@
       document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
       });
+
+      // Routage par hash : ouvrir le bon dossier via #slug (permaliens des pages dédiées).
+      // Ferme la boucle page dédiée <-> magazine interactif.
+      function openDossierByHash() {
+        var slug = decodeURIComponent((location.hash || '').replace(/^#/, '')).trim();
+        if (!slug) return;
+        var sel = (window.CSS && CSS.escape) ? CSS.escape(slug) : slug;
+        var card = document.querySelector(
+          '.featured-story[data-slug="' + sel + '"], .magazine-card[data-slug="' + sel + '"]'
+        );
+        if (card) {
+          card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          openModal(card);
+        }
+      }
+      window.addEventListener('hashchange', openDossierByHash);
+      openDossierByHash(); // au chargement : si on arrive avec #slug, on ouvre le dossier
 
       // A-1 : .reveal visible par defaut (l'animation enrichit, ne conditionne pas)
       var revealEls = document.querySelectorAll('.reveal');
